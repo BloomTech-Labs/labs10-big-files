@@ -1,28 +1,25 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
+import React, { Component } from "react";
+import {landingview} from "./views/landingview";
+import {createeditholder} from "./views/createeditholder";
+import {homeviewholder } from "./views/homeviewholder";
+import {settingsholder} from './views/settingsholder';
+import {billingholder} from './views/billingholder';
+import {Route} from "react-router-dom";
 import './App.css';
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+      <Route exact path="/" render={props =><landingview {...props}/>}/>
+      <Route exact path="/home/:files" render={props =><createeditholder {...props}/>}/>
+      <Route exact path="/home/:new/edit/" render={props =><homeviewholder {...props}/>}/>
+      <Route exact path="/home/:setting/" render={props =><settingsholder {...props}/>}/>
+      <Route exact path="/home/:billing/" render={props =><billingholder {...props}/>}/>
       </div>
     );
   }
 }
 
+// export default Authenticate(App); use when Auth0 set up
 export default App;
