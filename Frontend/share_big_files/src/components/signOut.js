@@ -14,3 +14,5 @@ const signOut = props => {
     </button>
     )
 }
+
+export default signOut;

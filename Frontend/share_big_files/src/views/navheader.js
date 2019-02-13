@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import {signOut} from '../components/signOut';
+import signOut from "../components/signOut.js";
 const navHeader = props => {
     return (
         <div>
