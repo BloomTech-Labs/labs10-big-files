@@ -1,4 +1,6 @@
-import react from 'react';
+import React from 'react';
+import LeftMenu from './leftmenu';
+import styled from 'styled-components';
 
 
 
@@ -18,6 +20,8 @@ const AddFileButton = styled.div`
 const AddFile = () => {
 
     return (
+        <>
+        <LeftMenu/>
         <AddFileHolder>
             <NewFileText>
                 New File
@@ -26,6 +30,7 @@ const AddFile = () => {
                 <Link to="/create">+</Link>
             </AddFileButton>
         </AddFileHolder>
+        </>
 
     )
 };

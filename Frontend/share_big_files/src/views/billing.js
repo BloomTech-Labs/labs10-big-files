@@ -1,4 +1,6 @@
-import react from 'react';
+import React from 'react';
+import styled from 'styled-components';
+import LeftMenu from './leftmenu';
 
 const PaymentInfoHolder = styled.div`
     width: ;
@@ -19,6 +21,7 @@ const Billing = () => {
 
     return (
         <>
+        <LeftMenu/>
         <PaymentInfoHolder>
             <PaymentBoxes>
                 <h3>CC#</h3>
