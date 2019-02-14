@@ -3,7 +3,7 @@ import Landingview from "./views/landingview";
 // import {createeditholder} from "./views/createeditholder";
 // import {homeviewholder } from "./views/homeviewholder";
 // import {settingsholder} from './views/settingsholder';
-// import {billingholder} from './views/billingholder';
+import BillingHolder from './views/billingholder';
 import { Route } from "react-router-dom";
 import "./App.css";
 import styled from "styled-components";
@@ -24,7 +24,8 @@ class App extends Component {
         {/* <Route exact path="/home/:files"  render={props =><createeditholder {...props}/>}/>
       <Route exact path="/home/:new/edit/" render={props =><homeviewholder {...props}/>}/>
       <Route exact path="/home/:setting/" render={props =><settingsholder {...props}/>}/>
-      <Route exact path="/home/:billing/" render={props =><billingholder {...props}/>}/> */}
+       */}
+       <Route exact path="/home/:billing/" render={props =><BillingHolder {...props}/>}/>
       </AppContainer>
     );
   }
