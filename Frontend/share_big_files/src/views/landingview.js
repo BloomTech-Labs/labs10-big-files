@@ -52,7 +52,7 @@ const FileTransferButton = styled.button`
   background-color: lightgrey;
 `;
 
-export const Landingview = props => {
+export const LandingView = props => {
   return (
     <LandingContainerDiv>
       <TextContainer>
@@ -79,11 +79,11 @@ export const Landingview = props => {
             <li>See who downloaded your file</li>
             <li>90 days of file storage</li>
           </UnorderedList>
-          <FileTransferButton>Use File Transfer Free</FileTransferButton>
+          <FileTransferButton>Use File Transfer Pro</FileTransferButton>
         </LandingCards>
       </LandingCardsContainer>
     </LandingContainerDiv>
   );
 };
 
-export default Landingview;
+export default LandingView;
