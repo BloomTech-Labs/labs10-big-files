@@ -21,7 +21,6 @@ const Billing = () => {
 
     return (
         <>
-        <LeftMenu/>
         <PaymentInfoHolder>
             <PaymentBoxes>
                 <h3>CC#</h3>

@@ -49,7 +49,7 @@ const FileTransferButton = styled.button`
 
 `;
 
-export const Landingview = props => {
+export const LandingView = props => {
   return (
     <LandingContainerDiv>
       <TextContainer>
@@ -83,4 +83,4 @@ export const Landingview = props => {
   );
 };
 
-export default Landingview;
+export default LandingView;
