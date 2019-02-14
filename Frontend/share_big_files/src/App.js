@@ -1,8 +1,11 @@
 import React, { Component } from "react";
-import Landingview from "./views/landingview";
+import LandingView from "./views/landingview";
 // import {createeditholder} from "./views/createeditholder";
 // import {homeviewholder } from "./views/homeviewholder";
 // import {settingsholder} from './views/settingsholder';
+
+
+
 import BillingHolder from './views/billingholder'; 
 import Stripe from './components/StripeFE'
 import { Route } from "react-router-dom";
@@ -17,18 +20,21 @@ const AppContainer = styled.div`
   padding: 0;
 `;
 
+
 class App extends Component {
   render() {
     return (
       <AppContainer>
         <Route exact path="/" render={props => <Landingview {...props} />} />
         <Route path="/stripe" render={props =><Stripe {...props} />} />
-        {/* <Route exact path="/home/:files"  render={props =><createeditholder {...props}/>}/>
-      <Route exact path="/home/:new/edit/" render={props =><homeviewholder {...props}/>}/>
-      <Route exact path="/home/:setting/" render={props =><settingsholder {...props}/>}/>
+        {/* <Route path="/home/:files"  render={props =><createeditholder {...props}/>}/>
+      <Route path="/home/:new/edit/" render={props =><homeviewholder {...props}/>}/>
+
+      <Route path="/home/:setting/" render={props =><settingsholder {...props}/>}/>
        */}
-       <Route exact path="/home/:billing/" render={props =><BillingHolder {...props}/>}/>
+       <Route path="/home/:billing/" render={props =><BillingHolder {...props}/>}/>
       </AppContainer>
+
     );
   }
 }

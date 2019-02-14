@@ -20,6 +20,7 @@ display: inline;
 `;
 
 const Billing = () => {
+
   return (
     <div>
       <PaymentInfoHolder>
@@ -50,6 +51,7 @@ const Billing = () => {
       </BuyNowButton>
     </div>
   );
+
 };
 
 export default Billing;
