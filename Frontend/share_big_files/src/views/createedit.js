@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 
 const FileName = styled.div`
@@ -26,13 +27,15 @@ const ConfirmButtons = styled.div`
 
 
 `;
+const CreateFileHolder = styled.div`
 
+`;
 
 
 const CreateFile = () => {
 
 
-    render (
+    return (
         <>
         <CreateFileHolder>
             <FileName type="text" placeholder="Name"></FileName>
