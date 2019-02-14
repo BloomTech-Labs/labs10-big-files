@@ -1,6 +1,5 @@
 require('dotenv').config()
 
-
 const express = require('express')
 const bodyParser = require('body-parser')
 const cors = require('cors')
@@ -16,4 +15,5 @@ configureRoutes(server);
 
 
 
-server.listen(process.env.PORT || 9000, () => {console.log('listening on port 5050')})
+server.listen(process.env.PORT || 6001, 
+    () => {console.log(`listening on port ${process.env.PORT}`)})
