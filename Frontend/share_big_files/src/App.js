@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import LandingView from "./views/landingview";
+ 
 import CreateEditHolder from "./views/createeditholder";
 // import {homeviewholder } from "./views/homeviewholder";
 // import {settingsholder} from './views/settingsholder';
@@ -17,19 +18,24 @@ const AppContainer = styled.div`
   padding: 0;
 `;
 
+
 class App extends Component {
   render() {
     return (
       <AppContainer>
         <Route exact path="/" render={props => <LandingView {...props} />} />
         <Route path="/stripe" render={props =><Stripe {...props} />} />
+ 
         {/* <Route  path="/home/:files"  render={props =><createeditholder {...props}/>}/>
       
       <Route  path="/home/:setting/" render={props =><settingsholder {...props}/>}/>
        */}
        <Route  exact path="/home/:new/edit/" render={props =><CreateEditHolder {...props}/>}/>
        <Route  exact path="/home/:billing/" render={props =><BillingHolder {...props}/>}/>
+ 
+ 
       </AppContainer>
+
     );
   }
 }
