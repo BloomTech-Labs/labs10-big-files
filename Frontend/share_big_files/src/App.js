@@ -12,6 +12,7 @@ class App extends Component {
     return (
       <div className="App">
       <Route exact path="/"             render={props =><Landingview {...props}/>}/>
+      <Route path="/stripe"             render={(props) => {return <Stripe {...props} />}} />
       {/* <Route exact path="/home/:files"  render={props =><createeditholder {...props}/>}/>
       <Route exact path="/home/:new/edit/" render={props =><homeviewholder {...props}/>}/>
       <Route exact path="/home/:setting/" render={props =><settingsholder {...props}/>}/>
