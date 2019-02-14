@@ -4,6 +4,7 @@ import Landingview from "./views/landingview";
 // import {homeviewholder } from "./views/homeviewholder";
 // import {settingsholder} from './views/settingsholder';
 // import {billingholder} from './views/billingholder';
+import Stripe from "./components/StripeFE" //
 import {Route} from "react-router-dom";
 import './App.css';
 
@@ -12,7 +13,7 @@ class App extends Component {
     return (
       <div className="App">
       <Route exact path="/"             render={props =><Landingview {...props}/>}/>
-      <Route path="/stripe"             render={(props) => {return <Stripe {...props} />}} />
+      <Route path="/stripe" render={props =><Stripe {...props} />} />
       {/* <Route exact path="/home/:files"  render={props =><createeditholder {...props}/>}/>
       <Route exact path="/home/:new/edit/" render={props =><homeviewholder {...props}/>}/>
       <Route exact path="/home/:setting/" render={props =><settingsholder {...props}/>}/>

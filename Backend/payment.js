@@ -7,6 +7,7 @@ const stripeChargeCallback = res => (stripeErr, stripeRes) => {
     res.status(200).send({ success: stripeRes });
   }
 };
+
 const paymentApi = app => {
   app.get("/", (req, res) => {
     res.send({
@@ -14,6 +15,7 @@ const paymentApi = app => {
       timestamp: new Date().toISOString()
     });
   });
+
 app.post("/charge", (req, res) => {
     const body = {
       source: req.body.token.id,
@@ -24,4 +26,5 @@ app.post("/charge", (req, res) => {
 });
   return app;
 };
+
 module.exports = paymentApi;
