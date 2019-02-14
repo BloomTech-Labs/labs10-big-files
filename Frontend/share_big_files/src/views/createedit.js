@@ -1,3 +1,4 @@
+
 import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
@@ -7,6 +8,7 @@ display: flex;
 flex-direction: column;
 height: 500px;
 border: 2px solid red;
+
 `;
 
 const CreateFileHolder = styled.div``;
@@ -17,6 +19,7 @@ const SharedWithBox = styled.div`
   width: 100%;
   height: 200px;
 `;
+
 const UploadButtonHolder = styled.div``;
 const ShareLinkHolder = styled.div``;
 const VersionBrowserHolder = styled.div``;
@@ -50,3 +53,4 @@ const CreateFile = () => {
 };
 
 export default CreateFile;
+

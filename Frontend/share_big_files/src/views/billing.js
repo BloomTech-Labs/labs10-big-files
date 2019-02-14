@@ -1,6 +1,10 @@
 import React from "react";
 import styled from "styled-components";
 
+const BillingDiv = styled.div`
+  margin-left: 2%;
+`;
+
 const PaymentInfoHolder = styled.div`
   width: ;
 `;
@@ -8,7 +12,10 @@ const Subscriptions = styled.div`
   color: black;
 `;
 const BuyNowButton = styled.div`
+  border: 2px solid;
   cursor: pointer;
+  text-align: center;
+  border-radius: 5%;
 `;
 const PaymentBoxes = styled.div`
   width: ;
@@ -22,7 +29,7 @@ display: inline;
 const Billing = () => {
 
   return (
-    <div>
+    <BillingDiv>
       <PaymentInfoHolder>
           <h1>Billing</h1>
         <PaymentBoxes>
@@ -49,7 +56,7 @@ const Billing = () => {
       <BuyNowButton>
         <h1>Buy Now!</h1>
       </BuyNowButton>
-    </div>
+    </BillingDiv>
   );
 
 };

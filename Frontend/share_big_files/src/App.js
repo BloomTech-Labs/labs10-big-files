@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import LandingView from "./views/landingview";
+
  
 import CreateEditHolder from "./views/createeditholder";
 // import {homeviewholder } from "./views/homeviewholder";
@@ -19,9 +20,11 @@ const AppContainer = styled.div`
 `;
 
 
+
 class App extends Component {
   render() {
     return (
+
       <AppContainer>
         <Route exact path="/" render={props => <LandingView {...props} />} />
         <Route path="/stripe" render={props =><Stripe {...props} />} />
@@ -35,6 +38,7 @@ class App extends Component {
  
  
       </AppContainer>
+
 
     );
   }

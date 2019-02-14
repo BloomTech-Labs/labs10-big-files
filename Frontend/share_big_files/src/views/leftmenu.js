@@ -4,11 +4,22 @@ import { Link } from "react-router-dom";
 
 
 const LeftMenuHolder = styled.div`
-  width: 20%;
-  height: 200px;
+  width: 10%;
+  height: 54rem;
   border: 2px solid;
+  margin-left: 2%;
+  display: flex;
+  background-color: #42cbf4;
 `;
-const LeftMenuOptions = styled.div``;
+const LeftMenuOptions = styled.div`
+  margin-left: 4%;
+  line-height: 2;
+  font-size: 15px;
+  color: black;
+  text-decoration: none;
+  
+
+`;
 
 const LeftMenu = () => {
   return (
