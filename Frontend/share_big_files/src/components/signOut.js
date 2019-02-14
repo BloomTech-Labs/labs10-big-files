@@ -7,7 +7,7 @@ localStorage.clear('token');
 window.location.reload();
 }
 
-const signOut = props => {
+const SignOut = props => {
     return (
     <button onClick={signOutHandler}>
         Sign Out
@@ -15,4 +15,4 @@ const signOut = props => {
     )
 }
 
-export default signOut;
+export default SignOut;
