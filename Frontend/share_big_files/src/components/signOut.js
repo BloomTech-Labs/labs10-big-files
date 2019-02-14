@@ -7,11 +7,15 @@ localStorage.clear('token');
 window.location.reload();
 }
 
+const SignOutButton = styled.button`
+height:2rem;
+`;
+
 const SignOut = props => {
     return (
-    <button onClick={signOutHandler}>
+    <SignOutButton onClick={signOutHandler}>
         Sign Out
-    </button>
+    </SignOutButton>
     )
 }
 
