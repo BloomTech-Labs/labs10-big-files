@@ -3,6 +3,7 @@ import LeftMenu from "./leftmenu";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 
+
 const AddFileHolder = styled.div`
   width: 25rem;
   height: 22rem;
@@ -27,7 +28,12 @@ const AddFileButton = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+
 `;
+const Button = styled.button`
+    height: 20rem;
+`;
+
 
 const PlusText = styled.h1`
   color: white;
@@ -37,6 +43,7 @@ const PlusText = styled.h1`
 `;
 
 const AddFile = () => {
+
   return (
     <>
       <AddFileHolder>
@@ -49,6 +56,7 @@ const AddFile = () => {
       </AddFileHolder>
     </>
   );
+
 };
 
 export default AddFile;

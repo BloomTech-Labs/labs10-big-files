@@ -23,6 +23,7 @@ class App extends Component {
     return (
       <AppContainer>
         <Route exact path="/" render={props => <LandingView {...props} />} />
+
         <Route path="/stripe" render={props => <Stripe {...props} />} />
         <Route
           exact
@@ -46,6 +47,7 @@ class App extends Component {
           path="/billing/"
           render={props => <BillingHolder {...props} />}
         />
+
       </AppContainer>
     );
   }
