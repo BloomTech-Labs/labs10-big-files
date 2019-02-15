@@ -11,7 +11,8 @@ border: 2px solid red;
 
 `;
 
-const CreateFileHolder = styled.div``;
+const CreateFileHolder = styled.div`
+`;
 
 const FileName = styled.input`
 `;
