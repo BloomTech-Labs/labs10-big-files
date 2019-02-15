@@ -6,8 +6,7 @@ import styled from "styled-components";
 
 const MenuFileHolder = styled.div`
   display: flex;
-  height: auto;
-  border:1px solid red;
+
 `;
 
 const AddFileHolder = () => {

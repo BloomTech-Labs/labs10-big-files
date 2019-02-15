@@ -35,6 +35,7 @@ const ConfirmButtons = styled.div``;
 const CreateFile = () => {
   return (
     <CreateEditDiv>
+
       <CreateFileHolder>
         <span>File Name: </span>
         <FileName type="text" placeholder="Name" />
@@ -44,6 +45,7 @@ const CreateFile = () => {
         <br />
 
         <span>Shared with history:</span>
+
         <SharedWithBox />
       </CreateFileHolder>
       <UploadButtonHolder>
