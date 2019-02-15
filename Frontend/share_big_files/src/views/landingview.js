@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { unstable_useMediaQuery as useMediaQuery } from '@material-ui/core/useMediaQuery';
 
 const LandingContainerDiv = styled.div`
   width: 100%;
@@ -51,10 +52,13 @@ const FileTransferButton = styled.button`
   font-size:1.9rem;
   background-color: lightgrey;
 `;
+const matches = useMediaQuery('(min-width:600px)');
 
 export const LandingView = props => {
   return (
+    
     <LandingContainerDiv>
+      <span>{`(min-width:600px) matches: ${matches}`}</span>
       <TextContainer>
         <h1>Send Big Files</h1>
         <h2>Send your files quickly and easily</h2>

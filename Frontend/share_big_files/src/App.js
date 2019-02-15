@@ -1,7 +1,11 @@
 import React, { Component } from "react";
 import LandingView from "./views/landingview";
 import CreateEditHolder from "./views/createeditholder";
+<<<<<<< HEAD
+// import { HomeViewHolder } from "./views/homeviewholder";
+=======
 // import {HomeViewHolder } from "./views/homeviewholder";
+>>>>>>> 08afcc713c298c47fcf390143edb8ea9688eb613
 import SettingsHolder from './views/settingsholder'; 
 import BillingHolder from "./views/billingholder";
 import Stripe from "./components/StripeFE";
@@ -28,7 +32,7 @@ class App extends Component {
         <Route path="/stripe" render={props => <Stripe {...props} />} />
         <Route
           exact
-          path="/add"
+          path="/add/"
           render={props => <AddFileHolder {...props} />}
         />
 
