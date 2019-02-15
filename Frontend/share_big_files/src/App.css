@@ -21,3 +21,7 @@ p {
 a {
     text-decoration: none;
 }
+
+.fontAwesome:hover{
+    cursor:pointer;
+}
