@@ -2,13 +2,14 @@ import React, { Component } from "react";
 import LandingView from "./views/landingview";
 import CreateEditHolder from "./views/createeditholder";
 // import {homeviewholder } from "./views/homeviewholder";
-// import {settingsholder} from './views/settingsholder'; 
+// import {settingsholder} from './views/settingsholder';
 import BillingHolder from "./views/billingholder";
 import Stripe from "./components/StripeFE";
 import AddFileHolder from "./views/addfileholder";
 import { Route } from "react-router-dom";
 import "./App.css";
 import styled from "styled-components";
+ 
 
 const AppContainer = styled.div`
   height: auto;
