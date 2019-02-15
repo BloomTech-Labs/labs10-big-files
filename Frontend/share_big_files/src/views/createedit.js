@@ -16,7 +16,8 @@ const CreateEditDiv = styled.div`
   line-height: 3;
 `;
 
-const CreateFileHolder = styled.div``;
+const CreateFileHolder = styled.div`
+`;
 
 const FileName = styled.input`
   margin-left: 1%;

@@ -1,5 +1,4 @@
 import React from "react";
-import LeftMenu from "./leftmenu";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import {FaPlusCircle} from 'react-icons/fa';
@@ -30,11 +29,6 @@ const AddFileButton = styled.div`
   align-items: center;
 
 `;
-const Button = styled.button`
-    height: 20rem;
-`;
-
-
 const PlusText = styled.h1`
   color: white;
   text-decoration: none;
