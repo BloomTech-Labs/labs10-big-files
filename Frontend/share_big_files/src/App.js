@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import LandingView from "./views/landingview";
 
- 
+import AddFileHolder from "./views/addfileholder"
 import CreateEditHolder from "./views/createeditholder";
 // import {homeviewholder } from "./views/homeviewholder";
 // import {settingsholder} from './views/settingsholder';
@@ -33,6 +33,7 @@ class App extends Component {
       
       <Route  path="/home/:setting/" render={props =><settingsholder {...props}/>}/>
        */}
+       <Route path="/home/:addfile/" render={props =><AddFileHolder {...props}/>}/>
        <Route  exact path="/home/:new/edit/" render={props =><CreateEditHolder {...props}/>}/>
        <Route  exact path="/home/:billing/" render={props =><BillingHolder {...props}/>}/>
  

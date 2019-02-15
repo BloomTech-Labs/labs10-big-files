@@ -5,33 +5,41 @@ import { Link } from 'react-router-dom';
 
 
 
-const AddFileHolder = styled.div`
+const AddFileBox = styled.div`
+    width: 20%;
+    height: 300 rem;
+    background-color: gray;
 
 `;
 const NewFileText = styled.div`
 
 `;
 const AddFileButton = styled.div`
-    background-color: black;
+    background-color: white;
     color: white;
     border-radius: 50%;
+    height: 100 px;
 `;
+const Button = styled.button`
+    height: 20rem;
+`;
+
 
 
 const AddFile = () => {
 
     return (
-        <>
-        <LeftMenu/>
-        <AddFileHolder>
+        
+        
+        <AddFileBox>
             <NewFileText>
                 New File
             </NewFileText>
             <AddFileButton>
-                <Link to="/create">+</Link>
+                <Button>+</Button>
             </AddFileButton>
-        </AddFileHolder>
-        </>
+        </AddFileBox>
+       
 
     )
 };

@@ -5,6 +5,7 @@ import AddFile from "./addfile";
 import styled from "styled-components";
 
 const MenuFileHolder = styled.div`
+  display: flex;
 
 `;
 

@@ -29,7 +29,7 @@ const CreateFile = () => {
   return (
     <CreateEditDiv>
       <CreateFileHolder> 
-        <FileName type="text" placeholder="Name" ></FileName>
+        <FileName type="text" placeholder="File Name" ></FileName>
         <SharedWithBox />
       </CreateFileHolder>
       <UploadButtonHolder>
