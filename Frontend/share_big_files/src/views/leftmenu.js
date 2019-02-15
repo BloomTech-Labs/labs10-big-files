@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 const LeftMenuHolder = styled.div`
   width: 10%;
-  height: 54rem;
+  height: 40rem;
   border: 2px solid;
   margin-left: 2%;
   display: flex;
