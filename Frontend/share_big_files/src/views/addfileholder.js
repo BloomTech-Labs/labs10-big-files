@@ -9,19 +9,15 @@ const MenuFileHolder = styled.div`
 
 `;
 
-
 const AddFileHolder = () => {
-    return (
-      <div>
-        <NavHeader />
-        <MenuFileHolder>
+  return (
+    <div>
+      <NavHeader />
+      <MenuFileHolder>
         <LeftMenu />
         <AddFile />
-        </MenuFileHolder>
-        
-        
-        
-      </div>
-    );
-  };
-  export default AddFileHolder;
+      </MenuFileHolder>
+    </div>
+  );
+};
+export default AddFileHolder;

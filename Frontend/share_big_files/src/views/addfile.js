@@ -1,47 +1,62 @@
-import React from 'react';
-import LeftMenu from './leftmenu';
-import styled from 'styled-components';
-import { Link } from 'react-router-dom';
+import React from "react";
+import LeftMenu from "./leftmenu";
+import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 
-
-const AddFileBox = styled.div`
-    width: 20%;
-    height: 300 rem;
-    background-color: gray;
-
+const AddFileHolder = styled.div`
+  width: 25rem;
+  height: 22rem;
+  border: 1px solid black;
+  margin-left: 4%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 `;
 const NewFileText = styled.div`
-
+  margin-bottom: 2rem;
+  margin-top: -2rem;
+  font-size: 3rem;
 `;
 const AddFileButton = styled.div`
-    background-color: white;
-    color: white;
-    border-radius: 50%;
-    height: 100 px;
+  height: 50px;
+  width: 50px;
+  background-color: black;
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
 `;
 const Button = styled.button`
     height: 20rem;
 `;
 
 
+const PlusText = styled.h1`
+  color: white;
+  text-decoration: none;
+  margin-top: 2.8rem;
+  font-size: 5rem;
+`;
 
 const AddFile = () => {
 
-    return (
-        
-        
-        <AddFileBox>
-            <NewFileText>
-                New File
-            </NewFileText>
-            <AddFileButton>
-                <Button>+</Button>
-            </AddFileButton>
-        </AddFileBox>
-       
+  return (
+    <>
+      <AddFileHolder>
+        <NewFileText>New File</NewFileText>
+        <Link to="/create">
+          <AddFileButton>
+            <PlusText>+</PlusText>
+          </AddFileButton>
+        </Link>
+      </AddFileHolder>
+    </>
+  );
 
-    )
 };
 
 export default AddFile;
