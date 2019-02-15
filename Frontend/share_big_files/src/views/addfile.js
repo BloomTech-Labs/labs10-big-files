@@ -32,6 +32,8 @@ const AddFileButton = styled.div`
 const PlusText = styled.h1`
   color: white;
   text-decoration: none;
+  margin-top: 2.8rem;
+  font-size: 5rem;
 `;
 
 const AddFile = () => {
