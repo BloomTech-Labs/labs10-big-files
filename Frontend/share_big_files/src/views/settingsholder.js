@@ -1,14 +1,17 @@
 import React from 'react';
-import {navheader} from "./navheader";
-import {leftmenus} from "./leftmenus";
-import {settings} from "./settings";
+import NavHeader from "./navheader";
+import LeftMenu from "./leftmenu";
+import Settings from "./settings";
 
-const settingsHolder = props => {
+const SettingsHolder = props => {
     return (
         <div>
-            <navheader {...props}/>
-            <leftmenus {...props}/>
-            <settings {...props}/>
+            <NavHeader {...props}/>
+            <LeftMenu {...props}/>
+            <Settings {...props}/>
         </div>
     )
 }
+
+
+export default SettingsHolder;

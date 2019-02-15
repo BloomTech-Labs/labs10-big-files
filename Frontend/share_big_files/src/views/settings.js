@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 ///going to need hooks for input state
-const settings = props =>{
+const Settings = props =>{
     return(
         <div>
             <p>Name</p> <input type="text"></input>
@@ -13,3 +13,6 @@ const settings = props =>{
         </div>
     )
 }
+
+
+export default Settings;

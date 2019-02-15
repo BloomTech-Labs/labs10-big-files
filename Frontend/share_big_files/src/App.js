@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import LandingView from "./views/landingview";
 import CreateEditHolder from "./views/createeditholder";
 // import {homeviewholder } from "./views/homeviewholder";
-// import {settingsholder} from './views/settingsholder'; 
+import SettingsHolder from './views/settingsholder'; 
 import BillingHolder from "./views/billingholder";
 import Stripe from "./components/StripeFE";
 import AddFileHolder from "./views/addfileholder";
@@ -34,7 +34,7 @@ class App extends Component {
         <Route
           exact
           path="/settings/"
-          render={props => <settingsholder {...props} />}
+          render={props => <SettingsHolder {...props} />}
         />
 
         <Route

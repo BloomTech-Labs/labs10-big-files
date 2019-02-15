@@ -30,11 +30,6 @@ const AddFileButton = styled.div`
   align-items: center;
 
 `;
-const Button = styled.button`
-    height: 20rem;
-`;
-
-
 const PlusText = styled.h1`
   color: white;
   text-decoration: none;
