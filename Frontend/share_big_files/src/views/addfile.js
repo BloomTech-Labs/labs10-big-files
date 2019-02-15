@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-
+import {FaPlusCircle} from 'react-icons/fa';
 
 const AddFileHolder = styled.div`
   width: 25rem;
@@ -42,10 +42,9 @@ const AddFile = () => {
     <>
       <AddFileHolder>
         <NewFileText>New File</NewFileText>
-        <Link to="/create">
-          <AddFileButton>
-            <PlusText>+</PlusText>
-          </AddFileButton>
+        <Link to="/create"> 
+            <FaPlusCircle size={50} color="black"/>
+          
         </Link>
       </AddFileHolder>
     </>
