@@ -9,6 +9,10 @@ const server = express()
 server.use(cors())
 server.use(bodyParser.json())
 
+
+server.get("/", (req,res) => {
+    res.send("Hey hey")
+})
 // const configureRoutes = require("./routes")
 // configureRoutes(server);
 
