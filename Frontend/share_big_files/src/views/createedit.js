@@ -1,13 +1,16 @@
 import React from "react";
 import styled from "styled-components";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
+
 
 const CreateEditDiv = styled.div`
   padding-left: 2%;
   padding-right: 2%;
   display: flex;
+
+
   flex-direction: column;
   height: 40rem;
   width: 31rem;

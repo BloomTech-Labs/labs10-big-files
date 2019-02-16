@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import { FaShareSquare } from "react-icons/fa";
 
 
 const SharedBoxHolder = styled.div`
@@ -12,6 +13,7 @@ const SharedBoxHolder = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  background-color: white;
 `;
 
 
@@ -24,7 +26,12 @@ const SharedHolder = () => {
                 <h3>File Title:</h3>
                 <h3>Shared With:</h3>
                 <input type="text"></input>
-                <Link to="/">Share</Link>
+                <Link to="/">
+                <br/>
+                <br/>
+                <FaShareSquare size={20} />
+                Share
+                </Link>
             </div>
         </SharedBoxHolder>
     )

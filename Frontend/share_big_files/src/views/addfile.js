@@ -12,6 +12,7 @@ const AddFileHolder = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  background-color: white;
 `;
 const NewFileText = styled.div`
   margin-bottom: 2rem;
