@@ -14,6 +14,7 @@ const SharedBoxHolder = styled.div`
   justify-content: center;
   align-items: center;
   background-color: white;
+  border-radius: 10%;
 `;
 
 
@@ -35,7 +36,7 @@ const SharedHolder = () => {
             </div>
         </SharedBoxHolder>
     )
-}
+};
 
 export default SharedHolder;
 
