@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 
 const LandingContainerDiv = styled.div`
@@ -52,6 +53,7 @@ const FileTransferButton = styled.button`
   height: 80px;
   font-size:1.9rem;
   background-color: lightgrey;
+  cursor: pointer;
 `;
 
 export const LandingView = props => {
@@ -73,7 +75,7 @@ export const LandingView = props => {
             <ListItem>See who downloaded your file</ListItem>
             <ListItem>7 days of file storage</ListItem>
           </UnorderedList>
-          <FileTransferButton>Use File Transfer Free</FileTransferButton>
+          <Link to="/add/"><FileTransferButton>Use File Transfer Free</FileTransferButton></Link>
         </LandingCards>
         <LandingCards>
           <h2>Big File Transfer Pro</h2>
@@ -83,7 +85,7 @@ export const LandingView = props => {
             <li>See who downloaded your file</li>
             <li>90 days of file storage</li>
           </UnorderedList>
-          <FileTransferButton>Use File Transfer Pro</FileTransferButton>
+          <Link to="/billing/"><FileTransferButton>Use File Transfer Pro</FileTransferButton></Link>
         </LandingCards>
       </LandingCardsContainer>
     </LandingContainerDiv>

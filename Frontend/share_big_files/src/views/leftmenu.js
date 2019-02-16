@@ -5,26 +5,28 @@ import { Link } from "react-router-dom";
 
 const LeftMenuHolder = styled.div`
   width: 10%;
-  height: 40rem;
-  border: 2px solid;
+  height: 22rem;
+  // border: 2px solid;
   margin-left: 2%;
+  border-radius: 10%;
   display: flex;
+  align-items: center;
   background-color: #3CDBD3;
 `;
 const LeftMenuOptions = styled.div`
-  margin-left: 4%;
+  margin: 0 auto;
   line-height: 0.5;
 `;
 const LinkStyles = styled.h1`
-  color: black;
-  font-size: 20px;
+  color: purple;
+  font-size: 2rem;
 `;
 
 const LeftMenu = () => {
   return (
     <LeftMenuHolder>
       <LeftMenuOptions>
-        <Link to="/files"><LinkStyles>Files</LinkStyles></Link>
+        <Link to="/add"><LinkStyles>Files</LinkStyles></Link>
         <br />
         <Link to="/billing"><LinkStyles>Billing</LinkStyles></Link>
         <br />

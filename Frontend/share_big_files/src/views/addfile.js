@@ -13,6 +13,7 @@ const AddFileHolder = styled.div`
   justify-content: center;
   align-items: center;
   background-color: white;
+  border-radius: 10%;
 `;
 const NewFileText = styled.div`
   margin-bottom: 2rem;

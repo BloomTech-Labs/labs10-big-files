@@ -2,11 +2,12 @@ import React from "react";
 import styled from "styled-components";
 
 const BillingDiv = styled.div`
-  margin-left: 2%;
+  margin-left: 33%;
+  
 `;
 
 const PaymentInfoHolder = styled.div`
-  width: ;
+  
 `;
 const Subscriptions = styled.div`
   color: black;
@@ -27,13 +28,16 @@ const PaymentBoxes = styled.div`
 const InlineH3 = styled.h3`
 display: inline;
 `;
+const Header = styled.h1`
+  margin-left: 22%; 
+`;
 
 const Billing = () => {
 
   return (
     <BillingDiv>
       <PaymentInfoHolder>
-          <h1>Billing</h1>
+          <Header>Billing</Header>
         <PaymentBoxes>
           <h3>CC#</h3>
           <input type="text" name="ccNumber"/>
@@ -49,11 +53,13 @@ const Billing = () => {
       </PaymentInfoHolder>
       <Subscriptions>
         <div>
+          <br/>
         <input type="checkbox"/>
           <InlineH3>1 Year Subscription - $10.99</InlineH3> <br/>
           <input type="checkbox"/>
           <InlineH3>1 Month Subscription - $0.99</InlineH3>
         </div>
+        <br/>
       </Subscriptions>
       <BuyNowButton>
         <h1>Buy Now!</h1>
