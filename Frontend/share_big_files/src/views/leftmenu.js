@@ -9,27 +9,26 @@ const LeftMenuHolder = styled.div`
   border: 2px solid;
   margin-left: 2%;
   display: flex;
-  background-color: #42cbf4;
+  background-color: #3CDBD3;
 `;
 const LeftMenuOptions = styled.div`
   margin-left: 4%;
-  line-height: 2;
-  font-size: 15px;
+  line-height: 0.5;
+`;
+const LinkStyles = styled.h1`
   color: black;
-  text-decoration: none;
-  
-
+  font-size: 20px;
 `;
 
 const LeftMenu = () => {
   return (
     <LeftMenuHolder>
       <LeftMenuOptions>
-        <Link to="/files">Files</Link>
+        <Link to="/files"><LinkStyles>Files</LinkStyles></Link>
         <br />
-        <Link to="/billing">Billing</Link>
+        <Link to="/billing"><LinkStyles>Billing</LinkStyles></Link>
         <br />
-        <Link to="/settings">Settings</Link>
+        <Link to="/settings"><LinkStyles>Settings</LinkStyles></Link>
       </LeftMenuOptions>
     </LeftMenuHolder>
   );
