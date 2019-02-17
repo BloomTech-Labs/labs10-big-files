@@ -5,18 +5,20 @@ import styled from "styled-components";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 
 
+
+
 const CreateEditDiv = styled.div`
   padding-left: 2%;
   padding-right: 2%;
   display: flex;
-
-
   flex-direction: column;
   height: 40rem;
   width: 31rem;
   margin-left: 4%;
   border: 2px solid red;
   line-height: 3;
+  background-color: white;
+  border-radius: 10%;
 `;
 
 const CreateFileHolder = styled.div`
@@ -38,8 +40,8 @@ const ConfirmButtons = styled.div``;
 
 const CreateFile = () => {
   return (
+    
     <CreateEditDiv>
-
       <CreateFileHolder>
         <span>File Name: </span>
         <FileName type="text" placeholder="Name" />
@@ -70,6 +72,7 @@ const CreateFile = () => {
         <button>Save</button>
       </ConfirmButtons>
     </CreateEditDiv>
+    
   );
 };
 
