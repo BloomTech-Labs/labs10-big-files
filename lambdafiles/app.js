@@ -3,8 +3,7 @@ const express = require('express');
 const pg = require('pg');
 const helmet = require('helmet');
 const forever = require('forever');
-// const knexConfig = require('./knexfile.js');
-// console.log(knexConfig);
+require('dotenv').config();
 
 var port = process.env.PORT || 3000,
     http = require('http'),
@@ -20,7 +19,8 @@ server.get('/', (req, res) => {
     res.send('Hello, world');
 });
 
-var conString = "postgres://bfatester:database@mydbinstance.c2mox7nvtsw7.us-west-2.rds.amazonaws.com:5432/bfa";
+const conString = process.env.con_string;
+
 var client = new pg.Client(conString);
 client.connect();
 
