@@ -9,8 +9,8 @@ const LandingContainerDiv = styled.div`
   height: auto;
   min-height: 100vh;
   margin: 0 auto;
-  background-image: url("https://i.pinimg.com/originals/1a/a6/4d/1aa64df2e7a5e7679090cfcf5602c6e9.jpg");
-  // background-image: url("https://images.unsplash.com/photo-1458682625221-3a45f8a844c7?ixlib=rb-1.2.1&auto=format&fit=crop&w=1567&q=80");
+  background-image: url("http://get.addonreviews.com/cmsimages/lp/fileshare/cloudbackground.jpg");
+  background-size: 100% 100%;
 `;
 
 const LandingCardsContainer = styled.div`
