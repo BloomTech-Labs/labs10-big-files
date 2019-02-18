@@ -30,24 +30,24 @@ class App extends Component {
         <Route path="/stripe" render={props => <Stripe {...props} />} />
         <Route
           exact
-          path="/add/"
+          path="/add"
           render={props => <AddFileHolder {...props} />}
         />
 
         <Route
           exact
-          path="/settings/"
+          path="/settings"
           render={props => <SettingsHolder {...props} />}
         />
 
         <Route
           exact
-          path="/create/"
+          path="/create"
           render={props => <CreateEditHolder {...props} />}
         />
         <Route
           exact
-          path="/billing/"
+          path="/billing"
           render={props => <BillingHolder {...props} />}
         />
 

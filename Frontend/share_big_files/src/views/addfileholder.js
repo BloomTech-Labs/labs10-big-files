@@ -10,7 +10,8 @@ const AddFilePage = styled.div`
   height: auto;
   min-height: 100vh;
   margin: 0 auto;
-  background-image: url("https://i.pinimg.com/originals/1a/a6/4d/1aa64df2e7a5e7679090cfcf5602c6e9.jpg")
+  background-image: url("http://get.addonreviews.com/cmsimages/lp/fileshare/cloudbackground.jpg");
+  background-size: 100% 100%;
 `;
 
 const MenuFileHolder = styled.div`
