@@ -1,4 +1,9 @@
 const express = require('express');
+// const knex = require('knex');
+const pg = require('pg');
+const helmet = require('helmet');
+const forever = require('forever');
+require('dotenv').config();
 
 var port = process.env.PORT || 3000,
     http = require('http'),
@@ -8,57 +13,69 @@ var port = process.env.PORT || 3000,
 const server = express();
 server.use(express.json());
 
+// const db = knex(knexConfig.development);
+
 server.get('/', (req, res) => {
-    res.send('Hello, world from express');
+    res.send('Hello, world');
 });
 
-let users = [
-    {
-	name: 'Akshay Gadkari',
-	email: 'akshay.gadkari@lambdaschool.com',
-	id: 0,
-	paying: 0
-    },
-    {
-	name: 'John Doe',
-	email: 'jdoe@lambdaschool.com',
-	id: 1,
-	paying: 1
-    }
-];
+const conString = process.env.con_string;
 
-// let nextId = 2;
-server.post('/users', (req, res) => {
-    console.log(req.body);
-    const user = req.body;
-    user.id = 1 + users.length;
-    users.filter(n => n);
-    user.paying = 0;
-    users.push(user);
-    res.status(201).json(users);
+var client = new pg.Client(conString);
+client.connect();
+
+server.get("/users/:id", async (req, res) => {
+    const {id} = req.params;
+    client.query(`SELECT * FROM users WHERE users.user_id = ${id}`)
+	.then(result => {
+	    res.status(200).json(result.rows);
+	    // process.exit();
+	})
+	.catch(e => {
+	    res.status(404).json(e.stack);
+	})
+	// .then(() => client.end());
 });
 
-server.put('/users/:id', (req, res) => {
-    const user = users.find(u => u.id == req.params.id);
-    if(!user) {
-	res.status(404).json({message: 'User doesn\'t exist'});
-    }
-    else {
-	Object.assign(user, req.body);
-	res.status(200).json(user);
-    }
+server.get('/users', async (req, res) => {
+    client.query(`SELECT * FROM users`)
+	.then(result => {
+	    res.status(200).json(result.rows);
+	    // process.exit();
+	})
+	.catch(e => {
+	    res.status(404).json(e.stack);
+	})
+	// .then(() => client.end());
 });
 
-server.get('/users/:id', (req, res) => {
-    const user = users.find(u => u.id == req.params.id);
-    if(!user) {
-	res.status(404).json({message: 'User doesn\'t exist'});
-    }
-    else {
-	// res.json('User ID: ' + user.id + ' User name: ' + user.name);
-	res.json(user);
-	// res.status(200).json(user);
-    }
+server.post("/users", (request, res) => {
+    console.log("RB", request.body);
+    const { username, paid, logged_in, email, created_at, last_login } = request.body;
+    client.query(`INSERT INTO users (
+    username, paid, logged_in, email, created_at, last_login)
+    VALUES ($1, $2, $3, $4, $5, $6)`,[username, paid, logged_in, email, created_at, last_login ])
+	.then(result => {
+	    res.status(200).json(result);
+	    // process.exit();
+	})
+	.catch(e => {
+	    console.error(e.detail),
+	    res.send(e)
+	})
+	// .then(() => client.end())
+});
+
+server.delete("/delete/:id", (request, res) => {
+    const userID = parseInt(request.params.id);
+    client.query('DELETE FROM users WHERE user_id = $1', [userID])
+	.then(result => {
+	    res.status(200).json(result);
+	})
+	.catch(e => {
+	    console.error(e.detail), 
+	    res.send(e)
+	})
 });
 
 // Listen on port 3000, IP defaults to 127.0.0.1
