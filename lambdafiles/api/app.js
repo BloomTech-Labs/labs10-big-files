@@ -19,7 +19,7 @@ server.use(express.json());
 
 // const db = knex(knexConfig.development);
 
-// ?
+// ??
 const conString = process.env.con_string;
 var client = new pg.Client(conString);
 client.connect();
