@@ -33,7 +33,7 @@ const lock = new Auth0Lock('b6bFFU1t8pbHa0lk6GgPpaFhabemmWc8', 'lambdabackendpro
 const webAuth = new auth0.WebAuth({
   domain: "lambdabackendproject.auth0.com",
   clientID: "b6bFFU1t8pbHa0lk6GgPpaFhabemmWc8",
-  redirectUri: "https://sharebigfiles.netlify.com"
+  redirectUri: "https://sharebigfiles.netlify.com/add"
 })
 
 class App extends Component {
