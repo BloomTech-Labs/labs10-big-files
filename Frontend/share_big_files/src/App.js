@@ -47,7 +47,7 @@ class App extends Component {
         );
         localStorage.setItem("access_token", accessToken);
         localStorage.setItem("expires_at", expiresAt);
-       
+       window.location.reload()
         return 
         // lock.show();
       } else if (err) console.log(err);
