@@ -33,12 +33,15 @@ const lock = new Auth0Lock('b6bFFU1t8pbHa0lk6GgPpaFhabemmWc8', 'lambdabackendpro
 const webAuth = new auth0.WebAuth({
   domain: "lambdabackendproject.auth0.com",
   clientID: "b6bFFU1t8pbHa0lk6GgPpaFhabemmWc8",
-  redirectUri: "https://sharebigfiles.netlify.com/add"
+  redirectUri: "http://localhost:3000/add"
 })
 
 class App extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      loggedIn: false,
+    }
     webAuth.parseHash((err, authResult) => {
       if (authResult) { 
         const { accessToken, expiresIn } = authResult;
@@ -46,8 +49,7 @@ class App extends Component {
           expiresIn * 1000 + new Date().getTime()
         );
         localStorage.setItem("access_token", accessToken);
-        localStorage.setItem("expires_at", expiresAt);
-       window.location.reload()
+        localStorage.setItem("expires_at", expiresAt); 
         return 
         // lock.show();
       } else if (err) console.log(err);
@@ -69,7 +71,9 @@ class App extends Component {
   }
 
   componentDidUpdate() {
-  
+  if(this.state.loggedIn){
+    window.location.reload();
+  }
   }
 
   render() {
