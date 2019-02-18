@@ -3,11 +3,11 @@ const router = express.Router();
 
 module.exports = router;
 
-server.get("/", (req, res) => {
+router.get("/", (req, res) => {
   res.send("Hello, world");
 });
 
-server.get("/users/:id", async (req, res) => {
+router.get("/users/:id", async (req, res) => {
   const { id } = req.params;
   client
     .query(`SELECT * FROM users WHERE users.user_id = ${id}`)
@@ -21,7 +21,7 @@ server.get("/users/:id", async (req, res) => {
   // .then(() => client.end());
 });
 
-server.get("/users", async (req, res) => {
+router.get("/users", async (req, res) => {
   client
     .query(`SELECT * FROM users`)
     .then(result => {
@@ -34,7 +34,7 @@ server.get("/users", async (req, res) => {
   // .then(() => client.end());
 });
 
-server.post("/users", (request, res) => {
+router.post("/users", (request, res) => {
   console.log("RB", request.body);
   const {
     username,
@@ -61,7 +61,7 @@ server.post("/users", (request, res) => {
   // .then(() => client.end())
 });
 
-server.delete("/delete/:id", (request, res) => {
+router.delete("/delete/:id", (request, res) => {
   const userID = parseInt(request.params.id);
   client
     .query("DELETE FROM users WHERE user_id = $1", [userID])
@@ -72,3 +72,5 @@ server.delete("/delete/:id", (request, res) => {
       console.error(e.detail), res.send(e);
     });
 });
+
+module.exports = router;
