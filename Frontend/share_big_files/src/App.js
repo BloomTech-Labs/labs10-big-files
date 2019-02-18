@@ -39,6 +39,9 @@ const webAuth = new auth0.WebAuth({
 class App extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      loggedIn: false,
+    }
     webAuth.parseHash((err, authResult) => {
       if (authResult) { 
         const { accessToken, expiresIn } = authResult;
@@ -46,8 +49,7 @@ class App extends Component {
           expiresIn * 1000 + new Date().getTime()
         );
         localStorage.setItem("access_token", accessToken);
-        localStorage.setItem("expires_at", expiresAt);
-       
+        localStorage.setItem("expires_at", expiresAt); 
         return 
         // lock.show();
       } else if (err) console.log(err);
@@ -69,7 +71,9 @@ class App extends Component {
   }
 
   componentDidUpdate() {
-  
+  if(this.state.loggedIn){
+    window.location.reload();
+  }
   }
 
   render() {
