@@ -3,15 +3,20 @@ import styled from "styled-components";
 
 function signOutHandler(){
 console.log('Sign out handler fired')
-localStorage.clear('token');
+localStorage.clear('accessToken');
+localStorage.clear('expiresAt');
 window.location.reload();
 }
 
+const SignOutButton = styled.button`
+height:2rem;
+`;
+
 const SignOut = props => {
     return (
-    <button onClick={signOutHandler}>
+    <SignOutButton onClick={signOutHandler}>
         Sign Out
-    </button>
+    </SignOutButton>
     )
 }
 
