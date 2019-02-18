@@ -1,4 +1,4 @@
-const server = require("./lambdafiles/api/app");
+const server = require("./api/app.js");
 
 const port = process.env.PORT || 5000;
 
