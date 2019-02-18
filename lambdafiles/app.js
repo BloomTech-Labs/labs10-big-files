@@ -20,58 +20,6 @@ const conString = process.env.con_string;
 var client = new pg.Client(conString);
 client.connect();
 
-server.get("/users", async (req, res) => {
-  client
-    .query(`SELECT * FROM users`)
-    .then(result => {
-      res.status(200).json(result.rows);
-      // process.exit();
-    })
-    .catch(e => {
-      res.status(404).json(e.stack);
-    });
-  // .then(() => client.end());
-});
-
-server.post("/users", (request, res) => {
-  console.log("RB", request.body);
-  const {
-    username,
-    paid,
-    logged_in,
-    email,
-    created_at,
-    last_login
-  } = request.body;
-  client
-    .query(
-      `INSERT INTO users (
-    username, paid, logged_in, email, created_at, last_login)
-    VALUES ($1, $2, $3, $4, $5, $6)`,
-      [username, paid, logged_in, email, created_at, last_login]
-    )
-    .then(result => {
-      res.status(200).json(result);
-      // process.exit();
-    })
-    .catch(e => {
-      console.error(e.detail), res.send(e);
-    });
-  // .then(() => client.end())
-});
-
-server.delete("/delete/:id", (request, res) => {
-  const userID = parseInt(request.params.id);
-  client
-    .query("DELETE FROM users WHERE user_id = $1", [userID])
-    .then(result => {
-      res.status(200).json(result);
-    })
-    .catch(e => {
-      console.error(e.detail), res.send(e);
-    });
-});
-
 // Listen on port 3000, IP defaults to 127.0.0.1
 server.listen(port);
 
