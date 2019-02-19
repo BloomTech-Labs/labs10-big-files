@@ -37,7 +37,6 @@ router.post("/files", (request, res) => {
 	    console.error(e.detail),
 	    res.send(e)
 	})
-	// .then(() => client.end())
 });
 
 
