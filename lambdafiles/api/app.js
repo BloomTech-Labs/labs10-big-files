@@ -18,11 +18,6 @@ var port = process.env.PORT || 3000,
 const server = express();
 server.use(express.json());
 
-// ??
-// const conString = process.env.CON_STRING;
-// var client = new pg.Client(conString);
-// client.connect();
-
 //routes
 server.use("/api/users/", userRoute);
 server.use("/api/files/", fileRoute);

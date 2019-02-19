@@ -1,5 +1,9 @@
 const express = require("express");
 const router = express.Router();
+const pg = require("pg");
+
+var client = new pg.Client(process.env.RDS_SECRET);
+client.connect();
 
 router.get("/", (req, res) => {
   res.send("Hello, world");
