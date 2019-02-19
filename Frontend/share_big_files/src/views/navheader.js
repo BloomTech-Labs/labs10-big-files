@@ -1,6 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 import SignOut from "../components/signOut.js";
+import { Link } from "react-router-dom";
+
 
 const NavHeaderDiv = styled.div`
 display: flex;
@@ -11,7 +13,9 @@ const TitleH1 = styled.h1`
     text-align:center;
     width: 100%; 
 `;
-
+const LinkStyles = styled.div`
+  font-size: 2rem;
+`;
 
 
 const PathSignoutDiv = styled.div`
@@ -21,14 +25,15 @@ justify-content: space-between;
 margin: 0 2%;
 `;
 
+
 const NavHeader = props => {
   return (
     <NavHeaderDiv>
         <TitleH1>Share Big Files</TitleH1>
          <PathSignoutDiv> 
-      <p>Home</p> 
+      <Link to="/add"><LinkStyles>Home</LinkStyles></Link> 
        
-      <SignOut />
+      <SignOut/>
       </PathSignoutDiv>
     </NavHeaderDiv>
   );

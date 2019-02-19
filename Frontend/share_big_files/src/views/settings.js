@@ -1,15 +1,34 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 
+const SettingsDiv = styled.div`
+    margin-left: 2%;
+`;
+
+function SetPassword() {
+    const [name, setName] = useState(name);
+    const [oldPassword, setOldPassword] = useState(oldPassword);
+    const [newPassword, setNewPassword] = useState(newPassword);
+    // const [newPassword, setNewPassword] = useState(null);
+
+useEffect(() => {
+    document.name = setName;
+    document.oldPassword = setOldPassword;
+    document.newPassword = setNewPassword;
+})
+}
 ///going to need hooks for input state
-const settings = props =>{
+const Settings = props =>{
     return(
-        <div>
-            <p>Name</p> <input type="text"></input>
-            <p>Old Password</p> <input type="text"></input>
-            <p>New Password</p> <input type="text"></input>
-            <p>New Password</p> <input type="text"></input>
-            <button>Save</button>
-        </div>
+        <SettingsDiv>
+            <p>Name</p> <input type="text" value={props.name} onChange={props.useEffect}/>
+            <p>Old Password</p> <input type="text" value={props.oldPassword} onChange={props.useEffect}/>
+            <p>New Password</p> <input type="text" value={props.newPassword} onChange={props.useEffect}/>
+            <p>New Password</p> <input type="text" value={props.newPassword} onChange={props.useEffect}/>
+            <button onClick={() => SetPassword()}>Save</button>
+        </SettingsDiv>
     )
 }
+
+
+export default Settings;

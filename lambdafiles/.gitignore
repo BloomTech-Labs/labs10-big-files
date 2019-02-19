@@ -1,5 +1,6 @@
 # dependencies
 /node_modules
+node_modules/
 /.pnp
 .pnp.js
 
@@ -11,6 +12,7 @@
 
 # misc
 .env
+.#.env
 /.env
 .DS_Store
 .env.local
@@ -26,3 +28,6 @@ yarn-error.log*
 .elasticbeanstalk/*
 !.elasticbeanstalk/*.cfg.yml
 !.elasticbeanstalk/*.global.yml
+
+node_modules/
+.env
