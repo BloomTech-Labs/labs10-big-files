@@ -7,12 +7,13 @@ const SettingsDiv = styled.div`
 
 function SetPassword() {
     const [name, setName] = useState(null);
-    const [oldPassword, setOldPassword] = useState(oldPassword);
-    const [newPassword, setNewPassword] = useState(newPassword);
+
+    const [oldPassword, setOldPassword] = useState(null);
+    const [newPassword, setNewPassword] = useState(null);
     // const [newPassword, setNewPassword] = useState(null);
 
 useEffect(() => {
-      setName(this.namefield);
+    name = setName;
     document.oldPassword = setOldPassword;
     document.newPassword = setNewPassword;
 })
