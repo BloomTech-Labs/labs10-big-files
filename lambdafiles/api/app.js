@@ -23,7 +23,7 @@ server.use(express.json());
 server.use(cors())
 
 //This passes the server functionality to payment.js. Not sure how to implement below
-// stripeRoute(server)
+stripeRoute(server)
 
 //routes
 server.use("/api/users/", userRoute);
