@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, useState, useEffect } from "react";
 import LandingView from "./views/landingview";
 import CreateEditHolder from "./views/createeditholder";
 import SettingsHolder from "./views/settingsholder";
@@ -6,11 +6,11 @@ import BillingHolder from "./views/billingholder";
 import Stripe from "./components/StripeFE";
 import AddFileHolder from "./views/addfileholder";
 import { Route } from "react-router-dom";
+import "./App.css";
 import styled from "styled-components";
 import { Auth0Lock } from "auth0-lock";
 import { Redirect } from "react-router-dom";
 import history from "./history";
-import "./App.css";
 
 const AppContainer = styled.div`
   height: auto;
@@ -27,43 +27,45 @@ var options = {
   // closable: false,
   avatar: null
 };
+
 var lock = new Auth0Lock(clientId, domain, options);
-
-lock.on("authenticated", function(authResult) {
-  // Use the token in authResult to getUserInfo() and save it to localStorage
-  lock.getUserInfo(authResult.accessToken, function(error, profile) {
-    if (error) {
-      // Handle error
-      return;
-    }
-    let variablePromise = new Promise((resolve, reject) => {
-      console.log("hi");
-      resolve(
-        localStorage.setItem("accessToken", authResult.accessToken),
-        localStorage.setItem("profile", JSON.stringify(profile))
-      );
-    });
-    variablePromise.then(() => {
-      const profile = localStorage.getItem("profile");
-      const c = JSON.parse(profile);
-
-      this.setState({email: c.email});
-      console.log(this.state.email);
-      window.location.reload();
-    });
-  });
-});
-
-function lockOpen(event) {
-  lock.show();
-}
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      loggedIn: false
+      email: null
     };
+  }
+
+  componentDidMount() {
+    this.lockOn();
+  }
+
+  lockOn = () => {
+    lock.on("authenticated", function(authResult) {
+      // Use the token in authResult to getUserInfo() and save it to localStorage
+      lock.getUserInfo(authResult.accessToken, function(error, profile) {
+        if (error) {
+          // Handle error
+          return;
+        }
+        let variablePromise = new Promise((resolve, reject) => {
+          console.log("hi");
+          resolve(
+            localStorage.setItem("accessToken", authResult.accessToken),
+            localStorage.setItem("profile", JSON.stringify(profile))
+          );
+        });
+        variablePromise.then(() => { 
+          window.location.reload();
+        });
+      });
+    });
+  };
+
+  lockOpen(event) {
+    lock.show();
   }
 
   isAuthenticated() {
@@ -106,7 +108,7 @@ class App extends Component {
     } else {
       // history.push("/");
 
-      return <LandingView lockOpen={lockOpen} lock={lock} />;
+      return <LandingView lockOpen={this.lockOpen} lock={this.lock} />;
     }
   }
 }
