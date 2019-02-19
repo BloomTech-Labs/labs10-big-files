@@ -9,6 +9,13 @@ const path = require("path");
  */
 const router = express.Router();
 
+// Using AWS-SDK to set up profile
+const s3 = new aws.S3({
+  accessKeyId: "",
+  secretAccessKey: "",
+  Bucket: ""
+});
+
 router.get("/", (req, res) => {
   res.send("Hello, world");
 });
