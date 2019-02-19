@@ -21,7 +21,7 @@ export default class Auth {
   auth0 = new auth0.WebAuth({
     domain: "lambdabackendproject.auth0.com",
     clientID: "b6bFFU1t8pbHa0lk6GgPpaFhabemmWc8",
-    redirectUri: "https://sharebigfiles.netlify.com/add",
+    redirectUri: "http://localhost:3000/add",
     responseType: "token id_token",
     scope: "openid"
   });

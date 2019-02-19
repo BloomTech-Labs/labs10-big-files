@@ -64,8 +64,8 @@ const CreateFile = () => {
       </ShareLinkHolder>
       <VersionBrowserHolder>
         <span>Version Browser: </span>
-        <FaArrowLeft size={15} class="fontAwesome" />
-        <FaArrowRight size={15} class="fontAwesome" />
+        <FaArrowLeft size={15} className="fontAwesome" />
+        <FaArrowRight size={15} className="fontAwesome" />
       </VersionBrowserHolder>
       <ConfirmButtons>
         <button>Cancel</button>
