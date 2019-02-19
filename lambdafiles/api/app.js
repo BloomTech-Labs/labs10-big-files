@@ -1,8 +1,8 @@
+require("dotenv").config();
 const express = require("express");
 const pg = require("pg");
 const helmet = require("helmet");
 const forever = require("forever");
-require("dotenv").config();
 
 //Routes
 const userRoute = require("../routes/api/users");
@@ -19,7 +19,7 @@ const server = express();
 server.use(express.json());
 
 // ??
-const conString = process.env.con_string;
+const conString = process.env.CON_STRING;
 var client = new pg.Client(conString);
 client.connect();
 
