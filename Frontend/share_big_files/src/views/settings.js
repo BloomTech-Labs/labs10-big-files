@@ -7,6 +7,7 @@ const SettingsDiv = styled.div`
 
 function SetPassword() {
     const [name, setName] = useState(null);
+
     const [oldPassword, setOldPassword] = useState(null);
     const [newPassword, setNewPassword] = useState(null);
     // const [newPassword, setNewPassword] = useState(null);
@@ -21,7 +22,8 @@ useEffect(() => {
 const Settings = props =>{
     return(
         <SettingsDiv>
-            <p>Name</p> <input type="text" value={props.name} onChange={props.useEffect}/>
+            
+            <p>name</p> <input type="text" value={props.name} onChange={props.useEffect}/>
             <p>Old Password</p> <input type="text" value={props.oldPassword} onChange={props.useEffect}/>
             <p>New Password</p> <input type="text" value={props.newPassword} onChange={props.useEffect}/>
             <p>New Password</p> <input type="text" value={props.newPassword} onChange={props.useEffect}/>

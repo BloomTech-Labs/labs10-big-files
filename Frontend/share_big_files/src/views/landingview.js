@@ -1,8 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-import { Link } from "react-router-dom"; 
-import auth0 from 'auth0-js';
-import Auth from '../Auth/Auth';
+import { Link } from "react-router-dom";  
+import Auth from '../Auth/Auth'; 
 
 const LandingContainerDiv = styled.div`
   width: 100%;
@@ -54,13 +53,7 @@ const FileTransferButton = styled.button`
   font-size: 1.9rem;
   background-color: lightgrey;
   cursor: pointer;
-`;
-
- const Login = ( ) => {
-  // console.log('login clicked')
-   const auth = new Auth();
-   auth.login();
- }
+`; 
 
 export const LandingView = props => { 
   return (
@@ -78,8 +71,8 @@ export const LandingView = props => {
             <ListItem>See who downloaded your file</ListItem>
             <ListItem>7 days of file storage</ListItem>
           </UnorderedList>
-          <Link to="/add/">
-            <FileTransferButton onClick={Login} >Use File Transfer Free</FileTransferButton>
+          <Link to="/add">
+            <FileTransferButton onClick={props.lockOpen} >Use File Transfer Free</FileTransferButton>
           </Link>
         </LandingCards>
         <LandingCards>
@@ -90,8 +83,8 @@ export const LandingView = props => {
             <li>See who downloaded your file</li>
             <li>90 days of file storage</li>
           </UnorderedList>
-          <Link to="/billing/">
-            <FileTransferButton onClick={Login}>Use File Transfer Pro</FileTransferButton>
+          <Link to="/billing">
+            <FileTransferButton onClick={props.lockOpen}>Use File Transfer Pro</FileTransferButton>
           </Link>
         </LandingCards>
       </LandingCardsContainer>
