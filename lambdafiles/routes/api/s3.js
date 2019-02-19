@@ -38,8 +38,36 @@ const fileUpload = multer({
   }
 }).single("fileUpload");
 
+// TEST ROUTE
 router.get("/", (req, res) => {
   res.send("Hello, world");
+});
+
+// ROUTE TO UPLOAD FILE
+router.post("/files", (req, res) => {
+  fileUpload(req, res, error => {
+    // console.log( 'requestOkokok', req.file );
+    // console.log( 'error', error );
+    if (error) {
+      console.log("errors", error);
+      res.json({ error: error });
+    } else {
+      // If File not found
+      if (req.file === undefined) {
+        console.log("Error: No File Selected!");
+        res.json("Error: No File Selected");
+      } else {
+        // If Success
+        const imageName = req.file.key;
+        const imageLocation = req.file.location;
+        // Save the file name into database into profile model
+        res.json({
+          image: imageName,
+          location: imageLocation
+        });
+      }
+    }
+  });
 });
 
 module.exports = router;
