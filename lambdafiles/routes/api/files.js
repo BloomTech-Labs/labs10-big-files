@@ -1,16 +1,13 @@
-require('dotenv/config')
 require("dotenv").config();
 const express = require("express");
 const router = express.Router();
 const pg = require("pg");
-console.log("ENV", process.env.RDS_SECRET)
 
 
 var client = new pg.Client(process.env.RDS_SECRET);
 client.connect();
 
-router.get("/", (req, res) => {
-    console.log("ENV", process.env.RDS_SECRET)
+router.get("/hi", (req, res) => {
     res.send("Hello, world");
   });
 
