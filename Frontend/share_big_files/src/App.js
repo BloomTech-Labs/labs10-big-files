@@ -71,7 +71,7 @@ class App extends Component {
   }
 
   render() {
-    // if (this.isAuthenticated() || localStorage.getItem("accessToken")) {
+    if (this.isAuthenticated() || localStorage.getItem("accessToken")) {
       return (
         <AppContainer>
           <Route
@@ -101,11 +101,11 @@ class App extends Component {
           />
         </AppContainer>
       );
-    // } else {
-    //   // history.push("/");
+    } else {
+      // history.push("/");
 
-    //   return <LandingView lockOpen={lockOpen} lock={lock} />;
-    // }
+      return <LandingView lockOpen={lockOpen} lock={lock} />;
+    }
   }
 }
 
