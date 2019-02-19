@@ -1,19 +1,16 @@
 import React, { Component } from "react";
 import LandingView from "./views/landingview";
 import CreateEditHolder from "./views/createeditholder";
-
-// import { HomeViewHolder } from "./views/homeviewholder";
-
 import SettingsHolder from "./views/settingsholder";
 import BillingHolder from "./views/billingholder";
 import Stripe from "./components/StripeFE";
 import AddFileHolder from "./views/addfileholder";
 import { Route } from "react-router-dom";
-import "./App.css";
 import styled from "styled-components";
 import { Auth0Lock } from "auth0-lock";
 import { Redirect } from "react-router-dom";
 import history from "./history";
+import "./App.css";
 
 const AppContainer = styled.div`
   height: auto;
@@ -46,7 +43,12 @@ lock.on("authenticated", function(authResult) {
         localStorage.setItem("profile", JSON.stringify(profile))
       );
     });
-    variablePromise.then(() => { 
+    variablePromise.then(() => {
+      const profile = localStorage.getItem("profile");
+      const c = JSON.parse(profile);
+
+      this.setState({email: c.email});
+      console.log(this.state.email);
       window.location.reload();
     });
   });
