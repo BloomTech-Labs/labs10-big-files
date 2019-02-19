@@ -25,14 +25,15 @@ justify-content: space-between;
 margin: 0 2%;
 `;
 
+
 const NavHeader = props => {
   return (
     <NavHeaderDiv>
         <TitleH1>Share Big Files</TitleH1>
          <PathSignoutDiv> 
-      <Link to="/"><LinkStyles>Home</LinkStyles></Link> 
+      <Link to="/add"><LinkStyles>Home</LinkStyles></Link> 
        
-      <SignOut />
+      <SignOut/>
       </PathSignoutDiv>
     </NavHeaderDiv>
   );

@@ -9,12 +9,11 @@ import BillingHolder from "./views/billingholder";
 import Stripe from "./components/StripeFE";
 import AddFileHolder from "./views/addfileholder";
 import { Route } from "react-router-dom";
-import Authenticate from "./Auth/authenticate";
 import "./App.css";
 import styled from "styled-components";
-import Auth from "./Auth/Auth";
-import auth0 from 'auth0-js';
-import { Auth0Lock } from 'auth0-lock';
+import { Auth0Lock } from "auth0-lock";
+import { Redirect } from "react-router-dom";
+import history from "./history";
 
 const AppContainer = styled.div`
   height: auto;
@@ -24,56 +23,51 @@ const AppContainer = styled.div`
   padding: 0;
 `;
 
-const authLockOptions = {
-  rememberLastLogin: false
-}; 
+var clientId = "b6bFFU1t8pbHa0lk6GgPpaFhabemmWc8";
+var domain = "lambdabackendproject.auth0.com";
+var options = {
+  // autoclose: false,
+  // closable: false,
+  avatar: null
+};
+var lock = new Auth0Lock(clientId, domain, options);
 
-const lock = new Auth0Lock('b6bFFU1t8pbHa0lk6GgPpaFhabemmWc8', 'lambdabackendproject.auth0.com', authLockOptions);
+lock.on("authenticated", function(authResult) {
+  // Use the token in authResult to getUserInfo() and save it to localStorage
+  lock.getUserInfo(authResult.accessToken, function(error, profile) {
+    if (error) {
+      // Handle error
+      return;
+    }
+    let variablePromise = new Promise((resolve, reject) => {
+      console.log("hi");
+      resolve(
+        localStorage.setItem("accessToken", authResult.accessToken),
+        localStorage.setItem("profile", JSON.stringify(profile))
+      );
+    });
+    variablePromise.then(() => { 
+      window.location.reload();
+    });
+  });
+});
 
-const webAuth = new auth0.WebAuth({
-  domain: "lambdabackendproject.auth0.com",
-  clientID: "b6bFFU1t8pbHa0lk6GgPpaFhabemmWc8",
-  redirectUri: "https://sharebigfiles.netlify.com/add"
-})
+function lockOpen(event) {
+  lock.show();
+}
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      loggedIn: false,
-    }
-    webAuth.parseHash((err, authResult) => {
-      if (authResult) { 
-        const { accessToken, expiresIn } = authResult;
-        const expiresAt = JSON.stringify(
-          expiresIn * 1000 + new Date().getTime()
-        );
-        localStorage.setItem("access_token", accessToken);
-        localStorage.setItem("expires_at", expiresAt); 
-        return 
-        // lock.show();
-      } else if (err) console.log(err);
-    }); 
+      loggedIn: false
+    };
   }
-  handleAuth0Login = () => {
-    lock.show();
-  };
+
   isAuthenticated() {
     // check whether the current time is past the access token's expiry time
     const expiresAt = localStorage.getItem("expires_at");
     return new Date().getTime() < expiresAt;
-  }
-
-  componentDidMount() {
-    const user_id = localStorage.getItem("user_id");
-    const token = localStorage.getItem("accessToken");
-    if (user_id && token) return this.props.logBackIn(user_id, token);
-  }
-
-  componentDidUpdate() {
-  if(this.state.loggedIn){
-    window.location.reload();
-  }
   }
 
   render() {
@@ -108,13 +102,10 @@ class App extends Component {
         </AppContainer>
       );
     } else {
-      return (
-        <div>
-          <LandingView />
-        </div>
-      );
-    }
+      // history.push("/");
 
+      return <LandingView lockOpen={lockOpen} lock={lock} />;
+    }
   }
 }
 
