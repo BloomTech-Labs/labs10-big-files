@@ -4,10 +4,10 @@ const express = require("express");
 // const forever = require("forever");
 
 // Required for Stripe to work
-const cors = require('cors');
+// const cors = require('cors');
 
 //Routes
-const stripeRoute = require("../routes/api/payment");
+// const stripeRoute = require("../routes/api/payment");
 const userRoute = require("../routes/api/users");
 const fileRoute = require("../routes/api/files");
 const s3Route = require("../routes/api/s3");
@@ -20,10 +20,10 @@ html = fs.readFileSync("index.html");
 // server
 const server = express();
 server.use(express.json());
-server.use(cors())
+// server.use(cors())
 
 //This passes the server functionality to payment.js. Not sure how to implement below
-stripeRoute(server)
+// stripeRoute(server)
 
 //routes
 server.use("/api/users/", userRoute);
