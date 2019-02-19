@@ -11,7 +11,7 @@ const Stripe = () => {
       token: token
   };
   axios
-      .post("http://localhost:8000/charge", body)
+      .post("http://localhost:5000/charge", body)
       .then(response => {
         console.log(response);
         alert("Payment Success");

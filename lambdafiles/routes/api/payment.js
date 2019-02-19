@@ -1,4 +1,8 @@
+require("dotenv").config();
+
 const stripe = require("stripe")(process.env.STRIPE_SECRET);
+const express = require("express");
+const router = express.Router();
 
 const stripeChargeCallback = res => (stripeErr, stripeRes) => {
   if (stripeErr) {
