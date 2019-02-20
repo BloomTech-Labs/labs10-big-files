@@ -2,8 +2,10 @@
 // https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/SES.html#sendEmail-property
 
 var aws = require("aws-sdk");
+
+var ses = new aws.SES();
+
 app.get("/", (req, res) => {
-  var ses = new aws.SES();
   var to = ["yourverifiedemail@email.com"];
   var from = "yourverifiedemail@email.com";
   ses.sendEmail(
