@@ -21,6 +21,7 @@ const Stripe = () => {
         alert("Payment Error");
       });
   };
+  
   return (
     <StripeCheckout
       label="Upgrade Now" //Component button text
