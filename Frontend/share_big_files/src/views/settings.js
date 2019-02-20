@@ -1,11 +1,12 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
-import styled from "styled-components";
+import React, { useState } from 'react';
+import styled from 'styled-components';
 
 const SettingsDiv = styled.div`
-  margin-left: 2%;
+    margin-left: 2%;
 `;
 
+<<<<<<< HEAD
+=======
  
 // function SetPassword() {
 //     const [name, setName] = useState("Tony");
@@ -27,15 +28,16 @@ const SettingsDiv = styled.div`
 //     localStorage.name = name
 // })
 
+>>>>>>> 68261bcb62084f821ff33374e1c398f32f05d403
 ///going to need hooks for input state
 const Settings = () =>{
   
-        const [name, setName] = useState("Tony");
-        const [oldPassword, setOldPassword] = useState("asdf");
-        const [newPassword, setNewPassword] = useState("fdsa");
+        const [name, setName] = useState(null);
+        const [oldPassword, setOldPassword] = useState(null);
+        const [newPassword, setNewPassword] = useState(null);
         const [newPassword2, setNewPassword2] = useState(null);
         console.log("INSIDE SETTINGS", name, oldPassword, newPassword);
-    // }
+    
         function handleChange(e) {
             if ( e.target.name === "name") {
                 setName(e.target.value)
@@ -51,12 +53,6 @@ const Settings = () =>{
             console.log("NEWP2" + newPassword2)
             }
         }
-            // return {
-            //     name, oldPassword, newPassword, 
-            //     onChange: handleChange,
-            // }
-        
-    
     return(
         <SettingsDiv>
             <p>name</p> <input type="text" name="name" placeholder={name} onChange={handleChange}/>
@@ -69,6 +65,9 @@ const Settings = () =>{
 
     
 }
+<<<<<<< HEAD
+=======
  
+>>>>>>> 68261bcb62084f821ff33374e1c398f32f05d403
 
 export default Settings;
