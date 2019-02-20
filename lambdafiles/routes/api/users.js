@@ -57,17 +57,14 @@ router.post("/users", (request, res) => {
   const {
     username,
     paid,
-    logged_in,
-    email,
-    created_at,
-    last_login
+    email
   } = request.body;
   client
     .query(
       `INSERT INTO users (
-    username, paid, logged_in, email, created_at, last_login)
-    VALUES ($1, $2, $3, $4, $5, $6)`,
-      [username, paid, logged_in, email, created_at, last_login]
+    username, paid, email)
+    VALUES ($1, $2, $3)`,
+      [username, paid, email]
     )
     .then(result => {
       res.status(200).json(result);
