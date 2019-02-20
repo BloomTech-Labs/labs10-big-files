@@ -1,7 +1,7 @@
-import React, { Component, useState, useEffect } from "react"; 
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import {FaPlusCircle} from 'react-icons/fa';
+import { FaPlusCircle } from "react-icons/fa";
 
 const AddFileHolder = styled.div`
   width: 25rem;
@@ -40,24 +40,22 @@ const NewFileText = styled.div`
 
 const AddFile = () => {
   const [email, setEmail] = useState(null);
-  useEffect(()=>{
-    const profile = JSON.parse(localStorage.getItem('profile')); 
-    const profileEmail = profile.email; 
-    setEmail(profileEmail)
-    console.log('Email on state is: '+email);
-  })
+  useEffect(() => {
+    const profile = JSON.parse(localStorage.getItem("profile"));
+    const profileEmail = profile.email;
+    setEmail(profileEmail);
+    console.log("Email on state is: " + email);
+  });
   return (
     <>
       <AddFileHolder>
         <NewFileText>New File</NewFileText>
-        <Link to="/create"> 
-            <FaPlusCircle size={50} color="black"/>
-          
+        <Link to="/create">
+          <FaPlusCircle size={50} color="black" />
         </Link>
       </AddFileHolder>
     </>
   );
-
 };
 
 export default AddFile;
