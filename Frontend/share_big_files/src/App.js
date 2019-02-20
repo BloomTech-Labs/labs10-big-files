@@ -1,4 +1,4 @@
-import React, { Component, useState, useEffect } from "react";
+import React, { Component } from "react";
 import LandingView from "./views/landingview";
 import CreateEditHolder from "./views/createeditholder";
 import SettingsHolder from "./views/settingsholder";
@@ -9,8 +9,6 @@ import { Route } from "react-router-dom";
 import "./App.css";
 import styled from "styled-components";
 import { Auth0Lock } from "auth0-lock";
-import { Redirect } from "react-router-dom";
-import history from "./history";
 
 const AppContainer = styled.div`
   height: auto;
@@ -57,7 +55,7 @@ class App extends Component {
             localStorage.setItem("profile", JSON.stringify(profile))
           );
         });
-        variablePromise.then(() => { 
+        variablePromise.then(() => {
           window.location.reload();
         });
       });

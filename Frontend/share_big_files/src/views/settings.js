@@ -1,10 +1,12 @@
-import React, { useState, useEffect } from 'react';
-import styled from 'styled-components';
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import styled from "styled-components";
 
 const SettingsDiv = styled.div`
-    margin-left: 2%;
+  margin-left: 2%;
 `;
 
+ 
 // function SetPassword() {
 //     const [name, setName] = useState("Tony");
 //     const [oldPassword, setOldPassword] = useState("asdf");
@@ -67,5 +69,6 @@ const Settings = () =>{
 
     
 }
+ 
 
 export default Settings;
