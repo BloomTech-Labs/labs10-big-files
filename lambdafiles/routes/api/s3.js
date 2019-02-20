@@ -43,6 +43,7 @@ const fileUpload = multer({
     //     cb(null, file.originalname); //use Date.now() for unique file keys
     // }
   }),
+  
   limits: { fileSize: 2000000 } // In bytes: 2000000 bytes = 2 MB
   // fileFilter: function(req, file, cb) {
   // 	checkFileType(file, cb);
@@ -56,6 +57,8 @@ router.get("/", (req, res) => {
 
 // ROUTE TO UPLOAD FILE
 router.post("/files", (req, res) => {
+	console.log("REQ", req)
+	console.log("REQ_BODY", req.body)
     fileUpload(req, res, error => {
 	// console.log( 'requestOkokok', req.file );
 	// console.log( 'error', error );
@@ -70,7 +73,7 @@ router.post("/files", (req, res) => {
 	    } else {
 		// If Success
 		const url = req.file.location;
-		const fk_user_id = 3;
+		// const fk_user_id = 3;
 		client.query(`INSERT INTO files (url, fk_user_id) VALUES ($1, $2)`, [url, fk_user_id])
 		    .then(result => {
 			res.status(200).json(result);
