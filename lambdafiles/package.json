@@ -21,6 +21,6 @@
     "validator": "^10.11.0"
   },
   "scripts": {
-    "start": "nodemon index.js"
+    "start": "node index.js"
   }
 }
