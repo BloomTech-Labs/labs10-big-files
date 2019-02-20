@@ -5,6 +5,30 @@ const SettingsDiv = styled.div`
     margin-left: 2%;
 `;
 
+<<<<<<< HEAD
+=======
+ 
+// function SetPassword() {
+//     const [name, setName] = useState("Tony");
+//     const [oldPassword, setOldPassword] = useState("asdf");
+//     const [newPassword, setNewPassword] = useState("fdsa");
+//     // const [newPassword, setNewPassword] = useState(null);
+//     console.log(name, oldPassword, newPassword);
+//     function handleChange(e) {
+//         setName(e.target.name)
+//         setOldPassword(e.target.oldPassword)
+//         setNewPassword(e.target.newPassword)
+//         console.log(name, oldPassword, newPassword);
+
+//     }
+    
+// }
+
+// useEffect(() => {
+//     localStorage.name = name
+// })
+
+>>>>>>> 68261bcb62084f821ff33374e1c398f32f05d403
 ///going to need hooks for input state
 const Settings = () =>{
   
@@ -41,5 +65,9 @@ const Settings = () =>{
 
     
 }
+<<<<<<< HEAD
+=======
+ 
+>>>>>>> 68261bcb62084f821ff33374e1c398f32f05d403
 
 export default Settings;
