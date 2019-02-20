@@ -23,6 +23,38 @@ router.get("/users/:id", async (req, res) => {
   // .then(() => client.end());
 });
 
+
+// router.post("/users/username", async (request, res) => {
+//     console.log("RB", request.body);
+//     const {username} = request.body;
+//     //const username = 'caitlin4';
+//     //console.log(request);
+//     client
+//     // .query(`SELECT * FROM users WHERE users.username LIKE username`)
+// 	.query(`SELECT * FROM users WHERE users.username LIKE '${username}'`)
+// 	.then(result => {
+// 	    res.status(200).json(result.rows);
+// 	})
+// 	.catch(e => {
+// 	    res.status(404).json(e.stack);	    
+// 	});
+// });
+
+router.get("/:username", async (req, res) => {
+    const ARBITRARY = req.params.username;
+    console.log("ARB", ARBITRARY);
+    client
+	.query(`SELECT * FROM users WHERE username LIKE '${ARBITRARY}'`)
+	.then(result => {
+	    res.status(200).json(result.rows);
+	    // process.exit();
+	})
+	.catch(e => {
+	    res.status(404).json(e.stack);
+	});
+    // .then(() => client.end());
+});
+
 router.get("/users", async (req, res) => {
   client
     .query(`SELECT * FROM users`)
@@ -41,17 +73,14 @@ router.post("/users", (request, res) => {
   const {
     username,
     paid,
-    logged_in,
-    email,
-    created_at,
-    last_login
+    email
   } = request.body;
   client
     .query(
       `INSERT INTO users (
-    username, paid, logged_in, email, created_at, last_login)
-    VALUES ($1, $2, $3, $4, $5, $6)`,
-      [username, paid, logged_in, email, created_at, last_login]
+    username, paid, email)
+    VALUES ($1, $2, $3)`,
+      [username, paid, email]
     )
     .then(result => {
       res.status(200).json(result);
@@ -62,6 +91,20 @@ router.post("/users", (request, res) => {
     });
   // .then(() => client.end())
 });
+
+//change username
+// router.put('/users/:id/changename', (request, res) => {
+//     const id = parseInt(request.params.id);
+//     const {username} = request.body;
+//     client.query(`UPDATE users SET username=($1) WHERE users.user_id = $2`, [username, id])
+//     	.then(result => {
+// 	    res.status(200).json(result);
+// 	})
+// 	.catch(e => {
+// 	    console.error(e),
+// 	    res.send(e)
+// 	})
+// });
 
 router.delete("/delete/:id", (request, res) => {
   const userID = parseInt(request.params.id);

@@ -38,10 +38,6 @@ const fileUpload = multer({
           path.extname(file.originalname)
       );
     }
-    // key: function (req, file, cb) {
-    //     console.log(file);
-    //     cb(null, file.originalname); //use Date.now() for unique file keys
-    // }
   }),
   limits: { fileSize: 2000000 } // In bytes: 2000000 bytes = 2 MB
   // fileFilter: function(req, file, cb) {
@@ -57,8 +53,6 @@ router.get("/", (req, res) => {
 // ROUTE TO UPLOAD FILE
 router.post("/files", (req, res) => {
     fileUpload(req, res, error => {
-	// console.log( 'requestOkokok', req.file );
-	// console.log( 'error', error );
 	if (error) {
 	    console.log("errors:", error);
 	    res.json({ error: error });
