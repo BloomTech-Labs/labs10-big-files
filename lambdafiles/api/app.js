@@ -7,7 +7,7 @@ const express = require("express");
 const cors = require('cors');
 
 //Routes
-const stripeRoute = require("../routes/api/payment");
+const stripeApi = require("../routes/api/stripe");
 const userRoute = require("../routes/api/users");
 const fileRoute = require("../routes/api/files");
 const s3Route = require("../routes/api/s3");
@@ -22,13 +22,10 @@ const server = express();
 server.use(express.json());
 server.use(cors())
 
-//This passes the server functionality to payment.js. Not sure how to implement below
-stripeRoute(server)
-
 //routes
 server.use("/api/users/", userRoute);
 server.use("/api/files/", fileRoute);
 server.use("/api/s3/", s3Route);
-// server.use("/api/stripe", stripeRoute);
+server.use("/api/stripe", stripeApi);
 
 module.exports = server;

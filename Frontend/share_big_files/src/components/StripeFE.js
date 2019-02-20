@@ -11,7 +11,7 @@ const Stripe = () => {
       token: token
   };
   axios
-      .post("http://sftester-env.mryqc5nmm8.us-west-2.elasticbeanstalk.com/stripe/charge", body)
+      .post("https://sftester-env.mryqc5nmm8.us-west-2.elasticbeanstalk.com/api/stripe/charge", body)
       .then(response => {
         console.log(response);
         alert("Payment Success");
