@@ -3,7 +3,11 @@
 
 var aws = require("aws-sdk");
 
-var ses = new aws.SES();
+const ses = new aws.SES({
+  accessKeyId: process.env.accessKeyId,
+  secretAccessKey: process.env.secretAccessKey,
+  Bucket: process.env.Bucket
+});
 
 app.get("/", (req, res) => {
   var to = ["yourverifiedemail@email.com"];
