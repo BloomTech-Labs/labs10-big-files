@@ -91,6 +91,7 @@ const Billing = () => {
 
   const text = `Pro user: ${billing}`;
   if (isPro) {
+    console.log(isPro)
     return (
       <ProMembershipDiv>
         <TextDiv>
