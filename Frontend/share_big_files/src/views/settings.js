@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import styled from 'styled-components';
-import { userInfo } from 'os';
+// import { userInfo } from 'os';
 
 
 const SettingsDiv = styled.div`
@@ -25,7 +25,7 @@ const Settings = () =>{
     //   console.log('Email on state is: '+email);
 
     } ,[])
-
+ 
         console.log("INSIDE SETTINGS", name, oldPassword, newPassword);
     
         function handleChange(e) {
