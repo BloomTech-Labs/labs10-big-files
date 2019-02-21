@@ -2,8 +2,12 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import styled from 'styled-components';
+<<<<<<< HEAD
+// import { userInfo } from 'os';
+=======
 import { userInfo } from 'os';
 
+>>>>>>> 00954be81b6913bf691fec6fdb9348491841f3a1
 
 const SettingsDiv = styled.div`
   margin-left: 2%;
