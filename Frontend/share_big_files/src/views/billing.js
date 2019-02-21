@@ -9,26 +9,26 @@ const BillingDiv = styled.div`
 `;
 
 const BasicMembershipDiv = styled.div`
-height: auto; 
-width: auto;
-min-width: 44rem;
-margin-left: 2%;
-border-radius: 10px;
-background: rgba(255, 255, 255, 0.5);
+  height: auto;
+  width: auto;
+  min-width: 44rem;
+  margin-left: 2%;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.5);
 `;
 
 const ProMembershipDiv = styled.div`
-height: auto; 
-width: auto;
-min-width: 37rem;
-margin-left: 2%;
-border-radius: 10px;
-background: rgba(255, 255, 255, 0.5);
+  height: auto;
+  width: auto;
+  min-width: 37rem;
+  margin-left: 2%;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.5);
 `;
 
-const TextDiv = styled.div` 
-width:  fit-content;
-padding: 0 5%; 
+const TextDiv = styled.div`
+  width: fit-content;
+  padding: 0 5%;
 `;
 
 const UnorderedList = styled.ul`
@@ -63,50 +63,86 @@ const Header = styled.h1`
 `;
 
 const Billing = () => {
-  useEffect(() => {
-    console.log("inside billing useEffect");
+  // useEffect(() => {
+  //   axios
+  //     .get(
+  //       `http://lambdafiles.us-east-2.elasticbeanstalk.com/api/users/${profile.nickname}`
+  //     )
+  //     .then(response => {
+  //       console.log(response.data[0].paid);
+  //       setBilling(response.data[0].paid);
+  //       console.log('***********')
+  //       setIsPro(billing);
+  //       console.log(isPro)
+  //     })
+  //     .catch(err => console.log(err));
+  // } );
+  const [billing, setBilling] = useState(null);
+  const [isPro, setIsPro] = useState(null);
+
+  const fetchData = async () => {
+    const profile = JSON.parse(localStorage.getItem("profile"));
+    console.log("++++++++!!!!!!!!!////////");
+    console.log(profile.nickname);
+    console.log(
+      `http://lambdafiles.us-east-2.elasticbeanstalk.com/api/users/${
+        profile.nickname
+      }`
+    );
+    const result = await axios;
+    console.log("in await");
     axios
       .get(
-        `http://lambdafiles.us-east-2.elasticbeanstalk.com/api/users/users/609`
+        `http://lambdafiles.us-east-2.elasticbeanstalk.com/api/users/${
+          profile.nickname
+        }`
       )
       .then(response => {
+        console.log(response.data[0].paid);
         setBilling(response.data[0].paid);
-        console.log(billing);
+        console.log("***********");
+        setIsPro(billing);
+        console.log(isPro);
       })
       .catch(err => console.log(err));
-  });
-  const [billing, setBilling] = useState(null);
-  const isPro = billing;
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
   const text = `Pro user: ${billing}`;
-  if (!isPro) {
+  if (isPro) {
+    console.log(isPro);
+    console.log("billing: " + billing);
+    console.log("isPro: " + isPro);
     return (
       <ProMembershipDiv>
-      <TextDiv>
-      <h1>Membership Level: Pro</h1>
-      <h2>Pro features</h2>
-      <UnorderedList>
-        <ListItem>Send files up to 2gb</ListItem>
-        <ListItem>See who viewed your file</ListItem>
-        <ListItem>See who downloaded your file</ListItem>
-        <ListItem>70 days of file storage</ListItem>
-      </UnorderedList> 
-      </TextDiv>
-    </ProMembershipDiv>
-  );
-  
+        <TextDiv>
+          <h1>Membership Level: Pro</h1>
+          <h2>Pro features</h2>
+          <UnorderedList>
+            <ListItem>Send files up to 2gb</ListItem>
+            <ListItem>See who viewed your file</ListItem>
+            <ListItem>See who downloaded your file</ListItem>
+            <ListItem>70 days of file storage</ListItem>
+          </UnorderedList>
+        </TextDiv>
+      </ProMembershipDiv>
+    );
   }
   return (
     <BasicMembershipDiv>
       <TextDiv>
-      <h1>Membership Level: Basic</h1>
-      <h2>Basic features</h2>
-      <UnorderedList>
-        <ListItem>Send files up to 2gb</ListItem>
-        <ListItem>See who viewed your file</ListItem>
-        <ListItem>See who downloaded your file</ListItem>
-        <ListItem>7 days of file storage</ListItem>
-      </UnorderedList>
-      <h2>Click below to get 70 day file storage</h2> <Stripe />
+        <h1>Membership Level: Basic</h1>
+        <h2>Basic features</h2>
+        <UnorderedList>
+          <ListItem>Send files up to 2gb</ListItem>
+          <ListItem>See who viewed your file</ListItem>
+          <ListItem>See who downloaded your file</ListItem>
+          <ListItem>7 days of file storage</ListItem>
+        </UnorderedList>
+        <h2>Click below to get 70 day file storage</h2> <Stripe />
       </TextDiv>
     </BasicMembershipDiv>
   );

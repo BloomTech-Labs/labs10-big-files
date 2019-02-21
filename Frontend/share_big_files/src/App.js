@@ -5,10 +5,11 @@ import SettingsHolder from "./views/settingsholder";
 import BillingHolder from "./views/billingholder";
 import Stripe from "./components/StripeFE";
 import AddFileHolder from "./views/addfileholder";
-import { Route } from "react-router-dom";
+import { Route, Redirect } from "react-router-dom";
 import "./App.css";
 import styled from "styled-components";
 import { Auth0Lock } from "auth0-lock";
+import history from "./history";
 
 const AppContainer = styled.div`
   height: auto;
@@ -51,11 +52,14 @@ class App extends Component {
         let variablePromise = new Promise((resolve, reject) => {
           console.log("hi");
           resolve(
+            // console.log(variablePromise),
+            // console.log(authResult),
             localStorage.setItem("accessToken", authResult.accessToken),
             localStorage.setItem("profile", JSON.stringify(profile))
           );
         });
         variablePromise.then(() => {
+          history.push('/add');
           window.location.reload();
         });
       });
@@ -72,25 +76,24 @@ class App extends Component {
     return new Date().getTime() < expiresAt;
   }
 
+ 
+
   render() {
     if (this.isAuthenticated() || localStorage.getItem("accessToken")) {
       return (
         <AppContainer>
           <Route
             exact
-            path="/"
-            render={props => <LandingView {...props} auth={this.auth} />}
+            path="/add"
+            render={props => <AddFileHolder {...props} />}
           />
-
+          
           <Route path="/stripe" render={props => <Stripe {...props} />} />
-          <Route path="/add" render={props => <AddFileHolder {...props} />} />
-
           <Route
             exact
             path="/settings"
             render={props => <SettingsHolder {...props} />}
           />
-
           <Route
             exact
             path="/create"
@@ -103,9 +106,7 @@ class App extends Component {
           />
         </AppContainer>
       );
-    } else {
-      // history.push("/");
-
+    } else {  
       return <LandingView lockOpen={this.lockOpen} lock={this.lock} />;
     }
   }
