@@ -74,9 +74,7 @@ const Billing = () => {
 
     axios
       .get(
-        `http://lambdafiles.us-east-2.elasticbeanstalk.com/api/users/${
-          profile.nickname
-        }`
+        `http://lambdafiles.us-east-2.elasticbeanstalk.com/api/users/${profile.nickname}`
       )
       .then(response => {
         console.log(response.data[0].paid);
