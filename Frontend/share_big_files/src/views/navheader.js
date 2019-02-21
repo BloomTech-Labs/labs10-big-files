@@ -7,14 +7,19 @@ import { Link } from "react-router-dom";
 const NavHeaderDiv = styled.div`
 display: flex;
 flex-direction: column;
+border-bottom: 5px solid white;
+margin-bottom: 1%;
 `;
 
 const TitleH1 = styled.h1`
     text-align:center;
     width: 100%; 
+    color: white;
 `;
 const LinkStyles = styled.div`
   font-size: 2rem;
+  margin-left: 75%;
+  color: white;
 `;
 
 
@@ -26,14 +31,15 @@ margin: 0 2%;
 `;
 
 
+
 const NavHeader = props => {
   return (
     <NavHeaderDiv>
         <TitleH1>Share Big Files</TitleH1>
          <PathSignoutDiv> 
       <Link to="/add"><LinkStyles>Home</LinkStyles></Link> 
-       
-      <SignOut/>
+      <Link to="/"><SignOut/></Link>
+      
       </PathSignoutDiv>
     </NavHeaderDiv>
   );

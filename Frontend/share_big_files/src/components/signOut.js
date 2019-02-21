@@ -8,9 +8,13 @@ localStorage.clear('expiresAt');
 window.location.reload();
 }
 
-const SignOutButton = styled.button`
-height:2rem;
+const SignOutButton = styled.div`
+font-size: 2rem;
+color: white;
+
 `;
+
+
 
 const SignOut = props => {
     return (
