@@ -89,7 +89,7 @@ const Billing = () => {
         profile.nickname
       }`
     );
-    const result = await axiosCall();
+    const result = await axiosCall;
 
     const axiosCall = () => {
       axios
