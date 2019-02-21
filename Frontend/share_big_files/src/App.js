@@ -59,7 +59,7 @@ class App extends Component {
           );
         });
         variablePromise.then(() => {
-          history.push('/add');
+          history.push("/add");
           window.location.reload();
         });
       });
@@ -76,8 +76,6 @@ class App extends Component {
     return new Date().getTime() < expiresAt;
   }
 
- 
-
   render() {
     if (this.isAuthenticated() || localStorage.getItem("accessToken")) {
       return (
@@ -87,12 +85,7 @@ class App extends Component {
             path="/add"
             render={props => <AddFileHolder {...props} />}
           />
-            <Route
-            exact
-            path="/"
-            render={props => <AddFileHolder {...props} />}
-          />
-          
+
           <Route path="/stripe" render={props => <Stripe {...props} />} />
           <Route
             exact
@@ -111,8 +104,14 @@ class App extends Component {
           />
         </AppContainer>
       );
-    } else {  
-      return <LandingView lockOpen={this.lockOpen} lock={this.lock} />;
+    } else {
+      return (
+        <Route
+          exact
+          path="/"
+          render={props => <LandingView {...props} lockOpen={this.lockOpen} lock={lock} />}
+        />
+      );
     }
   }
 }
