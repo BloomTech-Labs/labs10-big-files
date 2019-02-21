@@ -85,7 +85,7 @@ const Billing = () => {
     console.log("++++++++!!!!!!!!!////////");
     console.log(profile.nickname);
     console.log(
-      `http://lambdafiles.us-east-2.elasticbeanstalk.com/api/users/${
+      `api.backendproxy.com/api/users/${
         profile.nickname
       }`
     );
@@ -93,16 +93,13 @@ const Billing = () => {
     console.log("in await");
     axios
       .get(
-        `http://lambdafiles.us-east-2.elasticbeanstalk.com/api/users/${
+        `api.backendproxy.com/api/users/${
           profile.nickname
         }`
       )
       .then(response => {
-        console.log(response.data[0].paid);
         setBilling(response.data[0].paid);
-        console.log("***********");
-        setIsPro(billing);
-        console.log(isPro);
+        setIsPro(billing); 
       })
       .catch(err => console.log(err));
   };
@@ -112,7 +109,7 @@ const Billing = () => {
   }, []);
 
   const text = `Pro user: ${billing}`;
-  if (isPro) {
+  if (billing) {
     console.log(isPro);
     console.log("billing: " + billing);
     console.log("isPro: " + isPro);

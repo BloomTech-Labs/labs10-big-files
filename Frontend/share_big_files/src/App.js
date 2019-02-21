@@ -87,6 +87,11 @@ class App extends Component {
             path="/add"
             render={props => <AddFileHolder {...props} />}
           />
+            <Route
+            exact
+            path="/"
+            render={props => <AddFileHolder {...props} />}
+          />
           
           <Route path="/stripe" render={props => <Stripe {...props} />} />
           <Route
