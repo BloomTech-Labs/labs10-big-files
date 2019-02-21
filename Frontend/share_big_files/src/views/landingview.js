@@ -1,14 +1,13 @@
 import React from "react";
 import styled from "styled-components";
-import { Link } from "react-router-dom";  
-import Auth from '../Auth/Auth';
+import { Link } from "react-router-dom";   
 
 const LandingContainerDiv = styled.div`
   width: 100%;
   height: auto;
   min-height: 100vh;
   margin: 0 auto;
-  background-image: url("http://get.addonreviews.com/cmsimages/lp/fileshare/cloudbackground.jpg");
+   background-image: url("http://get.addonreviews.com/cmsimages/lp/fileshare/cloudbackground.jpg");
   background-size: 100% 100%;
 `;
 
@@ -64,16 +63,18 @@ export const LandingView = props => {
       </TextContainer>
       <LandingCardsContainer>
         <LandingCards> 
-          <h2>Big File Transfer Pro</h2>
+ 
+          <h2>Big File Transfer Basic</h2>
+ 
           <UnorderedList>
             <ListItem>Send files up to 2gb</ListItem>
             <ListItem>See who viewed your file</ListItem>
             <ListItem>See who downloaded your file</ListItem>
             <ListItem>7 days of file storage</ListItem>
           </UnorderedList>
-          <Link to="/add">
+          <div  >
             <FileTransferButton onClick={props.lockOpen} >Use File Transfer Free</FileTransferButton>
-          </Link>
+          </div>
         </LandingCards>
         <LandingCards>
           <h2>Big File Transfer Pro</h2>
@@ -83,9 +84,9 @@ export const LandingView = props => {
             <li>See who downloaded your file</li>
             <li>90 days of file storage</li>
           </UnorderedList>
-          <Link to="/billing">
+          <div  >
             <FileTransferButton onClick={props.lockOpen}>Use File Transfer Pro</FileTransferButton>
-          </Link>
+          </div>
         </LandingCards>
       </LandingCardsContainer>
     </LandingContainerDiv>
