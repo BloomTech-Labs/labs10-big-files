@@ -63,22 +63,25 @@ const Header = styled.h1`
 `;
 
 const Billing = () => {
-  useEffect(() => {
-    console.log("inside billing useEffect");
+  useEffect(() => {  
+    const profile = JSON.parse(localStorage.getItem("profile"));
+    console.log( profile.nickname);
+    console.log(`http://lambdafiles.us-east-2.elasticbeanstalk.com/api/users/${profile.nickname}`)
+
     axios
       .get(
-        `http://lambdafiles.us-east-2.elasticbeanstalk.com/api/users/users/609`
+        `http://lambdafiles.us-east-2.elasticbeanstalk.com/api/users/${profile.nickname}`
       )
       .then(response => {
         setBilling(response.data[0].paid);
-        console.log(billing);
+ 
       })
       .catch(err => console.log(err));
   });
   const [billing, setBilling] = useState(null);
   const isPro = billing;
   const text = `Pro user: ${billing}`;
-  if (!isPro) {
+  if (isPro) {
     return (
       <ProMembershipDiv>
       <TextDiv>
