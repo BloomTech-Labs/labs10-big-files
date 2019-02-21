@@ -18,13 +18,13 @@ const MenuFileHolder = styled.div`
   display: flex;
 `;
 
-const AddFileHolder = (props) => {
+const AddFileHolder = props => {
   return (
     <AddFilePage>
-      <NavHeader  logout={props.logout}/>
+      <NavHeader logout={props.logout} />
       <MenuFileHolder>
         <LeftMenu />
-        <SharedHolder/>
+        <SharedHolder />
         <AddFile />
       </MenuFileHolder>
     </AddFilePage>

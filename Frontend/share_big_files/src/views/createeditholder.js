@@ -9,7 +9,7 @@ const CreatePage = styled.div`
   height: auto;
   min-height: 100vh;
   margin: 0 auto;
-  //background-image: url("http://get.addonreviews.com/cmsimages/lp/fileshare/cloudbackground.jpg");
+  background-image: url("http://get.addonreviews.com/cmsimages/lp/fileshare/cloudbackground.jpg");
   background-size: 100% 100%;
 `;
 const CreateEditDiv = styled.div`
