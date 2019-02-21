@@ -9,26 +9,26 @@ const BillingDiv = styled.div`
 `;
 
 const BasicMembershipDiv = styled.div`
-height: auto; 
-width: auto;
-min-width: 44rem;
-margin-left: 2%;
-border-radius: 10px;
-background: rgba(255, 255, 255, 0.5);
+  height: auto;
+  width: auto;
+  min-width: 44rem;
+  margin-left: 2%;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.5);
 `;
 
 const ProMembershipDiv = styled.div`
-height: auto; 
-width: auto;
-min-width: 37rem;
-margin-left: 2%;
-border-radius: 10px;
-background: rgba(255, 255, 255, 0.5);
+  height: auto;
+  width: auto;
+  min-width: 37rem;
+  margin-left: 2%;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.5);
 `;
 
-const TextDiv = styled.div` 
-width:  fit-content;
-padding: 0 5%; 
+const TextDiv = styled.div`
+  width: fit-content;
+  padding: 0 5%;
 `;
 
 const UnorderedList = styled.ul`
@@ -63,53 +63,61 @@ const Header = styled.h1`
 `;
 
 const Billing = () => {
-  useEffect(() => {  
+  useEffect(() => {
     const profile = JSON.parse(localStorage.getItem("profile"));
-    console.log( profile.nickname);
-    console.log(`http://lambdafiles.us-east-2.elasticbeanstalk.com/api/users/${profile.nickname}`)
+    console.log(profile.nickname);
+    console.log(
+      `http://lambdafiles.us-east-2.elasticbeanstalk.com/api/users/${
+        profile.nickname
+      }`
+    );
 
     axios
       .get(
-        `http://lambdafiles.us-east-2.elasticbeanstalk.com/api/users/${profile.nickname}`
+        `http://lambdafiles.us-east-2.elasticbeanstalk.com/api/users/${
+          profile.nickname
+        }`
       )
       .then(response => {
         setBilling(response.data[0].paid);
- 
+        console.log("Pro accout: " + billing);
+        setIsPro(billing);
+        console.log("Is pro: " + isPro);
       })
       .catch(err => console.log(err));
   });
   const [billing, setBilling] = useState(null);
-  const isPro = billing;
+  const [isPro, setIsPro] = useState(null);
+
   const text = `Pro user: ${billing}`;
   if (isPro) {
     return (
       <ProMembershipDiv>
-      <TextDiv>
-      <h1>Membership Level: Pro</h1>
-      <h2>Pro features</h2>
-      <UnorderedList>
-        <ListItem>Send files up to 2gb</ListItem>
-        <ListItem>See who viewed your file</ListItem>
-        <ListItem>See who downloaded your file</ListItem>
-        <ListItem>70 days of file storage</ListItem>
-      </UnorderedList> 
-      </TextDiv>
-    </ProMembershipDiv>
-  );
-  
+        <TextDiv>
+          <h1>Membership Level: Pro</h1>
+          <h2>Pro features</h2>
+          <UnorderedList>
+            <ListItem>Send files up to 2gb</ListItem>
+            <ListItem>See who viewed your file</ListItem>
+            <ListItem>See who downloaded your file</ListItem>
+            <ListItem>70 days of file storage</ListItem>
+          </UnorderedList>
+        </TextDiv>
+      </ProMembershipDiv>
+    );
   }
   return (
     <BasicMembershipDiv>
       <TextDiv>
-      <h1>Membership Level: Basic</h1>
-      <h2>Basic features</h2>
-      <UnorderedList>
-        <ListItem>Send files up to 2gb</ListItem>
-        <ListItem>See who viewed your file</ListItem>
-        <ListItem>See who downloaded your file</ListItem>
-        <ListItem>7 days of file storage</ListItem>
-      </UnorderedList>
-      <h2>Click below to get 70 day file storage</h2> <Stripe />
+        <h1>Membership Level: Basic</h1>
+        <h2>Basic features</h2>
+        <UnorderedList>
+          <ListItem>Send files up to 2gb</ListItem>
+          <ListItem>See who viewed your file</ListItem>
+          <ListItem>See who downloaded your file</ListItem>
+          <ListItem>7 days of file storage</ListItem>
+        </UnorderedList>
+        <h2>Click below to get 70 day file storage</h2> <Stripe />
       </TextDiv>
     </BasicMembershipDiv>
   );
