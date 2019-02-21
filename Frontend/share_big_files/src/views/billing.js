@@ -35,6 +35,9 @@ const UnorderedList = styled.ul`
   text-align: left;
   line-height: 2;
 `;
+const StripeDiv = styled.div`
+  margin-left: 35%;
+`;
 
 const ListItem = styled.li``;
 
@@ -139,7 +142,7 @@ const Billing = () => {
           <ListItem>See who downloaded your file</ListItem>
           <ListItem>7 days of file storage</ListItem>
         </UnorderedList>
-        <h2>Click below to get 70 day file storage</h2> <Stripe />
+        <h2>Click below to get 70 day file storage</h2> <StripeDiv><Stripe /></StripeDiv>
       </TextDiv>
     </BasicMembershipDiv>
   );
