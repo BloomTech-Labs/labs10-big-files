@@ -63,8 +63,6 @@ const Header = styled.h1`
 `;
 
 const Billing = () => {
-
- 
   // useEffect(() => {
   //   axios
   //     .get(
@@ -84,16 +82,21 @@ const Billing = () => {
 
   const fetchData = async () => {
     const profile = JSON.parse(localStorage.getItem("profile"));
-    console.log('++++++++!!!!!!!!!////////')
+    console.log("++++++++!!!!!!!!!////////");
     console.log(profile.nickname);
-    console.log(`http://lambdafiles.us-east-2.elasticbeanstalk.com/api/users/${profile.nickname}`)
-    const result = await 
-    axios
-    .get(`http://lambdafiles.us-east-2.elasticbeanstalk.com/api/users/${profile.nickname}`);
-    console.log(result)
-    // setBilling(result.data[0].paid);
-    // setIsPro(result.data[0].paid);
-
+    console.log(
+      `http://lambdafiles.us-east-2.elasticbeanstalk.com/api/users/${
+        profile.nickname
+      }`
+    );
+    const result = await axios(
+      `http://lambdafiles.us-east-2.elasticbeanstalk.com/api/users/${
+        profile.nickname
+      }`
+    );
+    console.log(result);
+    setBilling(result.data[0].paid);
+    setIsPro(result.data[0].paid);
   };
 
   useEffect(() => {
@@ -102,7 +105,9 @@ const Billing = () => {
 
   const text = `Pro user: ${billing}`;
   if (isPro) {
-    console.log(isPro)
+    console.log(isPro);
+    console.log("billing: " + billing);
+    console.log("isPro: " + isPro);
     return (
       <ProMembershipDiv>
         <TextDiv>
