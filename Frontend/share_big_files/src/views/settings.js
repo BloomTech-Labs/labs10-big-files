@@ -1,41 +1,34 @@
-import React, { useState } from 'react';
+
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import styled from 'styled-components';
+<<<<<<< HEAD
+// import { userInfo } from 'os';
+=======
+import { userInfo } from 'os';
+
+>>>>>>> 00954be81b6913bf691fec6fdb9348491841f3a1
 
 const SettingsDiv = styled.div`
-    margin-left: 2%;
+  margin-left: 2%;
 `;
 
-<<<<<<< HEAD
-=======
- 
-// function SetPassword() {
-//     const [name, setName] = useState("Tony");
-//     const [oldPassword, setOldPassword] = useState("asdf");
-//     const [newPassword, setNewPassword] = useState("fdsa");
-//     // const [newPassword, setNewPassword] = useState(null);
-//     console.log(name, oldPassword, newPassword);
-//     function handleChange(e) {
-//         setName(e.target.name)
-//         setOldPassword(e.target.oldPassword)
-//         setNewPassword(e.target.newPassword)
-//         console.log(name, oldPassword, newPassword);
 
-//     }
-    
-// }
-
-// useEffect(() => {
-//     localStorage.name = name
-// })
-
->>>>>>> 68261bcb62084f821ff33374e1c398f32f05d403
 ///going to need hooks for input state
 const Settings = () =>{
-  
-        const [name, setName] = useState(null);
+    const [user, setUser] = useState(null);
+    useEffect(()=>{
+      const profile = JSON.parse(localStorage.getItem('profile')); 
+    //   const userId = user.id; 
+      setUser(profile)
+    //   console.log('Email on state is: '+email);
+
+    } ,[])
+        const [name, setName] = useState(user.name);
         const [oldPassword, setOldPassword] = useState(null);
         const [newPassword, setNewPassword] = useState(null);
         const [newPassword2, setNewPassword2] = useState(null);
+        
         console.log("INSIDE SETTINGS", name, oldPassword, newPassword);
     
         function handleChange(e) {
@@ -51,23 +44,54 @@ const Settings = () =>{
             } else if ( e.target.name === "newPassword2") {
             setNewPassword2(e.target.value)
             console.log("NEWP2" + newPassword2)
+
             }
         }
+
+        
+
+        function handleConfirmPassword() {
+           
+            const [user, setUser] = useState(null);
+            useEffect(()=>{
+              const profile = JSON.parse(localStorage.getItem('profile')); 
+            //   const userId = user.id; 
+              setUser(profile)
+            //   console.log('Email on state is: '+email);
+
+            } ,[])
+
+            if ( newPassword !== newPassword2 ) {
+                alert("New passwords must match");
+                } else {
+                    const updatedUser = {
+                        ...user,
+                        password: newPassword
+                    }
+
+                    axios
+                        .put(`http://lambdafiles.us-east-2.elasticbeanstalk.com/api/users/users/${user.id}`, updatedUser)
+                        .then(response => {
+                            console.log(response);
+                            setNewPassword(response.handleConfirmPassword)
+                        })
+                        .catch(e => console.log(e));
+                }
+           
+            
+        }
+        
     return(
         <SettingsDiv>
             <p>name</p> <input type="text" name="name" placeholder={name} onChange={handleChange}/>
             <p>Old Password</p> <input type="text" name="oldPassword" placeholder={oldPassword} onChange={handleChange}/>
-            <p>New Password</p> <input type="text" name="newPassword" placeholder={newPassword} onChange={handleChange}/>
-            <p>New Password</p> <input type="text" name="newPassword2" placeholder={newPassword2} onChange={handleChange}/>
-            <button onClick={() => handleChange()}>Save</button>
+            <p>New Password</p> <input type="password" name="newPassword" placeholder={newPassword} onChange={handleChange}/>
+            <p>New Password</p> <input type="password" name="newPassword2" placeholder={newPassword2} onChange={handleChange}/>
+            <button onClick={() => handleConfirmPassword()}>Save</button>
         </SettingsDiv>
     )
 
     
 }
-<<<<<<< HEAD
-=======
- 
->>>>>>> 68261bcb62084f821ff33374e1c398f32f05d403
 
 export default Settings;
