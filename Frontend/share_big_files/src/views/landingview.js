@@ -70,9 +70,9 @@ export const LandingView = props => {
             <ListItem>See who downloaded your file</ListItem>
             <ListItem>7 days of file storage</ListItem>
           </UnorderedList>
-          <Link to="/add">
+          <div  >
             <FileTransferButton onClick={props.lockOpen} >Use File Transfer Free</FileTransferButton>
-          </Link>
+          </div>
         </LandingCards>
         <LandingCards>
           <h2>Big File Transfer Pro</h2>
@@ -82,9 +82,9 @@ export const LandingView = props => {
             <li>See who downloaded your file</li>
             <li>90 days of file storage</li>
           </UnorderedList>
-          <Link to="/billing">
+          <div  >
             <FileTransferButton onClick={props.lockOpen}>Use File Transfer Pro</FileTransferButton>
-          </Link>
+          </div>
         </LandingCards>
       </LandingCardsContainer>
     </LandingContainerDiv>
