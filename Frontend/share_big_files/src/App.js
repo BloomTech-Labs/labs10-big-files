@@ -59,6 +59,7 @@ class App extends Component {
           );
         });
         variablePromise.then(() => {
+          history.push('/add');
           window.location.reload();
         });
       });
@@ -75,9 +76,7 @@ class App extends Component {
     return new Date().getTime() < expiresAt;
   }
 
-  runRedirect() {
-    return <Redirect to="/" />;
-  }
+ 
 
   render() {
     if (this.isAuthenticated() || localStorage.getItem("accessToken")) {
@@ -85,10 +84,10 @@ class App extends Component {
         <AppContainer>
           <Route
             exact
-            path="/"
+            path="/add"
             render={props => <AddFileHolder {...props} />}
           />
-          } />
+          
           <Route path="/stripe" render={props => <Stripe {...props} />} />
           <Route
             exact
@@ -107,8 +106,7 @@ class App extends Component {
           />
         </AppContainer>
       );
-    } else {
-      history.push("/"); 
+    } else {  
       return <LandingView lockOpen={this.lockOpen} lock={this.lock} />;
     }
   }
