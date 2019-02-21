@@ -84,7 +84,7 @@ const Billing = () => {
         console.log(isPro)
       })
       .catch(err => console.log(err));
-  });
+  }, []);
   const [billing, setBilling] = useState(null);
   const [isPro, setIsPro] = useState(null);
 
