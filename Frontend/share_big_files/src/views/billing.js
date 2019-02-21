@@ -87,10 +87,10 @@ const Billing = () => {
     console.log('++++++++!!!!!!!!!////////')
     console.log(profile.nickname);
     console.log(`http://lambdafiles.us-east-2.elasticbeanstalk.com/api/users/${profile.nickname}`)
-    // const result = await axios(
-    //   `http://lambdafiles.us-east-2.elasticbeanstalk.com/api/users/${profile.nickname}`,
-    // );
-
+    const result = await 
+    axios
+    .get(`http://lambdafiles.us-east-2.elasticbeanstalk.com/api/users/${profile.nickname}`);
+    console.log(result)
     // setBilling(result.data[0].paid);
     // setIsPro(result.data[0].paid);
 
