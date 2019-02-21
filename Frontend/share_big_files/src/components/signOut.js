@@ -5,6 +5,7 @@ function signOutHandler(){
 console.log('Sign out handler fired')
 localStorage.clear('accessToken');
 localStorage.clear('expiresAt');
+history.push("/add");
 window.location.reload();
 }
 
