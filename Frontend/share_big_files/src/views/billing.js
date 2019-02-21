@@ -63,24 +63,39 @@ const Header = styled.h1`
 `;
 
 const Billing = () => {
-  const profile = JSON.parse(localStorage.getItem("profile"));
+
  
-  useEffect(() => {
-    axios
-      .get(
-        `http://lambdafiles.us-east-2.elasticbeanstalk.com/api/users/${profile.nickname}`
-      )
-      .then(response => {
-        console.log(response.data[0].paid);
-        setBilling(response.data[0].paid);
-        console.log('***********')
-        setIsPro(billing);
-        console.log(isPro)
-      })
-      .catch(err => console.log(err));
-  } );
+  // useEffect(() => {
+  //   axios
+  //     .get(
+  //       `http://lambdafiles.us-east-2.elasticbeanstalk.com/api/users/${profile.nickname}`
+  //     )
+  //     .then(response => {
+  //       console.log(response.data[0].paid);
+  //       setBilling(response.data[0].paid);
+  //       console.log('***********')
+  //       setIsPro(billing);
+  //       console.log(isPro)
+  //     })
+  //     .catch(err => console.log(err));
+  // } );
   const [billing, setBilling] = useState(null);
   const [isPro, setIsPro] = useState(null);
+
+  const fetchData = async () => {
+    const profile = JSON.parse(localStorage.getItem("profile"));
+    const result = await axios(
+      `http://lambdafiles.us-east-2.elasticbeanstalk.com/api/users/${profile.nickname}`,
+    );
+
+    setBilling(result.data[0].paid);
+    setIsPro(result.data[0].paid);
+    console.log('++++++++!!!!!!!!!////////')
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
 
   const text = `Pro user: ${billing}`;
   if (isPro) {
