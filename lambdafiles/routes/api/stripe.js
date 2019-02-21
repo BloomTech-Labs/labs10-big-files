@@ -12,15 +12,14 @@ const stripeChargeCallback = res => (stripeErr, stripeRes) => {
   }
 };
 
-const paymentApi = app => {
-  app.get("/stripe", (req, res) => {
+router.get("/", (req, res) => {
     res.send({
       message: "Hello Stripe checkout server!",
       timestamp: new Date().toISOString()
-    });
-  });
+    })
+  })
 
-app.post("/stripe/charge", (req, res) => {
+router.post("/charge", (req, res) => {
     const body = {
       source: req.body.token.id,
       amount: req.body.amount,
@@ -28,7 +27,6 @@ app.post("/stripe/charge", (req, res) => {
     };
     stripe.charges.create(body, stripeChargeCallback(res));
 });
-  return app;
-};
 
-module.exports = paymentApi;
+
+module.exports = router;
