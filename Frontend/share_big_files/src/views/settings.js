@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import styled from 'styled-components';
-import { userInfo } from 'os';
+// import { userInfo } from 'os';
 
 
 const SettingsDiv = styled.div`
@@ -20,7 +20,7 @@ const Settings = () =>{
     //   console.log('Email on state is: '+email);
 
     } ,[])
-        const [name, setName] = useState(user.name);
+        const [name, setName] = useState(null);
         const [oldPassword, setOldPassword] = useState(null);
         const [newPassword, setNewPassword] = useState(null);
         const [newPassword2, setNewPassword2] = useState(null);
