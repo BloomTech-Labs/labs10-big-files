@@ -83,14 +83,17 @@ const Billing = () => {
   const [isPro, setIsPro] = useState(null);
 
   const fetchData = async () => {
-    // const profile = JSON.parse(localStorage.getItem("profile"));
+    const profile = JSON.parse(localStorage.getItem("profile"));
+    console.log('++++++++!!!!!!!!!////////')
+    console.log(profile.nickname);
+    console.log(`http://lambdafiles.us-east-2.elasticbeanstalk.com/api/users/${profile.nickname}`)
     // const result = await axios(
     //   `http://lambdafiles.us-east-2.elasticbeanstalk.com/api/users/${profile.nickname}`,
     // );
 
     // setBilling(result.data[0].paid);
     // setIsPro(result.data[0].paid);
-    console.log('++++++++!!!!!!!!!////////')
+
   };
 
   useEffect(() => {
