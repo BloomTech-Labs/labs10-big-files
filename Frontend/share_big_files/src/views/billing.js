@@ -81,8 +81,9 @@ const Billing = () => {
       .then(response => {
         console.log(response.data[0].paid);
         setBilling(response.data[0].paid);
-
+        console.log('***********')
         setIsPro(billing);
+        console.log(isPro)
       })
       .catch(err => console.log(err));
   });
