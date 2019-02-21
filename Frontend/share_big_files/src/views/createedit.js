@@ -49,7 +49,7 @@ const CreateFile = () => {
         <span>Share with:</span>
         <FileName type="text" placeholder="Comma separate emails" />
         <br />
-
+yarn
         <span>Shared with history:</span>
 
         <SharedWithBox />
