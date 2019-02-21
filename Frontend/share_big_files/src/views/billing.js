@@ -89,25 +89,28 @@ const Billing = () => {
         profile.nickname
       }`
     );
-    const result = await axios
-    console.log('in await')
-      .get(
-        `http://lambdafiles.us-east-2.elasticbeanstalk.com/api/users/${
-          profile.nickname
-        }`
-      )
-      .then(response => {
-        console.log(response.data[0].paid);
-        setBilling(response.data[0].paid);
-        console.log("***********");
-        setIsPro(billing);
-        console.log(isPro);
-      })
-      .catch(err => console.log(err));
+    const result = await axiosCall();
 
-    console.log(result);
-    setBilling(result.data[0].paid);
-    setIsPro(result.data[0].paid);
+    const axiosCall = () => {
+      axios
+        .get(
+          `http://lambdafiles.us-east-2.elasticbeanstalk.com/api/users/${
+            profile.nickname
+          }`
+        )
+        .then(response => {
+          console.log(response.data[0].paid);
+          setBilling(response.data[0].paid);
+          console.log("***********");
+          setIsPro(billing);
+          console.log(isPro);
+        })
+        .catch(err => console.log(err));
+
+      console.log(result);
+      setBilling(result.data[0].paid);
+      setIsPro(result.data[0].paid);
+    };
   };
 
   useEffect(() => {
