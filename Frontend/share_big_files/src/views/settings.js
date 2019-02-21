@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import styled from 'styled-components';
-import { userInfo } from 'os';
+// import { userInfo } from 'os';
 
 const SettingsDiv = styled.div`
   margin-left: 2%;
