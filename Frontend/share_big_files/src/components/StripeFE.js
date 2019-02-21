@@ -22,6 +22,7 @@ const Stripe = () => {
       });
   };
 
+  
   return (
     <StripeCheckout
       label="Upgrade Now" //Component button text
