@@ -93,7 +93,7 @@ const Billing = () => {
     console.log("in await");
     axios
       .get(
-        `api.backendproxy.com/api/users/${
+        `https://api.backendproxy.com/api/users/${
           profile.nickname
         }`
       )
