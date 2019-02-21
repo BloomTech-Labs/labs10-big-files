@@ -1,11 +1,13 @@
+
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import styled from 'styled-components';
 import { userInfo } from 'os';
 
 const SettingsDiv = styled.div`
-    margin-left: 2%;
+  margin-left: 2%;
 `;
+
 
 ///going to need hooks for input state
 const Settings = () =>{

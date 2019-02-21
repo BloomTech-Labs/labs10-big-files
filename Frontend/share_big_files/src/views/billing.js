@@ -1,14 +1,44 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 import styled from "styled-components";
+import { Link } from "react-router-dom";
+import Stripe from "../components/StripeFE";
 
 const BillingDiv = styled.div`
-  margin-left: 33%;
-  
+  margin-left: 2%;
 `;
 
-const PaymentInfoHolder = styled.div`
-  
+const BasicMembershipDiv = styled.div`
+height: auto; 
+width: auto;
+min-width: 44rem;
+margin-left: 2%;
+border-radius: 10px;
+background: rgba(255, 255, 255, 0.5);
 `;
+
+const ProMembershipDiv = styled.div`
+height: auto; 
+width: auto;
+min-width: 37rem;
+margin-left: 2%;
+border-radius: 10px;
+background: rgba(255, 255, 255, 0.5);
+`;
+
+const TextDiv = styled.div` 
+width:  fit-content;
+padding: 0 5%; 
+`;
+
+const UnorderedList = styled.ul`
+  text-align: left;
+  line-height: 2;
+`;
+
+const ListItem = styled.li``;
+
+const PaymentInfoHolder = styled.div``;
 const Subscriptions = styled.div`
   color: black;
 `;
@@ -17,7 +47,7 @@ const BuyNowButton = styled.div`
   cursor: pointer;
   text-align: center;
   border-radius: 5%;
-  box-shadow: 3px 3px 0px 0px rgba(0,0,0,0.5);
+  box-shadow: 3px 3px 0px 0px rgba(0, 0, 0, 0.5);
   background-color: white;
 `;
 const PaymentBoxes = styled.div`
@@ -26,47 +56,60 @@ const PaymentBoxes = styled.div`
 `;
 
 const InlineH3 = styled.h3`
-display: inline;
+  display: inline;
 `;
 const Header = styled.h1`
-  margin-left: 22%; 
+  margin-left: 22%;
 `;
 
 const Billing = () => {
-
-  return (
-    <BillingDiv>
-      <PaymentInfoHolder>
-          <Header>Billing</Header>
-        <PaymentBoxes>
-          <h3>CC#</h3>
-          <input type="text" name="ccNumber"/>
-        </PaymentBoxes>
-        <PaymentBoxes>
-          <h3>EXP</h3>
-          <input type="text" name="ccExp"/>
-        </PaymentBoxes>
-        <PaymentBoxes>
-          <h3>CVV</h3>
-          <input type="text" name="ccCVV"/>
-        </PaymentBoxes>
-      </PaymentInfoHolder>
-      <Subscriptions>
-        <div>
-          <br/>
-        <input type="checkbox"/>
-          <InlineH3>1 Year Subscription - $10.99</InlineH3> <br/>
-          <input type="checkbox"/>
-          <InlineH3>1 Month Subscription - $0.99</InlineH3>
-        </div>
-        <br/>
-      </Subscriptions>
-      <BuyNowButton>
-        <h1>Buy Now!</h1>
-      </BuyNowButton>
-    </BillingDiv>
+  useEffect(() => {
+    console.log("inside billing useEffect");
+    axios
+      .get(
+        `http://lambdafiles.us-east-2.elasticbeanstalk.com/api/users/users/609`
+      )
+      .then(response => {
+        setBilling(response.data[0].paid);
+        console.log(billing);
+      })
+      .catch(err => console.log(err));
+  });
+  const [billing, setBilling] = useState(null);
+  const isPro = billing;
+  const text = `Pro user: ${billing}`;
+  if (!isPro) {
+    return (
+      <ProMembershipDiv>
+      <TextDiv>
+      <h1>Membership Level: Pro</h1>
+      <h2>Pro features</h2>
+      <UnorderedList>
+        <ListItem>Send files up to 2gb</ListItem>
+        <ListItem>See who viewed your file</ListItem>
+        <ListItem>See who downloaded your file</ListItem>
+        <ListItem>70 days of file storage</ListItem>
+      </UnorderedList> 
+      </TextDiv>
+    </ProMembershipDiv>
   );
-
+  
+  }
+  return (
+    <BasicMembershipDiv>
+      <TextDiv>
+      <h1>Membership Level: Basic</h1>
+      <h2>Basic features</h2>
+      <UnorderedList>
+        <ListItem>Send files up to 2gb</ListItem>
+        <ListItem>See who viewed your file</ListItem>
+        <ListItem>See who downloaded your file</ListItem>
+        <ListItem>7 days of file storage</ListItem>
+      </UnorderedList>
+      <h2>Click below to get 70 day file storage</h2> <Stripe />
+      </TextDiv>
+    </BasicMembershipDiv>
+  );
 };
 
 export default Billing;
