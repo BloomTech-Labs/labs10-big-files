@@ -79,10 +79,10 @@ const Billing = () => {
         }`
       )
       .then(response => {
+        console.log(response.data[0].paid);
         setBilling(response.data[0].paid);
-        console.log("Pro accout: " + billing);
+
         setIsPro(billing);
-        console.log("Is pro: " + isPro);
       })
       .catch(err => console.log(err));
   });
