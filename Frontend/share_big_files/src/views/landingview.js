@@ -7,7 +7,7 @@ const LandingContainerDiv = styled.div`
   height: auto;
   min-height: 100vh;
   margin: 0 auto;
-  //background-image: url("http://get.addonreviews.com/cmsimages/lp/fileshare/cloudbackground.jpg");
+   background-image: url("http://get.addonreviews.com/cmsimages/lp/fileshare/cloudbackground.jpg");
   background-size: 100% 100%;
 `;
 
@@ -63,7 +63,9 @@ export const LandingView = props => {
       </TextContainer>
       <LandingCardsContainer>
         <LandingCards> 
-          <h2>Big File Transfer Pro</h2>
+ 
+          <h2>Big File Transfer Basic</h2>
+ 
           <UnorderedList>
             <ListItem>Send files up to 2gb</ListItem>
             <ListItem>See who viewed your file</ListItem>

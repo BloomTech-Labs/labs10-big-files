@@ -10,7 +10,7 @@ const AddFilePage = styled.div`
   height: auto;
   min-height: 100vh;
   margin: 0 auto;
-  //background-image: url("http://get.addonreviews.com/cmsimages/lp/fileshare/cloudbackground.jpg");
+  background-image: url("http://get.addonreviews.com/cmsimages/lp/fileshare/cloudbackground.jpg");
   background-size: 100% 100%;
 `;
 
@@ -18,13 +18,13 @@ const MenuFileHolder = styled.div`
   display: flex;
 `;
 
-const AddFileHolder = (props) => {
+const AddFileHolder = props => {
   return (
     <AddFilePage>
-      <NavHeader  logout={props.logout}/>
+      <NavHeader logout={props.logout} />
       <MenuFileHolder>
         <LeftMenu />
-        <SharedHolder/>
+        <SharedHolder />
         <AddFile />
       </MenuFileHolder>
     </AddFilePage>

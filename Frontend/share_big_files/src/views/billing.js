@@ -35,6 +35,9 @@ const UnorderedList = styled.ul`
   text-align: left;
   line-height: 2;
 `;
+const StripeDiv = styled.div`
+  margin-left: 35%;
+`;
 
 const ListItem = styled.li``;
 
@@ -85,7 +88,7 @@ const Billing = () => {
     console.log("++++++++!!!!!!!!!////////");
     console.log(profile.nickname);
     console.log(
-      `http://lambdafiles.us-east-2.elasticbeanstalk.com/api/users/${
+      `api.backendproxy.com/api/users/${
         profile.nickname
       }`
     );
@@ -93,16 +96,13 @@ const Billing = () => {
     console.log("in await");
     axios
       .get(
-        `http://lambdafiles.us-east-2.elasticbeanstalk.com/api/users/${
+        `https://api.backendproxy.com/api/users/${
           profile.nickname
         }`
       )
       .then(response => {
-        console.log(response.data[0].paid);
         setBilling(response.data[0].paid);
-        console.log("***********");
-        setIsPro(billing);
-        console.log(isPro);
+        setIsPro(billing); 
       })
       .catch(err => console.log(err));
   };
@@ -112,7 +112,7 @@ const Billing = () => {
   }, []);
 
   const text = `Pro user: ${billing}`;
-  if (isPro) {
+  if (billing) {
     console.log(isPro);
     console.log("billing: " + billing);
     console.log("isPro: " + isPro);
@@ -142,7 +142,7 @@ const Billing = () => {
           <ListItem>See who downloaded your file</ListItem>
           <ListItem>7 days of file storage</ListItem>
         </UnorderedList>
-        <h2>Click below to get 70 day file storage</h2> <Stripe />
+        <h2>Click below to get 70 day file storage</h2> <StripeDiv><Stripe /></StripeDiv>
       </TextDiv>
     </BasicMembershipDiv>
   );

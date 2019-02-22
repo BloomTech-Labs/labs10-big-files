@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import styled from 'styled-components';
-import { userInfo } from 'os';
+// import { userInfo } from 'os';
 
 
 const SettingsDiv = styled.div`
@@ -12,6 +12,11 @@ const SettingsDiv = styled.div`
 
 ///going to need hooks for input state
 const Settings = () =>{
+  const [name, setName] = useState(null);
+  const [oldPassword, setOldPassword] = useState(null);
+  const [newPassword, setNewPassword] = useState(null);
+  const [newPassword2, setNewPassword2] = useState(null);
+  
     const [user, setUser] = useState(null);
     useEffect(()=>{
       const profile = JSON.parse(localStorage.getItem('profile')); 
@@ -20,11 +25,7 @@ const Settings = () =>{
     //   console.log('Email on state is: '+email);
 
     } ,[])
-        const [name, setName] = useState(user.name);
-        const [oldPassword, setOldPassword] = useState(null);
-        const [newPassword, setNewPassword] = useState(null);
-        const [newPassword2, setNewPassword2] = useState(null);
-        
+ 
         console.log("INSIDE SETTINGS", name, oldPassword, newPassword);
     
         function handleChange(e) {
@@ -79,7 +80,7 @@ const Settings = () =>{
         
     return(
         <SettingsDiv>
-            <p>name</p> <input type="text" name="name" placeholder={name} onChange={handleChange}/>
+            <p>Name</p> <input type="text" name="name" placeholder={name} onChange={handleChange}/>
             <p>Old Password</p> <input type="text" name="oldPassword" placeholder={oldPassword} onChange={handleChange}/>
             <p>New Password</p> <input type="password" name="newPassword" placeholder={newPassword} onChange={handleChange}/>
             <p>New Password</p> <input type="password" name="newPassword2" placeholder={newPassword2} onChange={handleChange}/>
