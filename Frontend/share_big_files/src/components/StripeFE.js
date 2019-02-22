@@ -2,9 +2,25 @@ import React, {useState, useEffect} from "react";
 import StripeCheckout from "react-stripe-checkout";
 import axios from "axios";
 
-// sendToDB = () => {
-//   axios.put("")
-// }
+sendToDB = () => {
+  axios.put("")
+}
+
+UPDATE users SET paid = true 
+WHERE email = 'volutpat@eusemPellentesque.org' 
+RETURNING user_id
+
+router.put("/files/id", (req, res) => {
+  const {fk_user_id} = req.params;
+  client.query(`UPDATE files SET fk_user_id = ${fk_user_id} WHERE file_id = (select MAX(file_id) FROM files) VALUES ($1)`, [fk_user_id])
+      .then(result => {
+      res.status(200).json(result);
+  })
+  .catch(e => {
+      console.error(e), res.send(e);
+  });
+});
+
 
 const Stripe = () => {
   const [paid, setPaid] = useState(false)
@@ -16,7 +32,7 @@ const Stripe = () => {
       amount: 555,
       token: token
     };
-    
+
     axios
     .post("https://api.backendproxy.com/api/stripe/charge", body)
     .then(response => {
