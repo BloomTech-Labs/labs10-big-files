@@ -2,6 +2,10 @@ import React, {useState, useEffect} from "react";
 import StripeCheckout from "react-stripe-checkout";
 import axios from "axios";
 
+// sendToDB = () => {
+//   axios.put("")
+// }
+
 const Stripe = () => {
   const [paid, setPaid] = useState(false)
   useEffect(() => console.log(paid))
@@ -12,13 +16,14 @@ const Stripe = () => {
       amount: 555,
       token: token
     };
+    
     axios
     .post("https://api.backendproxy.com/api/stripe/charge", body)
     .then(response => {
       console.log(response);
       alert("Payment Success");
       setPaid(true);
-      
+      // sendToDB()
       })
       .catch(error => {
         console.log("Payment Error: ", error);

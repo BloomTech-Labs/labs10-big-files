@@ -76,6 +76,26 @@ router.post("/users", (request, res) => {
   // .then(() => client.end())
 });
 
+// router.put("/users", (request, res) => {
+//   console.log("RB", request.body);
+//   const {
+//     username,
+//     paid,
+//     email
+//   } = request.body;
+//   client
+//     .query(
+//       `UPDATE users SET paid = true WHERE x = ARB` )
+//     .then(result => {
+//       res.status(200).json(result);
+//       // process.exit();
+//     })
+//     .catch(e => {
+//       console.error(e.detail), res.send(e);
+//     });
+//   // .then(() => client.end())
+// });
+
 router.delete("/delete/:id", (request, res) => {
   const userID = parseInt(request.params.id);
   client
