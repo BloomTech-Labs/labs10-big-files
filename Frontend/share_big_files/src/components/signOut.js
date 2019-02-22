@@ -1,10 +1,12 @@
 import React from "react";
 import styled from "styled-components";
+import history from "../history";
 
 function signOutHandler(){
 console.log('Sign out handler fired')
 localStorage.clear('accessToken');
 localStorage.clear('expiresAt');
+history.push("/add");
 window.location.reload();
 }
 
