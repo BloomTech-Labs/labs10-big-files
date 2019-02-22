@@ -1,20 +1,24 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import StripeCheckout from "react-stripe-checkout";
 import axios from "axios";
 
 const Stripe = () => {
+  const [paid, setPaid] = useState(false)
+  useEffect(() => console.log(paid))
   const publishableKey = "pk_test_kYdeWqAG65rNdCvItFT1ZQ0J";
-   
+  
   const onToken = token => {
     const body = {
       amount: 555,
       token: token
-  };
-  axios
-      .post("https://api.backendproxy.com/api/stripe/charge", body)
-      .then(response => {
-        console.log(response);
-        alert("Payment Success");
+    };
+    axios
+    .post("https://api.backendproxy.com/api/stripe/charge", body)
+    .then(response => {
+      console.log(response);
+      alert("Payment Success");
+      setPaid(true);
+      
       })
       .catch(error => {
         console.log("Payment Error: ", error);
@@ -22,7 +26,7 @@ const Stripe = () => {
       });
   };
 
-  
+
   return (
     <StripeCheckout
       label="Upgrade Now" //Component button text
@@ -41,3 +45,5 @@ const Stripe = () => {
 };
 
 export default Stripe;
+
+
