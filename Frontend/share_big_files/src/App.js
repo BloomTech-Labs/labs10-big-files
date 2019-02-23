@@ -11,6 +11,9 @@ import styled from "styled-components";
 import { Auth0Lock } from "auth0-lock";
 import history from "./history";
 
+//KEITH
+import Splash from "./KeithExperiment/Splash"
+
 const AppContainer = styled.div`
   height: auto;
   min-height: 100vh;
@@ -80,6 +83,8 @@ class App extends Component {
     if (this.isAuthenticated() || localStorage.getItem("accessToken")) {
       return (
         <AppContainer>
+<Splash />
+
           <Route
             exact
             path="/add"
