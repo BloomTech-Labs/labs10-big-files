@@ -16,8 +16,7 @@ function changeDBStatustoPaid() {
       console.log("Faild to change to status to PAID --> True")
     }
     else{
-      console.log("Successfully updated status PAID --> True")
-      console.log("RESPONES", response.data)
+      console.log("Successfully updated DB status PAID --> True")
     }
   })
   .catch(error => {
