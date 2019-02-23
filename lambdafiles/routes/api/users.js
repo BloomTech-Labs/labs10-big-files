@@ -54,16 +54,10 @@ router.get("/users", async (req, res) => {
 
 router.post("/users", (request, res) => {
   console.log("RB", request.body);
-  const {
-    username,
-    paid,
-    email
-  } = request.body;
-  client
-    .query(
-      `INSERT INTO users (
-    username, paid, email)
-    VALUES ($1, $2, $3)`,
+  const { username, paid, email } = request.body;
+  client.query(
+      `INSERT INTO users (username, paid, email)
+      VALUES ($1, $2, $3)`,
       [username, paid, email]
     )
     .then(result => {
@@ -76,25 +70,25 @@ router.post("/users", (request, res) => {
   // .then(() => client.end())
 });
 
-// router.put("/users", (request, res) => {
-//   console.log("RB", request.body);
-//   const {
-//     username,
-//     paid,
-//     email
-//   } = request.body;
-//   client
-//     .query(
-//       `UPDATE users SET paid = true WHERE x = ARB` )
-//     .then(result => {
-//       res.status(200).json(result);
-//       // process.exit();
-//     })
-//     .catch(e => {
-//       console.error(e.detail), res.send(e);
-//     });
-//   // .then(() => client.end())
-// });
+router.put("/paid", (request, res) => {
+  console.log("RB", request.body);
+  // const { email } = request.body;
+  email = 'Cras@apurusDuis.co.uk'
+  client.query(`UPDATE users SET paid = true WHERE email = ${email} RETURNING user_id`, [email])
+    .then(result => {
+      res.status(200).json(result);
+      // process.exit();
+    })
+    .catch(e => {
+      console.error(e.detail), res.send(e);
+    });
+  // .then(() => client.end())
+});
+
+
+
+
+
 
 router.delete("/delete/:id", (request, res) => {
   const userID = parseInt(request.params.id);
