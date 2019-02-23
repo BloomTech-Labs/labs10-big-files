@@ -2,25 +2,14 @@ import React, {useState, useEffect} from "react";
 import StripeCheckout from "react-stripe-checkout";
 import axios from "axios";
 
-sendToDB = () => {
-  axios.put("")
+const profile = JSON.parse(localStorage.getItem("profile"));
+
+function changeDBStatustoPaid() {
+  const body = {
+    email: profile.email
+  }
+  axios.put("http://localhost:5000/api/users/paid", body)
 }
-
-UPDATE users SET paid = true 
-WHERE email = 'volutpat@eusemPellentesque.org' 
-RETURNING user_id
-
-router.put("/files/id", (req, res) => {
-  const {fk_user_id} = req.params;
-  client.query(`UPDATE files SET fk_user_id = ${fk_user_id} WHERE file_id = (select MAX(file_id) FROM files) VALUES ($1)`, [fk_user_id])
-      .then(result => {
-      res.status(200).json(result);
-  })
-  .catch(e => {
-      console.error(e), res.send(e);
-  });
-});
-
 
 const Stripe = () => {
   const [paid, setPaid] = useState(false)
@@ -39,7 +28,7 @@ const Stripe = () => {
       console.log(response);
       alert("Payment Success");
       setPaid(true);
-      // sendToDB()
+      changeDBStatustoPaid()
       })
       .catch(error => {
         console.log("Payment Error: ", error);

@@ -71,18 +71,15 @@ router.post("/users", (request, res) => {
 });
 
 router.put("/paid", (request, res) => {
+  const { email } = request.body;
   console.log("RB", request.body);
-  // const { email } = request.body;
-  email = 'Cras@apurusDuis.co.uk'
-  client.query(`UPDATE users SET paid = true WHERE email = ${email} RETURNING user_id`, [email])
+  client.query(`UPDATE users SET paid = true WHERE email = $1 RETURNING user_id`, [email])
     .then(result => {
       res.status(200).json(result);
-      // process.exit();
     })
     .catch(e => {
       console.error(e.detail), res.send(e);
     });
-  // .then(() => client.end())
 });
 
 
