@@ -57,7 +57,7 @@ const Stripe = () => {
       name="MoveBytes"
       description="Send files without limitations"
       panelLabel="Go Premium" 
-      amount={599} //Amount in cents $5.99
+      amount={2599} //Amount in cents $5.99
       token={onToken}
       locale="auto"
       zipCode={false}

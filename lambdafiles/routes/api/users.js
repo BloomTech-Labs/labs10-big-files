@@ -70,6 +70,8 @@ router.post("/users", (request, res) => {
   // .then(() => client.end())
 });
 
+
+//Stripe call to DB to update Paid status
 router.put("/paid", (request, res) => {
   const { email } = request.body;
   console.log("RB", request.body);
