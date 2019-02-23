@@ -4,44 +4,23 @@ import styled, { keyframes } from 'styled-components';
 // import Features from './Features';
 // import Pricing from './Pricing';
 
-// import myImages from "./Images"
-// const Splash = ({ auth }) => {
-//   function login() {
-//     auth.signIn();
-//   }
-
-var images = [
-    "http://static.ddmcdn.com/gif/lightning-gallery-18.jpg",
-    "http://static.ddmcdn.com/gif/lightning-gallery-19.jpg",
-    "http://static.ddmcdn.com/gif/lightning-gallery-20.jpg",
-    "http://static.ddmcdn.com/gif/lightning-gallery-17.jpg"];
-
-function randImg() {
-    var size = images.length
-    var x = Math.floor(size * Math.random())
-    document.getElementById('image').src = images[x];
-}
-
-randImg();
+const Splash = ({ auth }) => {
+  function login() {
+    auth.signIn();
+  }
 
 
 
   return (
     <WrapperContainer>
-        <div id="box">
-            <img id="testImage" />
-        </div>
-        <br />
-        <input type="button" value="Randomize!" onClick="randImg()" />
       <Header>
         <JumboTron>
           <div>
             <h1>Send files quick and easy.</h1>
             <h1>Blah blah blah blah blah blah</h1>
     
-            <a className="play-btn" href="#" />
-            {/* <h1>Let us take care of remembering the details.</h1> */}
-            {/* <p>We believe in providing a comfortable and intuitive storage bank of personal contacts. Whether you're adding new associates or reviewing previous, we have what you need.</p> */}
+            <a className="play-btn" href="/login"> HELLO</a>
+
           </div>
           <CTAButtonsGroup>
             <CTABtn onClick={login}>Sign up</CTABtn>

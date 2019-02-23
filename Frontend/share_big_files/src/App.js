@@ -83,7 +83,8 @@ class App extends Component {
     if (this.isAuthenticated() || localStorage.getItem("accessToken")) {
       return (
         <AppContainer>
-<Splash />
+          
+          <Splash />
 
           <Route
             exact
