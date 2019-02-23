@@ -13,7 +13,7 @@ function changeDBStatustoPaid() {
   .then(response => {
     if (response.data.rowCount === 0) {
       console.log("This Email is not registered in the DB")
-      console.log("Faild to change to status to PAID --> True")
+      console.log("Faild to change to status PAID --> True")
     }
     else{
       console.log("Successfully updated DB status PAID --> True")
