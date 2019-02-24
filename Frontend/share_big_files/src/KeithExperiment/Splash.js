@@ -3,6 +3,10 @@ import styled, { keyframes } from 'styled-components';
 // import WhyPeople from './WhyPeople';
 // import Features from './Features';
 // import Pricing from './Pricing';
+import "./Sky.jpg";
+
+import './CTAButton.css'
+
 
 const Splash = ({ auth }) => {
   function login() {
@@ -10,24 +14,24 @@ const Splash = ({ auth }) => {
   }
 
 
-
   return (
-    <WrapperContainer>
+    <WrapperContainer className="backgroundImage">
+    {/* <img src={require('./Sky.jpg')} alt="Blah" /> */}
       <Header>
         <JumboTron>
           <div>
             <h1>Send files quick and easy.</h1>
             <h1>Blah blah blah blah blah blah</h1>
     
-            <a className="play-btn" href="/login"> HELLO</a>
+            <a className="play-btn" href="/login"> </a>
 
           </div>
-          <CTAButtonsGroup>
+          {/* <CTAButtonsGroup>
             <CTABtn onClick={login}>Sign up</CTABtn>
             <a href="#why">
               <CTABtn learn href="#why">Learn more</CTABtn>
             </a>
-          </CTAButtonsGroup>
+          </CTAButtonsGroup> */}
         </JumboTron>
         <ArrowContainer>
           <div>
@@ -56,7 +60,7 @@ export default Splash
 
 
 const WrapperContainer = styled.div`
-background: #525A65;
+// height: 100%;
 @media (max-width: 540px) {
   h1 {
     font-size: 28px;
@@ -65,16 +69,15 @@ background: #525A65;
 `;
 
 const Header = styled.div`
-height: 100vh;
+height: 100%;
 `;
 
 const JumboTron = styled.div`
 padding: 5% 10%;
-  height: 55vh;
+  // height: 55vh;
   background-size: cover;
   background-position: center bottom;
   letter-spacing: 1px;
-  // color: #3e3d3d;
   color: white;
   display: flex;
   flex-direction: column;
@@ -88,7 +91,7 @@ padding: 5% 10%;
     top: 0;
     left: 0;
     width: 100%;
-    height: 65vh;
+    // height: 65vh;
     z-index: -2;
     opacity: 0.2;
     }
@@ -109,41 +112,41 @@ padding: 5% 10%;
 `;
 
 const Body = styled.div`
-  // margin-top: 55px;
   position: relative;
   flex:1;
+  height: 100%;
   overflow:hidden;
   scroll-behavior: smooth;
   -webkit-overflow-scrolling:touch;
 `;
 
-const CTAButtonsGroup = styled.div`
-text-align: center;
-margin: 0 auto;
+// const CTAButtonsGroup = styled.div`
+// text-align: center;
+// margin: 0 auto;
 
-button {
-  // width: 200px;
+// button {
+//   // width: 200px;
   
-}
-`;
+// }
+// `;
 
-const CTABtn = styled.button`
-font-size: 18px;
-height: 40px;
-&:hover {color: white}
-&:hover {background: black}
-&:hover {border: black}
-margin-right: ${props => props.learn ? 0 : '20px'};
-color: ${props => props.learn ? null : 'black'};
-border-color: ${props => props.learn ? null : 'black'};
-background: ${props => props.learn ? null : 'none'};
+// const CTABtn = styled.button`
+// font-size: 18px;
+// height: 40px;
+// &:hover {color: white}
+// &:hover {background: black}
+// &:hover {border: black}
+// margin-right: ${props => props.learn ? 0 : '20px'};
+// color: ${props => props.learn ? null : 'black'};
+// border-color: ${props => props.learn ? null : 'black'};
+// background: ${props => props.learn ? null : 'none'};
 
-width: 200px;
+// width: 200px;
 
-@media (max-width: 540px) {
-  width: 115px;
-}
-`;
+// @media (max-width: 540px) {
+//   width: 115px;
+// }
+// `;
 
 const ArrowContainer = styled.div`
 position: absolute;

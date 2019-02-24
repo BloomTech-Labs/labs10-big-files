@@ -2,17 +2,17 @@ import React from 'react'
 
 
 var testImages = [
-    "http://static.ddmcdn.com/gif/lightning-gallery-18.jpg",
-    "http://static.ddmcdn.com/gif/lightning-gallery-19.jpg",
-    "http://static.ddmcdn.com/gif/lightning-gallery-20.jpg",
-    "http://static.ddmcdn.com/gif/lightning-gallery-17.jpg"];
+    "Canvas.jpg",
+    "Sky.jpg",
+    "Grapes.jpg"
+];
 
 function randImg() {
-    var size = images.length
+    var size = testImages.length
     var x = Math.floor(size * Math.random())
-    document.getElementById('image').src = images[x];
+    document.getElementById('image').src = testImages[x];
 }
 
-randImg();
+// randImg();
 
-export default testImages
+export default randImg
