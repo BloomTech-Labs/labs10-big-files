@@ -21,6 +21,7 @@ const s3 = new aws.S3({
   secretAccessKey: process.env.secretAccessKey,
   Bucket: process.env.Bucket
 });
+const Bucket = process.env.Bucket;
 
 // TEST ROUTE
 router.get("/", (req, res) => {
@@ -34,7 +35,6 @@ router.get("/", (req, res) => {
  */
 
 //Single File Upload
-const Bucket = process.env.Bucket;
 
 const fileUpload = multer({
   storage: multerS3({
@@ -106,6 +106,57 @@ router.post("/files", (req, res) => {
  * PAID USER FILES
  *
  */
+
+const paidFileUpload = multer({
+  storage: multerS3({
+    s3: s3,
+    bucket: "s3lambdafiles123",
+    // acl: "public-read",
+    key: function(req, file, cb) {
+      cb(
+        null,
+        path.basename(file.originalname, path.extname(file.originalname)) +
+          "-" +
+          Date.now() +
+          path.extname(file.originalname)
+      );
+    }
+  }),
+
+  limits: { fileSize: 4000000 } // In bytes: 4000000 bytes = 4 MB
+}).single("fileUpload");
+
+// ROUTE TO UPLOAD FILE
+router.post("/paidfiles", (req, res) => {
+  console.log("REQ", req);
+  console.log("REQ_BODY", req.body);
+  paidFileUpload(req, res, error => {
+    if (error) {
+      console.log("errors:", error);
+      res.json({ error: error });
+    } else {
+      // If File not found
+      if (req.file === undefined) {
+        console.log("Error: No File Selected!");
+        res.json("Error: No File Selected");
+      } else {
+        // If Success
+        const url = req.file.location;
+        client
+          .query(`INSERT INTO files (url, fk_user_id) VALUES ($1, $2)`, [
+            url,
+            fk_user_id
+          ])
+          .then(result => {
+            res.status(200).json(result);
+          })
+          .catch(e => {
+            console.error(e), res.send(e);
+          });
+      }
+    }
+  });
+});
 
 // DELETE ROUTE
 router.delete("/files", (req, res) => {
