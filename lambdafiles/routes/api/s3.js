@@ -55,6 +55,18 @@ router.get("/", (req, res) => {
   res.send("Hello, world");
 });
 
+router.get('/files', (req, res) => {
+    client.query(`SELECT * FROM files`)
+        .then(result => {
+        res.status(200).json(result.rows);
+        //console.log(`works ${fk_user_id}`);
+    })
+    .catch(e => {
+        console.error(e), res.send(e);
+    });
+});
+
+
 // ROUTE TO UPLOAD FILE
 router.post("/files", (req, res) => {
 	console.log("REQ", req)
