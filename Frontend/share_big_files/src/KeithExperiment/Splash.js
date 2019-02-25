@@ -3,20 +3,43 @@ import styled, { keyframes } from 'styled-components';
 // import WhyPeople from './WhyPeople';
 // import Features from './Features';
 // import Pricing from './Pricing';
-import "./Sky.jpg";
+
+import Sky from "./Sky.jpg";
+import Grapes from "./Grapes.jpg"
+import Blue from "./Blue.jpg"
 
 import './CTAButton.css'
-
+require('./Sky.jpg')
 
 const Splash = ({ auth }) => {
   function login() {
     auth.signIn();
   }
 
+  // Background = "./Sky.jpg"
+  const imageStyle = {
+    backgroundImage: `url(${Blue})`,
+    // position: "fixed",
+    top: "0",
+    left: "0",
+    width: "100%",
+    height: "1300px",
+    objectFit: "none",
+    // backgroundRepeat: "no-repeat",
+    // backgroundSize: "100%",
+    backgroundSize: "cover",
+    backgroundPosition: "center center",
+    // backgroundAttachment: "fixed",
+    // display: "grid",
+    // height: "2000px",
+    // maxWidth: "100%",
+    // overflow: "hidden",
+    // position: "relative",
+  };
+  
 
   return (
-    <WrapperContainer className="backgroundImage">
-    {/* <img src={require('./Sky.jpg')} alt="Blah" /> */}
+    <WrapperContainer style={ imageStyle }>
       <Header>
         <JumboTron>
           <div>
