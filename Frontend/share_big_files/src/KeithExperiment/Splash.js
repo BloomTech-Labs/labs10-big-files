@@ -5,7 +5,7 @@ import styled, { keyframes } from 'styled-components';
 // import Pricing from './Pricing';
 
 import Sky from "./Sky.jpg";
-import Grapes from "./Grapes.jpg"
+import Black from "./BlackSand.jpg"
 import Blue from "./Blue.jpg"
 
 import './CTAButton.css'
@@ -18,7 +18,7 @@ const Splash = ({ auth }) => {
 
   // Background = "./Sky.jpg"
   const imageStyle = {
-    backgroundImage: `url(${Blue})`,
+    backgroundImage: `url(${Black})`,
     // position: "fixed",
     top: "0",
     left: "0",
