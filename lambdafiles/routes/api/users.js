@@ -54,16 +54,10 @@ router.get("/users", async (req, res) => {
 
 router.post("/users", (request, res) => {
   console.log("RB", request.body);
-  const {
-    username,
-    paid,
-    email
-  } = request.body;
-  client
-    .query(
-      `INSERT INTO users (
-    username, paid, email)
-    VALUES ($1, $2, $3)`,
+  const { username, paid, email } = request.body;
+  client.query(
+      `INSERT INTO users (username, paid, email)
+      VALUES ($1, $2, $3)`,
       [username, paid, email]
     )
     .then(result => {
@@ -75,6 +69,25 @@ router.post("/users", (request, res) => {
     });
   // .then(() => client.end())
 });
+
+
+//Stripe call to DB to update Paid status
+router.put("/paid", (request, res) => {
+  const { email } = request.body;
+  console.log("RB", request.body);
+  client.query(`UPDATE users SET paid = true WHERE email = $1 RETURNING user_id`, [email])
+    .then(result => {
+      res.status(200).json(result);
+    })
+    .catch(e => {
+      console.error(e.detail), res.send(e);
+    });
+});
+
+
+
+
+
 
 router.delete("/delete/:id", (request, res) => {
   const userID = parseInt(request.params.id);
