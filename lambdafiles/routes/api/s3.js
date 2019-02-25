@@ -66,9 +66,9 @@ router.get('/files', (req, res) => {
     });
 });
 
-
+// (POST FK —> PUT URL)
 // ROUTE TO UPLOAD FILE
-router.post("/files", (req, res) => {
+router.put("/files", (req, res) => {
 	console.log("REQ", req)
 	console.log("REQ_BODY", req.body)
     fileUpload(req, res, error => {
@@ -84,9 +84,10 @@ router.post("/files", (req, res) => {
 		res.json("Error: No File Selected");
 	    } else {
 		// If Success
-		const url = req.file.location;
+		// const url = req.file.location;
 		// const fk_user_id = 3;
-		client.query(`INSERT INTO files (url, fk_user_id) VALUES ($1, $2)`, [url, fk_user_id])
+		// client.query(`UPDATE files SET url = 'abvb' WHERE file_id = (select MAX(file_id) FROM files) RETURNING file_id`)
+		client.query(`UPDATE files SET url = '${req.file.location}' WHERE file_id = (select MAX(file_id) FROM files) `)
 		    .then(result => {
 			res.status(200).json(result);
 		    })
@@ -102,6 +103,34 @@ router.post("/files", (req, res) => {
     });
 });
 
+
+
+router.post("/files/id", (request, res) => {
+	console.log("RB", request.body);
+	const { fk_user_id } = request.body;
+	client.query(
+		`INSERT INTO files (fk_user_id) VALUES ($1) RETURNING file_id`, [fk_user_id])
+	  .then(result => {
+		res.status(200).json(result.rows);
+		// process.exit();
+	  })
+	  .catch(e => {
+		console.error(e.detail), res.send(e);
+	  });
+	// .then(() => client.end())
+  });
+
+
+// router.put("/files/id", (req, res) => {
+//     const {fk_user_id} = req.params;
+//     client.query(`UPDATE files SET fk_user_id = ${fk_user_id} WHERE file_id = (select MAX(file_id) FROM files) VALUES ($1)`, [fk_user_id])
+//         .then(result => {
+//         res.status(200).json(result);
+//     })
+//     .catch(e => {
+//         console.error(e), res.send(e);
+//     });
+// });
 
 // Retrieves a URL from an S3 Bucket
 // router.get('/files', (req, res) => {
