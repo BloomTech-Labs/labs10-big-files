@@ -35,6 +35,9 @@ const UnorderedList = styled.ul`
   text-align: left;
   line-height: 2;
 `;
+const StripeDiv = styled.div`
+  margin-left: 35%;
+`;
 
 const ListItem = styled.li``;
 
@@ -139,7 +142,9 @@ const Billing = () => {
       </BasicMembershipDiv>
     );
   }
+
   return <></>;
+
 };
 
 export default Billing;

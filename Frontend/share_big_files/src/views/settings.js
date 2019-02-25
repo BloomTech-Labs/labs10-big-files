@@ -16,64 +16,66 @@ const Settings = () =>{
   const [oldPassword, setOldPassword] = useState(null);
   const [newPassword, setNewPassword] = useState(null);
   const [newPassword2, setNewPassword2] = useState(null);
-  
-    const [user, setUser] = useState(null);
-    useEffect(()=>{
-      const profile = JSON.parse(localStorage.getItem('profile')); 
-    //   const userId = user.id; 
-      setUser(profile)
-    //   console.log('Email on state is: '+email);
-
-    } ,[])
+  const [user, setUser] = useState(null);
+  console.log(user);
+  useEffect(()=>{
+    const profile = JSON.parse(localStorage.getItem('profile'));  
+    setUser(profile)
  
-        console.log("INSIDE SETTINGS", name, oldPassword, newPassword);
+  } ,[])
+  console.log("INSIDE SETTINGS", name, oldPassword, newPassword);
     
         function handleChange(e) {
             if ( e.target.name === "name") {
                 setName(e.target.value)
                 console.log("NAME" + name)
-            } else if  ( e.target.name === "oldPassword") {
+            } 
+                else if  ( e.target.name === "oldPassword") {
             setOldPassword(e.target.value)
             console.log("OLDP" + oldPassword)
-            } else if ( e.target.name === "newPassword") {
+            } 
+                else if ( e.target.name === "newPassword") {
             setNewPassword(e.target.value)
             console.log("NEWP" + newPassword)
-            } else if ( e.target.name === "newPassword2") {
+            } 
+                else if ( e.target.name === "newPassword2") {
             setNewPassword2(e.target.value)
             console.log("NEWP2" + newPassword2)
-
             }
         }
 
         
 
         function handleConfirmPassword() {
+
+           console.log("INSIDE HANDLECONFIRM", name, oldPassword, newPassword, newPassword2);
+            // const [user, setUser] = useState(null);
+            // useEffect(()=>{
+            //   const profile = JSON.parse(localStorage.getItem('profile'));  
+            //   setUser(profile)
            
-            const [user, setUser] = useState(null);
-            useEffect(()=>{
-              const profile = JSON.parse(localStorage.getItem('profile')); 
-            //   const userId = user.id; 
-              setUser(profile)
-            //   console.log('Email on state is: '+email);
+            // } ,[])
 
-            } ,[])
+            // if ( oldPassword === newPassword ) {
+            //     alert("New password and Old password must be different")
+            // }
 
-            if ( newPassword !== newPassword2 ) {
-                alert("New passwords must match");
-                } else {
-                    const updatedUser = {
-                        ...user,
-                        password: newPassword
-                    }
+            // if ( newPassword !== newPassword2 ) {
+            //     alert("New passwords must match");
+            //     } else {
+            //         const updatedUser = {
+            //             ...user,
+            //             password: newPassword
+            //         }
 
-                    axios
-                        .put(`http://lambdafiles.us-east-2.elasticbeanstalk.com/api/users/users/${user.id}`, updatedUser)
-                        .then(response => {
-                            console.log(response);
-                            setNewPassword(response.handleConfirmPassword)
-                        })
-                        .catch(e => console.log(e));
-                }
+            //         axios
+            //             .put(`http://lambdafiles.us-east-2.elasticbeanstalk.com/api/users/users/tjkisner`, updatedUser)
+            //             .then(response => {
+            //                 console.log(response);
+            //                 setNewPassword(response.handleConfirmPassword)
+            //             })
+            //             .catch(e => console.log(e));
+            //     }
            
             
         }
