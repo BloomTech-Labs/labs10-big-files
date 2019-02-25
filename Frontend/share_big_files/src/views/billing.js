@@ -2,10 +2,12 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import media from "../styledComponents/media.js";
 import Stripe from "../components/StripeFE";
 
 const BillingDiv = styled.div`
   margin-left: 2%;
+  
 `;
 
 const BasicMembershipDiv = styled.div`
@@ -90,6 +92,7 @@ const Billing = () => {
     axios
       .get(`https://api.backendproxy.com/api/users/${profile.nickname}`)
       .then(response => {
+        console.log(response);
         var promise = new Promise(function(resolve, reject) {
           resolve(setBilling(response.data[0].paid));
         });
