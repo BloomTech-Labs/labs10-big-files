@@ -22,8 +22,15 @@ const s3 = new aws.S3({
   Bucket: process.env.Bucket
 });
 
+// TEST ROUTE
+router.get("/", (req, res) => {
+  res.send("Hello, world");
+});
+
 /**
+ *
  * FREE USER FILES
+ *
  */
 
 //Single File Upload
@@ -54,11 +61,6 @@ const fileUpload = multer({
   // 	checkFileType(file, cb);
   // }
 }).single("fileUpload");
-
-// TEST ROUTE
-router.get("/", (req, res) => {
-  res.send("Hello, world");
-});
 
 // ROUTE TO UPLOAD FILE
 router.post("/files", (req, res) => {
@@ -98,6 +100,12 @@ router.post("/files", (req, res) => {
     }
   });
 });
+
+/**
+ *
+ * PAID USER FILES
+ *
+ */
 
 // DELETE ROUTE
 router.delete("/files", (req, res) => {
