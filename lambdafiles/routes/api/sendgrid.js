@@ -5,9 +5,11 @@ sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 const msg = {
   to: "test@example.com",
   from: "test@example.com",
-  subject: "Sending with SendGrid is Fun",
-  text: "and easy to do anywhere, even with Node.js",
-  html: "<strong>and easy to do anywhere, even with Node.js</strong>"
+  subject: "A friend wants to send you a file!",
+  text: "Insert url here",
+  html: "<strong>Insert url here</strong>"
 };
 
-sgMail.send(msg);
+app.get("/", (req, res) => {
+  sgMail.send(msg);
+});
