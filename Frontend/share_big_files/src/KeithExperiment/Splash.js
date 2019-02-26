@@ -15,10 +15,10 @@ import './CTAButton.css'
 var myArray = [
   Blue,
   Beach,
-  Water,
-  Pine,
-  Gray,
-  Grapes
+  Water
+  // Pine,
+  // Gray,
+  // Grapes
 ];
 
 let randomImage = myArray[Math.floor(Math.random()*myArray.length)];
@@ -64,7 +64,6 @@ const Splash = () => {
                 <CTABtn learn href="#features">Learn more</CTABtn>
               </a>
             </CTAButtonsGroup>
-
           </RightColumn>
         </JumboTron>
       </Header>
