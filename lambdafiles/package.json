@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "private": true,
   "dependencies": {
+    "@sendgrid/mail": "^6.3.1",
     "aws-sdk": "^2.405.0",
     "body-parser": "^1.18.3",
     "concurrently": "^4.1.0",
@@ -16,6 +17,7 @@
     "nodemon": "^1.18.10",
     "path": "^0.12.7",
     "pg": "^7.8.0",
+    "sendgrid": "^5.2.3",
     "stream": "^0.0.2",
     "stripe": "^6.25.1",
     "url": "^0.11.0",
