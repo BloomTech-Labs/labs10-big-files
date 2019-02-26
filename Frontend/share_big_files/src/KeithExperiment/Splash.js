@@ -48,6 +48,7 @@ const Splash = () => {
       <Header>
         <JumboTron>
           <LeftColumn>
+            <br/><br/>
             <h1>Send files quick and easy.</h1>
             <br/><br/><br/><br/><br/><br/><br/><br/>
             <CTA className="play-btn" href="/login"> </CTA>
@@ -71,7 +72,6 @@ const Splash = () => {
         <Features />
         <BackToTopContainer>
           <a href="/#">Back to top</a>
-          <div> HELLO. THIS IS THE BOTTOM</div>
         </BackToTopContainer>
       </Body>
     </WrapperContainer>
@@ -85,7 +85,6 @@ export default Splash
 
 const WrapperContainer = styled.div`
 height: 100%;
-padding: 30px;
 
 @media (max-width: 540px) {
   h1 {
