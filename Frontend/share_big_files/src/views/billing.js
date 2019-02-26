@@ -82,27 +82,21 @@ const Billing = () => {
   // } );
   const [billing, setBilling] = useState(null);
   const [isPro, setIsPro] = useState(null);
+  const [loaded, setLoaded] = useState(false);
 
   const fetchData = async () => {
     const profile = JSON.parse(localStorage.getItem("profile"));
-    console.log("++++++++!!!!!!!!!////////");
-    console.log(profile.nickname);
-    console.log(
-      `api.backendproxy.com/api/users/${
-        profile.nickname
-      }`
-    );
     const result = await axios;
-    console.log("in await");
     axios
-      .get(
-        `https://api.backendproxy.com/api/users/${
-          profile.nickname
-        }`
-      )
+      .get(`https://api.backendproxy.com/api/users/${profile.nickname}`)
       .then(response => {
-        setBilling(response.data[0].paid);
-        setIsPro(billing); 
+        var promise = new Promise(function(resolve, reject) {
+          resolve(setBilling(response.data[0].paid));
+        });
+        promise.then(
+          setIsPro(billing), 
+          setLoaded(true)
+        );
       })
       .catch(err => console.log(err));
   };
@@ -112,40 +106,45 @@ const Billing = () => {
   }, []);
 
   const text = `Pro user: ${billing}`;
-  if (billing) {
-    console.log(isPro);
-    console.log("billing: " + billing);
-    console.log("isPro: " + isPro);
+  if (loaded) {
+    if (billing) {
+      console.log(isPro);
+      console.log("billing: " + billing);
+      console.log("isPro: " + isPro);
+      return (
+        <ProMembershipDiv>
+          <TextDiv>
+            <h1>Membership Level: Pro</h1>
+            <h2>Pro features</h2>
+            <UnorderedList>
+              <ListItem>Send files up to 2gb</ListItem>
+              <ListItem>See who viewed your file</ListItem>
+              <ListItem>See who downloaded your file</ListItem>
+              <ListItem>70 days of file storage</ListItem>
+            </UnorderedList>
+          </TextDiv>
+        </ProMembershipDiv>
+      );
+    }
     return (
-      <ProMembershipDiv>
+      <BasicMembershipDiv>
         <TextDiv>
-          <h1>Membership Level: Pro</h1>
-          <h2>Pro features</h2>
+          <h1>Membership Level: Basic</h1>
+          <h2>Basic features</h2>
           <UnorderedList>
             <ListItem>Send files up to 2gb</ListItem>
             <ListItem>See who viewed your file</ListItem>
             <ListItem>See who downloaded your file</ListItem>
-            <ListItem>70 days of file storage</ListItem>
+            <ListItem>7 days of file storage</ListItem>
           </UnorderedList>
+          <h2>Click below to get 70 day file storage</h2> <Stripe />
         </TextDiv>
-      </ProMembershipDiv>
+      </BasicMembershipDiv>
     );
   }
-  return (
-    <BasicMembershipDiv>
-      <TextDiv>
-        <h1>Membership Level: Basic</h1>
-        <h2>Basic features</h2>
-        <UnorderedList>
-          <ListItem>Send files up to 2gb</ListItem>
-          <ListItem>See who viewed your file</ListItem>
-          <ListItem>See who downloaded your file</ListItem>
-          <ListItem>7 days of file storage</ListItem>
-        </UnorderedList>
-        <h2>Click below to get 70 day file storage</h2> <StripeDiv><Stripe /></StripeDiv>
-      </TextDiv>
-    </BasicMembershipDiv>
-  );
+
+  return <></>;
+
 };
 
 export default Billing;
