@@ -2,39 +2,25 @@ body {
     background: #444;
   }
   
-
-  #backgroundImage {
-
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    /* height: 100%; */
-    /* background: url(Blue.jpg); */
-    background-repeat: no-repeat;
-    /* background-size: 100%; */
-    /* background-size:cover; */
-    background-attachment: fixed;
-    /* display: grid; */
-    height: 2000px;
-    /* max-width: 100%; */
-    overflow: hidden;
-    position: relative;
-    
-  }
-  
   
   .play-btn {
-    width: 250px;
-    height: 250px;
-    /* width: 100%; */
-    min-width: 200px;
+    width: 300px;
+    height: 300px;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+
+    /* min-height: 200px;
+    min-width: 200px; */
+    max-height: 300px;
     max-width: 300px;
     background: radial-gradient( rgba(255, 255, 255, 0.8) 60%, rgb(63, 178, 255) 62%);
     border-radius: 50%;
     position: relative;
     display: block;
-    margin: 100px;
+    margin: 10px;
     box-shadow: 0px 0px 25px 3px rgb(63, 178, 255);
   }
   
