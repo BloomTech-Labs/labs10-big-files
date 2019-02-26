@@ -42,6 +42,8 @@ const Stripe = () => {
       alert("Payment Success");
       // setPaid(true);
       changeDBStatustoPaid()
+      //may need to set this up as a promise if changedbstatustopaid doesn't complete before page reloads
+      window.location.reload();
       })
       .catch(error => {
         console.log("Payment Error: ", error);

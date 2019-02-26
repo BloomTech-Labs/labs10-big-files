@@ -1,12 +1,11 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
+import { FilePond } from "react-filepond";
+import "filepond/dist/filepond.min.css";
 // import { Link } from "react-router-dom";
 
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
-
-
-
-
+import Axios from "axios";
 const CreateEditDiv = styled.div`
   padding-left: 2%;
   padding-right: 2%;
@@ -21,8 +20,7 @@ const CreateEditDiv = styled.div`
   border-radius: 10%;
 `;
 
-const CreateFileHolder = styled.div`
-`;
+const CreateFileHolder = styled.div``;
 
 const FileName = styled.input`
   margin-left: 1%;
@@ -39,8 +37,10 @@ const VersionBrowserHolder = styled.div``;
 const ConfirmButtons = styled.div``;
 
 const CreateFile = () => {
+  const handleInit = () => {
+    console.log("FilePond instance has initialised", this.pond);
+  };
   return (
-    
     <CreateEditDiv>
       <CreateFileHolder>
         <span>File Name: </span>
@@ -49,14 +49,21 @@ const CreateFile = () => {
         <span>Share with:</span>
         <FileName type="text" placeholder="Comma separate emails" />
         <br />
-yarn
+
         <span>Shared with history:</span>
 
         <SharedWithBox />
       </CreateFileHolder>
       <UploadButtonHolder>
         <br />
-        <input type="file" id="myFile" />
+        {/* <input type="file" id="myFile" /> */}
+
+        <FilePond
+          allowMultiple={false}
+          maxFiles={1}
+          server="http://localhost:5000/api/s3/files/"
+        />
+
         <br />
       </UploadButtonHolder>
       <ShareLinkHolder>
@@ -72,7 +79,6 @@ yarn
         <button>Save</button>
       </ConfirmButtons>
     </CreateEditDiv>
-    
   );
 };
 

@@ -1,13 +1,14 @@
 import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";   
+import Splash from "../components/keithsCrazyButton";
 
 const LandingContainerDiv = styled.div`
   width: 100%;
   height: auto;
   min-height: 100vh;
   margin: 0 auto;
-   background-image: url("http://get.addonreviews.com/cmsimages/lp/fileshare/cloudbackground.jpg");
+   background-image: url("https://images.unsplash.com/photo-1524122209929-5bc27bd9c250?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80");
   background-size: 100% 100%;
 `;
 
@@ -17,6 +18,7 @@ const LandingCardsContainer = styled.div`
   margin: 0 auto;
   display: flex;
   justify-content: center;
+  align-items: center;
   text-align: center;
 `;
 
@@ -57,14 +59,13 @@ const FileTransferButton = styled.button`
 export const LandingView = props => { 
   return (
     <LandingContainerDiv>
-      <TextContainer>
+
+      <LandingCardsContainer>
+        <LandingCards> 
+       <TextContainer>
         <h1>Send Big Files</h1>
         <h2>Send your files quickly and easily</h2>
       </TextContainer>
-      <LandingCardsContainer>
-        <LandingCards> 
- 
-          <h2>Big File Transfer Basic</h2>
  
           <UnorderedList>
             <ListItem>Send files up to 2gb</ListItem>
@@ -89,6 +90,7 @@ export const LandingView = props => {
           </div>
         </LandingCards>
       </LandingCardsContainer>
+      {/* <Splash/> */}
     </LandingContainerDiv>
   );
 };
