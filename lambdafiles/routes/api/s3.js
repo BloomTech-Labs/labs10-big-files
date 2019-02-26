@@ -108,7 +108,9 @@ router.put("/files", (req, res) => {
 		console.log("Error: No File Selected!");
 		res.json("Error: No File Selected");
 	    } else {
-		client.query(`UPDATE files SET url = '${req.file.location}' WHERE file_id = (select MAX(file_id) FROM files) `)
+        client.query(`UPDATE files SET url = '${req.file.location}' 
+        WHERE file_id = (select MAX(file_id) FROM files)
+        RETURNING file_id  `)
 		    .then(result => {
 			res.status(200).json(result);
 		    })
@@ -145,7 +147,7 @@ const paidFileUpload = multer({
   limits: { fileSize: 4000000 } // In bytes: 4000000 bytes = 4 MB
 }).single("fileUpload");
 
-// ROUTE TO UPLOAD FILE
+// ROUTE TO UPLOAD FILE PAID USER?
 router.post("/paidfiles/id", (request, res) => {
     console.log("RB", request.body);
     const { fk_user_id, filename } = request.body;
