@@ -4,18 +4,15 @@ import styled, { keyframes } from 'styled-components';
 // import Features from './Features';
 // import Pricing from './Pricing';
 
-// import Blue from "./Blue.jpg"
+import Blue from "./Blue.jpg"
+import Beach from "./Beach.jpg"
 
 import './CTAButton.css'
 
-const Splash = ({ auth }) => {
-  function login() {
-    auth.signIn();
-  }
+const Splash = () => {
 
-  // Background = "./Sky.jpg"
   const imageStyle = {
-    // backgroundImage: `url(${Blue})`,
+    backgroundImage: `url(${Blue})`,
     // position: "fixed",
     top: "0",
     left: "0",
@@ -39,13 +36,18 @@ const Splash = ({ auth }) => {
     <WrapperContainer style={ imageStyle }>
       <Header>
         <JumboTron>
-          <div>
+          <LeftColumn>
             <h1>Send files quick and easy.</h1>
             <h1>Blah blah blah blah blah blah</h1>
-    
             <a className="play-btn" href="/login"> </a>
 
-          </div>
+          </LeftColumn>
+          <RightColumn>
+            <h1>1 Drag-and-drop or click to select a file</h1>
+            <h1>2 Enter email addresses</h1>
+            <h1>3 Send!orem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsuorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsuorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsu  </h1>
+
+          </RightColumn>
           {/* <CTAButtonsGroup>
             <CTABtn onClick={login}>Sign up</CTABtn>
             <a href="#why">
@@ -93,43 +95,51 @@ height: 100%;
 `;
 
 const JumboTron = styled.div`
-padding: 5% 10%;
+  display: flex;
+  // padding: 5% 10%;
   // height: 55vh;
-  background-size: cover;
-  background-position: center bottom;
   letter-spacing: 1px;
   color: white;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  // flex-direction: row;
+  // justify-content: space-between;
 
-  &::before {
-    background-size: cover;
-    content: "";
-    display: block;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    // height: 65vh;
-    z-index: -2;
-    opacity: 0.2;
-    }
+  // &::before {
+  //   background-size: cover;
+  //   content: "";
+  //   display: block;
+  //   position: absolute;
+  //   top: 0;
+  //   left: 0;
+  //   width: 100%;
+  //   // height: 65vh;
+  //   z-index: -2;
+  //   opacity: 0.2;
+  //   }
 
-    div {
-      max-width: 700px;
-      width: 100%;
-    }
+    // div {
+    //   max-width: 700px;
+    //   width: 100%;
+    // }
 
-    h1 {
-      font-size: 38px;
-    }
+    // h1 {
+    //   font-size: 38px;
+    // }
 
-    p {
-      margin-top: 30px;
-      line-height: 25px;
-    }
+    // p {
+    //   margin-top: 30px;
+    //   line-height: 25px;
+    // }
 `;
+
+const LeftColumn = styled.div`
+  width: 40%;
+  position: fixed;
+`
+const RightColumn = styled.div`
+  width: 60%;
+  left: 40%
+  position: relative;
+`
 
 const Body = styled.div`
   position: relative;
