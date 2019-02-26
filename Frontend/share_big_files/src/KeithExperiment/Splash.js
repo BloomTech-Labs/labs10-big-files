@@ -6,9 +6,9 @@ import Features from './Features';
 import Blue from "./Blue.jpg"
 import Beach from "./Beach.jpg"
 import Water from "./Water.jpg"
-import Pine from "./Pine.jpg"
-import Gray from "./Gray.jpg"
-import Grapes from "./Grapes.jpg"
+// import Pine from "./Pine.jpg"
+// import Gray from "./Gray.jpg"
+// import Grapes from "./Grapes.jpg"
 
 import './CTAButton.css'
 
@@ -20,6 +20,9 @@ var myArray = [
   // Gray,
   // Grapes
 ];
+
+
+
 
 let randomImage = myArray[Math.floor(Math.random()*myArray.length)];
 
