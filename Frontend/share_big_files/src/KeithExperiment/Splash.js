@@ -21,10 +21,8 @@ var myArray = [
   // Grapes
 ];
 
-
-
-
 let randomImage = myArray[Math.floor(Math.random()*myArray.length)];
+
 
 const Splash = () => {
 

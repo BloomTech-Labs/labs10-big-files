@@ -2,7 +2,6 @@ body {
     background: #444;
   }
   
-  
   .play-btn {
     width: 300px;
     height: 300px;
@@ -16,7 +15,7 @@ body {
     min-width: 200px; */
     max-height: 300px;
     max-width: 300px;
-    background: radial-gradient( rgba(255, 255, 255, 0.8) 60%, rgb(63, 178, 255) 62%);
+    background: radial-gradient( rgba(255, 255, 255, 1) 60%, rgb(63, 178, 255) 62%);
     border-radius: 50%;
     position: relative;
     display: block;
@@ -32,11 +31,11 @@ body {
   /* triangle */
   .play-btn::after {
     /* background: url(Upload.svg); */
-    content: "SEND";
+    content: "START";
     font-size: 5em;
     color: white;
     position: absolute;
-    left: 29%;
+    left: 26%;
     top: 40%;
     -webkit-transform: translateX(-40%) translateY(-50%);
     transform: translateX(-40%) translateY(-50%);
