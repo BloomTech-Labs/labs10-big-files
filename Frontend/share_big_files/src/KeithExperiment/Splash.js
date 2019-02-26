@@ -49,8 +49,9 @@ const Splash = () => {
         <JumboTron>
           <LeftColumn>
             <br/><br/>
+            <h1>MoveBytes</h1>
             <h1>Send files quick and easy.</h1>
-            <br/><br/><br/><br/><br/><br/><br/><br/>
+            <br/><br/><br/><br/><br/><br/>
             <CTA className="play-btn" href="/login"> </CTA>
 
           </LeftColumn>

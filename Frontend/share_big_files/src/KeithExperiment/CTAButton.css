@@ -26,6 +26,7 @@ body {
   
   .play-btn:hover {
     background: black;
+    color: white;
   }
 
   /* triangle */
