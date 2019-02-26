@@ -12,14 +12,26 @@ const LeftMenuHolder = styled.div`
   display: flex;
   align-items: center;
   background-color: white;
+  @media(max-width: 390px) {
+    width: 95%;
+    margin: 0 auto;
+    height: 40rem;
+  }
 `;
 const LeftMenuOptions = styled.div`
   margin: 0 auto;
   line-height: 0.5;
+  @media(max-width: 390px) {
+    display: column;
+  }
 `;
 const LinkStyles = styled.h1`
   color: #41d0f4;
   font-size: 2rem;
+  @media(max-width: 390px) {
+    font-size: 3rem;
+    margin: 45% 0 45% 0;
+  }
 `;
 
 const LeftMenu = () => {
