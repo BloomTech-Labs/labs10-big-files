@@ -6,12 +6,10 @@ const pg = require("pg");
 var client = new pg.Client(process.env.RDS_SECRET);
 client.connect();
 
-router.get("/hi", (req, res) => {
-    res.send("Hello, world");
-  });
 
+//GET ALL DOWNLOADS
 router.get("/", async (req, res) => {
-    client.query(`SELECT * FROM files`)
+    client.query(`SELECT * FROM downloads`)
 	.then(result => {
 	    res.status(200).json(result.rows);
 	})
@@ -21,15 +19,15 @@ router.get("/", async (req, res) => {
 	})
 });
 
+
+//CREATE NEW DOWNLOAD
 router.post("/", (request, res) => {
-    console.log("RequestB", request.body);
-    const { filename, file_size, URLs, upload_date, file_id, FK_user_id} = request.body;
-    client.query(`INSERT INTO files (
-		filename, file_size, URL, upload_date, file_id, FK_user_id)
-    VALUES ($1, $2, $3, $4, $5, $6)`,[filename, file_size, URL, upload_date, file_id, FK_user_id])
+	const {fk_file_id, user_id, fk_username} = request.body;
+	
+    client.query(`INSERT INTO downloads (fk_file_id, user_id, fk_username)
+    VALUES ($1, $2, $3)`,[fk_file_id, user_id, fk_username])
 	.then(result => {
 	    res.status(200).json(result);
-	    // process.exit();
 	})
 	.catch(e => {
 	    console.error(e.detail),
@@ -38,21 +36,33 @@ router.post("/", (request, res) => {
 });
 
 
-// router.delete("/files", (request, res) => {
-//     console.log("RequestB", request.body);
-//     const { filename, file_size, URLs, upload_date, file_id, FK_user_id} = request.body;
-//     client.query(`INSERT INTO files (
-// 		filename, file_size, URL, upload_date, file_id, FK_user_id)
-//     VALUES ($1, $2, $3, $4, $5, $6)`,[filename, file_size, URL, upload_date, file_id, FK_user_id])
-// 	.then(result => {
-// 	    res.status(200).json(result);
-// 	    // process.exit();
-// 	})
-// 	.catch(e => {
-// 	    console.error(e.detail),
-// 	    res.send(e)
-// 	})
-// });
+//DELETE DOWNLOAD BY DOWNLOAD_ID
+router.delete("/:id", (request, res) => {
+    const downloadID = parseInt(request.params.id)
+    client.query(`DELETE FROM downloads WHERE download_id = $1`,[downloadID])
+	.then(result => {
+	    res.status(200).json(result);
+	})
+	.catch(e => {
+	    console.error(e),
+	    res.send(e)
+	})
+});
 
+//UPDATE DOWNLOAD BY DOWNLOAD_ID
+router.put("/:id", (request, res) => {
+	const downloadID = parseInt(request.params.id)
+	const { fk_file_id, user_id, fk_username } = request.body;
+
+	console.log("RB", request.body);
+	client.query(`UPDATE downloads SET fk_file_id = $1, user_id = $2, fk_username = $3 
+	WHERE download_id = $4 RETURNING fk_file_id, user_id, fk_username`, [fk_file_id, user_id, fk_username, downloadID])
+	  .then(result => {
+		res.status(200).json(result);
+	  })
+	  .catch(e => {
+		console.error(e.detail), res.send(e);
+	  });
+  });
 
 module.exports = router;
