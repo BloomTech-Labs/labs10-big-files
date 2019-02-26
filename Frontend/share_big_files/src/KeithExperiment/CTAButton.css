@@ -24,21 +24,27 @@ body {
     box-shadow: 0px 0px 25px 3px rgb(63, 178, 255);
   }
   
+  .play-btn:hover {
+    background: black;
+  }
+
   /* triangle */
   .play-btn::after {
     /* background: url(Upload.svg); */
-    content: "";
+    content: "SEND";
+    font-size: 5em;
+    color: white;
     position: absolute;
-    left: 50%;
-    top: 50%;
+    left: 29%;
+    top: 40%;
     -webkit-transform: translateX(-40%) translateY(-50%);
     transform: translateX(-40%) translateY(-50%);
-    transform-origin: center center;
+    /* transform-origin: center center; */
     width: 0;
     height: 0;
-    border-top: 15px solid transparent;
+    /* border-top: 15px solid transparent;
     border-bottom: 15px solid transparent;
-    border-left: 25px solid #fff;
+    border-left: 25px solid #fff; */
     z-index: 100;
     -webkit-transition: all 400ms cubic-bezier(0.55, 0.055, 0.675, 0.19);
     transition: all 400ms cubic-bezier(0.55, 0.055, 0.675, 0.19);
