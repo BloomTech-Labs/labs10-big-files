@@ -94,33 +94,12 @@ router.post("/files/id", (request, res) => {
 	});
     // .then(() => client.end())
 });
-=======
-router.post("/files/id", (request, res) => {
-	console.log("RB", request.body);
-	const { fk_user_id } = request.body;
-	client.query(
-		`INSERT INTO files (fk_user_id) VALUES ($1) RETURNING file_id`, [fk_user_id])
-	  .then(result => {
-		res.status(200).json(result.rows);
-		// process.exit();
-	  })
-	  .catch(e => {
-		console.error(e.detail), res.send(e);
-	  });
-	// .then(() => client.end())
-  });
->>>>>>> master
 
 // (POST FK —> PUT URL)
 // ROUTE TO UPLOAD FILE
 router.put("/files", (req, res) => {
-<<<<<<< HEAD
     console.log("REQ", req);
     console.log("REQ_BODY", req.body);
-=======
-	console.log("REQ", req)
-	console.log("REQ_BODY", req.body)
->>>>>>> master
     fileUpload(req, res, error => {
 	if (error) {
 	    console.log("errors:", error);
@@ -136,11 +115,7 @@ router.put("/files", (req, res) => {
 			res.status(200).json(result);
 		    })
 		    .catch(e => {
-<<<<<<< HEAD
 			console.error(e.detail), res.send(e);
-=======
-			console.error(e), res.send(e);
->>>>>>> master
 		    });
 	    }
 	}
@@ -231,8 +206,3 @@ router.delete("/files/delete/:id", (req, res) => {
 });
 
 module.exports = router;
-<<<<<<< HEAD
-=======
-
-// NOTES
->>>>>>> master
