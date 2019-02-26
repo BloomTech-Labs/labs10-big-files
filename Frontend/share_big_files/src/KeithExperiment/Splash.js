@@ -3,39 +3,48 @@ import styled, { keyframes } from 'styled-components';
 
 import Features from './Features';
 
-
 import Blue from "./Blue.jpg"
 import Beach from "./Beach.jpg"
+import Water from "./Water.jpg"
+import Pine from "./Pine.jpg"
+import Gray from "./Gray.jpg"
+import Grapes from "./Grapes.jpg"
 
 import './CTAButton.css'
+
+var myArray = [
+  Blue,
+  Beach,
+  Water,
+  Pine,
+  Gray,
+  Grapes
+];
+
+let randomImage = myArray[Math.floor(Math.random()*myArray.length)];
 
 const Splash = () => {
 
   const imageStyle = {
-    backgroundImage: `url(${Beach})`,
-    // position: "absolute",
+    backgroundImage: `url(${randomImage})`,
     top: "0",
     left: "0",
     width: "100%",
-    // height: "auto",
-    // objectFit: "none",
     backgroundRepeat: "no-repeat",
-    // backgroundSize: "100%",
-    
     backgroundSize: "cover",
     backgroundAttachment: "fixed",
-  
+    overflow: "hidden",
+    // position: "absolute",
+    // objectFit: "none",
+    // backgroundSize: "100%",
     // backgroundPosition: "center center",
     // display: "grid",
-    // height: "2000px",
-    // maxWidth: "100%",
-    overflow: "hidden",
-    // position: "relative",
   };
   
 
   return (
     <WrapperContainer style={ imageStyle }>
+    {console.log("RandImage", randomImage)}
       <Header>
         <JumboTron>
           <LeftColumn>
@@ -76,8 +85,8 @@ export default Splash
 
 const WrapperContainer = styled.div`
 height: 100%;
+padding: 30px;
 
-// margin: 30px;
 @media (max-width: 540px) {
   h1 {
     font-size: 28px;

@@ -3,21 +3,21 @@ import styled from 'styled-components';
 
 const Features = () => {
     return (
-        <LandingFeatures id="features">
+        <SplashFeatures id="features">
             <h2>
                
             </h2>
-        </LandingFeatures>
+        </SplashFeatures>
     )
 }
 
 export default Features
 
-const LandingFeatures = styled.div`
+const SplashFeatures = styled.div`
 background: #525A65;
 // padding-top: 55px;
 // border: 1px solid pink;
 height: 100vh;
 width: 100%;
-z-index: -2;
+opacity: .5;
 `;
