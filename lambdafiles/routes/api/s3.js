@@ -65,8 +65,6 @@ router.get('/files', (req, res) => {
     });
 });
 
-
-<<<<<<< HEAD
 router.get('/files/:id', (req, res) => {
     const fileID = req.params.id;
     client.query(`SELECT * FROM files WHERE file_id = ${fileID}`)
