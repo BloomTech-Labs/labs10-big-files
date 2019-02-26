@@ -7,7 +7,6 @@ import styled, { keyframes } from 'styled-components';
 import Blue from "./Blue.jpg"
 
 import './CTAButton.css'
-require('./Sky.jpg')
 
 const Splash = ({ auth }) => {
   function login() {
