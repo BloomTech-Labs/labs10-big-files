@@ -12,14 +12,13 @@ const BillingPage = styled.div`
   min-height: 100vh;
   margin: 0 auto;
   background-image: url("http://get.addonreviews.com/cmsimages/lp/fileshare/cloudbackground.jpg");
+
   background-size: 100% 100%;
   @media(max-width: 390px) {
     width: 100%;
   }
 
 `;
-
-
 
 
 const MenuBillingDiv = styled.div`
@@ -30,16 +29,15 @@ const MenuBillingDiv = styled.div`
   }
 `;
 
-
 const BillingHolder = () => {
   return (
-      <BillingPage>
+    <BillingPage>
       <NavHeader />
       <MenuBillingDiv>
-      <LeftMenu />
-      <Billing />
+        <LeftMenu />
+        <Billing />
       </MenuBillingDiv>
-      </BillingPage>
-  )
+    </BillingPage>
+  );
 };
 export default BillingHolder;
