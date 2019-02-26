@@ -13,13 +13,21 @@ const BillingPage = styled.div`
   margin: 0 auto;
   background-image: url("http://get.addonreviews.com/cmsimages/lp/fileshare/cloudbackground.jpg");
   background-size: 100% 100%;
-  @media(max-width: 376px)
+  @media(max-width: 390px) {
+    width: 100%;
+  }
+
 `;
+
 
 
 
 const MenuBillingDiv = styled.div`
   display: flex;
+  @media(max-width: 390px) {
+    width: 100%;
+    flex-direction: column;
+  }
 `;
 
 

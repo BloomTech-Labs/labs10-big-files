@@ -13,24 +13,58 @@ const BillingDiv = styled.div`
 const BasicMembershipDiv = styled.div`
   height: auto;
   width: auto;
-  min-width: 44rem;
+  width: 44rem;
   margin-left: 2%;
   border-radius: 10px;
   background: rgba(255, 255, 255, 0.5);
+  @media(max-width: 390px) {
+    width: 95%;
+    margin: 0 auto;
+  }
 `;
 
 const ProMembershipDiv = styled.div`
   height: auto;
   width: auto;
-  min-width: 37rem;
+  width: 37rem;
   margin-left: 2%;
   border-radius: 10px;
   background: rgba(255, 255, 255, 0.5);
+  @media(max-width: 390px) {
+    width: 75%;
+    margin: 0 auto;
+  }
 `;
 
 const TextDiv = styled.div`
   width: fit-content;
   padding: 0 5%;
+  @media(max-width: 390px) {
+    max-width: 85%;
+    margin: 0 auto;
+  }
+`;
+const Header1 = styled.h1`
+// width: 100%;
+margin-left: 20%;
+// border-bottom: 2px solid black;
+@media(max-width: 390px) {
+  
+  // margin-left: 10%;
+}
+`;
+const Header2 = styled.h2`
+margin-left: 45%;
+@media(max-width: 390px) {
+  margin-left: 40%;
+}
+`;
+const Header3 = styled.h2`
+margin-left: 35%;
+@media(max-width: 390px) {
+  
+  margin-left: 25%;
+}
 `;
 
 const UnorderedList = styled.ul`
@@ -39,6 +73,9 @@ const UnorderedList = styled.ul`
 `;
 const StripeDiv = styled.div`
   margin-left: 35%;
+  @media(max-width: 390px) {
+    margin: 0 0 2% 30%;
+  }
 `;
 
 const ListItem = styled.li``;
@@ -117,8 +154,13 @@ const Billing = () => {
       return (
         <ProMembershipDiv>
           <TextDiv>
-            <h1>Membership Level: Pro</h1>
-            <h2>Pro features</h2>
+            <Header1>
+            <h1>Membership Level:</h1>
+            <h2>Pro</h2>
+            </Header1>
+            <Header3>
+              <h3>Pro features</h3>
+              </Header3>
             <UnorderedList>
               <ListItem>Send files up to 2gb</ListItem>
               <ListItem>See who viewed your file</ListItem>
@@ -132,15 +174,22 @@ const Billing = () => {
     return (
       <BasicMembershipDiv>
         <TextDiv>
-          <h1>Membership Level: Basic</h1>
-          <h2>Basic features</h2>
+          <Header1>
+            <h1>Membership Level:</h1>
+            </Header1>
+            <Header2>
+            <h2>Basic</h2>
+            </Header2>
+          <Header3>
+            <h2>Basic features</h2>
+          </Header3>
           <UnorderedList>
             <ListItem>Send files up to 2gb</ListItem>
             <ListItem>See who viewed your file</ListItem>
             <ListItem>See who downloaded your file</ListItem>
             <ListItem>7 days of file storage</ListItem>
           </UnorderedList>
-          <h2>Click below to get 70 day file storage</h2> <Stripe />
+          <h2>Click below to get 70 day file storage</h2> <StripeDiv><Stripe /></StripeDiv>
         </TextDiv>
       </BasicMembershipDiv>
     );
