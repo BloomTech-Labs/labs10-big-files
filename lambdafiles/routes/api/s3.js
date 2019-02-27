@@ -80,9 +80,9 @@ router.get('/files/:id', (req, res) => {
 
 router.post("/files/id", (request, res) => {
     console.log("RB", request.body);
-    const { fk_user_id, filename } = request.body;
+    const { fk_email, filename } = request.body;
     client.query(
-	`INSERT INTO files (fk_user_id, filename) VALUES ($1, $2) RETURNING file_id`, [fk_user_id, filename])
+	`INSERT INTO files (fk_email, filename) VALUES ($1, $2) RETURNING file_id`, [fk_email, filename])
 	.then(result => {
 	    res.status(200).json(result.rows);
 	    // process.exit();
