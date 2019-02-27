@@ -77,7 +77,9 @@ const StripeDiv = styled.div`
   }
 `;
 
-const ListItem = styled.li``;
+const ListItem = styled.li`
+
+`;
 
 const PaymentInfoHolder = styled.div``;
 const Subscriptions = styled.div`
@@ -158,12 +160,12 @@ const Billing = () => {
             <Header3>
               <h3>Pro features</h3>
               </Header3>
-            <UnorderedList>
+            <div>
               <ListItem>Send files up to 2gb</ListItem>
               <ListItem>See who viewed your file</ListItem>
               <ListItem>See who downloaded your file</ListItem>
               <ListItem>70 days of file storage</ListItem>
-            </UnorderedList>
+            </div>
           </TextDiv>
         </ProMembershipDiv>
       );
@@ -180,12 +182,12 @@ const Billing = () => {
           <Header3>
             <h2>Basic features</h2>
           </Header3>
-          <UnorderedList>
+          <div>
             <ListItem>Send files up to 2gb</ListItem>
             <ListItem>See who viewed your file</ListItem>
             <ListItem>See who downloaded your file</ListItem>
             <ListItem>7 days of file storage</ListItem>
-          </UnorderedList>
+          </div>
           <h2>Click below to get 70 day file storage</h2> <StripeDiv><Stripe /></StripeDiv>
         </TextDiv>
       </BasicMembershipDiv>
