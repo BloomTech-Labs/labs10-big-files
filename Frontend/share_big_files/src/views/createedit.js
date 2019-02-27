@@ -45,7 +45,7 @@ const CreateFile = () => {
     const formData = new FormData();
     formData.append("fileUpload", file[0]);
     axios
-      .post("http://localhost:5000/api/s3/files", formData, {
+      .post("https://api.backendproxy.com/api/s3/files", formData, {
         headers: {
           "Content-Type": "multipart/form-data"
         }
