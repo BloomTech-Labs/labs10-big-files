@@ -1,7 +1,8 @@
 import React from "react";
 import styled from "styled-components";
-import { Link } from "react-router-dom";   
-import Splash from "../components/keithsCrazyButton";
+import { Link } from "react-router-dom";    
+
+
 
 const LandingContainerDiv = styled.div`
   width: 100%;
@@ -97,8 +98,7 @@ export const LandingView = props => {
             <FileTransferButton onClick={props.lockOpen}>Use File Transfer Pro</FileTransferButton>
           </div>
         </LandingCards>
-      </LandingCardsContainer>
-      {/* <Splash/> */}
+      </LandingCardsContainer> 
     </LandingContainerDiv>
   );
 };

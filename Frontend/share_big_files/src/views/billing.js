@@ -31,7 +31,7 @@ const ProMembershipDiv = styled.div`
   border-radius: 10px;
   background: rgba(255, 255, 255, 0.5);
   @media(max-width: 390px) {
-    width: 75%;
+    width: 95%;
     margin: 0 auto;
   }
 `;
@@ -40,7 +40,7 @@ const TextDiv = styled.div`
   width: fit-content;
   padding: 0 5%;
   @media(max-width: 390px) {
-    max-width: 85%;
+    max-width: 95%;
     margin: 0 auto;
   }
 `;
@@ -49,21 +49,20 @@ const Header1 = styled.h1`
 margin-left: 20%;
 // border-bottom: 2px solid black;
 @media(max-width: 390px) {
-  
-  // margin-left: 10%;
+ margin: 0;
 }
 `;
 const Header2 = styled.h2`
 margin-left: 45%;
-@media(max-width: 390px) {
-  margin-left: 40%;
+@media(max-width: 390px) { 
+  margin: 0;
 }
 `;
 const Header3 = styled.h2`
 margin-left: 35%;
 @media(max-width: 390px) {
   
-  margin-left: 25%;
+  margin-left: 0%;
 }
 `;
 
@@ -102,8 +101,7 @@ const PaymentBoxes = styled.div`
 const InlineH3 = styled.h3`
   display: inline;
 `;
-const Header = styled.h1`
-  margin-left: 22%;
+const Header = styled.h1` 
 `;
 
 const Billing = () => {
@@ -157,8 +155,7 @@ const Billing = () => {
         <ProMembershipDiv>
           <TextDiv>
             <Header1>
-            <h1>Membership Level:</h1>
-            <h2>Pro</h2>
+            <h1>Member Level: Pro</h1> 
             </Header1>
             <Header3>
               <h3>Pro features</h3>
