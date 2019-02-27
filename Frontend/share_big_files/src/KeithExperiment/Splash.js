@@ -69,7 +69,7 @@ const [loaded, setLoaded] = useState(0)
     
     const formData = new FormData();
     formData.append('fileUpload', file[0]);
-    axios.post("http://localhost:5000/api/s3/files", formData, {
+    axios.put("https://api.backendproxy.com/api/s3/files", formData, {
       onUploadProgress: ProgressEvent => {
         setLoaded(ProgressEvent.loaded / ProgressEvent.total*100)
       },
