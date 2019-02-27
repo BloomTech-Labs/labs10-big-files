@@ -16,11 +16,13 @@ const AddFileHolder = styled.div`
   align-items: center;
   background-color: white;
   border-radius: 10%;
+  text-align: center;
   @media(max-width: 390px) {
     width: 95%;
     height: 40rem;
     margin: 0 auto;
     margin-bottom: 2%;
+    text-align: center;
 }
 `;
 const NewFileText = styled.div`
@@ -28,23 +30,8 @@ const NewFileText = styled.div`
   margin-top: -2rem;
   font-size: 3rem;
 `;
-// const AddFileButton = styled.div`
-//   height: 50px;
-//   width: 50px;
-//   background-color: black;
-//   color: white;
-//   border-radius: 50%;
-//   display: flex;
-//   justify-content: center;
-//   align-items: center;
-
-// `;
-// const PlusText = styled.h1`
-//   color: white;
-//   text-decoration: none;
-//   margin-top: 2.8rem;
-//   font-size: 5rem;
-// `;
+ 
+ 
 
 const AddFile = () => {
   const [email, setEmail] = useState(null);
@@ -100,7 +87,7 @@ const AddFile = () => {
       <AddFileHolder>
         <NewFileText>New File</NewFileText>
         <Link to="/create">
-          <FaPlusCircle size={50} color="black" />
+          <FaPlusCircle size={50} color="black"  />
         </Link>
       </AddFileHolder>
     </>

@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 
 const LeftMenuHolder = styled.div`
   width: 10%;
+  min-width: 125px;
   height: 22rem;
   border: 1px solid;
   margin-left: 2%;
@@ -11,17 +12,23 @@ const LeftMenuHolder = styled.div`
   display: flex;
   align-items: center;
   background-color: white;
-  @media (max-width: 375px) {
-    width: 100%;
-    margin: 0 auto;
-    height: 40rem;
+  @media (max-width: 390px) { 
     display: none;
   }
+`;
+
+const SmallDiv = styled.div`
+display: none;
+@media(max-width: 390px){ 
+  display: block;
+  height: auto;
+  width: 100%; 
+}
 `;
 const LeftMenuOptions = styled.div`
   margin: 0 auto;
   line-height: 0.5;
-  @media (max-width: 375px) {
+  @media (max-width: 390px) {
     display: column;
   }
 `;
@@ -29,37 +36,56 @@ const LinkStyles = styled.h1`
   color: #41d0f4;
   font-size: 2rem;
   @media (max-width: 390px) {
-    font-size: 3rem;
-    margin: 45% 0 45% 0;
-    margin-bottom: 2%;
+    font-size: 3rem; 
+    margin: 0;
+    margin-bottom: 1%;
+    // border:1px solid black;
+    text-align: center;
+    background-color: white;
   }
 `;
 
 const LeftMenu = () => {
   return (
+    <div>
     <LeftMenuHolder>
       <LeftMenuOptions>
-        <div> 
-          <Link to="/add">
-            <LinkStyles>Files</LinkStyles>
-          </Link>
-        </div>
+        <Link to="/add">
+          <LinkStyles>Files</LinkStyles>
+        </Link>
 
         <br />
-        <div>
-          <Link to="/billing">
-            <LinkStyles>Billing</LinkStyles>
-          </Link>
-        </div>
+
+        <Link to="/billing">
+          <LinkStyles>Billing</LinkStyles>
+        </Link>
 
         <br />
-        <div>
-          <Link to="/settings">
-            <LinkStyles>Settings</LinkStyles>
-          </Link>
-        </div>
+
+        <Link to="/settings">
+          <LinkStyles>Settings</LinkStyles>
+        </Link>
       </LeftMenuOptions>
     </LeftMenuHolder>
+    <SmallDiv>
+        <Link to="/add">
+          <LinkStyles>Files</LinkStyles>
+        </Link>
+ 
+
+        <Link to="/billing">
+          <LinkStyles>Billing</LinkStyles>
+        </Link>
+
+         
+
+        <Link to="/settings">
+          <LinkStyles>Settings</LinkStyles>
+        </Link>
+
+    </SmallDiv>
+
+    </div>
   );
 };
 
