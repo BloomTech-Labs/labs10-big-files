@@ -1,6 +1,6 @@
 On hover effect
 
-Info page add
+Price page add
 
 Remove vertical scrollbar
 

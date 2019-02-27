@@ -27,6 +27,7 @@ let randomImage = myArray[Math.floor(Math.random()*myArray.length)];
 
 const Splash = () => {
 const [file, setFile] = useState(null)
+const [loaded, setLoaded] = useState(0)
 
 
 // useEffect(() => console.log(paid))
@@ -60,16 +61,26 @@ const [file, setFile] = useState(null)
     
   }
 
+
   function submitFile(event) {
+    console.log('event:', event)
+    console.log('file:', file)
     event.preventDefault();
+    
     const formData = new FormData();
-    formData.append('file', this.state.file[0]);
-    axios.post(`/http://localhost:5000/api/s3/files`, formData, {
+    formData.append('fileUpload', file[0]);
+    axios.post("http://localhost:5000/api/s3/files", formData, {
+      onUploadProgress: ProgressEvent => {
+        setLoaded(ProgressEvent.loaded / ProgressEvent.total*100)
+      },
       headers: {
         'Content-Type': 'multipart/form-data'
       }
     }).then(response => {
-      // handle your response;
+        console.log(response.statusText)
+        // response.send(response.data)
+        console.log("Let's check it out", response.data)
+        // handle your response;
     }).catch(error => {
       // handle your error
     });
@@ -77,6 +88,7 @@ const [file, setFile] = useState(null)
 
   function handleFileUpload(event) {
     setFile(event.target.files);
+    setLoaded(0)
   }
 
 
@@ -104,10 +116,11 @@ const [file, setFile] = useState(null)
 
 
           <div>
-              <form onSubmit={() => submitFile()}>
+              <form onSubmit={submitFile}>
                 <input label='upload file' type='file' onChange={handleFileUpload} />
                 <button type='submit'>Send</button>
               </form>
+              <div> {Math.round(loaded, 2) } %</div>
           </div>
 
 
@@ -198,8 +211,11 @@ const LeftColumn = styled.div`
   align-items: center;
   `
   const CTA = styled.div`
+  cursor: pointer;
   display: flex;
-
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
 
 `
 const RightColumn = styled.div`
