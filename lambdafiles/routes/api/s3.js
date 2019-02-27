@@ -108,7 +108,7 @@ router.put("/files", (req, res) => {
 		console.log("Error: No File Selected!");
 		res.json("Error: No File Selected");
 	    } else {
-		client.query(`UPDATE files SET url = '${req.file.location}' WHERE file_id = (select MAX(file_id) FROM files) `)
+		client.query(`UPDATE files SET url = '${req.file.location}' WHERE file_id = (select MAX(file_id) FROM files) RETURNING url`)
 		    .then(result => {
 			res.status(200).json(result);
 		    })
