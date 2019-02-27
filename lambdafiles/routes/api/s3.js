@@ -265,4 +265,18 @@ router.delete("/files/delete/:id", (req, res) => {
 	});
 });
 
+router.get('/files/email', (req, res) => {
+    const userEmail = req.body.email;
+    console.log(userEmail);
+    client.query(`SELECT * FROM files WHERE fk_email LIKE '${userEmail}'`)
+        .then(result => {
+            res.status(200).json(result.rows);
+    })
+    .catch(e => {
+            console.error(e), res.send(e);
+    });
+});
+
+
+
 module.exports = router;
