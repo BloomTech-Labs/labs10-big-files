@@ -14,6 +14,9 @@ const CreatePage = styled.div`
 `;
 const CreateEditDiv = styled.div`
   display: flex;
+  @media(max-width: 390px) {
+    display: block;
+  }
 `;
 const CreateEditHolder = () => {
   return (

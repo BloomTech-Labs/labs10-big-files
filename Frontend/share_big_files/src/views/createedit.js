@@ -1,24 +1,26 @@
-// import React, { useEffect, useState } from "react";
-// import styled from "styled-components";
-// import { FilePond } from "react-filepond";
-// import "filepond/dist/filepond.min.css";
-// // import { Link } from "react-router-dom";
-
-// import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
-// import Axios from "axios";
-// const CreateEditDiv = styled.div`
-//   padding-left: 2%;
-//   padding-right: 2%;
-//   display: flex;
-//   flex-direction: column;
-//   height: 40rem;
-//   width: 31rem;
-//   margin-left: 4%;
-//   border: 2px solid red;
-//   line-height: 3;
-//   background-color: white;
-//   border-radius: 10%;
-// `;
+import React, { useEffect, useState } from "react";
+import styled from "styled-components";
+import { FilePond } from "react-filepond";
+import "filepond/dist/filepond.min.css";
+import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
+import axios from "axios";
+const CreateEditDiv = styled.div`
+  padding-left: 2%;
+  padding-right: 2%;
+  display: flex;
+  flex-direction: column;
+  height: 40rem;
+  width: 31rem;
+  margin-left: 4%;
+  border: 2px solid red;
+  line-height: 3;
+  background-color: white;
+  border-radius: 10%;
+  @media (max-width: 390px) {
+    width: 90%;
+    margin: 0 auto;
+  }
+`;
 
 // const CreateFileHolder = styled.div``;
 
@@ -31,38 +33,52 @@
 //   border: 1px solid #a8a8a8;
 // `;
 
-// const UploadButtonHolder = styled.div``;
-// const ShareLinkHolder = styled.div``;
-// const VersionBrowserHolder = styled.div``;
-// const ConfirmButtons = styled.div``;
+const ShareLinkHolder = styled.div``;
+const VersionBrowserHolder = styled.div``;
+const ConfirmButtons = styled.button``;
+const UploadButtonHolder =styled.div``;
 
-// const CreateFile = () => {
-//   const handleInit = () => {
-//     console.log("FilePond instance has initialised", this.pond);
-//   };
-//   return (
-//     <CreateEditDiv>
-//       <CreateFileHolder>
-//         <span>File Name: </span>
-//         <FileName type="text" placeholder="Name" />
-//         <br />
-//         <span>Share with:</span>
-//         <FileName type="text" placeholder="Comma separate emails" />
-//         <br />
+const CreateFile = () => {
+  const [file, setFile] = useState(null);
+  function submitFile(event) {
+    event.preventDefault();
+    const formData = new FormData();
+    formData.append("fileUpload", file[0]);
+    axios
+      .post("https://api.backendproxy.com/api/s3/files", formData, {
+        headers: {
+          "Content-Type": "multipart/form-data"
+        }
+      })
+      .then(response => {
+        console.log(response.statusText);
+      })
+      .catch(error => {});
+  }
+
+  function handleFileUpload(event) {
+    setFile(event.target.files);
+  }
+  return (
+    <CreateEditDiv>
+      <CreateFileHolder>
+        <span>File Name: </span>
+        <FileName type="text" placeholder="Name" />
+        <br />
+        <span>Share with:</span>
+        <FileName type="text" placeholder="Comma separate emails" />
+        <br />
 
 //         <span>Shared with history:</span>
 
-//         <SharedWithBox />
-//       </CreateFileHolder>
-//       <UploadButtonHolder>
-//         <br />
-//         {/* <input type="file" id="myFile" /> */}
-
-//         <FilePond
-//           allowMultiple={false}
-//           maxFiles={1}
-//           server="http://localhost:5000/api/s3/files/"
-//         />
+        <SharedWithBox />
+      </CreateFileHolder>
+      <UploadButtonHolder>
+        <br />
+        <form onSubmit={submitFile}>
+          <input label="upload file" type="file" onChange={handleFileUpload} />
+          <button type="submit">Send</button>
+        </form>
 
 //         <br />
 //       </UploadButtonHolder>
