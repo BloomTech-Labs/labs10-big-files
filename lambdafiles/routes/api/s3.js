@@ -95,30 +95,30 @@ router.get('/files/:id', (req, res) => {
 
 // (POST FK —> PUT URL)
 // ROUTE TO UPLOAD FILE
-// router.put("/files", (req, res) => {
-//     console.log("REQ", req);
-//     console.log("REQ_BODY", req.body);
-//     fileUpload(req, res, error => {
-// 	if (error) {
-// 	    console.log("errors:", error);
-// 	    res.json({ error: error });
-// 	} else {
-// 	    // If File not found
-// 	    if (req.file === undefined) {
-// 		console.log("Error: No File Selected!");
-// 		res.json("Error: No File Selected");
-// 	    } else {
-// 		client.query(`UPDATE files SET url = '${req.file.location}' WHERE file_id = (select MAX(file_id) FROM files) `)
-// 		    .then(result => {
-// 			res.status(200).json(result);
-// 		    })
-// 		    .catch(e => {
-// 			console.error(e.detail), res.send(e);
-// 		    });
-// 	    }
-// 	}
-//     });
-// });
+router.put("/files", (req, res) => {
+    console.log("REQ", req);
+    console.log("REQ_BODY", req.body);
+    fileUpload(req, res, error => {
+	if (error) {
+	    console.log("errors:", error);
+	    res.json({ error: error });
+	} else {
+	    // If File not found
+	    if (req.file === undefined) {
+		console.log("Error: No File Selected!");
+		res.json("Error: No File Selected");
+	    } else {
+		client.query(`UPDATE files SET url = '${req.file.location}' WHERE file_id = (select MAX(file_id) FROM files) `)
+		    .then(result => {
+			res.status(200).json(result);
+		    })
+		    .catch(e => {
+			console.error(e.detail), res.send(e);
+		    });
+	    }
+	}
+    });
+});
 
 // ************************************************************************
 //TESTING
