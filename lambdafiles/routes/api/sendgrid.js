@@ -14,8 +14,13 @@ const msg = {
 };
 
 router.get("/", (req, res) => {
+  res.send("Hello, world");
+});
+
+router.get("/send", (req, res) => {
   sgMail.send(msg);
   console.log("email sent");
+  res.send("Email Sent");
 });
 
 module.exports = router;
