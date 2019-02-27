@@ -15,6 +15,11 @@ const SharedBoxHolder = styled.div`
   align-items: center;
   background-color: white;
   border-radius: 10%;
+  @media(max-width: 390px) {
+      width: 95%;
+      height: 40rem;
+      margin: 0 auto;
+  }
 `;
 
 

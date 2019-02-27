@@ -18,9 +18,17 @@ const CreateEditDiv = styled.div`
   line-height: 3;
   background-color: white;
   border-radius: 10%;
+  @media(max-width: 390px) {
+    width: 90%;
+    margin: 0 auto;
+  }
 `;
 
-const CreateFileHolder = styled.div``;
+
+const CreateFileHolder = styled.div`
+
+`;
+
 
 const FileName = styled.input`
   margin-left: 1%;
