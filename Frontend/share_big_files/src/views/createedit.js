@@ -35,10 +35,11 @@ const SharedWithBox = styled.div`
 
 const ShareLinkHolder = styled.div``;
 const VersionBrowserHolder = styled.div``;
-const ConfirmButtons = styled.button``;
+const SaveDiv = styled.button``;
 const UploadButtonHolder =styled.div``;
 
 const CreateFile = () => {
+  const [link, setLink] = useState(null)
   const [file, setFile] = useState(null);
   function submitFile(event) {
     event.preventDefault();
@@ -51,9 +52,20 @@ const CreateFile = () => {
         }
       })
       .then(response => {
-        console.log(response.statusText);
+        console.log(response);
       })
       .catch(error => {});
+  }
+
+  const getLink = (event)=> {
+    event.preventDefault();
+    
+    axios
+    .get("https://api.backendproxy.com/api/s3/files/:id")
+    .then(response => {
+      console.log(response)
+    })
+    .catch(err=> console.log(err))
   }
 
   function handleFileUpload(event) {
@@ -90,9 +102,9 @@ const CreateFile = () => {
         <FaArrowLeft size={15} className="fontAwesome" />
         <FaArrowRight size={15} className="fontAwesome" />
       </VersionBrowserHolder>
-      <ConfirmButtons> 
+      
         <button>Save</button>
-      </ConfirmButtons>
+      
     </CreateEditDiv>
   );
 };
