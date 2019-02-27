@@ -24,13 +24,10 @@ const CreateEditDiv = styled.div`
   }
 `;
 
-<<<<<<< HEAD
+
 const CreateFileHolder = styled.div`
 
 `;
-=======
-const CreateFileHolder = styled.div``;
->>>>>>> f1654c5db651e1905b4b0114803257d5845ce91d
 
 const FileName = styled.input`
   margin-left: 1%;
@@ -59,10 +56,6 @@ const CreateFile = () => {
         <span>Share with:</span>
         <FileName type="text" placeholder="Comma separate emails" />
         <br />
-<<<<<<< HEAD
-=======
-
->>>>>>> f1654c5db651e1905b4b0114803257d5845ce91d
         <span>Shared with history:</span>
 
         <SharedWithBox />
