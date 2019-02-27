@@ -147,6 +147,7 @@ router.put("/files", (req, res) => {
 	    }
 	}
     });
+    });
 /**
  *
  * PAID USER FILES

@@ -1,5 +1,6 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import styled, { keyframes } from 'styled-components';
+import axios from 'axios';
 
 import Features from './Features';
 
@@ -25,7 +26,10 @@ let randomImage = myArray[Math.floor(Math.random()*myArray.length)];
 
 
 const Splash = () => {
+const [file, setFile] = useState(null)
 
+
+// useEffect(() => console.log(paid))
   const imageStyle = {
     backgroundImage: `url(${randomImage})`,
     top: "0",
@@ -41,11 +45,44 @@ const Splash = () => {
     // backgroundPosition: "center center",
     // display: "grid",
   };
-  
+
+
+  const hiddenStyle = {
+    opacity: "1",
+    position: "absolute",
+    top: "0",
+    left: "0",
+    bottom: "0",
+    right:"0",
+    width: "100%",
+    height: "100%",
+    borderRadius: "50%"
+    
+  }
+
+  function submitFile(event) {
+    event.preventDefault();
+    const formData = new FormData();
+    formData.append('file', this.state.file[0]);
+    axios.post(`/http://localhost:5000/api/s3/files`, formData, {
+      headers: {
+        'Content-Type': 'multipart/form-data'
+      }
+    }).then(response => {
+      // handle your response;
+    }).catch(error => {
+      // handle your error
+    });
+  }
+
+  function handleFileUpload(event) {
+    setFile(event.target.files);
+  }
+
 
   return (
     <WrapperContainer style={ imageStyle }>
-    {console.log("RandImage", randomImage)}
+    {/* {console.log("RandImage", randomImage)} */}
       <Header>
         <JumboTron>
           <LeftColumn>
@@ -53,11 +90,28 @@ const Splash = () => {
             <h1>MoveBytes</h1>
             <h1>Send files quick and easy.</h1>
             <br/><br/><br/><br/><br/><br/>
-            <CTA className="play-btn" href="/login"> </CTA>
+            <CTA className="play-btn" href="/login">
+              {/* <input type="file" style={ hiddenStyle } /> */}
+            </CTA>
+            
+
+
 
           </LeftColumn>
           <RightColumn>
             <h1>1 Select a file</h1>
+
+
+
+          <div>
+              <form onSubmit={() => submitFile()}>
+                <input label='upload file' type='file' onChange={handleFileUpload} />
+                <button type='submit'>Send</button>
+              </form>
+          </div>
+
+
+
             <h1>2 Enter email</h1>
             <h1>3 Send!</h1>
             <CTAButtonsGroup>
@@ -143,7 +197,7 @@ const LeftColumn = styled.div`
   flex-direction: column;
   align-items: center;
   `
-  const CTA = styled.a`
+  const CTA = styled.div`
   display: flex;
 
 

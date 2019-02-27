@@ -1,0 +1,11 @@
+:root {
+    --Primary-Color: white;
+    --Secondary-Color: blue;
+
+    --Primary-Text: white;
+    --Secondary-Text: black;
+}
+.theme {
+    background-color: var(--bg-color);
+    color: (--color);
+}
