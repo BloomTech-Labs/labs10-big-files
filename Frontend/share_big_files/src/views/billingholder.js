@@ -2,6 +2,8 @@ import React from "react";
 import NavHeader from "./navheader";
 import LeftMenu from "./leftmenu";
 import Billing from "./billing";
+import Dropdown from "./dropdown";
+
 // import media from "../styledComponents/media.js";
 import styled from "styled-components";
 
@@ -11,7 +13,7 @@ const BillingPage = styled.div`
   height: auto;
   min-height: 100vh;
   margin: 0 auto;
-  background-image: url("http://get.addonreviews.com/cmsimages/lp/fileshare/cloudbackground.jpg");
+  background-image: url("https://images.unsplash.com/photo-1524122209929-5bc27bd9c250?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80");
   background-size: 100% 100%;
   @media(max-width: 390px) {
     width: 100%;
@@ -31,7 +33,9 @@ const MenuBillingDiv = styled.div`
 const BillingHolder = () => {
   return (
     <BillingPage>
-      <NavHeader />
+      <Dropdown/>
+      {/* <NavHeader /> */}
+      
       <MenuBillingDiv>
         <LeftMenu />
         <Billing />
