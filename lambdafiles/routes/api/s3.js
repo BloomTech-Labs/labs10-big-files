@@ -78,20 +78,20 @@ router.get('/files/:id', (req, res) => {
 });
 
 
-// router.post("/files/id", (request, res) => {
-//     console.log("RB", request.body);
-//     const { fk_user_id, filename } = request.body;
-//     client.query(
-// 	`INSERT INTO files (fk_user_id, filename) VALUES ($1, $2) RETURNING file_id`, [fk_user_id, filename])
-// 	.then(result => {
-// 	    res.status(200).json(result.rows);
-// 	    // process.exit();
-// 	})
-// 	.catch(e => {
-// 	    console.error(e.detail), res.send(e);
-// 	});
-//     // .then(() => client.end())
-// });
+router.post("/files/id", (request, res) => {
+    console.log("RB", request.body);
+    const { fk_user_id, filename } = request.body;
+    client.query(
+	`INSERT INTO files (fk_user_id, filename) VALUES ($1, $2) RETURNING file_id`, [fk_user_id, filename])
+	.then(result => {
+	    res.status(200).json(result.rows);
+	    // process.exit();
+	})
+	.catch(e => {
+	    console.error(e.detail), res.send(e);
+	});
+    // .then(() => client.end())
+});
 
 // (POST FK —> PUT URL)
 // ROUTE TO UPLOAD FILE
