@@ -47,44 +47,43 @@ const CreateFile = () => {
   const handleInit = () => {
     console.log("FilePond instance has initialised", this.pond);
   };
+  // const handleUploadImage = (ev)=> {
+  //   ev.preventDefault();
+
+  //   const data = new FormData();
+  //   data.append('file', this.uploadInput.files[0]);
+  //   data.append('filename', this.fileName.value);
+
+  //   axios
+  //   .post('http://localhost:8000/upload', data)
+  //     .then(function (response) {
+  //   this.setState({ imageURL: `http://localhost:8000/${body.file}`, uploadStatus: true });
+  //     })
+  //     .catch(function (error) {
+  //       console.log(error);
+  //     });
+  // }
+  let myForm = document.getElementById('myForm');
+  let formData = new FormData(myForm);
+  const handleSubmit = (value) => {
+console.log(formData);
+    
+    Axios
+    .post('http://localhost:5000/api/s3/files/', formData)
+    .then(response=> {
+      console.log(response)
+    })
+    .catch(err=> console.log(err))
+  }
+;
+ 
   return (
-    <CreateEditDiv>
-      <CreateFileHolder>
-        <span>File Name: </span>
-        <FileName type="text" placeholder="Name" />
-        <br />
-        <span>Share with:</span>
-        <FileName type="text" placeholder="Comma separate emails" />
-        <br />
-        <span>Shared with history:</span>
-
-        <SharedWithBox />
-      </CreateFileHolder>
-      <UploadButtonHolder>
-        <br />
-        {/* <input type="file" id="myFile" /> */}
-
-        <FilePond
-          allowMultiple={false}
-          maxFiles={1}
-          server="http://localhost:5000/api/s3/files/"
-        />
-
-        <br />
-      </UploadButtonHolder>
-      <ShareLinkHolder>
-        <h3>Share Link:</h3>
-      </ShareLinkHolder>
-      <VersionBrowserHolder>
-        <span>Version Browser: </span>
-        <FaArrowLeft size={15} className="fontAwesome" />
-        <FaArrowRight size={15} className="fontAwesome" />
-      </VersionBrowserHolder>
-      <ConfirmButtons>
-        <button>Cancel</button>
-        <button>Save</button>
-      </ConfirmButtons>
-    </CreateEditDiv>
+    <div>
+<form id="myForm" name="myForm"> 
+    <input type="file" id="userfile" name="userfile" />
+    <button onClick={e => handleSubmit(e.target.value)}>submit</button>
+</form>
+    </div>
   );
 };
 
