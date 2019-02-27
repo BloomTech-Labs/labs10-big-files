@@ -20,8 +20,6 @@ const BillingPage = styled.div`
 `;
 
 
-
-
 const MenuBillingDiv = styled.div`
   display: flex;
   @media(max-width: 390px) {
@@ -30,16 +28,15 @@ const MenuBillingDiv = styled.div`
   }
 `;
 
-
 const BillingHolder = () => {
   return (
-      <BillingPage>
+    <BillingPage>
       <NavHeader />
       <MenuBillingDiv>
-      <LeftMenu />
-      <Billing />
+        <LeftMenu />
+        <Billing />
       </MenuBillingDiv>
-      </BillingPage>
-  )
+    </BillingPage>
+  );
 };
 export default BillingHolder;
