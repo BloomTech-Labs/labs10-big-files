@@ -45,7 +45,7 @@ const CreateFile = () => {
     const formData = new FormData();
     formData.append("fileUpload", file[0]);
     axios
-      .post("https://api.backendproxy.com/api/s3/files", formData, {
+      .put("https://api.backendproxy.com/api/s3/files", formData, {
         headers: {
           "Content-Type": "multipart/form-data"
         }
@@ -80,6 +80,7 @@ const CreateFile = () => {
           <button type="submit">Send</button>
         </form>
 
+<<<<<<< HEAD
 //         <br />
 //       </UploadButtonHolder>
 //       <ShareLinkHolder>
@@ -97,5 +98,23 @@ const CreateFile = () => {
 //     </CreateEditDiv>
 //   );
 // };
+=======
+        <br />
+      </UploadButtonHolder>
+      <ShareLinkHolder>
+        <h3>Share Link:</h3>
+      </ShareLinkHolder>
+      <VersionBrowserHolder>
+        <span>Version Browser: </span>
+        <FaArrowLeft size={15} className="fontAwesome" />
+        <FaArrowRight size={15} className="fontAwesome" />
+      </VersionBrowserHolder>
+      <ConfirmButtons> 
+        <button>Save</button>
+      </ConfirmButtons>
+    </CreateEditDiv>
+  );
+};
+>>>>>>> ded836ed0343665171f4afe617f14affdafc478f
 
 // export default CreateFile;
