@@ -90,8 +90,7 @@ const CreateFile = () => {
         <FaArrowLeft size={15} className="fontAwesome" />
         <FaArrowRight size={15} className="fontAwesome" />
       </VersionBrowserHolder>
-      <ConfirmButtons>
-        <button>Cancel</button>
+      <ConfirmButtons> 
         <button>Save</button>
       </ConfirmButtons>
     </CreateEditDiv>
