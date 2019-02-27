@@ -2,10 +2,8 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { FilePond } from "react-filepond";
 import "filepond/dist/filepond.min.css";
-// import { Link } from "react-router-dom";
-
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
-import Axios from "axios";
+import axios from "axios";
 const CreateEditDiv = styled.div`
   padding-left: 2%;
   padding-right: 2%;
@@ -18,17 +16,13 @@ const CreateEditDiv = styled.div`
   line-height: 3;
   background-color: white;
   border-radius: 10%;
-  @media(max-width: 390px) {
+  @media (max-width: 390px) {
     width: 90%;
     margin: 0 auto;
   }
 `;
 
-
-const CreateFileHolder = styled.div`
-
-`;
-
+const CreateFileHolder = styled.div``;
 
 const FileName = styled.input`
   margin-left: 1%;
@@ -39,52 +33,68 @@ const SharedWithBox = styled.div`
   border: 1px solid #a8a8a8;
 `;
 
-const UploadButtonHolder = styled.div``;
 const ShareLinkHolder = styled.div``;
 const VersionBrowserHolder = styled.div``;
-const ConfirmButtons = styled.div``;
+const ConfirmButtons = styled.button``;
+const UploadButtonHolder =styled.div``;
 
 const CreateFile = () => {
-  const handleInit = () => {
-    console.log("FilePond instance has initialised", this.pond);
-  };
-  // const handleUploadImage = (ev)=> {
-  //   ev.preventDefault();
-
-  //   const data = new FormData();
-  //   data.append('file', this.uploadInput.files[0]);
-  //   data.append('filename', this.fileName.value);
-
-  //   axios
-  //   .post('http://localhost:8000/upload', data)
-  //     .then(function (response) {
-  //   this.setState({ imageURL: `http://localhost:8000/${body.file}`, uploadStatus: true });
-  //     })
-  //     .catch(function (error) {
-  //       console.log(error);
-  //     });
-  // }
-  let myForm = document.getElementById('myForm');
-  let formData = new FormData(myForm);
-  const handleSubmit = (value) => {
-console.log(formData);
-    
-    Axios
-    .post('http://localhost:5000/api/s3/files/', formData)
-    .then(response=> {
-      console.log(response)
-    })
-    .catch(err=> console.log(err))
+  const [file, setFile] = useState(null);
+  function submitFile(event) {
+    event.preventDefault();
+    const formData = new FormData();
+    formData.append("fileUpload", file[0]);
+    axios
+      .post("http://localhost:5000/api/s3/files", formData, {
+        headers: {
+          "Content-Type": "multipart/form-data"
+        }
+      })
+      .then(response => {
+        console.log(response.statusText);
+      })
+      .catch(error => {});
   }
-;
- 
+
+  function handleFileUpload(event) {
+    setFile(event.target.files);
+  }
   return (
-    <div>
-<form id="myForm" name="myForm"> 
-    <input type="file" id="userfile" name="userfile" />
-    <button onClick={e => handleSubmit(e.target.value)}>submit</button>
-</form>
-    </div>
+    <CreateEditDiv>
+      <CreateFileHolder>
+        <span>File Name: </span>
+        <FileName type="text" placeholder="Name" />
+        <br />
+        <span>Share with:</span>
+        <FileName type="text" placeholder="Comma separate emails" />
+        <br />
+
+        <span>Shared with history:</span>
+
+        <SharedWithBox />
+      </CreateFileHolder>
+      <UploadButtonHolder>
+        <br />
+        <form onSubmit={submitFile}>
+          <input label="upload file" type="file" onChange={handleFileUpload} />
+          <button type="submit">Send</button>
+        </form>
+
+        <br />
+      </UploadButtonHolder>
+      <ShareLinkHolder>
+        <h3>Share Link:</h3>
+      </ShareLinkHolder>
+      <VersionBrowserHolder>
+        <span>Version Browser: </span>
+        <FaArrowLeft size={15} className="fontAwesome" />
+        <FaArrowRight size={15} className="fontAwesome" />
+      </VersionBrowserHolder>
+      <ConfirmButtons>
+        <button>Cancel</button>
+        <button>Save</button>
+      </ConfirmButtons>
+    </CreateEditDiv>
   );
 };
 
