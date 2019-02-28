@@ -4,25 +4,31 @@
 // import { FaShareSquare } from "react-icons/fa";
 
 
-// const SharedBoxHolder = styled.div`
-//   width: 25rem;
-//   height: 22rem;
-//   border: 1px solid black;
-//   margin-left: 4%;
-//   display: flex;
-//   flex-direction: column;
-//   justify-content: center;
-//   align-items: center;
-//   background-color: white;
-//   border-radius: 10%;
-//   margin: 1% auto;
-//   @media(max-width: 390px) {
-//       width: 43%;
-//       height: 15rem;
-//       margin: 1% auto;
-//       text-align: none
-//   }
-// `;
+ 
+const SharedBoxHolder = styled.div`
+  width: 25rem;
+  height: 22rem;
+  border: 1px solid black;
+  margin-left: 4%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  border-radius: 10%;
+  margin: 1% auto;
+  @media(max-width: 390px) {
+      width: 43%;
+      height: 15rem;
+      margin: 1% auto;
+      text-align: none
+  }
+`;
+const FileText = styled.h3`
+@media(max-width: 390px) {
+   font-size: 2.5rem;
+}
+`; 
 
 // const SharedInput = styled.div`
 // @media(max-width: 390px){
@@ -56,6 +62,7 @@
 
 // const SharedHolder = () => {
 
+ 
 //     return (
 //         <SharedBoxHolder>
 //             <InnerSharedDiv>
@@ -75,6 +82,7 @@
 //         </SharedBoxHolder>
 //     )
 // };
+ 
 
 // export default SharedHolder;
 
