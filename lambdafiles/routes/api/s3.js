@@ -207,7 +207,7 @@ const paidFileUpload = multer({
   limits: { fileSize: 4000000 } // In bytes: 4000000 bytes = 4 MB
 }).single("fileUpload");
 
-// ROUTE TO UPLOAD FILE
+// ROUTE TO UPLOAD FILE PAID USER?
 router.post("/paidfiles/id", (request, res) => {
     console.log("RB", request.body);
     const { fk_user_id, filename } = request.body;
@@ -277,9 +277,9 @@ router.get('/files/email', (req, res) => {
     });
 });
 
-router.get('/files/fk_email', (req, res) => {
+router.post('/files/fk_email', (req, res) => {
     //const fk_email = req.body.fk_email;
-    //console.log(req.body.fk_email);
+    // console.log(req.body.fk_email);
     client.query(`SELECT * FROM files WHERE fk_email LIKE '${req.body.fk_email}'`)
         .then(result => {
             res.status(200).json(result.rows);
