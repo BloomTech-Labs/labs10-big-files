@@ -165,8 +165,8 @@ const CreateFile = () => {
       to: recipientEmail,
       from: senderEmail,
       subject: emailSubject,
-      text: "URL I THINK",
-      html: "Another url? Not sure"
+      text: message,
+      html: message,
     };
     console.log(myDetails);
     axios
