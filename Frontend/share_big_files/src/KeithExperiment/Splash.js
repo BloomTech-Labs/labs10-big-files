@@ -52,7 +52,7 @@ const [loaded, setLoaded] = useState(0)
 
 
   const hiddenStyle = {
-    opacity: "1",
+    opacity: "0.0",
     position: "absolute",
     top: "0",
     left: "0",
@@ -60,7 +60,11 @@ const [loaded, setLoaded] = useState(0)
     right:"0",
     width: "100%",
     height: "100%",
-    borderRadius: "50%"
+    borderRadius: "50%",
+    borderMargin: 0,
+    cursor: "pointer",
+    zIndex: 1
+
     
   }
 
@@ -105,8 +109,8 @@ const [loaded, setLoaded] = useState(0)
             <h1>MoveBytes</h1>
             <h1>Send files quick and easy.</h1>
             <br/><br/><br/><br/><br/><br/>
-            <CTA className="play-btn"> 
-              <input type="file" style={ hiddenStyle } /> 
+            <CTA className="play-btn" > 
+              <input type="file" onChange={handleFileUpload} style={ hiddenStyle } /> 
              </CTA>
             
 
