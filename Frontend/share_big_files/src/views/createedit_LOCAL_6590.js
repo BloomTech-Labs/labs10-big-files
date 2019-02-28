@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-import "filepond/dist/filepond.min.css";
+// import { FilePond } from "react-filepond";
+// import "filepond/dist/filepond.min.css";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 import axios from "axios";
 const CreateEditDiv = styled.div`
@@ -34,36 +35,38 @@ const SharedWithBox = styled.div`
 
 const ShareLinkHolder = styled.div``;
 const VersionBrowserHolder = styled.div``;
-const UploadButtonHolder = styled.div``;
+const SaveDiv = styled.button``;
+const UploadButtonHolder =styled.div``;
 
 const CreateFile = () => {
-  //const [link, setLink] = useState(null)
-  const [file, setFile] = useState(null);
+  const [link, setLink] = useState(null)
+  const [file, setFile] = useState(null)
   const [fileName, setFileName] = useState(null);
   const profile = JSON.parse(localStorage.getItem("profile"));
   const profileEmail = profile.email;
 
-  useEffect(() => {
-    console.log(fileName);
-  }, []);
 
+  useEffect(() => {
+    console.log(fileName)
+  }, []);
   function submitFile(event) {
     event.preventDefault();
     const sendObject = {
       fk_email: profileEmail,
       filename: fileName
-    };
+    }
 
     axios
-      .post(`https://api.backendproxy.com/api/s3/files/id`, sendObject)
-      .then(response => {
-        console.log(response);
-        sendFile();
-      })
-      .catch(err => console.log(err));
+    .post(`https://api.backendproxy.com/api/s3/files/id`, sendObject)
+    .then(response => {
+      console.log(response);
+      sendFile()
+    })
+    .catch(err=> console.log(err));
+
   }
 
-  const sendFile = () => {
+  const sendFile = ()=>{ 
     const formData = new FormData();
     formData.append("fileUpload", file[0]);
     axios
@@ -76,26 +79,41 @@ const CreateFile = () => {
         console.log(response);
       })
       .catch(error => {});
-  };
+  }
+
+  const CreateFileId = (event)=> {
+    event.preventDefault();
+    
+    axios
+    .post(`https://api.backendproxy.com/api/s3/files/id`)
+    .then(response => {
+      console.log(response);
+    })
+    .catch(err=> console.log(err));
+  }
 
   function handleFileUpload(event) {
     setFile(event.target.files);
   }
 
-  function handleInput(event) {
+  function handleInput(event){
+  
+    
     setFileName(event.target.value);
-    console.log("File Name: " + fileName);
+    console.log('File Name: ' + fileName);
   }
   return (
     <CreateEditDiv>
       <CreateFileHolder>
         <span>File Name: </span>
-        <FileName type="text" placeholder="Name" onChange={handleInput} />
+        <FileName type="text" placeholder="Name" onChange={handleInput}/>
         <br />
         <span>Share with:</span>
         <FileName type="text" placeholder="Comma separate emails" />
         <br />
-        <span>Shared with history:</span>
+
+         <span>Shared with history:</span>
+
         <SharedWithBox />
       </CreateFileHolder>
       <UploadButtonHolder>
@@ -104,6 +122,7 @@ const CreateFile = () => {
           <input label="upload file" type="file" onChange={handleFileUpload} />
           <button type="submit">Send</button>
         </form>
+
         <br />
       </UploadButtonHolder>
       <ShareLinkHolder>
@@ -114,8 +133,9 @@ const CreateFile = () => {
         <FaArrowLeft size={15} className="fontAwesome" />
         <FaArrowRight size={15} className="fontAwesome" />
       </VersionBrowserHolder>
-
-      <button>Save</button>
+      
+        <button>Save</button>
+      
     </CreateEditDiv>
   );
 };

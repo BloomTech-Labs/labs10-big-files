@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { FaPlusCircle } from "react-icons/fa";
 import axios from "axios";
-import { isNullOrUndefined } from "util";
+ 
 
 const AddFileHolder = styled.div`
   width: 25rem;
@@ -17,30 +17,27 @@ const AddFileHolder = styled.div`
   background-color: white;
   border-radius: 10%;
   text-align: center;
-  @media(max-width: 390px) {
+  @media (max-width: 390px) {
     width: 95%;
     height: 40rem;
     margin: 0 auto;
     margin-bottom: 2%;
     text-align: center;
-}
+  }
 `;
 const NewFileText = styled.div`
   margin-bottom: 2rem;
   margin-top: -2rem;
   font-size: 3rem;
 `;
- 
- 
 
 const AddFile = () => {
   const [email, setEmail] = useState(null);
-  const [userExists, setUserExists] = useState(null);
-  const profile = JSON.parse(localStorage.getItem("profile"));
+  //const [userExists, setUserExists] = useState(null);
+  const profile = JSON.parse(localStorage.getItem("profile")); 
 
   const fetchData = () => {
     console.log("in fetch data");
-    const profile = JSON.parse(localStorage.getItem("profile"));
     console.log(profile.nickname);
 
     axios
@@ -51,7 +48,27 @@ const AddFile = () => {
         //conditionalAddUser puts them in db.
         if (Object.keys(response.data).length === 0) {
           conditionalAddUser();
+        } else {
+          getUserData();
         }
+      })
+      .catch(err => console.log(err));
+  };
+
+  const getUserData = () => {
+    const userEmailObject = {
+       email: profile.email
+    };
+
+    const userJSON = JSON.stringify(userEmailObject)
+
+    // userEmailObject = JSON.stringify(userEmailObject);
+    console.log(userJSON);
+
+    axios
+      .get("https://api.backendproxy.com/api/s3/files/fk_email", userJSON)
+      .then(response => {
+        console.log(response);
       })
       .catch(err => console.log(err));
   };
@@ -63,7 +80,6 @@ const AddFile = () => {
     console.log("Email on state is: " + email);
     fetchData();
   }, []);
-
 
   //Function to add user to database
   const conditionalAddUser = () => {
@@ -87,7 +103,7 @@ const AddFile = () => {
       <AddFileHolder>
         <NewFileText>New File</NewFileText>
         <Link to="/create">
-          <FaPlusCircle size={50} color="black"  />
+          <FaPlusCircle size={50} color="black" />
         </Link>
       </AddFileHolder>
     </>
