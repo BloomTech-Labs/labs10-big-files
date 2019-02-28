@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-import "filepond/dist/filepond.min.css";
+// import "filepond/dist/filepond.min.css";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 import axios from "axios";
 const CreateEditDiv = styled.div`

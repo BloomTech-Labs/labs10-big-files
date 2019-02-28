@@ -13,6 +13,9 @@ import Water from "./Water.jpg"
 
 import './CTAButton.css'
 
+
+import Form from "./Form/Form"
+
 var myArray = [
   Blue,
   Beach,
@@ -126,6 +129,7 @@ const [loaded, setLoaded] = useState(0)
 
 
             <h1>2 Enter email</h1>
+            <Form />
             <h1>3 Send!</h1>
             <CTAButtonsGroup>
               <a href="#features">
