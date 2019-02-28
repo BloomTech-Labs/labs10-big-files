@@ -30,6 +30,6 @@ server.use("/api/files/", fileRoute);
 server.use("/api/downloads/", downloadRoute);
 server.use("/api/s3/", s3Route);
 server.use("/api/stripe", stripeApi);
-server.use("api/sendgrid", sendgrid);
+server.use("/api/sendgrid", sendgrid);
 
 module.exports = server;

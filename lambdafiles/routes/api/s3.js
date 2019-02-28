@@ -80,9 +80,9 @@ router.get('/files/:id', (req, res) => {
 
 router.post("/files/id", (request, res) => {
     console.log("RB", request.body);
-    const { fk_user_id, filename } = request.body;
+    const { fk_email, filename } = request.body;
     client.query(
-	`INSERT INTO files (fk_user_id, filename) VALUES ($1, $2) RETURNING file_id`, [fk_user_id, filename])
+	`INSERT INTO files (fk_email, filename) VALUES ($1, $2) RETURNING file_id`, [fk_email, filename])
 	.then(result => {
 	    res.status(200).json(result.rows);
 	    // process.exit();
@@ -108,7 +108,7 @@ router.put("/files", (req, res) => {
 		console.log("Error: No File Selected!");
 		res.json("Error: No File Selected");
 	    } else {
-		client.query(`UPDATE files SET url = '${req.file.location}' WHERE file_id = (select MAX(file_id) FROM files) `)
+		client.query(`UPDATE files SET url = '${req.file.location}' WHERE file_id = (select MAX(file_id) FROM files) RETURNING url`)
 		    .then(result => {
 			res.status(200).json(result);
 		    })
@@ -263,6 +263,30 @@ router.delete("/files/delete/:id", (req, res) => {
 	.catch(e => {
 	    console.error(e.detail), res.send(e);
 	});
+});
+
+router.get('/files/email', (req, res) => {
+    const userEmail = req.body.email;
+    console.log(userEmail);
+    client.query(`SELECT * FROM files WHERE fk_email LIKE '${userEmail}'`)
+        .then(result => {
+            res.status(200).json(result.rows);
+    })
+    .catch(e => {
+            console.error(e), res.send(e);
+    });
+});
+
+router.get('/files/fk_email', (req, res) => {
+    //const fk_email = req.body.fk_email;
+    //console.log(req.body.fk_email);
+    client.query(`SELECT * FROM files WHERE fk_email LIKE '${req.body.fk_email}'`)
+        .then(result => {
+            res.status(200).json(result.rows);
+    })
+    .catch(e => {
+            console.error(e), res.send(e);
+    });
 });
 
 module.exports = router;
