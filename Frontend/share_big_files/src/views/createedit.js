@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-import { FilePond } from "react-filepond";
-import "filepond/dist/filepond.min.css";
+// import { FilePond } from "react-filepond";
+// import "filepond/dist/filepond.min.css";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 import axios from "axios";
 const CreateEditDiv = styled.div`
@@ -112,7 +112,7 @@ const CreateFile = () => {
         <FileName type="text" placeholder="Comma separate emails" />
         <br />
 
-//         <span>Shared with history:</span>
+         <span>Shared with history:</span>
 
         <SharedWithBox />
       </CreateFileHolder>
