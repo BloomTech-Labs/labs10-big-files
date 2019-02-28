@@ -3,6 +3,8 @@ import styled from "styled-components";
 import "filepond/dist/filepond.min.css";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 import axios from "axios";
+ 
+
 const CreateEditDiv = styled.div`
   padding-left: 2%;
   padding-right: 2%;
@@ -39,6 +41,8 @@ const UploadButtonHolder = styled.div``;
 const CreateFile = () => {
   //const [link, setLink] = useState(null)
   const [file, setFile] = useState(null);
+  const [toEmails, setToEmails] = useState(null);
+  const [message, setMessage] = useState(null)
   const [fileName, setFileName] = useState(null);
   const profile = JSON.parse(localStorage.getItem("profile"));
   const profileEmail = profile.email;
@@ -74,29 +78,48 @@ const CreateFile = () => {
       })
       .then(response => {
         console.log(response);
+        getURL()
       })
-      .catch(error => {});
+      .catch(error => console.log(error));
+  };
+
+  const getURL = () => {
+    console.log('in getURL') ;
+    axios
+      .get("https://api.backendproxy.com/api/s3/files/latest/" )
+      .then(response => {
+        console.log(response); 
+      })
+      .catch(error => console.log(error));
   };
 
   function handleFileUpload(event) {
     setFile(event.target.files);
   }
 
-  function handleInput(event) {
+  function handleNameInput(event) {
     setFileName(event.target.value);
     console.log("File Name: " + fileName);
+  }
+
+  function handleEmailInput(event) {
+    setToEmails(event.target.value);
+    console.log("File Name: " + fileName);
+  }
+
+  function sendGrid(event){
+    console.log('hi')
   }
   return (
     <CreateEditDiv>
       <CreateFileHolder>
         <span>File Name: </span>
-        <FileName type="text" placeholder="Name" onChange={handleInput} />
+        <FileName type="text" placeholder="Name" name="setFileName" onChange={handleNameInput} />
         <br />
         <span>Share with:</span>
-        <FileName type="text" placeholder="Comma separate emails" />
+        <FileName type="text" placeholder="Comma separate emails" onChange={handleEmailInput} />
         <br />
-        <span>Shared with history:</span>
-        <SharedWithBox />
+       
       </CreateFileHolder>
       <UploadButtonHolder>
         <br />
@@ -115,7 +138,7 @@ const CreateFile = () => {
         <FaArrowRight size={15} className="fontAwesome" />
       </VersionBrowserHolder>
 
-      <button>Save</button>
+      <button onClick={sendGrid}>Send Via Email</button>
     </CreateEditDiv>
   );
 };
