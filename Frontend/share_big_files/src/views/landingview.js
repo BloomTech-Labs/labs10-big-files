@@ -17,9 +17,11 @@ const LandingCardsContainer = styled.div`
   justify-content: flex-start;
   align-items: center;
   text-align: center;
+
   @media (max-width: 390px) {
     width: 100%;
     align-items: flex-start;
+
   }
 `;
 
@@ -32,9 +34,11 @@ const LandingCards = styled.div`
   margin: 0% 0% 0% 8%;
   border-radius: 10px;
   font-size: 2rem;
+
   @media (max-width: 390px) {
    
     margin-top 10%; 
+
   }
 `;
 
