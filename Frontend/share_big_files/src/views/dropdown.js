@@ -5,6 +5,7 @@ import styled from 'styled-components';
 
 const DropdownDiv = styled.div`
     position: relative;
+
     // background: white;
     margin-left: 85%;
     @media(max-width: 768px) {
@@ -33,7 +34,9 @@ color: #000;
 text-decoration: none;
 `;
 const ListItem = styled.li`
+
 background-color: lightgray; 
+
 padding: 8px 16px;
 border-bottom: 1px solid black;
 &:last-child {
@@ -46,9 +49,11 @@ border-bottom: 1px solid black;
 `;
 
 const Button = styled.button`
-width:100%;
+
+width:100%; 
 height:4.3rem;
-background-color: darkgrey;
+background-color: darkblue;
+
 padding:12px;
 border-radius: 5px; 
 font-weight:bold;

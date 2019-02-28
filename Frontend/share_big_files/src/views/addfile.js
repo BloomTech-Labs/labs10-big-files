@@ -3,7 +3,8 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { FaPlusCircle } from "react-icons/fa";
 import axios from "axios";
- 
+import SharedHolder from "./sharedholder";
+import { FaShareSquare } from "react-icons/fa";
 
 const AddFileHolder = styled.div`
   width: 25rem;
@@ -17,11 +18,11 @@ const AddFileHolder = styled.div`
   background-color: white;
   border-radius: 10%;
   text-align: center;
+  margin: 1% auto;
   @media (max-width: 390px) {
-    width: 95%;
-    height: 40rem;
-    margin: 0 auto;
-    margin-bottom: 2%;
+    width: 43%;
+    height: 15rem;
+    margin: 1% auto;
     text-align: center;
   }
 `;
@@ -34,10 +35,66 @@ const NewFileText = styled.div`
   }
 `;
 
+const SharedBoxHolder = styled.div`
+  width: 25rem;
+  height: 22rem;
+  border: 1px solid black;
+  margin-left: 4%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  border-radius: 10%;
+  margin: 1% auto;
+  @media (max-width: 390px) {
+    width: 43%;
+    height: 15rem;
+    margin: 1% auto;
+    text-align: none;
+  }
+`;
+
+const SharedInput = styled.div`
+  @media (max-width: 390px) {
+    width: 90%;
+    padding: 0;
+    margin: 0px auto;
+  }
+`;
+
+const Sharedh3 = styled.h3`
+@media(max-width: 390px){ 
+    padding: 0;
+    margin: 0
+`;
+const InnerSharedDiv = styled.div`
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  margin-left: 13%;
+`;
+
+const CenterShareDiv = styled.div`
+  margin: 0 auto;
+`;
+
+const DesperateDiv = styled.div`
+display: flex;
+flex-wrap: wrap;
+`;
+
 const AddFile = () => {
   const [email, setEmail] = useState(null);
+  const [userData, setUserData] = useState(null);
+  const [loaded, setLoaded] = useState(false);
   //const [userExists, setUserExists] = useState(null);
-  const profile = JSON.parse(localStorage.getItem("profile")); 
+  const profile = JSON.parse(localStorage.getItem("profile"));
+  useEffect(() => {
+    console.log(userData);
+  });
 
   const fetchData = () => {
     console.log("in fetch data");
@@ -60,18 +117,17 @@ const AddFile = () => {
 
   const getUserData = () => {
     const userEmailObject = {
-       email: profile.email
+      fk_email: profile.email
     };
 
-    const userJSON = JSON.stringify(userEmailObject)
-
-    // userEmailObject = JSON.stringify(userEmailObject);
-    console.log(userJSON);
-
     axios
-      .get("https://api.backendproxy.com/api/s3/files/fk_email", userJSON)
+      .post(
+        "https://api.backendproxy.com/api/s3/files/fk_email",
+        userEmailObject
+      )
       .then(response => {
-        console.log(response);
+        setUserData(response.data);
+        setLoaded(true);
       })
       .catch(err => console.log(err));
   };
@@ -101,15 +157,37 @@ const AddFile = () => {
       })
       .catch(err => console.log(err));
   };
+  if(!loaded){
   return (
-    <>
-      <AddFileHolder>
-        <NewFileText>New File</NewFileText>
-        <Link to="/create">
-          <FaPlusCircle size={50} color="black" />
-        </Link>
-      </AddFileHolder>
-    </>
+    <AddFileHolder>
+    <NewFileText>New File</NewFileText>
+    <Link to="/create">
+      <FaPlusCircle size={50} color="black" />
+    </Link>
+  </AddFileHolder>)} return(
+    <DesperateDiv>
+   
+      {userData[0]? userData.map((file) => {
+                return( 
+
+                  
+        <SharedBoxHolder>
+          <InnerSharedDiv>
+            <Sharedh3>File Title: {file.filename}</Sharedh3>
+            <Sharedh3>URL: {file.url}</Sharedh3>
+            <SharedInput type="text" />
+            <CenterShareDiv>
+              <Link to="/">
+                <br />
+                <br />
+                <FaShareSquare size={40} />
+                Share
+              </Link>
+            </CenterShareDiv>
+          </InnerSharedDiv>
+        </SharedBoxHolder>
+      )}): null}
+    </DesperateDiv>
   );
 };
 

@@ -15,10 +15,12 @@ const SharedBoxHolder = styled.div`
   align-items: center;
   background-color: white;
   border-radius: 10%;
+  margin: 1% auto;
   @media(max-width: 390px) {
-      width: 95%;
-      height: 40rem;
-      margin: 0 auto;
+      width: 43%;
+      height: 15rem;
+      margin: 1% auto;
+      text-align: none
   }
 `;
 const FileText = styled.h3`
@@ -27,28 +29,56 @@ const FileText = styled.h3`
 }
 `;
 
+const SharedInput = styled.div`
+@media(max-width: 390px){
+width: 90%;
+padding: 0;
+margin: 0px auto;
+}
+`;
 
+const Sharedh3 = styled.h3`
+@media(max-width: 390px){ 
+    padding: 0;
+    margin: 0
+`
+;
+
+
+
+const InnerSharedDiv = styled.div`
+height: 100%;
+width: 100%;
+display: flex;
+flex-direction: column;
+justify-content: space-around;
+margin-left: 13%;
+`;
+
+const CenterShareDiv = styled.div`
+margin: 0 auto;
+`;
 
 const SharedHolder = () => {
 
     return (
         <SharedBoxHolder>
-            <div>
-                
-                <FileText>File Title:</FileText>
-                <FileText>Shared With:</FileText>
-               
-                <input type="text"></input>
+
+            <InnerSharedDiv>
+                <Sharedh3>File Title:</Sharedh3>
+                <Sharedh3>Shared With:</Sharedh3>
+                <SharedInput type="text"></SharedInput>
+                <CenterShareDiv> 
                 <Link to="/">
                 <br/>
                 <br/>
-                <FileText>
-                Share <FaShareSquare size={20} />
-                </FileText>
                 
-                
+                <FaShareSquare size={40} />
+                Share
+
                 </Link>
-            </div>
+                </CenterShareDiv>
+            </InnerSharedDiv>
         </SharedBoxHolder>
     )
 };
