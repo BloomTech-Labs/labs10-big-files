@@ -30,6 +30,9 @@ const NewFileText = styled.div`
   margin-bottom: 2rem;
   margin-top: -2rem;
   font-size: 3rem;
+  @media(max-width: 390px) {
+    font-size: 4rem;
+  }
 `;
 
 const SharedBoxHolder = styled.div`
@@ -163,6 +166,12 @@ const AddFile = () => {
     </Link>
   </AddFileHolder>)} return(
     <DesperateDiv>
+      <AddFileHolder>
+    <NewFileText>New File</NewFileText>
+    <Link to="/create">
+      <FaPlusCircle size={50} color="black" />
+    </Link>
+  </AddFileHolder>
    
       {userData[0]? userData.map((file) => {
                 return( 
@@ -177,7 +186,7 @@ const AddFile = () => {
               <Link to="/">
                 <br />
                 <br />
-                <FaShareSquare size={40} />
+                <FaShareSquare size={40} url={file.url} />
                 Share
               </Link>
             </CenterShareDiv>
