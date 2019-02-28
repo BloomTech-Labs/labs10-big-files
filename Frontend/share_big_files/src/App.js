@@ -5,7 +5,7 @@ import SettingsHolder from "./views/settingsholder";
 import BillingHolder from "./views/billingholder";
 import Stripe from "./components/StripeFE";
 import AddFileHolder from "./views/addfileholder";
-import { Route, Redirect } from "react-router-dom";
+import { Route  } from "react-router-dom";
 import "./App.css";
 import styled from "styled-components";
 import { Auth0Lock } from "auth0-lock";
@@ -86,6 +86,11 @@ class App extends Component {
           
           <Splash />
 
+            <Route
+            exact
+            path="/"
+            render={props => <AddFileHolder {...props} />}
+          />
           <Route
             exact
             path="/add"
