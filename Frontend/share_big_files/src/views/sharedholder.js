@@ -21,6 +21,11 @@ const SharedBoxHolder = styled.div`
       margin: 0 auto;
   }
 `;
+const FileText = styled.h3`
+@media(max-width: 390px) {
+   font-size: 2.5rem;
+}
+`;
 
 
 
@@ -29,14 +34,19 @@ const SharedHolder = () => {
     return (
         <SharedBoxHolder>
             <div>
-                <h3>File Title:</h3>
-                <h3>Shared With:</h3>
+                
+                <FileText>File Title:</FileText>
+                <FileText>Shared With:</FileText>
+               
                 <input type="text"></input>
                 <Link to="/">
                 <br/>
                 <br/>
-                <FaShareSquare size={20} />
-                Share
+                <FileText>
+                Share <FaShareSquare size={20} />
+                </FileText>
+                
+                
                 </Link>
             </div>
         </SharedBoxHolder>
