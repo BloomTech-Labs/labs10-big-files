@@ -166,7 +166,7 @@ const CreateFile = () => {
       from: senderEmail,
       subject: emailSubject,
       text: message,
-      html: message,
+      html: message
     };
     console.log(myDetails);
     axios
