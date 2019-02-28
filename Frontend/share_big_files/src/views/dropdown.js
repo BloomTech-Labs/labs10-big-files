@@ -5,7 +5,7 @@ import styled from 'styled-components';
 
 const DropdownDiv = styled.div`
     position: relative;
-    background: white;
+    // background: white;
     margin-left: 85%;
 `;
 const UnorderedList = styled.div`
@@ -27,7 +27,7 @@ color: #000;
 text-decoration: none;
 `;
 const ListItem = styled.li`
-background-color: red; 
+background-color: lightgray; 
 padding: 8px 16px;
 border-bottom: 1px solid black;
 &:last-child {
@@ -42,7 +42,7 @@ border-bottom: 1px solid black;
 const Button = styled.button`
 width:100%;
 height:4.3rem;
-background-color: darkblue;
+background-color: darkgrey;
 padding:12px;
 border-radius: 5px; 
 font-weight:bold;

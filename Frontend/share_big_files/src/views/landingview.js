@@ -23,7 +23,8 @@ const LandingCardsContainer = styled.div`
   text-align: center;
   @media(max-width: 390px) {
     display: block;
-    width: 60%;
+    // width: 60%;
+    margin-left: 4%;
   }
 `;
 

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-import { FilePond } from "react-filepond";
+// import { FilePond } from "react-filepond";
 import "filepond/dist/filepond.min.css";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 import axios from "axios";
@@ -22,16 +22,16 @@ const CreateEditDiv = styled.div`
   }
 `;
 
-// const CreateFileHolder = styled.div``;
+const CreateFileHolder = styled.div``;
 
-// const FileName = styled.input`
-//   margin-left: 1%;
-// `;
-// const SharedWithBox = styled.div`
-//   width: 100%;
-//   height: 7rem;
-//   border: 1px solid #a8a8a8;
-// `;
+const FileName = styled.input`
+  margin-left: 1%;
+`;
+const SharedWithBox = styled.div`
+  width: 100%;
+  height: 7rem;
+  border: 1px solid #a8a8a8;
+`;
 
 const ShareLinkHolder = styled.div``;
 const VersionBrowserHolder = styled.div``;
@@ -69,7 +69,7 @@ const CreateFile = () => {
         <FileName type="text" placeholder="Comma separate emails" />
         <br />
 
-//         <span>Shared with history:</span>
+        <span>Shared with history:</span>
 
         <SharedWithBox />
       </CreateFileHolder>
@@ -80,25 +80,6 @@ const CreateFile = () => {
           <button type="submit">Send</button>
         </form>
 
-<<<<<<< HEAD
-//         <br />
-//       </UploadButtonHolder>
-//       <ShareLinkHolder>
-//         <h3>Share Link:</h3>
-//       </ShareLinkHolder>
-//       <VersionBrowserHolder>
-//         <span>Version Browser: </span>
-//         <FaArrowLeft size={15} className="fontAwesome" />
-//         <FaArrowRight size={15} className="fontAwesome" />
-//       </VersionBrowserHolder>
-//       <ConfirmButtons>
-//         <button>Cancel</button>
-//         <button>Save</button>
-//       </ConfirmButtons>
-//     </CreateEditDiv>
-//   );
-// };
-=======
         <br />
       </UploadButtonHolder>
       <ShareLinkHolder>
@@ -115,6 +96,5 @@ const CreateFile = () => {
     </CreateEditDiv>
   );
 };
->>>>>>> ded836ed0343665171f4afe617f14affdafc478f
 
-// export default CreateFile;
+export default CreateFile;
