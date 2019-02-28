@@ -1,13 +1,9 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-
-// import { FilePond } from "react-filepond";
+import { FilePond } from "react-filepond";
 import "filepond/dist/filepond.min.css";
-
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 import axios from "axios";
- 
-
 const CreateEditDiv = styled.div`
   padding-left: 2%;
   padding-right: 2%;
@@ -39,38 +35,38 @@ const SharedWithBox = styled.div`
 
 const ShareLinkHolder = styled.div``;
 const VersionBrowserHolder = styled.div``;
-const UploadButtonHolder = styled.div``;
+const SaveDiv = styled.button``;
+const UploadButtonHolder =styled.div``;
 
 const CreateFile = () => {
-  //const [link, setLink] = useState(null)
-  const [file, setFile] = useState(null);
-  const [toEmails, setToEmails] = useState(null);
-  const [message, setMessage] = useState(null)
+  const [link, setLink] = useState(null)
+  const [file, setFile] = useState(null)
   const [fileName, setFileName] = useState(null);
   const profile = JSON.parse(localStorage.getItem("profile"));
   const profileEmail = profile.email;
 
-  useEffect(() => {
-    console.log(fileName);
-  }, []);
 
+  useEffect(() => {
+    console.log(fileName)
+  }, []);
   function submitFile(event) {
     event.preventDefault();
     const sendObject = {
       fk_email: profileEmail,
       filename: fileName
-    };
+    }
 
     axios
-      .post(`https://api.backendproxy.com/api/s3/files/id`, sendObject)
-      .then(response => {
-        console.log(response);
-        sendFile();
-      })
-      .catch(err => console.log(err));
+    .post(`https://api.backendproxy.com/api/s3/files/id`, sendObject)
+    .then(response => {
+      console.log(response);
+      sendFile()
+    })
+    .catch(err=> console.log(err));
+
   }
 
-  const sendFile = () => {
+  const sendFile = ()=>{ 
     const formData = new FormData();
     formData.append("fileUpload", file[0]);
     axios
@@ -81,48 +77,44 @@ const CreateFile = () => {
       })
       .then(response => {
         console.log(response);
-        getURL()
       })
-      .catch(error => console.log(error));
-  };
+      .catch(error => {});
+  }
 
-  const getURL = () => {
-    console.log('in getURL') ;
+  const CreateFileId = (event)=> {
+    event.preventDefault();
+    
     axios
-      .get("https://api.backendproxy.com/api/s3/files/latest/" )
-      .then(response => {
-        console.log(response); 
-      })
-      .catch(error => console.log(error));
-  };
+    .post(`https://api.backendproxy.com/api/s3/files/id`)
+    .then(response => {
+      console.log(response);
+    })
+    .catch(err=> console.log(err));
+  }
 
   function handleFileUpload(event) {
     setFile(event.target.files);
   }
 
-  function handleNameInput(event) {
+  function handleInput(event){
+  
+    
     setFileName(event.target.value);
-    console.log("File Name: " + fileName);
-  }
-
-  function handleEmailInput(event) {
-    setToEmails(event.target.value);
-    console.log("File Name: " + fileName);
-  }
-
-  function sendGrid(event){
-    console.log('hi')
+    console.log('File Name: ' + fileName);
   }
   return (
     <CreateEditDiv>
       <CreateFileHolder>
         <span>File Name: </span>
-        <FileName type="text" placeholder="Name" name="setFileName" onChange={handleNameInput} />
+        <FileName type="text" placeholder="Name" onChange={handleInput}/>
         <br />
         <span>Share with:</span>
-        <FileName type="text" placeholder="Comma separate emails" onChange={handleEmailInput} />
+        <FileName type="text" placeholder="Comma separate emails" />
         <br />
-       
+
+//         <span>Shared with history:</span>
+
+        <SharedWithBox />
       </CreateFileHolder>
       <UploadButtonHolder>
         <br />
@@ -130,6 +122,7 @@ const CreateFile = () => {
           <input label="upload file" type="file" onChange={handleFileUpload} />
           <button type="submit">Send</button>
         </form>
+
         <br />
       </UploadButtonHolder>
       <ShareLinkHolder>
@@ -140,8 +133,9 @@ const CreateFile = () => {
         <FaArrowLeft size={15} className="fontAwesome" />
         <FaArrowRight size={15} className="fontAwesome" />
       </VersionBrowserHolder>
-
-      <button onClick={sendGrid}>Send Via Email</button>
+      
+        <button>Save</button>
+      
     </CreateEditDiv>
   );
 };
