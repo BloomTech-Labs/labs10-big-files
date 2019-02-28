@@ -289,4 +289,15 @@ router.get('/files/fk_email', (req, res) => {
     });
 });
 
+router.get('/files/latest', (req, res) => {
+    client.query(`SELECT * FROM files WHERE file_id = (select MAX(file_id) FROM files)`)
+        .then(result => {
+        res.status(200).json(result.rows);
+        //console.log(`works ${fk_user_id}`);
+    })
+    .catch(e => {
+        console.error(e), res.send(e);
+    });
+});
+
 module.exports = router;
