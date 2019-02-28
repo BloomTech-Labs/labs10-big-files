@@ -24,4 +24,18 @@ router.get("/send", (req, res) => {
   res.send("Email Sent");
 });
 
+router.post("/send", (req, res) => {
+  const {to, from, subject, text, html} = req.body;
+  const msg = {
+    to: to,
+    from: from,
+    subject: subject,
+    text: text,
+    html: html
+  };
+  sgMail.send(msg);
+  console.log("email sent");
+  res.send("Email Sent");
+});
+
 module.exports = router;

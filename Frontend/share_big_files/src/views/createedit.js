@@ -111,8 +111,22 @@ const CreateFile = () => {
   }
 
   function sendGrid(event){
-    console.log('hi')
+    const myDetails = {
+      to: "kkhaag@gmail.com", 
+      from: "Jake@gmail",
+      subject: "Sending an email",
+      text: "URL I THINK",
+      html: "Another url? Not sure"
+    }
+    axios.post("https://api.backendproxy.com/api/sendgrid/send", myDetails)
+    .then(response => {
+        console.log("Response DATA HERE!", response.data)
+      })
+    .catch(error => {
+      console.log("Error! RIGHT HERE", error)
+    })
   }
+  
   return (
     <CreateEditDiv>
       <CreateFileHolder>
