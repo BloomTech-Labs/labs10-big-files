@@ -65,8 +65,13 @@ const SharedInput = styled.div`
 
 const Sharedh3 = styled.h3`
 @media(max-width: 390px){ 
-    padding: 0;
-    margin: 0;
+  padding: 0;
+  margin: 0;
+  width: 20rem;
+  height: 20px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 `;
 const InnerSharedDiv = styled.div`
   height: 100%;
