@@ -6,10 +6,14 @@ import styled from 'styled-components';
 const DropdownDiv = styled.div`
     position: relative;
 
-    background: white;
-    margin-left: 85%; 
-    @media(max-width: 390px) { display: none; } 
-
+    // background: white;
+    margin-left: 85%;
+    @media(max-width: 768px) {
+        // margin-right: 10%;
+    }
+    @media(max-width: 390px) {
+        display: none;
+    }
 `;
 const UnorderedList = styled.div`
 list-style-type: none;
@@ -54,6 +58,9 @@ padding:12px;
 border-radius: 5px; 
 font-weight:bold;
 color:white;
+@media(max-width: 768px) {
+    text-align: left;
+}
 &:before {
     content:"";
     position:absolute;

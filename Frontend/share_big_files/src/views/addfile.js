@@ -30,6 +30,9 @@ const NewFileText = styled.div`
   margin-bottom: 2rem;
   margin-top: -2rem;
   font-size: 3rem;
+  @media(max-width: 390px) {
+    font-size: 4rem;
+  }
 `;
 
 const SharedBoxHolder = styled.div`
