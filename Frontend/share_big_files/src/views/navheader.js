@@ -9,6 +9,10 @@ display: flex;
 flex-direction: column;
 border-bottom: 5px solid white;
 margin-bottom: 1%;
+@media(max-width: 390px){
+  border-bottom: none;
+}
+
 `;
 
 const TitleH1 = styled.h1`
@@ -28,6 +32,9 @@ display: flex;
 width: 92%;
 justify-content: space-between;
 margin: 0 2%;
+@media(max-width: 390px){
+  display: none;
+}
 `;
 
 

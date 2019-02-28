@@ -1,7 +1,7 @@
 import React from "react";
-import styled from "styled-components";
-import { Link } from "react-router-dom";   
-import Splash from "../components/keithsCrazyButton";
+import styled from "styled-components";   
+
+
 
 const LandingContainerDiv = styled.div`
   width: 100%;
@@ -20,6 +20,11 @@ const LandingCardsContainer = styled.div`
   justify-content: center;
   align-items: center;
   text-align: center;
+  @media(max-width: 390px) {
+    display: block;
+    // width: 60%;
+    margin-left: 4%;
+  }
 `;
 
 const LandingCards = styled.div`
@@ -31,6 +36,10 @@ const LandingCards = styled.div`
   margin: 0% 3% 0% 3%;
   border-radius: 10px;
   font-size: 2rem;
+  @media(max-width: 390px) {
+    
+    margin: 0 auto;
+  }
 `;
 
 const TextContainer = styled.div`
@@ -89,8 +98,7 @@ export const LandingView = props => {
             <FileTransferButton onClick={props.lockOpen}>Use File Transfer Pro</FileTransferButton>
           </div>
         </LandingCards>
-      </LandingCardsContainer>
-      {/* <Splash/> */}
+      </LandingCardsContainer> 
     </LandingContainerDiv>
   );
 };

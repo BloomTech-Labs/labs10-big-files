@@ -1,14 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import styled from "styled-components";
-import { Link } from "react-router-dom";
-import media from "../styledComponents/media.js";
+import styled from "styled-components"; 
 import Stripe from "../components/StripeFE";
-
-const BillingDiv = styled.div`
-  margin-left: 2%;
-  
-`;
 
 const BasicMembershipDiv = styled.div`
   height: auto;
@@ -31,7 +24,7 @@ const ProMembershipDiv = styled.div`
   border-radius: 10px;
   background: rgba(255, 255, 255, 0.5);
   @media(max-width: 390px) {
-    width: 75%;
+    width: 95%;
     margin: 0 auto;
   }
 `;
@@ -40,7 +33,7 @@ const TextDiv = styled.div`
   width: fit-content;
   padding: 0 5%;
   @media(max-width: 390px) {
-    max-width: 85%;
+    max-width: 95%;
     margin: 0 auto;
   }
 `;
@@ -49,21 +42,20 @@ const Header1 = styled.h1`
 margin-left: 20%;
 // border-bottom: 2px solid black;
 @media(max-width: 390px) {
-  
-  // margin-left: 10%;
+ margin: 0;
 }
 `;
 const Header2 = styled.h2`
 margin-left: 45%;
-@media(max-width: 390px) {
-  margin-left: 40%;
+@media(max-width: 390px) { 
+  margin: 0;
 }
 `;
 const Header3 = styled.h2`
 margin-left: 35%;
 @media(max-width: 390px) {
   
-  margin-left: 25%;
+  margin-left: 0%;
 }
 `;
 
@@ -78,31 +70,11 @@ const StripeDiv = styled.div`
   }
 `;
 
-const ListItem = styled.li``;
+const ListItem = styled.li`
 
-const PaymentInfoHolder = styled.div``;
-const Subscriptions = styled.div`
-  color: black;
-`;
-const BuyNowButton = styled.div`
-  border: 2px solid;
-  cursor: pointer;
-  text-align: center;
-  border-radius: 5%;
-  box-shadow: 3px 3px 0px 0px rgba(0, 0, 0, 0.5);
-  background-color: white;
-`;
-const PaymentBoxes = styled.div`
-  width: ;
-  cursor: pointer;
 `;
 
-const InlineH3 = styled.h3`
-  display: inline;
-`;
-const Header = styled.h1`
-  margin-left: 22%;
-`;
+ 
 
 const Billing = () => {
   // useEffect(() => {
@@ -125,7 +97,7 @@ const Billing = () => {
 
   const fetchData = async () => {
     const profile = JSON.parse(localStorage.getItem("profile"));
-    const result = await axios;
+ 
     axios
       .get(`https://api.backendproxy.com/api/users/${profile.nickname}`)
       .then(response => {
@@ -144,8 +116,7 @@ const Billing = () => {
   useEffect(() => {
     fetchData();
   }, []);
-
-  const text = `Pro user: ${billing}`;
+ 
   if (loaded) {
     if (billing) {
       console.log(isPro);
@@ -155,18 +126,17 @@ const Billing = () => {
         <ProMembershipDiv>
           <TextDiv>
             <Header1>
-            <h1>Membership Level:</h1>
-            <h2>Pro</h2>
+            <h1>Member Level: Pro</h1> 
             </Header1>
             <Header3>
               <h3>Pro features</h3>
               </Header3>
-            <UnorderedList>
+            <div>
               <ListItem>Send files up to 2gb</ListItem>
               <ListItem>See who viewed your file</ListItem>
               <ListItem>See who downloaded your file</ListItem>
               <ListItem>70 days of file storage</ListItem>
-            </UnorderedList>
+            </div>
           </TextDiv>
         </ProMembershipDiv>
       );
@@ -183,12 +153,12 @@ const Billing = () => {
           <Header3>
             <h2>Basic features</h2>
           </Header3>
-          <UnorderedList>
+          <div>
             <ListItem>Send files up to 2gb</ListItem>
             <ListItem>See who viewed your file</ListItem>
             <ListItem>See who downloaded your file</ListItem>
             <ListItem>7 days of file storage</ListItem>
-          </UnorderedList>
+          </div>
           <h2>Click below to get 70 day file storage</h2> <StripeDiv><Stripe /></StripeDiv>
         </TextDiv>
       </BasicMembershipDiv>

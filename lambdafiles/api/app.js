@@ -12,7 +12,7 @@ const userRoute = require("../routes/api/users");
 const fileRoute = require("../routes/api/files");
 const downloadRoute = require("../routes/api/downloads");
 const s3Route = require("../routes/api/s3");
-//const sendgrid = require("../routes/api/sendgrid.js");
+const sendgrid = require("../routes/api/sendgrid.js");
 
 var port = process.env.PORT || 3000,
   http = require("http"),
@@ -30,6 +30,6 @@ server.use("/api/files/", fileRoute);
 server.use("/api/downloads/", downloadRoute);
 server.use("/api/s3/", s3Route);
 server.use("/api/stripe", stripeApi);
-//server.use("api/sendgrid", sendgrid);
+server.use("/api/sendgrid", sendgrid);
 
 module.exports = server;
