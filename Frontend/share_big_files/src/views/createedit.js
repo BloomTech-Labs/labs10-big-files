@@ -22,48 +22,91 @@ const CreateEditDiv = styled.div`
   }
 `;
 
-// const CreateFileHolder = styled.div``;
+const CreateFileHolder = styled.div``;
 
-// const FileName = styled.input`
-//   margin-left: 1%;
-// `;
-// const SharedWithBox = styled.div`
-//   width: 100%;
-//   height: 7rem;
-//   border: 1px solid #a8a8a8;
-// `;
+const FileName = styled.input`
+  margin-left: 1%;
+`;
+const SharedWithBox = styled.div`
+  width: 100%;
+  height: 7rem;
+  border: 1px solid #a8a8a8;
+`;
 
 const ShareLinkHolder = styled.div``;
 const VersionBrowserHolder = styled.div``;
-const ConfirmButtons = styled.button``;
+const SaveDiv = styled.button``;
 const UploadButtonHolder =styled.div``;
 
 const CreateFile = () => {
-  const [file, setFile] = useState(null);
+  const [link, setLink] = useState(null)
+  const [file, setFile] = useState(null)
+  const [fileName, setFileName] = useState(null);
+  const profile = JSON.parse(localStorage.getItem("profile"));
+  const profileEmail = profile.email;
+
+
+  useEffect(() => {
+    console.log(fileName)
+  }, []);
   function submitFile(event) {
     event.preventDefault();
+    const sendObject = {
+      fk_email: profileEmail,
+      filename: fileName
+    }
+
+    axios
+    .post(`https://api.backendproxy.com/api/s3/files/id`, sendObject)
+    .then(response => {
+      console.log(response);
+      sendFile()
+    })
+    .catch(err=> console.log(err));
+
+  }
+
+  const sendFile = ()=>{ 
     const formData = new FormData();
     formData.append("fileUpload", file[0]);
     axios
-      .put("https://api.backendproxy.com/api/s3/files", formData, {
+      .put("https://api.backendproxy.com/api/s3/files/", formData, {
         headers: {
           "Content-Type": "multipart/form-data"
         }
       })
       .then(response => {
-        console.log(response.statusText);
+        console.log(response);
       })
       .catch(error => {});
+  }
+
+  const CreateFileId = (event)=> {
+    event.preventDefault();
+    
+    axios
+    .post(`https://api.backendproxy.com/api/s3/files/id`)
+    .then(response => {
+      console.log(response);
+    })
+    .catch(err=> console.log(err));
   }
 
   function handleFileUpload(event) {
     setFile(event.target.files);
   }
+
+  function handleInput(event){
+  
+    
+    setFileName(event.target.value);
+    console.log('File Name: ' + fileName);
+  }
   return (
     <CreateEditDiv>
       <CreateFileHolder>
         <span>File Name: </span>
-        <FileName type="text" placeholder="Name" />
+        <FileName type="text" placeholder="Name" onChange={handleInput}/>
         <br />
         <span>Share with:</span>
         <FileName type="text" placeholder="Comma separate emails" />
@@ -80,25 +123,6 @@ const CreateFile = () => {
           <button type="submit">Send</button>
         </form>
 
-<<<<<<< HEAD
-//         <br />
-//       </UploadButtonHolder>
-//       <ShareLinkHolder>
-//         <h3>Share Link:</h3>
-//       </ShareLinkHolder>
-//       <VersionBrowserHolder>
-//         <span>Version Browser: </span>
-//         <FaArrowLeft size={15} className="fontAwesome" />
-//         <FaArrowRight size={15} className="fontAwesome" />
-//       </VersionBrowserHolder>
-//       <ConfirmButtons>
-//         <button>Cancel</button>
-//         <button>Save</button>
-//       </ConfirmButtons>
-//     </CreateEditDiv>
-//   );
-// };
-=======
         <br />
       </UploadButtonHolder>
       <ShareLinkHolder>
@@ -109,12 +133,11 @@ const CreateFile = () => {
         <FaArrowLeft size={15} className="fontAwesome" />
         <FaArrowRight size={15} className="fontAwesome" />
       </VersionBrowserHolder>
-      <ConfirmButtons> 
+      
         <button>Save</button>
-      </ConfirmButtons>
+      
     </CreateEditDiv>
   );
 };
->>>>>>> ded836ed0343665171f4afe617f14affdafc478f
 
-// export default CreateFile;
+export default CreateFile;
