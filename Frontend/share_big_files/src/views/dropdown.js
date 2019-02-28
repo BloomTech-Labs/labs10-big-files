@@ -6,7 +6,8 @@ import styled from 'styled-components';
 const DropdownDiv = styled.div`
     position: relative;
     background: white;
-    margin-left: 85%;
+    margin-left: 85%; 
+    @media(max-width: 390px) { display: none; } 
 `;
 const UnorderedList = styled.div`
 list-style-type: none;
@@ -40,7 +41,7 @@ border-bottom: 1px solid black;
 `;
 
 const Button = styled.button`
-width:100%;
+width:100%; 
 height:4.3rem;
 background-color: darkblue;
 padding:12px;

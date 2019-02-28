@@ -23,6 +23,7 @@ const ProMembershipDiv = styled.div`
   margin-left: 2%;
   border-radius: 10px;
   background: rgba(255, 255, 255, 0.5);
+
   @media(max-width: 390px) {
     width: 95%;
     margin: 0 auto;
@@ -32,6 +33,7 @@ const ProMembershipDiv = styled.div`
 const TextDiv = styled.div`
   width: fit-content;
   padding: 0 5%;
+  margin-bottom: 5%
   @media(max-width: 390px) {
     max-width: 95%;
     margin: 0 auto;
@@ -59,10 +61,7 @@ margin-left: 35%;
 }
 `;
 
-const UnorderedList = styled.ul`
-  text-align: left;
-  line-height: 2;
-`;
+ 
 const StripeDiv = styled.div`
   margin-left: 35%;
   @media(max-width: 390px) {
