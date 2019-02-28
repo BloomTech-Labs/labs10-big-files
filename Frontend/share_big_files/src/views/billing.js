@@ -1,14 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import styled from "styled-components";
-import { Link } from "react-router-dom";
-import media from "../styledComponents/media.js";
+import styled from "styled-components"; 
 import Stripe from "../components/StripeFE";
-
-const BillingDiv = styled.div`
-  margin-left: 2%;
-  
-`;
 
 const BasicMembershipDiv = styled.div`
   height: auto;
@@ -79,28 +72,7 @@ const StripeDiv = styled.div`
 
 const ListItem = styled.li``;
 
-const PaymentInfoHolder = styled.div``;
-const Subscriptions = styled.div`
-  color: black;
-`;
-const BuyNowButton = styled.div`
-  border: 2px solid;
-  cursor: pointer;
-  text-align: center;
-  border-radius: 5%;
-  box-shadow: 3px 3px 0px 0px rgba(0, 0, 0, 0.5);
-  background-color: white;
-`;
-const PaymentBoxes = styled.div`
-  width: ;
-  cursor: pointer;
-`;
-
-const InlineH3 = styled.h3`
-  display: inline;
-`;
-const Header = styled.h1` 
-`;
+ 
 
 const Billing = () => {
   // useEffect(() => {
@@ -123,7 +95,7 @@ const Billing = () => {
 
   const fetchData = async () => {
     const profile = JSON.parse(localStorage.getItem("profile"));
-    const result = await axios;
+ 
     axios
       .get(`https://api.backendproxy.com/api/users/${profile.nickname}`)
       .then(response => {
@@ -142,8 +114,7 @@ const Billing = () => {
   useEffect(() => {
     fetchData();
   }, []);
-
-  const text = `Pro user: ${billing}`;
+ 
   if (loaded) {
     if (billing) {
       console.log(isPro);
