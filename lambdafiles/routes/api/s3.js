@@ -277,6 +277,16 @@ router.get('/files/email', (req, res) => {
     });
 });
 
-
+router.get('/files/fk_email', (req, res) => {
+    //const fk_email = req.body.fk_email;
+    //console.log(req.body.fk_email);
+    client.query(`SELECT * FROM files WHERE fk_email LIKE '${req.body.fk_email}'`)
+        .then(result => {
+            res.status(200).json(result.rows);
+    })
+    .catch(e => {
+            console.error(e), res.send(e);
+    });
+});
 
 module.exports = router;
