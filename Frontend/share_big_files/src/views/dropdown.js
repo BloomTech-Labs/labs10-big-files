@@ -7,6 +7,9 @@ const DropdownDiv = styled.div`
     position: relative;
     // background: white;
     margin-left: 85%;
+    @media(max-width: 390px) {
+        display: none;
+    }
 `;
 const UnorderedList = styled.div`
 list-style-type: none;
