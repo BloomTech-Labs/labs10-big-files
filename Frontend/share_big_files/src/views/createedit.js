@@ -155,6 +155,11 @@ const CreateFile = () => {
     console.log("Email Subject: " + emailSubject);
   }
 
+  function handleMessage(event) {
+    setMessage(event.target.value);
+    console.log("Message: " + message);
+  }
+
   function sendGrid(event) {
     const myDetails = {
       to: recipientEmail,
@@ -198,7 +203,7 @@ const CreateFile = () => {
           <FileNameMessage
             type="text"
             placeholder="...Message to include with download link email"
-            onChange={handleEmailInput}
+            onChange={handleMessage}
           />
       
           <form onSubmit={submitFile}>
