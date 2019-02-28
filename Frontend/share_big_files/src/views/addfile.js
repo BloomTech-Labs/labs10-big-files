@@ -66,7 +66,7 @@ const AddFile = () => {
     console.log(userJSON);
 
     axios
-      .get("http://api.backendproxy.com/api/s3/files/email", userJSON)
+      .get("https://api.backendproxy.com/api/s3/files/fk_email", userJSON)
       .then(response => {
         console.log(response);
       })
