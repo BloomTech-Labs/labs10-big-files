@@ -3428,6 +3428,16 @@ filename-regex@^2.0.0:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/filename-regex/-/filename-regex-2.0.1.tgz#c1c4b9bee3e09725ddb106b75c1e301fe2f18b26"
 
+filepond-plugin-image-exif-orientation@1.0.4:
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/filepond-plugin-image-exif-orientation/-/filepond-plugin-image-exif-orientation-1.0.4.tgz#d1bc57fcf4341c3cccd018a3083833919b52cd0d"
+  integrity sha512-wMpQ15g4s5ar0oOiqOdR+kLSzjR2/HU1iw9MWx59WDlCBZgvDUIHTzuTsyIJRPASZ5R9wrHv/pmJINuMoTXrSw==
+
+filepond-plugin-image-preview@4.0.3:
+  version "4.0.3"
+  resolved "https://registry.yarnpkg.com/filepond-plugin-image-preview/-/filepond-plugin-image-preview-4.0.3.tgz#9e8a6561455751498da29e4a6501ab828dc0d4a2"
+  integrity sha512-umWUAM9Jd2W66/bcT/KWxBh1mmcSJxYi/L0aSxJSRnEebOGtJlNZ3y9nnB6MMNmt+Ybi9ttto6mmc4OPyfbfuQ==
+
 filepond@^4.2.0:
   version "4.2.0"
   resolved "https://registry.yarnpkg.com/filepond/-/filepond-4.2.0.tgz#93852e933cc8acd9a60efeb5ef93fbbff15d1fef"

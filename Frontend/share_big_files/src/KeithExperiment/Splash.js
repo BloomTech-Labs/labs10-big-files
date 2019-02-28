@@ -105,19 +105,17 @@ const [loaded, setLoaded] = useState(0)
             <h1>MoveBytes</h1>
             <h1>Send files quick and easy.</h1>
             <br/><br/><br/><br/><br/><br/>
-            <CTA className="play-btn" href="/login">
-              {/* <input type="file" style={ hiddenStyle } /> */}
-            </CTA>
+            <CTA className="play-btn"> 
+              <input type="file" style={ hiddenStyle } /> 
+             </CTA>
             
 
+            {/* <Form /> */}
 
 
           </LeftColumn>
           <RightColumn>
             <h1>1 Select a file</h1>
-
-
-
           <div>
               <form onSubmit={submitFile}>
                 <input label='upload file' type='file' onChange={handleFileUpload} />
@@ -126,15 +124,15 @@ const [loaded, setLoaded] = useState(0)
               <div> {Math.round(loaded, 2) } %</div>
           </div>
 
-
-
             <h1>2 Enter email</h1>
-            <Form />
             <h1>3 Send!</h1>
+
+
+
             <CTAButtonsGroup>
-              <a href="#features">
+              {/* <a href="#features">
                 <CTABtn learn href="#features">Learn more</CTABtn>
-              </a>
+              </a> */}
             </CTAButtonsGroup>
           </RightColumn>
         </JumboTron>
