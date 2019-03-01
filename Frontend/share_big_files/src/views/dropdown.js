@@ -6,7 +6,7 @@ import styled from 'styled-components';
 const DropdownDiv = styled.div`
     position: relative;
 
-    // background: white;
+    border-radius: 10px;
     margin-left: 85%;
     @media(max-width: 768px) {
         // margin-right: 10%;
@@ -21,6 +21,7 @@ margin: 0;
 padding: 0;
 top:45px;
 right:0px;
+border-radius: 10px;
 width: 200px;
 background-color: white;
 font-weight:bold;
@@ -30,12 +31,13 @@ box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
 z-index: 1;
 `;
 const ListItemA = styled.a`
-color: #000;
+color: #36454f;
 text-decoration: none;
+border-radius: 10px;
 `;
 const ListItem = styled.li`
 
-background-color: lightgray; 
+background-color: #fffff0; 
 
 padding: 8px 16px;
 border-bottom: 1px solid black;
@@ -52,10 +54,10 @@ const Button = styled.button`
 
 width:100%; 
 height:4.3rem;
-background-color: darkblue;
+background-color: #ff7518;
 
 padding:12px;
-border-radius: 5px; 
+border-radius: 10px; 
 font-weight:bold;
 color:white;
 @media(max-width: 768px) {
@@ -66,6 +68,7 @@ color:white;
     position:absolute;
     width:0px; 
     height:0px; 
+    border-radius: 10px;
     border: 10px solid;
     border-color: white transparent transparent transparent;
     right:6px;

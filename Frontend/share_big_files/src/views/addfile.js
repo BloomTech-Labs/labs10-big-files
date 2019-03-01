@@ -10,12 +10,11 @@ const AddFileHolder = styled.div`
   width: 25rem;
   height: 22rem;
   border: 1px solid black;
-  margin-left: 4%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: white;
+  background-color: #fffff0;
   border-radius: 10%;
   text-align: center;
   margin: 1% auto;
@@ -39,12 +38,12 @@ const SharedBoxHolder = styled.div`
   width: 25rem;
   height: 22rem;
   border: 1px solid black;
-  margin-left: 4%;
+  // margin-left: 4%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: white;
+  background-color: #fffff0;
   border-radius: 10%;
   margin: 1% auto;
   @media (max-width: 390px) {
@@ -64,9 +63,15 @@ const SharedInput = styled.div`
 `;
 
 const Sharedh3 = styled.h3`
+overflow: hidden;
+white-space: nowrap;
+text-overflow: ellipsis;
+padding: 0;
+  margin: 0;
+  width: 20rem;
+  height: 20px;
 @media(max-width: 390px){ 
-    padding: 0;
-    margin: 0;
+  
 `;
 const InnerSharedDiv = styled.div`
   height: 100%;
