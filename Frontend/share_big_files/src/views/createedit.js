@@ -178,7 +178,6 @@ const CreateFile = () => {
         console.log("Error! RIGHT HERE", error);
       });
   }
-
   return (
     <CreateEditDiv>
       <InnerDiv>
@@ -197,7 +196,7 @@ const CreateFile = () => {
           />
           <FileName
             type="text"
-            placeholder="...Download email subject line"
+            placeholder="...Recipient email subject line"
             onChange={handleEmailSubjectInput}
           />
           <FileNameMessage
@@ -205,18 +204,14 @@ const CreateFile = () => {
             placeholder="...Message to include with download link email"
             onChange={handleMessage}
           />
-      
           <form onSubmit={submitFile}>
             <input
               label="upload file"
               type="file"
               onChange={handleFileUpload}
             />
-         
             <button type="submit">Upload to server</button>
-           
           </form>
-
           <SendGridButton onClick={sendGrid}>Share Via Email</SendGridButton>
     
       </InnerDiv>
