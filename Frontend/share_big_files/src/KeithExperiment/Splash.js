@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import styled, { keyframes } from 'styled-components';
+import styled from 'styled-components';
 import axios from 'axios';
 
 import Features from './Features';
@@ -7,35 +7,27 @@ import Features from './Features';
 import Blue from "./Blue.jpg"
 import Beach from "./Beach.jpg"
 import Water from "./Water.jpg"
-// import Pine from "./Pine.jpg"
-// import Gray from "./Gray.jpg"
-// import Grapes from "./Grapes.jpg"
+
 
 import './CTAButton.css'
-
-
-import Form from "./Form/Form"
 
 var myArray = [
   Blue,
   Beach,
   Water
-  // Pine,
-  // Gray,
-  // Grapes
 ];
-
 let randomImage = myArray[Math.floor(Math.random()*myArray.length)];
 
+// rand = var(--backgroundImage);
 
-const Splash = () => {
+const Splash = ({ toggleTheme }) => {
 const [file, setFile] = useState(null)
 const [loaded, setLoaded] = useState(0)
 
 
-// useEffect(() => console.log(paid))
   const imageStyle = {
-    backgroundImage: `url(${randomImage})`,
+    // backgroundImage: `url(${randomImage})`,
+    backgroundImage: "var(--backgroundImage)",
     top: "0",
     left: "0",
     width: "100%",
@@ -43,11 +35,6 @@ const [loaded, setLoaded] = useState(0)
     backgroundSize: "cover",
     backgroundAttachment: "fixed",
     overflow: "hidden",
-    // position: "absolute",
-    // objectFit: "none",
-    // backgroundSize: "100%",
-    // backgroundPosition: "center center",
-    // display: "grid",
   };
 
 
@@ -64,14 +51,10 @@ const [loaded, setLoaded] = useState(0)
     borderMargin: 0,
     cursor: "pointer",
     zIndex: 1
-
-    
   }
 
 
   function submitFile(event) {
-    console.log('event:', event)
-    console.log('file:', file)
     event.preventDefault();
     
     const formData = new FormData();
@@ -85,9 +68,7 @@ const [loaded, setLoaded] = useState(0)
       }
     }).then(response => {
         console.log(response.statusText)
-        // response.send(response.data)
         console.log("Let's check it out", response.data)
-        // handle your response;
     }).catch(error => {
       // handle your error
     });
@@ -101,7 +82,6 @@ const [loaded, setLoaded] = useState(0)
 
   return (
     <WrapperContainer style={ imageStyle }>
-    {/* {console.log("RandImage", randomImage)} */}
       <Header>
         <JumboTron>
           <LeftColumn>
@@ -113,9 +93,6 @@ const [loaded, setLoaded] = useState(0)
               <input type="file" onChange={handleFileUpload} style={ hiddenStyle } /> 
              </CTA>
             
-
-            {/* <Form /> */}
-
 
           </LeftColumn>
           <RightColumn>
@@ -129,6 +106,11 @@ const [loaded, setLoaded] = useState(0)
           </div>
 
             <h1>2 Enter email</h1>
+            
+            <button className="header__button" onClick={e => toggleTheme()}>
+              Toggle theme
+            </button>
+
             <h1>3 Send!</h1>
 
 
@@ -278,16 +260,4 @@ position: absolute;
 top: 95%;
 right: 5%;
 `;
-
-const animate = keyframes`
-0% {
-  opacity: 0;
-}
-50% {
-  opacity: 1;
-}
-100% {
-  opacity: 0;
-}
-  `;
 

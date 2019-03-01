@@ -36,9 +36,17 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      email: null
+      email: null,
+      theme: 'red'
     };
-  }
+    this.toggleTheme = this.toggleTheme.bind(this);
+}
+
+toggleTheme() {
+  const theme = this.state.theme === "red" ? "blue" : "red";
+  this.setState({ theme });
+  document.documentElement.setAttribute("data-theme", theme);
+}
 
   componentDidMount() {
     this.lockOn();
@@ -83,8 +91,8 @@ class App extends Component {
     if (this.isAuthenticated() || localStorage.getItem("accessToken")) {
       return (
         <AppContainer>
-          
-          <Splash />
+
+          <Splash toggleTheme={this.toggleTheme} />
 
             <Route
             exact

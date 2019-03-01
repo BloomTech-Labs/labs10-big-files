@@ -1,11 +1,25 @@
-:root {
-    --Primary-Color: white;
-    --Secondary-Color: blue;
+html.color-theme-in-transition,
+html.color-theme-in-transition *,
+html.color-theme-in-transition *:before,
+html.color-theme-in-transition *:after {
+  transition: all 750ms !important;
+  transition-delay: 0 !important;
+}
 
-    --Primary-Text: white;
-    --Secondary-Text: black;
+html { 
+    --startButton: rgb(63, 178, 255);
+    --backgroundImage: url("./Blue.jpg");
 }
-.theme {
-    background-color: var(--bg-color);
-    color: (--color);
-}
+
+html[data-theme="red"] {
+    --startButton: rgb(255, 63, 63);
+    --backgroundImage: url("./Beach.jpg");
+  }
+  
+  html[data-theme="green"] {
+    --startButton: rgb(79, 255, 63);
+  }
+  
+  html[data-theme="yellow"] {
+    --startButton: rgb(242, 255, 63);
+  }

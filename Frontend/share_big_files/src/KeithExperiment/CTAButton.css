@@ -14,24 +14,26 @@ body {
     min-width: 200px; */
     max-height: 300px;
     max-width: 300px;
-    background: radial-gradient( rgba(255, 255, 255, 1) 60%, rgb(63, 178, 255) 62%);
+    background: radial-gradient( rgba(255, 255, 255, 1) 60%, var(--startButton) 62%);
     border-radius: 50%;
     position: relative;
     display: block;
     margin: 10px;
-    box-shadow: 0px 0px 25px 3px rgb(63, 178, 255);
+    box-shadow: 0px 0px 25px 3px var(--startButton);
   }
   
-  .play-btn:hover {
+  .play-btn:hover::after {
     /* background: black; */
     /* content: url(Upload.svg); */
+    /* color: var(--primaryTextColor); */
+
   }
   
   /* triangle */
   .play-btn::after {
-    /* content: "START"; */
+    content: "START";
     font-size: 5em;
-    color: rgb(63, 178, 255);
+    color: var(--startButton);
     position: absolute;
     left: 26%;
     top: 40%;
@@ -45,7 +47,7 @@ body {
   }
   
   /* pulse wave */
-  .play-btn:before {
+  .play-btn::before {
     content: "";
     position: absolute;
     cursor: auto;
