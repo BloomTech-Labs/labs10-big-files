@@ -1,7 +1,8 @@
 require("dotenv").config();
 const express = require("express");
 const router = express.Router();
-const sgMail = require("@sendgrid/mail");
+const sgMail = require('@sendgrid/mail');
+
 
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
@@ -22,6 +23,20 @@ router.get("/", (req, res) => {
 });
 
 router.get("/send", (req, res) => {
+  sgMail.send(msg);
+  console.log("email sent");
+  res.send("Email Sent");
+});
+
+router.post("/send", (req, res) => {
+  const {to, from, subject, text, html} = req.body;
+  const msg = {
+    to: to,
+    from: from,
+    subject: subject,
+    text: text,
+    html: html
+  };
   sgMail.send(msg);
   console.log("email sent");
   res.send("Email Sent");
