@@ -37,11 +37,14 @@ class App extends Component {
     super(props);
     this.state = {
       email: null,
+      
+      //KEITH
       theme: 'red'
     };
+    //KEITH
     this.toggleTheme = this.toggleTheme.bind(this);
 }
-
+//KEITH
 toggleTheme() {
   const theme = this.state.theme === "red" ? "blue" : "red";
   this.setState({ theme });
@@ -92,6 +95,7 @@ toggleTheme() {
       return (
         <AppContainer>
 
+          {/* KEITH */}
           <Splash toggleTheme={this.toggleTheme} />
 
             <Route
