@@ -5,6 +5,10 @@ const sgMail = require("@sendgrid/mail");
 
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
+router.post('/sendgrid/', (req, res) => {
+    const {tomail, frommail, subject, text, html} = req.body;
+});
+
 const msg = {
   to: "jaskip2@gmail.com",
   from: "jaskip2@gmail.com",

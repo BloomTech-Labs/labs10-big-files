@@ -14,7 +14,7 @@ router.get("/", async (req, res) => {
 	    res.status(200).json(result.rows);
 	})
 	.catch(e => {
-        console.error(e),
+            console.error(e),
 	    res.status(404).json(e.stack);
 	})
 });
@@ -31,6 +31,20 @@ router.post("/", (request, res) => {
 	})
 	.catch(e => {
 	    console.error(e.detail),
+	    res.send(e)
+	})
+});
+
+
+//
+router.delete("/:id", (request, res) => {
+    const downloadID = parseInt(request.params.id);
+    client.query(`DELETE FROM downloads WHERE download_id = $1`,[downloadID])
+	.then(result => {
+	    res.status(200).json(result);
+	})
+	.catch(e => {
+	    console.error(e),
 	    res.send(e)
 	})
 });
