@@ -36,14 +36,15 @@ const TitleH3 = styled.h3`
     text-align: start;
     width: 100%; 
     color: #ff7518;
-    // &:hover {
-    //   color: #ff7518;
-    // }
+    @media (max-width: 390px) {
+      text-align: center;
+      font-size: 3rem;
+    }
 `;
 const LinkStyles = styled.div`
   font-size: 2rem;
   // margin-left: 75%;
-  color: white;
+  color:  #fffff0;
   text-align: center;
   height: 100%;
   &:hover {
