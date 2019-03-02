@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 const NavHeaderDiv = styled.div`
 display: flex;
 // flex-direction: column;
+background-color: #36454f;
 border-bottom: 5px solid #ff7518;
 margin-bottom: 1%;
 @media(max-width: 390px){
@@ -16,6 +17,7 @@ margin-bottom: 1%;
 `;
 
 const Box = styled.div`
+width: 100%;
 background: linear-gradient(
   #36454f, #ff7518 50%, #36454f 50%, #36454f
 );
@@ -42,6 +44,7 @@ const LinkStyles = styled.div`
   font-size: 2rem;
   // margin-left: 75%;
   color: white;
+  text-align: center;
   &:hover {
     color: #ff7518;
   }
