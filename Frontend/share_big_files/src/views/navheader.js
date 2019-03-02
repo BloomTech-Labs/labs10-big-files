@@ -45,6 +45,7 @@ const LinkStyles = styled.div`
   // margin-left: 75%;
   color: white;
   text-align: center;
+  height: 100%;
   &:hover {
     color: #ff7518;
   }
