@@ -3,6 +3,9 @@ import styled from 'styled-components';
 import axios from 'axios';
 
 import Features from './Features';
+import Pricing from './Pricing';
+
+import FormModal from "./FormModal"
 
 import Blue from "./Blue.jpg"
 import Beach from "./Beach.jpg"
@@ -18,11 +21,9 @@ var myArray = [
 ];
 let randomImage = myArray[Math.floor(Math.random()*myArray.length)];
 
-// rand = var(--backgroundImage);
 
 const Splash = ({ toggleTheme }) => {
 const [file, setFile] = useState(null)
-const [loaded, setLoaded] = useState(0)
 
 
   const imageStyle = {
@@ -36,7 +37,6 @@ const [loaded, setLoaded] = useState(0)
     backgroundAttachment: "fixed",
     overflow: "hidden",
   };
-
 
   const hiddenStyle = {
     opacity: "0.0",
@@ -53,66 +53,47 @@ const [loaded, setLoaded] = useState(0)
     zIndex: 1
   }
 
-
-  function submitFile(event) {
-    event.preventDefault();
-    
-    const formData = new FormData();
-    formData.append('fileUpload', file[0]);
-    axios.put("https://api.backendproxy.com/api/s3/files", formData, {
-      onUploadProgress: ProgressEvent => {
-        setLoaded(ProgressEvent.loaded / ProgressEvent.total*100)
-      },
-      headers: {
-        'Content-Type': 'multipart/form-data'
-      }
-    }).then(response => {
-        console.log(response.statusText)
-        console.log("Let's check it out", response.data)
-    }).catch(error => {
-      // handle your error
-    });
-  }
-
   function handleFileUpload(event) {
     setFile(event.target.files);
-    setLoaded(0)
   }
-
-
+  
   return (
     <WrapperContainer style={ imageStyle }>
       <Header>
         <JumboTron>
+          {file ? <FormModal file={file} setFile={setFile} /> : null}
           <LeftColumn>
             <br/><br/>
             <h1>MoveBytes</h1>
             <h1>Send files quick and easy.</h1>
             <br/><br/><br/><br/><br/><br/>
             <CTA className="play-btn" > 
-              <input type="file" onChange={handleFileUpload} style={ hiddenStyle } /> 
-             </CTA>
-            
+              <input type="file" onChange={handleFileUpload} style={hiddenStyle} /> 
+            </CTA>
 
+       
+            {/* <CTA className="play-btn" onSubmit={submitFile}> 
+              <input type="file" onChange={handleFileUpload} /> 
+              <button type="submit">Send</button>
+            </CTA> */}
           </LeftColumn>
+
           <RightColumn>
             <h1>1 Select a file</h1>
-          <div>
-              <form onSubmit={submitFile}>
-                <input label='upload file' type='file' onChange={handleFileUpload} />
-                <button type='submit'>Send</button>
-              </form>
-              <div> {Math.round(loaded, 2) } %</div>
-          </div>
-
-            <h1>2 Enter email</h1>
-            
             <button className="header__button" onClick={e => toggleTheme()}>
               Toggle theme
             </button>
-
+          <div>
+              {/* <form onSubmit={submitFile}>
+                <input label='upload file' type='file' onChange={handleFileUpload} />
+                <button type='submit'>Send</button>
+                </form>
+              <div> {Math.round(loaded, 2) } %</div> */}
+          </div>
+            <h1>2 Enter email</h1>
             <h1>3 Send!</h1>
 
+      
 
 
             <CTAButtonsGroup>
@@ -121,11 +102,13 @@ const [loaded, setLoaded] = useState(0)
               </a> */}
             </CTAButtonsGroup>
           </RightColumn>
+
         </JumboTron>
       </Header>
 
       <Body>
         <Features />
+        <Pricing />
         <BackToTopContainer>
           <a href="/#">Back to top</a>
         </BackToTopContainer>
@@ -191,14 +174,14 @@ const JumboTron = styled.div`
 `;
 
 const LeftColumn = styled.div`
-  width: 38%;
+  width: 35%;
   position: fixed;
   z-index: 100;
   display: flex;
   flex-direction: column;
   align-items: center;
   `
-  const CTA = styled.div`
+  const CTA = styled.form`
   cursor: pointer;
   display: flex;
   -moz-border-radius: 50%;
@@ -207,7 +190,7 @@ const LeftColumn = styled.div`
 
 `
 const RightColumn = styled.div`
-  width: 60%;
+  width: 63%;
   left: 40%
   display: flex;
   flex-direction: column;

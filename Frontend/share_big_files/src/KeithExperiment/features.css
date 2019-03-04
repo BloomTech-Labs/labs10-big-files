@@ -1,0 +1,31 @@
+body {
+    background: #f8f8f8;
+  }
+  /* h1 {
+    text-align: center;
+    font-family: 'Lato', sans-serif;
+    font-size: 25px;
+    line-height: 32px;
+    padding-top: 70px;
+  } */
+
+  .feature-table-wrapper {
+    font-family: 'Lato', sans-serif;
+    text-align: left;
+    margin-top: 30px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    font-size: 14px;
+  }
+
+  .feature-table-wrapper .features-table {
+    border: 1px solid #c8c8c8;
+    border-radius: 10px;
+    background: white;
+    margin: 20px;
+    transition: all 0.3s ease-in-out;
+    min-width: 250px;
+    width: 290px;
+    padding: 0 10px;
+  }

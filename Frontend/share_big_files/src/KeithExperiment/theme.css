@@ -7,19 +7,22 @@ html.color-theme-in-transition *:after {
 }
 
 html { 
-    --startButton: rgb(63, 178, 255);
+    --primaryColor: rgb(63, 178, 255);
     --backgroundImage: url("./Blue.jpg");
+    --primaryText: black;
 }
 
 html[data-theme="red"] {
-    --startButton: rgb(255, 63, 63);
+    --primaryColor: rgb(255, 63, 63);
     --backgroundImage: url("./Beach.jpg");
-  }
-  
-  html[data-theme="green"] {
-    --startButton: rgb(79, 255, 63);
+    --primaryText: black;
+}
+
+html[data-theme="green"] {
+    --primaryColor: rgb(79, 255, 63);
+    --primaryText: black;
   }
   
   html[data-theme="yellow"] {
-    --startButton: rgb(242, 255, 63);
+    --primaryColor: rgb(242, 255, 63);
   }
