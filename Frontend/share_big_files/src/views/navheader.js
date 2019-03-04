@@ -7,7 +7,8 @@ import { Link } from "react-router-dom";
 const NavHeaderDiv = styled.div`
 display: flex;
 // flex-direction: column;
-border-bottom: 5px solid white;
+background-color: #36454f;
+border-bottom: 5px solid #ff7518;
 margin-bottom: 1%;
 @media(max-width: 390px){
   border-bottom: none;
@@ -16,8 +17,9 @@ margin-bottom: 1%;
 `;
 
 const Box = styled.div`
+width: 100%;
 background: linear-gradient(
-  white, white 50%, #333 50%, #333
+  #36454f, #ff7518 50%, #36454f 50%, #36454f
 );
 background-size: 100% 202%;
 transition: all 0.2s ease;
@@ -33,15 +35,18 @@ const TitleH3 = styled.h3`
     margin-left: 2%
     text-align: start;
     width: 100%; 
-    color: white;
-    &:hover {
-      color: #ff7518;
+    color: #ff7518;
+    @media (max-width: 390px) {
+      text-align: center;
+      font-size: 3rem;
     }
 `;
 const LinkStyles = styled.div`
   font-size: 2rem;
   // margin-left: 75%;
-  color: white;
+  color:  #fffff0;
+  text-align: center;
+  height: 100%;
   &:hover {
     color: #ff7518;
   }

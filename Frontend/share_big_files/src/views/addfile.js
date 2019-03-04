@@ -14,7 +14,7 @@ const AddFileHolder = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: #fffff0;
+  background-color: #36454f;
   border-radius: 10%;
   text-align: center;
   margin: 1% auto;
@@ -29,9 +29,13 @@ const NewFileText = styled.div`
   margin-bottom: 2rem;
   margin-top: -2rem;
   font-size: 3rem;
+  color: #fffff0;
   @media(max-width: 390px) {
     font-size: 4rem;
   }
+`;
+const ShareDiv = styled.div`
+  color: #fffff0;
 `;
 
 const SharedBoxHolder = styled.div`
@@ -43,7 +47,7 @@ const SharedBoxHolder = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: #fffff0;
+  background-color: #36454f;
   border-radius: 10%;
   margin: 1% auto;
   @media (max-width: 390px) {
@@ -63,6 +67,7 @@ const SharedInput = styled.div`
 `;
 
 const Sharedh3 = styled.h3`
+color: #fffff0;
 overflow: hidden;
 white-space: nowrap;
 text-overflow: ellipsis;
@@ -167,14 +172,16 @@ const AddFile = () => {
     <AddFileHolder>
     <NewFileText>New File</NewFileText>
     <Link to="/create">
-      <FaPlusCircle size={50} color="black" />
+     
+      <FaPlusCircle size={50} color="#fffff0" />
+      
     </Link>
   </AddFileHolder>)} return(
     <DesperateDiv>
       <AddFileHolder>
     <NewFileText>New File</NewFileText>
     <Link to="/create">
-      <FaPlusCircle size={50} color="black" />
+      <FaPlusCircle size={50} color="#fffff0" />
     </Link>
   </AddFileHolder>
    
@@ -191,8 +198,10 @@ const AddFile = () => {
               <Link to="/">
                 <br />
                 <br />
+                <ShareDiv>
                 <FaShareSquare size={40} url={file.url} />
                 Share
+                </ShareDiv>
               </Link>
             </CenterShareDiv>
           </InnerSharedDiv>
