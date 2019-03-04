@@ -87,7 +87,7 @@ class App extends Component {
           />
           <Route
             exact
-            path="/add"
+            path="/home"
             render={props => <AddFileHolder {...props} />}
           />
 
@@ -104,7 +104,7 @@ class App extends Component {
           />
           <Route
             exact
-            path="/billing"
+            path="/account"
             render={props => <BillingHolder {...props} />}
           />
         </AppContainer>

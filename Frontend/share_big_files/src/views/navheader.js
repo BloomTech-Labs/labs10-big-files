@@ -26,7 +26,7 @@ transition: all 0.2s ease;
 animation: down-bump 0.4s ease;
 &:hover {
   background-position: 100% 100%;
-  animation: up-bump 0.4s ease;
+  animation: up-bump 0.5s ease;
 }
 
 `;
@@ -70,10 +70,10 @@ const NavHeader = props => {
     <NavHeaderDiv>
         <TitleH3>Share Big Files</TitleH3>
          <PathSignoutDiv> 
-         <Box><Link to="/add"><LinkStyles>Share</LinkStyles></Link></Box> 
-         <Box><Link to="/create"><LinkStyles>Create</LinkStyles></Link></Box>
-         <Box><Link to="/billing"><LinkStyles>Settings</LinkStyles></Link></Box>
-         <Box><Link to="/"><SignOut><LinkStyles></LinkStyles></SignOut></Link></Box> 
+         <Box><Link to="/home"><LinkStyles>Home</LinkStyles></Link></Box> 
+         {/* <Box><Link to="/create"><LinkStyles>Create</LinkStyles></Link></Box> */}
+         <Box><Link to="/account"><LinkStyles>Account</LinkStyles></Link></Box>
+         {/* <Box><Link to="/"><SignOut><LinkStyles></LinkStyles></SignOut></Link></Box>  */}
          </PathSignoutDiv>
     </NavHeaderDiv>
   );

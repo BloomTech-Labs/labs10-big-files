@@ -199,7 +199,7 @@ const AddFile = () => {
                 <br />
                 <br />
                 <ShareDiv>
-                <FaShareSquare size={40} url={file.url} />
+                {/* <FaShareSquare size={40} url={file.url} /> */}
                 Share
                 </ShareDiv>
               </Link>

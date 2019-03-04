@@ -2,7 +2,9 @@ import React from "react";
 import NavHeader from "./navheader";
 import LeftMenu from "./leftmenu";
 import Billing from "./billing";
-import Dropdown from "./dropdown";
+import Settings from "./settings";
+import SignOut from "../components/signOut";
+// import Dropdown from "./dropdown";
 
 // import media from "../styledComponents/media.js";
 import styled from "styled-components";
@@ -35,12 +37,14 @@ const MenuBillingDiv = styled.div`
 const BillingHolder = () => {
   return (
     <BillingPage>
-      <Dropdown/>
-      {/* <NavHeader /> */}
+      {/* <Dropdown/> */}
+      <NavHeader />
       
       <MenuBillingDiv>
         <LeftMenu />
         <Billing />
+        <Settings/>
+        <SignOut/>
       </MenuBillingDiv>
     </BillingPage>
   );
