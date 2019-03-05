@@ -13,8 +13,11 @@ const CreateEditDiv = styled.div`
   flex-direction: column;
   flex-wrap: wrap;
   height: auto;
-  width: 34rem;
+  width: 25%;
+  min-width: 459px;
+  max-height: 512px;
   margin-left: 4%;
+  margin-right: 2%;
   line-height: 3;
   border-radius: 10px;
   background-color: white;
@@ -60,6 +63,7 @@ const TitleH2 = styled.h2`
   display: inline;
   margin: 0;
   height: 100% 
+  width: auto;
   padding-left: 5%;
 `;
 const SendGridDiv = styled.div`
@@ -95,7 +99,7 @@ align-items: center;
 
 
 
-const CreateFile = () => {
+const CreateFileForm = () => {
   //const [link, setLink] = useState(null)
   const [file, setFile] = useState(null);
   const [recipientEmail, setRecipientEmail] = useState(null);
@@ -245,6 +249,6 @@ const CreateFile = () => {
   );
 };
 
-export default CreateFile;
+export default CreateFileForm;
 
  
