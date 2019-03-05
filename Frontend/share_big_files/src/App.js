@@ -1,4 +1,7 @@
 import React, { Component } from "react";
+
+import Download from "./views/download"
+
 import LandingView from "./views/landingview";
 import CreateEditHolder from "./views/createeditholder";
 import SettingsHolder from "./views/settingsholder";
@@ -80,6 +83,13 @@ class App extends Component {
     if (this.isAuthenticated() || localStorage.getItem("accessToken")) {
       return (
         <AppContainer>
+
+          <Route
+            exact
+            path="/download"
+            render={props => <Download {...props} />}
+          />
+          
             <Route
             exact
             path="/"
