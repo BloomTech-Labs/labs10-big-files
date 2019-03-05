@@ -1,7 +1,8 @@
 import React from "react";
 // import NavHeader from "./navheader";
 import LeftMenu from "./leftmenu";
-import CreateFile from "./createedit";
+import FileDisplay from "./FileDisplay";
+import CreateFileForm from "./createfileform";
 import styled from "styled-components";
 import Dropdown from "./dropdown";
 
@@ -16,21 +17,23 @@ const CreatePage = styled.div`
 `;
 const CreateEditDiv = styled.div`
   display: flex;
+  margin-top: 50px;
   @media(max-width: 390px) {
     display: block;
   }
 `;
-const CreateEditHolder = () => {
+const HomeView = () => {
   return (
     <CreatePage>
       <Dropdown/>
       {/* <NavHeader /> */}
       <CreateEditDiv>
-        <LeftMenu />
-        <CreateFile />
+  
+        <CreateFileForm/>
+        <FileDisplay/>
       </CreateEditDiv>
       </CreatePage>
   );
 };
 
-export default CreateEditHolder;
+export default HomeView;
