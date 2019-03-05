@@ -36,6 +36,7 @@ router.post("/send", (req, res) => {
     subject: subject,
     text: text,
     html: html
+    
   };
   sgMail.send(msg);
   console.log("email sent");

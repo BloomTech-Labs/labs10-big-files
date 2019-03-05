@@ -10,7 +10,7 @@ const Downlaod = () => {
     const [fileid, setFileid] = useState(null)
     const [string, setString] = useState(null)
     
-
+ 
     function getUrlVars() {
         var vars = {};
         var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, 

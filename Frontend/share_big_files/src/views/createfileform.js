@@ -179,6 +179,8 @@ const CreateFileForm = () => {
 
   function sendGrid(event) {
     console.log("URL and FILEID and Email: ", url, fileId, recipientEmail)
+    // `http://localhost:3000/download/?email=${recipientEmail}&url=${url}&fileid=${fileid}`
+    
     const myDetails = {
       to: recipientEmail,
       from: senderEmail,
