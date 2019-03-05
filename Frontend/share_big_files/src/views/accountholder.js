@@ -1,15 +1,10 @@
 import React from "react";
 import NavHeader from "./navheader";
-import LeftMenu from "./leftmenu";
-import Billing from "./billing";
 import Settings from "./settings";
 import SignOut from "../components/signOut";
-// import Dropdown from "./dropdown";
-
-// import media from "../styledComponents/media.js";
 import styled from "styled-components";
 
-const BillingPage = styled.div`
+const AccountPage = styled.div`
 // (props => <div {...props} />)
   width: 100%;
   height: auto;
@@ -27,7 +22,7 @@ const BillingPage = styled.div`
 `;
 
 
-const MenuBillingDiv = styled.div`
+const MenuAccountDiv = styled.div`
   display: flex;
   @media(max-width: 390px) {
     width: 100%;
@@ -35,21 +30,21 @@ const MenuBillingDiv = styled.div`
   }
 `;
 
-const BillingHolder = () => {
+const AccountHolder = () => {
   return (
-    <BillingPage>
+    <AccountPage>
       {/* <Dropdown/> */}
       <NavHeader />
       
-      <MenuBillingDiv>
-        <LeftMenu />
+      <MenuAccountDiv>
+        {/* <LeftMenu /> */}
         {/* <Billing /> */}
         <Settings/>
         <SignOut/>
-      </MenuBillingDiv>
-    </BillingPage>
+      </MenuAccountDiv>
+    </AccountPage>
   );
 };
-export default BillingHolder;
+export default AccountHolder;
 
 

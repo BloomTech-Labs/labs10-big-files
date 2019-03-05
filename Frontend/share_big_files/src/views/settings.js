@@ -11,13 +11,16 @@ flex-wrap: wrap;
 height: auto;
 width: 25%;
 min-width: 459px;
-max-height: 512px;
 padding: 10px;
 margin: 70px auto;
 line-height: 3;
 border-radius: 10px;
 background-color: white;
+@media (max-width: 768px) {
+    min-width: 300px;
+}
 @media (max-width: 390px) {
+    min-width: 300px;
   width: 90%;
   margin: 0 auto;
 }
