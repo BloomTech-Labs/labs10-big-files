@@ -32,16 +32,14 @@ const Downlaod = () => {
 
     useEffect(() => {
         if (email && fileid) {
-            console.log('useEffect Email:', email, fileid)
+            console.log('useEffect Email + FileID:', email, fileid)
             sendPost();
         }
     }, [email]);
 
-    const sendPost = () => {
-        console.log("EMAIL on state:", email)
-        
+    const sendPost = () => {        
         const body = {
-            fk_file_id: 29,
+            fk_file_id: fileid,
             email: email
         };
 

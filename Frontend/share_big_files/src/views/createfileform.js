@@ -142,11 +142,21 @@ const CreateFileForm = () => {
         console.log(response);
         Promise.resolve(
           setFileId(response.data.rows[0].file_id),
-          setUrl(response.data.rows[0].url)
+          setUrl(response.data.rows[0].url),
+          
+          // concatString(response.data.rows[0].url)          
+
         ).then(sendGrid());
       })
       .catch(error => console.log(error));
   };
+
+  function concatString(url) {
+    let str = url.split('/')
+    console.log("Hers the string split: ", str)
+    console.log("Hers the string at [3]: ", str[3])
+    setUrl(str[3])
+  }
 
   function handleFileUpload(event) {
     setFile(event.target.files);
@@ -176,10 +186,6 @@ const CreateFileForm = () => {
   function sendGrid(event) {
     console.log("URL and FILEID and Email: ", url, fileId, recipientEmail)
     // `http://localhost:3000/download/?email=${recipientEmail}&url=${url}&fileid=${fileid}`
-    // var str = "https://s3lambdafiles123.s3.amazonaws.com/bg-01-1551803555511.jpg";
-
-    // var words = str.split('/');
-    // console.log(words[3]);
     
     const myDetails = {
       to: recipientEmail,
