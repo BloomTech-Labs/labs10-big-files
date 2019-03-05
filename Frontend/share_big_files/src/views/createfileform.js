@@ -151,21 +151,7 @@ const CreateFileForm = () => {
       })
       .catch(err => console.log(err));
   }
-  // const sendFile = () => {
-  //   const formData = new FormData();
-  //   formData.append("fileUpload", file[0]);
-  //   axios
-  //     .put("https://api.backendproxy.com/api/s3/files/", formData, {
-  //       headers: {
-  //         "Content-Type": "multipart/form-data"
-  //       }
-  //     })
-  //     .then(response => {
-  //       console.log(response);
-  //       getURL()
-  //     })
-  //     .catch(error => console.log(error));
-  // };
+
 
   const sendFile = () => {
     console.log("*****************");
@@ -181,14 +167,26 @@ const CreateFileForm = () => {
       })
       .then(response => {
         setFileId(response.data.rows[0].file_id);
-        setUrl(response.data.rows[0].url);
+        
+        let urlString = response.data.rows[0].url
+        urlString = urlString.split('/')
+        setUrl(urlString[3])
+        // setUrl(response.data.rows[0].url);
       })
       .catch(error => console.log(error));
-  };
+    };
+    
+  //   function concatString(url) {
+  //     let str = url.split('/')
+  //     console.log("Hers the string split: ", str)
+  //     console.log("Hers the string at [3]: ", str[3])
+  //     setUrl(str[3])
+  //     // concatString(response.data.rows[0].url)
+  // }
 
   function sendGrid(event) {
     console.log("URL and FILEID and Email: ", url, fileId, recipientEmail)
-    // `http://localhost:3000/download/?email=${recipientEmail}&url=${url}&fileid=${fileid}`
+    console.log("Magical URL!", `http://localhost:3000/download/?email=${recipientEmail}&url=${url}&fileid=${fileId}`)
     
     const myDetails = {
       to: recipientEmail,
