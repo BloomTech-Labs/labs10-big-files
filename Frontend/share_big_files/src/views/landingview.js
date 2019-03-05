@@ -1,6 +1,5 @@
 import React from "react";
-import styled from "styled-components";
-import LeftMenu from "./leftmenu";
+import styled from "styled-components"; 
 
 const LandingContainerDiv = styled.div`
   width: 100%;

@@ -18,9 +18,9 @@ p {
     font-size:1.6rem;
 }
 
-input[type="file"] {
+/* input[type="file"] {
     display: none;
-}
+} */
 
 input[type="file"] {
     border: none;
