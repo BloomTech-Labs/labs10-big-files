@@ -1,10 +1,8 @@
 import React from "react";
-// import NavHeader from "./navheader";
-import LeftMenu from "./leftmenu";
+// import NavHeader from "./navheader"; 
 import FileDisplay from "./FileDisplay";
 import CreateFileForm from "./createfileform";
-import styled from "styled-components";
-import Dropdown from "./dropdown";
+import styled from "styled-components"; 
 import NavHeader from "./navheader";
 
 

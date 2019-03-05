@@ -1,11 +1,7 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { FaPlusCircle } from "react-icons/fa";
-
-// import { FilePond } from "react-filepond";
 import "filepond/dist/filepond.min.css";
-
-import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 import axios from "axios";
 
 const CreateEditDiv = styled.div`
@@ -15,7 +11,7 @@ const CreateEditDiv = styled.div`
   height: auto;
   width: 25%;
   min-width: 459px;
-  max-height: 515px;
+  max-height: 600px;
   margin-left: 4%;
   margin-right: 2%;
   line-height: 3;
@@ -26,7 +22,6 @@ const CreateEditDiv = styled.div`
     margin: 0 auto;
   }
 `;
- 
 
 const FileName = styled.input`
   width: 100%;
@@ -44,21 +39,19 @@ const FileNameMessage = styled.textarea`
   height: 9rem;
   margin: 3% 0;
   border: none;
-   
   &:placeholder: {
     color: blue;
   }
 `;
- 
 
 const InnerDiv = styled.div`
   display: flex;
-  flex-direction: column; 
-  
+  flex-direction: column;
+
   width: 90%;
   margin: 0 auto;
 `;
- 
+
 const TitleH2 = styled.h2`
   display: inline;
   margin: 0;
@@ -66,13 +59,15 @@ const TitleH2 = styled.h2`
   width: auto;
   padding-left: 5%;
 `;
+
 const SendGridDiv = styled.div`
-width: 100%;
-height: auto;
-border-top: 1px solid black;
-display: flex;
-justify-content: center;
+  width: 100%;
+  height: auto;
+  border-top: 1px solid black;
+  display: flex;
+  justify-content: center;
 `;
+
 const SendGridButton = styled.button`
  text-align: center;
   height: 5rem;
@@ -93,11 +88,9 @@ const AddFileDiv = styled.div`
 `;
 
 const LabelDiv = styled.label`
-display: flex;
-align-items: center;
+  display: flex;
+  align-items: center;
 `;
-
-
 
 const CreateFileForm = () => {
   //const [link, setLink] = useState(null)
@@ -134,8 +127,11 @@ const CreateFileForm = () => {
   }
 
   const sendFile = () => {
+    console.log("*****************")
     const formData = new FormData();
     formData.append("fileUpload", file[0]);
+   formData['fileUpload'] = file[0]
+  
     axios
       .put("https://api.backendproxy.com/api/s3/files/", formData, {
         headers: {
@@ -144,17 +140,17 @@ const CreateFileForm = () => {
       })
       .then(response => {
         console.log(response);
-        setFileId(response.data.rows[0].file_id)
-        setUrl(response.data.rows[0].url)
-        // console.log('response.data.rows[0]:', response.data.rows[0])
+        Promise.resolve(
+          setFileId(response.data.rows[0].file_id),
+          setUrl(response.data.rows[0].url)
+        ).then(sendGrid());
       })
       .catch(error => console.log(error));
   };
 
-
   function handleFileUpload(event) {
     setFile(event.target.files);
-      submitFile(event);
+    console.log(file);
   }
 
   function handleNameInput(event) {
@@ -207,13 +203,14 @@ const CreateFileForm = () => {
     <CreateEditDiv>
       <AddFileDiv>
         <LabelDiv className="hideInput">
-            <input label="upload file" type="file"   onChange={handleFileUpload} />
-            <FaPlusCircle size={40} color="#fffff" />
-       
-       <TitleH2>Add Your File</TitleH2>
+        <form onSubmit={submitFile}>
+          <input type="file" onChange={handleFileUpload} />
+          <button type="submit">Upload to server</button>
+        </form>
+        
+          {/* <FaPlusCircle size={40} color="#fffff" />
+          <TitleH2>Add Your File</TitleH2> */}
         </LabelDiv>
-
-         
       </AddFileDiv>
       <InnerDiv>
         <FileName
@@ -237,21 +234,13 @@ const CreateFileForm = () => {
           placeholder="Email message"
           onChange={handleMessage}
         />
-        {/* <form onSubmit={submitFile}>
-          <input type="file" onChange={handleFileUpload} />
-          <button type="submit">Upload to server</button>
-        </form> */}
-     
+
       </InnerDiv>
-        <SendGridDiv>
-        <SendGridButton onClick={sendGrid}>Share Via Email</SendGridButton>
-
-        </SendGridDiv>
-
+      <SendGridDiv>
+        <SendGridButton onClick={submitFile}>Share Via Email</SendGridButton>
+      </SendGridDiv>
     </CreateEditDiv>
   );
 };
 
 export default CreateFileForm;
-
- 
