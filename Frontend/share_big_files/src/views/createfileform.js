@@ -171,7 +171,6 @@ const CreateFileForm = () => {
         let urlString = response.data.rows[0].url
         urlString = urlString.split('/')
         setUrl(urlString[3])
-        // setUrl(response.data.rows[0].url);
       })
       .catch(error => console.log(error));
     };
