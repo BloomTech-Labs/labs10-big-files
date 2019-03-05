@@ -110,6 +110,11 @@ const NavHeader = props => {
             <LinkStyles>Account</LinkStyles>
           </NavMenuLink>
         </MenuDiv>
+        {/* <MenuDiv>
+          <NavMenuLink to="/billing">
+            <LinkStyles>Got Plus?</LinkStyles>
+          </NavMenuLink>
+        </MenuDiv> */}
       </MenuWrapper>
 
     </NavHeaderDiv>

@@ -43,7 +43,7 @@ const BillingHolder = () => {
       
       <MenuBillingDiv>
         <LeftMenu />
-        <Billing />
+        {/* <Billing /> */}
         <Settings/>
         <SignOut/>
       </MenuBillingDiv>
@@ -51,3 +51,5 @@ const BillingHolder = () => {
   );
 };
 export default BillingHolder;
+
+
