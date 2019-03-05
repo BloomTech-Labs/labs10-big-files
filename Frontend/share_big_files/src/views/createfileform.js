@@ -105,8 +105,34 @@ const CreateFileForm = () => {
   const senderEmail = profile.email;
 
   useEffect(() => {
-    console.log(fileName);
-  }, []);
+    console.log(fileId);
+    console.log(url);
+  });
+
+  function handleFileUpload(event) {
+    setFile(event.target.files);
+    console.log(file);
+  }
+
+  function handleNameInput(event) {
+    setFileName(event.target.value);
+    console.log("File Name: " + fileName);
+  }
+
+  function handleEmailInput(event) {
+    setRecipientEmail(event.target.value);
+    console.log("Recipient Email: " + recipientEmail);
+  }
+
+  function handleEmailSubjectInput(event) {
+    setEmailSubject(event.target.value);
+    console.log("Email Subject: " + emailSubject);
+  }
+
+  function handleMessage(event) {
+    setMessage(event.target.value);
+    console.log("Message: " + message);
+  }
 
   function submitFile(event) {
     event.preventDefault();
@@ -142,11 +168,11 @@ const CreateFileForm = () => {
   // };
 
   const sendFile = () => {
-    console.log("*****************")
+    console.log("*****************");
     const formData = new FormData();
     formData.append("fileUpload", file[0]);
-   formData['fileUpload'] = file[0]
-  
+    formData["fileUpload"] = file[0];
+
     axios
       .put("https://api.backendproxy.com/api/s3/files/", formData, {
         headers: {
@@ -154,49 +180,11 @@ const CreateFileForm = () => {
         }
       })
       .then(response => {
-        console.log(response);
-        Promise.resolve(
-          setFileId(response.data.rows[0].file_id),
-          setUrl(response.data.rows[0].url),
-          
-          // concatString(response.data.rows[0].url)          
-
-        ).then(sendGrid());
+        setFileId(response.data.rows[0].file_id);
+        setUrl(response.data.rows[0].url);
       })
       .catch(error => console.log(error));
   };
-
-  function concatString(url) {
-    let str = url.split('/')
-    console.log("Hers the string split: ", str)
-    console.log("Hers the string at [3]: ", str[3])
-    setUrl(str[3])
-  }
-
-  function handleFileUpload(event) {
-    setFile(event.target.files);
-    console.log("THIS IS THE FILE IN QUESTION", file);
-  }
-
-  function handleNameInput(event) {
-    setFileName(event.target.value);
-    console.log("File Name: " + fileName);
-  }
-
-  function handleEmailInput(event) {
-    setRecipientEmail(event.target.value);
-    console.log("Recipient Email: " + recipientEmail);
-  }
-
-  function handleEmailSubjectInput(event) {
-    setEmailSubject(event.target.value);
-    console.log("Email Subject: " + emailSubject);
-  }
-
-  function handleMessage(event) {
-    setMessage(event.target.value);
-    console.log("Message: " + message);
-  }
 
   function sendGrid(event) {
     console.log("URL and FILEID and Email: ", url, fileId, recipientEmail)
@@ -224,11 +212,11 @@ const CreateFileForm = () => {
     <CreateEditDiv>
       <AddFileDiv>
         <LabelDiv className="hideInput">
-        <form onSubmit={submitFile}>
-          <input type="file" onChange={handleFileUpload} />
-          <button type="submit">Upload to server</button>
-        </form>
-        
+          <form onSubmit={submitFile}>
+            <input type="file" onChange={handleFileUpload} />
+            <button type="submit">Upload to server</button>
+          </form>
+
           {/* <FaPlusCircle size={40} color="#fffff" />
           <TitleH2>Add Your File</TitleH2> */}
         </LabelDiv>
@@ -255,10 +243,9 @@ const CreateFileForm = () => {
           placeholder="Email message"
           onChange={handleMessage}
         />
-
       </InnerDiv>
       <SendGridDiv>
-        <SendGridButton onClick={submitFile}>Share Via Email</SendGridButton>
+        <SendGridButton onClick={sendGrid}>Share Via Email</SendGridButton>
       </SendGridDiv>
     </CreateEditDiv>
   );
