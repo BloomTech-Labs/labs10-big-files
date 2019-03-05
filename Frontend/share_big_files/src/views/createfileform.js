@@ -125,6 +125,21 @@ const CreateFileForm = () => {
       })
       .catch(err => console.log(err));
   }
+  // const sendFile = () => {
+  //   const formData = new FormData();
+  //   formData.append("fileUpload", file[0]);
+  //   axios
+  //     .put("https://api.backendproxy.com/api/s3/files/", formData, {
+  //       headers: {
+  //         "Content-Type": "multipart/form-data"
+  //       }
+  //     })
+  //     .then(response => {
+  //       console.log(response);
+  //       getURL()
+  //     })
+  //     .catch(error => console.log(error));
+  // };
 
   const sendFile = () => {
     console.log("*****************")
@@ -160,7 +175,7 @@ const CreateFileForm = () => {
 
   function handleFileUpload(event) {
     setFile(event.target.files);
-    console.log(file);
+    console.log("THIS IS THE FILE IN QUESTION", file);
   }
 
   function handleNameInput(event) {
