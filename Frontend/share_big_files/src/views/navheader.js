@@ -31,7 +31,6 @@ const TitleDiv = styled.div`
   width: 83%;
   display: flex;
   align-items: center;
->>>>>>> ac3af526e4f592eea0bc6f7424d01313d208e4c9
 `;
 
 const TitleH3 = styled.h3`
@@ -89,7 +88,7 @@ const MenuDiv = styled.div`
   background-color: white;
   border-radius: 10px;
   @media (max-width: 390px) {
-    display: none;
+    
   }
 `;
 
