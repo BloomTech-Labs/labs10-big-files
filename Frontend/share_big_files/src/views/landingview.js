@@ -90,13 +90,11 @@ const FileTransferButton = styled.button`
 
 const LandingH3 = styled.h3`
   margin: 0;
-  margin-left: -8%;
-  font-size: 2rem;
+  margin-left: -8%; 
 `;
 
 const LandingH2 = styled.h2`
-  margin: 0;
-  
+  margin: 0; 
   margin-bottom: 1%;
 `;
 
