@@ -1,4 +1,7 @@
 import React, { Component } from "react";
+
+import Download from "./views/download"
+
 import LandingView from "./views/landingview";
 import HomeView from "./views/homeview";
 import SettingsHolder from "./views/settingsholder";
@@ -80,7 +83,8 @@ class App extends Component {
     if (this.isAuthenticated() || localStorage.getItem("accessToken")) {
       return (
         <AppContainer>
-            <Route
+      
+          <Route
             exact
             path="/"
             render={props => <HomeView {...props} />}
@@ -111,11 +115,19 @@ class App extends Component {
       );
     } else {
       return (
-        <Route
-          exact
-          path="/"
-          render={props => <LandingView {...props} lockOpen={this.lockOpen} lock={lock} />}
-        />
+        <div>
+          <Route
+            exact
+            path="/"
+            render={props => <LandingView {...props} lockOpen={this.lockOpen} lock={lock} />}
+            />
+
+          <Route
+            exact
+            path="/download"
+            render={props => <Download {...props} />}
+          />
+        </div>
       );
     }
   }

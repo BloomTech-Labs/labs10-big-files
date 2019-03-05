@@ -106,6 +106,8 @@ const CreateFileForm = () => {
   const [emailSubject, setEmailSubject] = useState(null);
   const [message, setMessage] = useState(null);
   const [fileName, setFileName] = useState(null);
+  const [url, setUrl] = useState(null);
+  const [fileId, setFileId] = useState(null);
   const profile = JSON.parse(localStorage.getItem("profile"));
   const senderEmail = profile.email;
 
@@ -142,20 +144,13 @@ const CreateFileForm = () => {
       })
       .then(response => {
         console.log(response);
-        getURL();
+        setFileId(response.data.rows[0].file_id)
+        setUrl(response.data.rows[0].url)
+        // console.log('response.data.rows[0]:', response.data.rows[0])
       })
       .catch(error => console.log(error));
   };
 
-  const getURL = () => {
-    console.log("in getURL");
-    axios
-      .get("https://api.backendproxy.com/api/s3/files/latest/")
-      .then(response => {
-        console.log(response);
-      })
-      .catch(error => console.log(error));
-  };
 
   function handleFileUpload(event) {
     setFile(event.target.files);
@@ -183,6 +178,7 @@ const CreateFileForm = () => {
   }
 
   function sendGrid(event) {
+    console.log("URL and FILEID and Email: ", url, fileId, recipientEmail)
     const myDetails = {
       to: recipientEmail,
       from: senderEmail,
