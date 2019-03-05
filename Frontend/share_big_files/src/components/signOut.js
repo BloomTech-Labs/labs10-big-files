@@ -16,12 +16,16 @@ window.location.reload();
 const SignOutButton = styled.div`
 font-size: 2rem;
 position: absolute;
-top: 60px;
-right: 60px;
+top: 90%;
+right: 47%;
 color: blue;
 cursor: pointer;
-// text-align: center;
-height: 100%;
+@media (max-width: 768px) {
+  right: 45%;
+}
+@media (max-width: 390px) {
+  right: 40%;
+}
 // &:hover {
 //   color: #ff7518;
 // }

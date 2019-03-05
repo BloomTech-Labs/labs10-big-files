@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import LandingView from "./views/landingview";
 import HomeView from "./views/homeview";
 import SettingsHolder from "./views/settingsholder";
-import BillingHolder from "./views/billingholder";
+import AccountHolder from "./views/accountholder";
 import Stripe from "./components/StripeFE"; 
 import { Route  } from "react-router-dom";
 import "./App.css";
@@ -105,7 +105,7 @@ class App extends Component {
           <Route
             exact
             path="/account"
-            render={props => <BillingHolder {...props} />}
+            render={props => <AccountHolder {...props} />}
           />
         </AppContainer>
       );
