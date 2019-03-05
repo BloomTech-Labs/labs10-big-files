@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import SignOut from "../components/signOut.js";
+// import SignOut from "../components/signOut.js";
 import { Link } from "react-router-dom";
 
 const NavHeaderDiv = styled.div`
@@ -12,11 +12,26 @@ const NavHeaderDiv = styled.div`
   }
 `;
 
+
+// const Box = styled.div`
+// width: 100%;
+// background: linear-gradient(
+//   #36454f, #ff7518 50%, #36454f 50%, #36454f
+// );
+// background-size: 100% 202%;
+// transition: all 0.2s ease;
+// animation: down-bump 0.4s ease;
+// &:hover {
+//   background-position: 100% 100%;
+//   animation: up-bump 0.5s ease;
+// }
+
 const TitleDiv = styled.div`
   height: auto;
   width: 83%;
   display: flex;
   align-items: center;
+>>>>>>> ac3af526e4f592eea0bc6f7424d01313d208e4c9
 `;
 
 const TitleH3 = styled.h3`
@@ -96,6 +111,7 @@ const NavHeader = props => {
           </NavMenuLink>
         </MenuDiv>
       </MenuWrapper>
+
     </NavHeaderDiv>
   );
 };

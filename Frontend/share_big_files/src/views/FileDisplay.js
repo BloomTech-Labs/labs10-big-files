@@ -134,9 +134,24 @@ const FileDisplay = () => {
         <SharedBoxHolder>
           <InnerSharedDiv>
             <Sharedh3>File Title: {file.filename}</Sharedh3>
+{/* 
+            <Sharedh3>URL: {file.url}</Sharedh3>
+            <SharedInput type="text" />
+            <CenterShareDiv>
+              <Link to="/">
+                <br />
+                <br />
+                <ShareDiv>
+                {/* <FaShareSquare size={40} url={file.url} /> */}
+                {/* Share
+                </ShareDiv>
+              </Link>
+            </CenterShareDiv> */}
+
             <Sharedh3>Date Uploaded: </Sharedh3>
             <Sharedh3>Viewed: </Sharedh3>
             <Sharedh3>Downloaded: </Sharedh3> 
+
           </InnerSharedDiv>
         </SharedBoxHolder>
       )}): null}

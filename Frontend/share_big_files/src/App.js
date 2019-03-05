@@ -104,7 +104,7 @@ class App extends Component {
           />
           <Route
             exact
-            path="/billing"
+            path="/account"
             render={props => <BillingHolder {...props} />}
           />
         </AppContainer>
