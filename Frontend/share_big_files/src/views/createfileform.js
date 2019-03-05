@@ -15,7 +15,7 @@ const CreateEditDiv = styled.div`
   height: auto;
   width: 25%;
   min-width: 459px;
-  max-height: 512px;
+  max-height: 515px;
   margin-left: 4%;
   margin-right: 2%;
   line-height: 3;
