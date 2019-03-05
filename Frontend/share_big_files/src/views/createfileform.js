@@ -188,25 +188,21 @@ const CreateFileForm = () => {
       })
       .catch(error => console.log(error));
     };
-    
-  //   function concatString(url) {
-  //     let str = url.split('/')
-  //     console.log("Hers the string split: ", str)
-  //     console.log("Hers the string at [3]: ", str[3])
-  //     setUrl(str[3])
-  //     // concatString(response.data.rows[0].url)
-  // }
 
   function sendGrid(event) {
     console.log("URL and FILEID and Email: ", url, fileId, recipientEmail)
     console.log("Magical URL!", `http://localhost:3000/download/?email=${recipientEmail}&url=${url}&fileid=${fileId}`)
+    
+    
+    const uniqueURL = `https://sfiles.netlify.com/download/?email=${recipientEmail}&url=${url}&fileid=${fileId}`)
     
     const myDetails = {
       to: recipientEmail,
       from: senderEmail,
       subject: emailSubject,
       text: message,
-      html: message
+      html: message,
+      url: uniqueURL
     };
 
     console.log(myDetails);
