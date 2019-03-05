@@ -11,7 +11,7 @@ const CreateEditDiv = styled.div`
   height: auto;
   width: 25%;
   min-width: 459px;
-  max-height: 600px;
+  max-height: 490px;
   margin-left: 4%;
   margin-right: 2%;
   line-height: 3;
@@ -47,7 +47,6 @@ const FileNameMessage = styled.textarea`
 const InnerDiv = styled.div`
   display: flex;
   flex-direction: column;
-
   width: 90%;
   margin: 0 auto;
 `;
@@ -75,7 +74,7 @@ const SendGridButton = styled.button`
   margin: 6% auto;
   border-radius: 10px;
       font-size: 1.75rem;
-    font-weight: bold;
+    font-weight: 400;
 `;
 
 const AddFileDiv = styled.div`
@@ -90,6 +89,21 @@ const AddFileDiv = styled.div`
 const LabelDiv = styled.label`
   display: flex;
   align-items: center;
+  margin: 2% 0 0 0;
+`;
+
+const FileInput = styled.input`
+font-size: 1.7rem;
+    font-weight: 400;
+    border-radius: 3px;
+    width: 65%;
+`;
+
+const UploadButton = styled.button`
+font-size: 1.7rem;
+    font-weight: 400;
+    border-radius 3px;
+
 `;
 
 const CreateFileForm = () => {
@@ -195,8 +209,8 @@ const CreateFileForm = () => {
       <AddFileDiv>
         <LabelDiv className="hideInput">
           <form onSubmit={submitFile}>
-            <input type="file" onChange={handleFileUpload} />
-            <button type="submit">Upload to server</button>
+            <FileInput type="file" onChange={handleFileUpload} />
+            <UploadButton type="submit">Upload to server</UploadButton>
           </form>
 
           {/* <FaPlusCircle size={40} color="#fffff" />
