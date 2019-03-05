@@ -166,6 +166,7 @@ const CreateFileForm = () => {
       .catch(err => console.log(err));
   }
 
+
   const sendFile = () => {
     console.log("*****************");
     const formData = new FormData();
@@ -180,13 +181,26 @@ const CreateFileForm = () => {
       })
       .then(response => {
         setFileId(response.data.rows[0].file_id);
-        setUrl(response.data.rows[0].url);
+        
+        let urlString = response.data.rows[0].url
+        urlString = urlString.split('/')
+        setUrl(urlString[3])
       })
       .catch(error => console.log(error));
-  };
+    };
+    
+  //   function concatString(url) {
+  //     let str = url.split('/')
+  //     console.log("Hers the string split: ", str)
+  //     console.log("Hers the string at [3]: ", str[3])
+  //     setUrl(str[3])
+  //     // concatString(response.data.rows[0].url)
+  // }
 
   function sendGrid(event) {
-    console.log("URL and FILEID and Email: ", url, fileId, recipientEmail);
+    console.log("URL and FILEID and Email: ", url, fileId, recipientEmail)
+    console.log("Magical URL!", `http://localhost:3000/download/?email=${recipientEmail}&url=${url}&fileid=${fileId}`)
+    
     const myDetails = {
       to: recipientEmail,
       from: senderEmail,
@@ -194,6 +208,7 @@ const CreateFileForm = () => {
       text: message,
       html: message
     };
+
     console.log(myDetails);
     axios
       .post("https://api.backendproxy.com/api/sendgrid/send", myDetails)
