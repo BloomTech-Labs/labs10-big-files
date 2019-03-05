@@ -50,7 +50,6 @@ const AddFileHolder = props => {
         <LeftMenu /> 
         <MobileDiv>
         <AddFile />
-
         </MobileDiv>
       </MenuFileHolder>
     </AddFilePage>
