@@ -83,14 +83,8 @@ class App extends Component {
     if (this.isAuthenticated() || localStorage.getItem("accessToken")) {
       return (
         <AppContainer>
-
+      
           <Route
-            exact
-            path="/download"
-            render={props => <Download {...props} />}
-          />
-          
-            <Route
             exact
             path="/"
             render={props => <AddFileHolder {...props} />}
@@ -121,11 +115,19 @@ class App extends Component {
       );
     } else {
       return (
-        <Route
-          exact
-          path="/"
-          render={props => <LandingView {...props} lockOpen={this.lockOpen} lock={lock} />}
-        />
+        <div>
+          <Route
+            exact
+            path="/"
+            render={props => <LandingView {...props} lockOpen={this.lockOpen} lock={lock} />}
+            />
+
+          <Route
+            exact
+            path="/download"
+            render={props => <Download {...props} />}
+          />
+        </div>
       );
     }
   }
