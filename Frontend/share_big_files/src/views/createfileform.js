@@ -105,48 +105,9 @@ const CreateFileForm = () => {
   const senderEmail = profile.email;
 
   useEffect(() => {
-    console.log(fileName);
-  }, []);
-
-  function submitFile(event) {
-    event.preventDefault();
-
-    setFile(event.target.files);
-    const sendObject = {
-      fk_email: senderEmail,
-      filename: fileName
-    };
-
-    axios
-      .post(`https://api.backendproxy.com/api/s3/files/id`, sendObject)
-      .then(response => {
-        console.log(response);
-        sendFile();
-      })
-      .catch(err => console.log(err));
-  }
-
-  const sendFile = () => {
-    console.log("*****************")
-    const formData = new FormData();
-    formData.append("fileUpload", file[0]);
-   formData['fileUpload'] = file[0]
-  
-    axios
-      .put("https://api.backendproxy.com/api/s3/files/", formData, {
-        headers: {
-          "Content-Type": "multipart/form-data"
-        }
-      })
-      .then(response => {
-        console.log(response);
-        Promise.resolve(
-          setFileId(response.data.rows[0].file_id),
-          setUrl(response.data.rows[0].url)
-        ).then(sendGrid());
-      })
-      .catch(error => console.log(error));
-  };
+    console.log(fileId);
+    console.log(url);
+  });
 
   function handleFileUpload(event) {
     setFile(event.target.files);
@@ -173,6 +134,43 @@ const CreateFileForm = () => {
     console.log("Message: " + message);
   }
 
+  function submitFile(event) {
+    event.preventDefault();
+
+    setFile(event.target.files);
+    const sendObject = {
+      fk_email: senderEmail,
+      filename: fileName
+    };
+
+    axios
+      .post(`https://api.backendproxy.com/api/s3/files/id`, sendObject)
+      .then(response => {
+        console.log(response);
+        sendFile();
+      })
+      .catch(err => console.log(err));
+  }
+
+  const sendFile = () => {
+    console.log("*****************");
+    const formData = new FormData();
+    formData.append("fileUpload", file[0]);
+    formData["fileUpload"] = file[0];
+
+    axios
+      .put("https://api.backendproxy.com/api/s3/files/", formData, {
+        headers: {
+          "Content-Type": "multipart/form-data"
+        }
+      })
+      .then(response => {
+        setFileId(response.data.rows[0].file_id);
+        setUrl(response.data.rows[0].url);
+      })
+      .catch(error => console.log(error));
+  };
+
   function sendGrid(event) {
     console.log("URL and FILEID and Email: ", url, fileId, recipientEmail);
     const myDetails = {
@@ -196,11 +194,11 @@ const CreateFileForm = () => {
     <CreateEditDiv>
       <AddFileDiv>
         <LabelDiv className="hideInput">
-        <form onSubmit={submitFile}>
-          <input type="file" onChange={handleFileUpload} />
-          <button type="submit">Upload to server</button>
-        </form>
-        
+          <form onSubmit={submitFile}>
+            <input type="file" onChange={handleFileUpload} />
+            <button type="submit">Upload to server</button>
+          </form>
+
           {/* <FaPlusCircle size={40} color="#fffff" />
           <TitleH2>Add Your File</TitleH2> */}
         </LabelDiv>
@@ -227,10 +225,9 @@ const CreateFileForm = () => {
           placeholder="Email message"
           onChange={handleMessage}
         />
-
       </InnerDiv>
       <SendGridDiv>
-        <SendGridButton onClick={submitFile}>Share Via Email</SendGridButton>
+        <SendGridButton onClick={sendGrid}>Share Via Email</SendGridButton>
       </SendGridDiv>
     </CreateEditDiv>
   );
