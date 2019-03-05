@@ -31,8 +31,8 @@ const Downlaod = () => {
     }
 
     useEffect(() => {
-        if (email) {
-            console.log('useEffect Email:', email)
+        if (email && fileid) {
+            console.log('useEffect Email:', email, fileid)
             sendPost();
         }
     }, [email]);
@@ -42,7 +42,7 @@ const Downlaod = () => {
         
         const body = {
             fk_file_id: 29,
-            email: "Kyle"
+            email: email
         };
 
         axios
@@ -69,7 +69,7 @@ const Downlaod = () => {
                 {string}
             </h1>
             <h1> THANK YOU FOR DOWNLOADING</h1>
-            <meta http-equiv="refresh" content={string} />
+            {/* <meta http-equiv="refresh" content={string} /> */}
 
         </div>
 

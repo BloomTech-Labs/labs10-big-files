@@ -180,6 +180,10 @@ const CreateFileForm = () => {
   function sendGrid(event) {
     console.log("URL and FILEID and Email: ", url, fileId, recipientEmail)
     // `http://localhost:3000/download/?email=${recipientEmail}&url=${url}&fileid=${fileid}`
+    // var str = "https://s3lambdafiles123.s3.amazonaws.com/bg-01-1551803555511.jpg";
+
+    // var words = str.split('/');
+    // console.log(words[3]);
     
     const myDetails = {
       to: recipientEmail,
@@ -188,6 +192,7 @@ const CreateFileForm = () => {
       text: message,
       html: message
     };
+
     console.log(myDetails);
     axios
       .post("https://api.backendproxy.com/api/sendgrid/send", myDetails)
