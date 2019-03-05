@@ -2,27 +2,31 @@ import React from "react";
 import NavHeader from "./navheader";
 import LeftMenu from "./leftmenu";
 import AddFile from "./addfile";
+import CreateFile from "./createedit"
 
 import styled from "styled-components";
 // import Dropdown from "./dropdown";
-
 
 const AddFilePage = styled.div`
   width: 100%;
   height: auto;
   min-height: 100vh;
   margin: 0 auto;
+
   // background-image: url("https://images.unsplash.com/photo-1524122209929-5bc27bd9c250?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80");
   background-color: #003366;
   background-size: cover;
- 
+
   @media (max-width: 390px) {
   }
 `;
 
 const MenuFileHolder = styled.div`
+  width: 80%;
+  margin: 0 auto;
+  max-width: 600px;
   display: flex;
-  height: auto; 
+  height: auto;
 
   @media (max-width: 390px) {
     display: block;
@@ -33,8 +37,9 @@ const MobileDiv = styled.div`
 display: flex;
 align-items: space-between;
 justify-content: flex-start
-  flex-wrap: wrap;
-  margin-top: 5%;
+
+flex-wrap: wrap; 
+margin-top: 5%;
 @media(max-width: 390px){
   display: flex;
   flex-wrap: wrap;
@@ -46,11 +51,11 @@ const AddFileHolder = props => {
     <AddFilePage>
       {/* <Dropdown logout={props.logout} /> */}
       <NavHeader logout={props.logout} />
+      <CreateFile/>
       <MenuFileHolder>
-        <LeftMenu /> 
+        <LeftMenu />
         <MobileDiv>
-        <AddFile />
-
+          <AddFile />
         </MobileDiv>
       </MenuFileHolder>
     </AddFilePage>
