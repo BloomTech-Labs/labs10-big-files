@@ -35,7 +35,7 @@ router.post("/send", (req, res) => {
     subject: subject,
     text: text,
     html: html,
-    templateId: "d-cfdd9e9c01914f909b38fef4016bba70",
+    template_id: "d-cfdd9e9c01914f909b38fef4016bba70",
     dynamic_template_data: {
       toemail: to,
       fromemail: from,
