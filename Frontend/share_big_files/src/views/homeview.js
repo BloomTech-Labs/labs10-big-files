@@ -1,10 +1,9 @@
 import React from "react";
-// import NavHeader from "./navheader"; 
+// import NavHeader from "./navheader";
 import FileDisplay from "./FileDisplay";
 import CreateFileForm from "./createfileform";
-import styled from "styled-components"; 
+import styled from "styled-components";
 import NavHeader from "./navheader";
-
 
 const CreatePage = styled.div`
   width: 100%;
@@ -18,7 +17,7 @@ const CreatePage = styled.div`
 const CreateEditDiv = styled.div`
   display: flex;
   margin-top: 5px;
-  @media(max-width: 390px) {
+  @media (max-width: 390px) {
     display: block;
   }
 `;
@@ -28,11 +27,10 @@ const HomeView = () => {
       {/* <Dropdown/> */}
       <NavHeader />
       <CreateEditDiv>
-  
-        <CreateFileForm/>
-        <FileDisplay/>
+        <CreateFileForm />
+        <FileDisplay />
       </CreateEditDiv>
-      </CreatePage>
+    </CreatePage>
   );
 };
 

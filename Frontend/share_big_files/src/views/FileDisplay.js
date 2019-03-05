@@ -20,7 +20,7 @@ const SharedBoxHolder = styled.div`
   }
 `;
  
-const Sharedh3 = styled.h3` 
+const Sharedh4 = styled.h4` 
 overflow: hidden;
 white-space: nowrap;
 text-overflow: ellipsis;
@@ -125,14 +125,11 @@ const FileDisplay = () => {
    <></>
  )} return(
     <DesperateDiv>
-    
-      {userData[0]? userData.map((file) => {
+      {userData[0]? userData.map((file, index) => {
                 return( 
-
-                  
-        <SharedBoxHolder>
+        <SharedBoxHolder key={index}>
           <InnerSharedDiv>
-            <Sharedh3>File Title: {file.filename}</Sharedh3>
+            <Sharedh4>File Title: {file.filename}</Sharedh4>
 {/* 
             <Sharedh3>URL: {file.url}</Sharedh3>
             <SharedInput type="text" />
@@ -147,9 +144,9 @@ const FileDisplay = () => {
               </Link>
             </CenterShareDiv> */}
 
-            <Sharedh3>Date Uploaded: </Sharedh3>
-            <Sharedh3>Viewed: </Sharedh3>
-            <Sharedh3>Downloaded: </Sharedh3> 
+            <Sharedh4>Date Uploaded: </Sharedh4>
+            <Sharedh4>Viewed: </Sharedh4>
+            <Sharedh4>Downloaded: </Sharedh4> 
 
           </InnerSharedDiv>
         </SharedBoxHolder>
