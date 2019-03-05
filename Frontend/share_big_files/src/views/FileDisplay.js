@@ -1,55 +1,18 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
-import { Link } from "react-router-dom";
-import { FaPlusCircle } from "react-icons/fa";
+import { Link } from "react-router-dom"; 
 import axios from "axios";
-import SharedHolder from "./sharedholder";
-import { FaShareSquare } from "react-icons/fa";
-
-const AddFileHolder = styled.div`
-  width: 25rem;
-  height: 22rem;
-  border: 1px solid black;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background-color: #36454f;
-  border-radius: 10%;
-  text-align: center;
-  margin: 1% auto;
-  @media (max-width: 390px) {
-    width: 43%;
-    height: 15rem;
-    margin: 1% auto;
-    text-align: center;
-  }
-`;
-const NewFileText = styled.div`
-  margin-bottom: 2rem;
-  margin-top: -2rem;
-  font-size: 3rem;
-  color: #fffff0;
-  @media(max-width: 390px) {
-    font-size: 4rem;
-  }
-`;
-const ShareDiv = styled.div`
-  color: #fffff0;
-`;
-
+ 
 const SharedBoxHolder = styled.div`
-  width: 25rem;
-  height: 22rem;
-  border: 1px solid black;
-  // margin-left: 4%;
+  width: 45%;
+  min-width: 150px;
+  height: 10%; 
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  background-color: #36454f;
-  border-radius: 10%;
-  margin: 1% auto;
+  background-color: white;
+  border-radius: 5px;
+  margin: 0 1.5% 3% 1.5%;
   @media (max-width: 390px) {
     // width: 43%;
     height: 15rem;
@@ -57,17 +20,8 @@ const SharedBoxHolder = styled.div`
     text-align: none;
   }
 `;
-
-const SharedInput = styled.div`
-  @media (max-width: 390px) {
-    width: 90%;
-    padding: 0;
-    margin: 0px auto;
-  }
-`;
-
-const Sharedh3 = styled.h3`
-color: #fffff0;
+ 
+const Sharedh3 = styled.h3` 
 overflow: hidden;
 white-space: nowrap;
 text-overflow: ellipsis;
@@ -87,16 +41,16 @@ const InnerSharedDiv = styled.div`
   margin-left: 13%;
 `;
 
-const CenterShareDiv = styled.div`
-  margin: 0 auto;
-`;
-
+ 
 const DesperateDiv = styled.div`
 display: flex;
 flex-wrap: wrap;
+margin-right: 4%;
+justify-content: space-around;
+margin-left: 2%;
 `;
 
-const AddFile = () => {
+const FileDisplay = () => {
   const [email, setEmail] = useState(null);
   const [userData, setUserData] = useState(null);
   const [loaded, setLoaded] = useState(false);
@@ -169,22 +123,10 @@ const AddFile = () => {
   };
   if(!loaded){
   return (
-    <AddFileHolder>
-    <NewFileText>New File</NewFileText>
-    <Link to="/create">
-     
-      <FaPlusCircle size={50} color="#fffff0" />
-      
-    </Link>
-  </AddFileHolder>)} return(
+   <></>
+ )} return(
     <DesperateDiv>
-      <AddFileHolder>
-    <NewFileText>New File</NewFileText>
-    <Link to="/create">
-      <FaPlusCircle size={50} color="#fffff0" />
-    </Link>
-  </AddFileHolder>
-   
+    
       {userData[0]? userData.map((file) => {
                 return( 
 
@@ -192,6 +134,7 @@ const AddFile = () => {
         <SharedBoxHolder>
           <InnerSharedDiv>
             <Sharedh3>File Title: {file.filename}</Sharedh3>
+{/* 
             <Sharedh3>URL: {file.url}</Sharedh3>
             <SharedInput type="text" />
             <CenterShareDiv>
@@ -200,10 +143,15 @@ const AddFile = () => {
                 <br />
                 <ShareDiv>
                 {/* <FaShareSquare size={40} url={file.url} /> */}
-                Share
+                {/* Share
                 </ShareDiv>
               </Link>
-            </CenterShareDiv>
+            </CenterShareDiv> */}
+
+            <Sharedh3>Date Uploaded: </Sharedh3>
+            <Sharedh3>Viewed: </Sharedh3>
+            <Sharedh3>Downloaded: </Sharedh3> 
+
           </InnerSharedDiv>
         </SharedBoxHolder>
       )}): null}
@@ -211,4 +159,4 @@ const AddFile = () => {
   );
 };
 
-export default AddFile;
+export default FileDisplay;

@@ -65,9 +65,8 @@ router.get('/files', (req, res) => {
     });
 });
 
-router.get('/files/:id', (req, res) => {
-    const fileID = req.params.id;
-    client.query(`SELECT * FROM files WHERE file_id = ${fileID}`)
+router.get('/files/latest', (req, res) => {
+    client.query(`SELECT * FROM files WHERE file_id = (select MAX(file_id) FROM files)`)
         .then(result => {
         res.status(200).json(result.rows);
         //console.log(`works ${fk_user_id}`);
@@ -75,6 +74,18 @@ router.get('/files/:id', (req, res) => {
     .catch(e => {
         console.error(e), res.send(e);
     });
+});
+
+router.get('/files/fk_email', async (req, res) => {
+    const fk_email = req.body.fk_email;
+    //console.log(req.body.fk_email);
+    client.query(`SELECT * FROM files WHERE fk_email LIKE '${fk_email}'`)
+        .then(result => {
+            res.status(200).json(result.rows);
+	})
+	.catch(e => {
+            console.error(e), res.send(e);
+	});
 });
 
 

@@ -18,6 +18,24 @@ p {
     font-size:1.6rem;
 }
 
+input[type="file"] {
+    display: none;
+}
+
+input[type="file"] {
+    border: none;
+}
+
+input::placeholder {
+    color: black;
+}
+
+textarea::placeholder{
+    color:black;
+}
+ 
+
+
 a {
     text-decoration: none;
 }
