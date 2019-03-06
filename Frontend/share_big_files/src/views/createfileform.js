@@ -229,7 +229,6 @@ const CreateFileForm = () => {
 		    })
 		    .catch(error => console.log(error));
 	    };
-	};
     };
     
     // axios
