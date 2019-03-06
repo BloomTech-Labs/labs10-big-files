@@ -5,42 +5,31 @@ const sgMail = require("@sendgrid/mail");
 
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
-router.post("/sendgrid/", (req, res) => {
-  const { tomail, frommail, subject, text, html } = req.body;
-});
-
-const msg = {
-  to: "jaskip2@gmail.com",
-  from: "jaskip2@gmail.com",
-  subject: "A friend wants to send you a file!",
-  text: "Insert url here",
-  html: "<strong>Insert url here</strong>"
-};
-
 router.get("/", (req, res) => {
   res.send("Hello, world");
 });
 
-router.get("/send", (req, res) => {
-  sgMail.send(msg);
-  console.log("email sent");
-  res.send("Email Sent");
-});
-
 router.post("/send", (req, res) => {
-  const { to, from, subject, text, html, url } = req.body;
+  const {
+    body_to,
+    body_from,
+    body_subject,
+    body_text,
+    body_html,
+    body_url
+  } = req.body;
   const msg = {
-    to: to,
-    from: from,
-    subject: subject,
-    text: text,
-    html: html,
+    to: body_to,
+    from: body_from,
+    subject: body_subject,
+    text: body_text,
+    html: body_html,
     template_id: "d-cfdd9e9c01914f909b38fef4016bba70",
     dynamic_template_data: {
-      toemail: to,
-      fromemail: from,
-      body: text,
-      URL: url
+      toemail: body_to,
+      fromemail: body_from,
+      body: body_text,
+      URL: body_url
     }
   };
   sgMail.send(msg);
