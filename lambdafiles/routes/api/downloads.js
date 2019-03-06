@@ -22,10 +22,10 @@ router.get("/", async (req, res) => {
 
 //CREATE NEW DOWNLOAD
 router.post("/", (request, res) => {
-    const {fk_file_id, user_id, fk_username} = request.body;
-    
-    client.query(`INSERT INTO downloads (fk_file_id, user_id, fk_username)
-    VALUES ($1, $2, $3)`,[fk_file_id, user_id, fk_username])
+	const {fk_file_id, email} = request.body;
+	
+    client.query(`INSERT INTO downloads (fk_file_id, email)
+    VALUES ($1, $2)`,[fk_file_id, email])
 	.then(result => {
 	    res.status(200).json(result);
 	})

@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+// import SignOut from "../components/signOut";
 
 const SmallDiv = styled.div`
   display: none;
@@ -41,24 +42,27 @@ const LinkStyles = styled.h1`
   }
 `;
 
+
+
 const LeftMenu = () => {
   return (
     <SmallDiv>
     <Box>
       <Link to="/add">
-        <LinkStyles>Files</LinkStyles>
+        <LinkStyles>Home</LinkStyles>
       </Link>
     </Box>
     <Box>
       <Link to="/billing">
-        <LinkStyles>Billing</LinkStyles>
+        <LinkStyles>Account</LinkStyles>
       </Link>
     </Box>
-    <Box>
-      <Link to="/settings">
-        <LinkStyles>Settings</LinkStyles>
+    {/* <Box>
+      <Link to="/" 
+        onClick={this.signOutHandler}>
+        <LinkStyles>Log Out</LinkStyles>
       </Link>
-    </Box>
+    </Box> */}
     </SmallDiv>
   );
 };

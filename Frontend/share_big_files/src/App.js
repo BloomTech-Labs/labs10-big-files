@@ -1,15 +1,18 @@
 import React, { Component } from "react";
+
+import Download from "./views/download"
+
 import LandingView from "./views/landingview";
-import CreateEditHolder from "./views/createeditholder";
+import HomeView from "./views/homeview";
 import SettingsHolder from "./views/settingsholder";
-import BillingHolder from "./views/billingholder";
-import Stripe from "./components/StripeFE";
-import AddFileHolder from "./views/addfileholder";
+import AccountHolder from "./views/accountholder";
+import Stripe from "./components/StripeFE"; 
 import { Route  } from "react-router-dom";
 import "./App.css";
 import styled from "styled-components";
 import { Auth0Lock } from "auth0-lock";
 import history from "./history";
+ 
 
 const AppContainer = styled.div`
   height: auto;
@@ -80,15 +83,16 @@ class App extends Component {
     if (this.isAuthenticated() || localStorage.getItem("accessToken")) {
       return (
         <AppContainer>
-            <Route
+      
+          <Route
             exact
             path="/"
-            render={props => <AddFileHolder {...props} />}
+            render={props => <HomeView {...props} />}
           />
           <Route
             exact
             path="/add"
-            render={props => <AddFileHolder {...props} />}
+            render={props => <HomeView {...props} />}
           />
 
           <Route path="/stripe" render={props => <Stripe {...props} />} />
@@ -100,22 +104,30 @@ class App extends Component {
           <Route
             exact
             path="/create"
-            render={props => <CreateEditHolder {...props} />}
+            render={props => <HomeView {...props} />}
           />
           <Route
             exact
-            path="/billing"
-            render={props => <BillingHolder {...props} />}
+            path="/account"
+            render={props => <AccountHolder {...props} />}
           />
         </AppContainer>
       );
     } else {
       return (
-        <Route
-          exact
-          path="/"
-          render={props => <LandingView {...props} lockOpen={this.lockOpen} lock={lock} />}
-        />
+        <div>
+          <Route
+            exact
+            path="/"
+            render={props => <LandingView {...props} lockOpen={this.lockOpen} lock={lock} />}
+            />
+
+          <Route
+            exact
+            path="/download"
+            render={props => <Download {...props} />}
+          />
+        </div>
       );
     }
   }
