@@ -83,7 +83,12 @@ class App extends Component {
     if (this.isAuthenticated() || localStorage.getItem("accessToken")) {
       return (
         <AppContainer>
-      
+          <Route
+            exact
+            path="/download"
+            render={props => <Download {...props} />}
+          />
+          
           <Route
             exact
             path="/"

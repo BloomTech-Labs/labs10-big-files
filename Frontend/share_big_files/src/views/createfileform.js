@@ -189,11 +189,12 @@ const CreateFileForm = () => {
   }
 
 
-    const sendFile = () => {
-	console.log("*****************");
-	const formData = new FormData();
-	formData.append("fileUpload", file[0]);
-	formData["fileUpload"] = file[0];
+
+  const sendFile = () => {
+    console.log("*****************");
+    const formData = new FormData();
+    formData.append("fileUpload", file[0]);
+    // formData["fileUpload"] = file[0];
 
 	// const fetchData = async () => {
 	//     const profile = JSON.parse(localStorage.getItem("profile"));
@@ -250,7 +251,7 @@ const CreateFileForm = () => {
 
   function sendGrid(event) {
     console.log("URL and FILEID and Email: ", url, fileId, recipientEmail)
-    console.log("Magical URL!", `http://localhost:3000/download/?email=${recipientEmail}&url=${url}&fileid=${fileId}`)
+    // console.log("Magical URL!", `http://localhost:3000/download/?email=${recipientEmail}&url=${url}&fileid=${fileId}`)
     
     
     const uniqueURL = `https://sfiles.netlify.com/download/?email=${recipientEmail}&url=${url}&fileid=${fileId}`
