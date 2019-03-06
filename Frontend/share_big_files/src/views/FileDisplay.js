@@ -47,9 +47,15 @@ flex-wrap: wrap;
 margin-right: 4%;
 justify-content: space-around;
 margin-left: 2%;
+min-height: 800px;
 `;
 
+<<<<<<< HEAD:Frontend/share_big_files/src/views/addfile.js
+
+const AddFile = () => {
+=======
 const FileDisplay = () => {
+>>>>>>> 1f8454a45ab2dade413359118bb2dd797c1028be:Frontend/share_big_files/src/views/FileDisplay.js
   const [email, setEmail] = useState(null);
   const [userData, setUserData] = useState(null);
   const [loaded, setLoaded] = useState(false);
