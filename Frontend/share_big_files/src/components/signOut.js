@@ -34,8 +34,7 @@ background-color: white;
   right: 7%;
 }
 @media (max-width: 390px) {
-  top: 12%;
-  right: 11%;
+  display: none;
 }
 // &:hover {
 //   color: #ff7518;
