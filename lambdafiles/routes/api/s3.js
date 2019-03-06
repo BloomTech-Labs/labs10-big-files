@@ -219,7 +219,7 @@ const paidFileUpload = multer({
 }).single("fileUpload");
 
 // ROUTE TO UPLOAD FILE PAID USER?
-router.post("/paidfiles/id", (req, res) => {
+router.post("/paidfiles/", (req, res) => {
     console.log("REQ", req);
     console.log("REQ_BODY", req.body);
     fileUpload(req, res, error => {
