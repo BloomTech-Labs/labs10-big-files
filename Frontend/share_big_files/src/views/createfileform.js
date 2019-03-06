@@ -106,9 +106,15 @@ font-size: 1.7rem;
 
 `;
 
+const FlexDiv = styled.div`
+display: flex;
+align-items: center
+`;
+
 const CreateFileForm = () => {
   //const [link, setLink] = useState(null)
   const [file, setFile] = useState(null);
+  const [uploadTitle, setUploadTitle] = useState(null)
   const [recipientEmail, setRecipientEmail] = useState(null);
   const [emailSubject, setEmailSubject] = useState(null);
   const [message, setMessage] = useState(null);
@@ -120,13 +126,14 @@ const CreateFileForm = () => {
 
   useEffect(() => {
     console.log(fileId);
-    console.log(url);
+    console.log(url); 
+
+    console.log(uploadTitle)
   });
 
-  function handleFileUpload(event) {
-    setFile(event.target.files);
-    console.log(file);
-  }
+ async function handleFileUpload(event) {
+    setFile(event.target.files);  
+  } 
 
   function handleNameInput(event) {
     setFileName(event.target.value);
@@ -209,12 +216,18 @@ const CreateFileForm = () => {
       <AddFileDiv>
         <LabelDiv className="hideInput">
           <form onSubmit={submitFile}>
-            <FileInput type="file" onChange={handleFileUpload} />
+          {/* <FlexDiv> */}
+          {/* <FaPlusCircle size={40} color="#fffff" />
+          <TitleH2>Add Your File</TitleH2> */}
+          {/* </FlexDiv> */}
+            <FileInput type="file" onChange={handleFileUpload} 
+            // style={{display : "none"}}
+            />
+            
             <UploadButton type="submit">Upload to server</UploadButton>
           </form>
 
-          {/* <FaPlusCircle size={40} color="#fffff" />
-          <TitleH2>Add Your File</TitleH2> */}
+          
         </LabelDiv>
       </AddFileDiv>
       <InnerDiv>
