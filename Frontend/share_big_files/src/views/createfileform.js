@@ -106,22 +106,44 @@ font-size: 1.7rem;
 
 `;
 
-const CreateFileForm = () => {
-  //const [link, setLink] = useState(null)
-  const [file, setFile] = useState(null);
-  const [recipientEmail, setRecipientEmail] = useState(null);
-  const [emailSubject, setEmailSubject] = useState(null);
-  const [message, setMessage] = useState(null);
-  const [fileName, setFileName] = useState(null);
-  const [url, setUrl] = useState(null);
-  const [fileId, setFileId] = useState(null);
-  const profile = JSON.parse(localStorage.getItem("profile"));
-  const senderEmail = profile.email;
 
-  useEffect(() => {
-    console.log(fileId);
-    console.log(url);
-  });
+const CreateFileForm = () => {
+    //const [link, setLink] = useState(null)
+    const [file, setFile] = useState(null);
+    const [recipientEmail, setRecipientEmail] = useState(null);
+    const [emailSubject, setEmailSubject] = useState(null);
+    const [message, setMessage] = useState(null);
+    const [fileName, setFileName] = useState(null);
+    const [url, setUrl] = useState(null);
+    const [fileId, setFileId] = useState(null);
+    const profile = JSON.parse(localStorage.getItem("profile"));
+    const senderEmail = profile.email;
+    const [billing, setBilling] = useState(null);
+    const [isPro, setIsPro] = useState(null);
+    const [loaded, setLoaded] = useState(false);
+    
+    const fetchData = async () => {
+	const profile = JSON.parse(localStorage.getItem("profile"));
+	axios
+	    .get(`https://api.backendproxy.com/api/users/${profile.nickname}`)
+	    .then(response => {
+		console.log(response);
+		var promise = new Promise(function(resolve, reject) {
+		    resolve(setBilling(response.data[0].paid));
+		});
+		promise.then(
+		    setIsPro(billing), 
+		    setLoaded(true)
+		);
+	    })
+	    .catch(err => console.log(err));
+    };
+
+    useEffect(() => {
+	console.log(fileId);
+	console.log(url);
+	fetchData();
+    }, []);
 
   function handleFileUpload(event) {
     setFile(event.target.files);
@@ -167,27 +189,64 @@ const CreateFileForm = () => {
   }
 
 
-  const sendFile = () => {
-    console.log("*****************");
-    const formData = new FormData();
-    formData.append("fileUpload", file[0]);
-    formData["fileUpload"] = file[0];
+    const sendFile = () => {
+	console.log("*****************");
+	const formData = new FormData();
+	formData.append("fileUpload", file[0]);
+	formData["fileUpload"] = file[0];
 
-    axios
-      .put("https://api.backendproxy.com/api/s3/files/", formData, {
-        headers: {
-          "Content-Type": "multipart/form-data"
-        }
-      })
-      .then(response => {
-        setFileId(response.data.rows[0].file_id);
-        
-        let urlString = response.data.rows[0].url
-        urlString = urlString.split('/')
-        setUrl(urlString[3])
-      })
-      .catch(error => console.log(error));
+	// const fetchData = async () => {
+	//     const profile = JSON.parse(localStorage.getItem("profile"));
+
+	    if (isPro) {
+		axios
+		    .put("https://api.backendproxy.com/api/s3/paidfiles/", formData, {
+			headers: {
+			    "Content-Type": "multipart/form-data"
+			}
+		    })
+		    .then(response => {
+			setFileId(response.data.rows[0].file_id);			
+			let urlString = response.data.rows[0].url
+			urlString = urlString.split('/')
+			setUrl(urlString[3])
+		    })
+		    .catch(error => console.log(error));
+	    }
+	    
+	    else {
+		axios
+		    .put("https://api.backendproxy.com/api/s3/files/", formData, {
+			headers: {
+			    "Content-Type": "multipart/form-data"
+			}
+		    })
+		    .then(response => {
+			setFileId(response.data.rows[0].file_id);			
+			let urlString = response.data.rows[0].url
+			urlString = urlString.split('/')
+			setUrl(urlString[3])
+		    })
+		    .catch(error => console.log(error));
+	    };
+	};
     };
+    
+    // axios
+    //   .put("https://api.backendproxy.com/api/s3/files/", formData, {
+    //     headers: {
+    //       "Content-Type": "multipart/form-data"
+    //     }
+    //   })
+    //   .then(response => {
+    //     setFileId(response.data.rows[0].file_id);
+        
+    //     let urlString = response.data.rows[0].url
+    //     urlString = urlString.split('/')
+    //     setUrl(urlString[3])
+    //   })
+    //   .catch(error => console.log(error));
+    // };
 
   function sendGrid(event) {
     console.log("URL and FILEID and Email: ", url, fileId, recipientEmail)
