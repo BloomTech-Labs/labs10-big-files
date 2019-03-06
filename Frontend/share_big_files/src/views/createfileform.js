@@ -189,47 +189,48 @@ const CreateFileForm = () => {
   }
 
 
-    const sendFile = () => {
-	console.log("*****************");
-	const formData = new FormData();
-	formData.append("fileUpload", file[0]);
-	formData["fileUpload"] = file[0];
 
-	// const fetchData = async () => {
-	//     const profile = JSON.parse(localStorage.getItem("profile"));
+  const sendFile = () => {
+    console.log("*****************");
+    const formData = new FormData();
+    formData.append("fileUpload", file[0]);
+    // formData["fileUpload"] = file[0];
 
-	    if (isPro) {
-		axios
-		    .put("https://api.backendproxy.com/api/s3/paidfiles/", formData, {
-			headers: {
-			    "Content-Type": "multipart/form-data"
-			}
-		    })
-		    .then(response => {
-			setFileId(response.data.rows[0].file_id);			
-			let urlString = response.data.rows[0].url
-			urlString = urlString.split('/')
-			setUrl(urlString[3])
-		    })
-		    .catch(error => console.log(error));
-	    }
-	    
-	    else {
-		axios
-		    .put("https://api.backendproxy.com/api/s3/files/", formData, {
-			headers: {
-			    "Content-Type": "multipart/form-data"
-			}
-		    })
-		    .then(response => {
-			setFileId(response.data.rows[0].file_id);			
-			let urlString = response.data.rows[0].url
-			urlString = urlString.split('/')
-			setUrl(urlString[3])
-		    })
-		    .catch(error => console.log(error));
-	    };
-    };
+      // const fetchData = async () => {
+      //     const profile = JSON.parse(localStorage.getItem("profile"));
+
+      if (isPro) {
+	  axios
+	      .put("https://api.backendproxy.com/api/s3/paidfiles/", formData, {
+		  headers: {
+		      "Content-Type": "multipart/form-data"
+		  }
+	      })
+	      .then(response => {
+		  setFileId(response.data.rows[0].file_id);			
+		  let urlString = response.data.rows[0].url
+		  urlString = urlString.split('/')
+		  setUrl(urlString[3])
+	      })
+	      .catch(error => console.log(error));
+      }
+      
+      else {
+	  axios
+	      .put("https://api.backendproxy.com/api/s3/files/", formData, {
+		  headers: {
+		      "Content-Type": "multipart/form-data"
+		  }
+	      })
+	      .then(response => {
+		  setFileId(response.data.rows[0].file_id);			
+		  let urlString = response.data.rows[0].url
+		  urlString = urlString.split('/')
+		  setUrl(urlString[3])
+	      })
+	      .catch(error => console.log(error));
+      };
+  };
     
     // axios
     //   .put("https://api.backendproxy.com/api/s3/files/", formData, {
@@ -249,7 +250,7 @@ const CreateFileForm = () => {
 
   function sendGrid(event) {
     console.log("URL and FILEID and Email: ", url, fileId, recipientEmail)
-    console.log("Magical URL!", `http://localhost:3000/download/?email=${recipientEmail}&url=${url}&fileid=${fileId}`)
+    // console.log("Magical URL!", `http://localhost:3000/download/?email=${recipientEmail}&url=${url}&fileid=${fileId}`)
     
     
     const uniqueURL = `https://sfiles.netlify.com/download/?email=${recipientEmail}&url=${url}&fileid=${fileId}`
