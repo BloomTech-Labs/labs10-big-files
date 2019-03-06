@@ -19,11 +19,9 @@ background-color: white;
 @media (max-width: 768px) {
     min-width: 300px;
 }
-@media (max-width: 390px) {
-    min-width: 300px;
-  width: 90%;
-  margin: 0 auto;
-}
+// @media (max-width: 390px) {
+//     min-width: 300px;
+// }
 `;
 
 const Title = styled.h3`
@@ -45,6 +43,7 @@ const Button = styled.button`
 width: 25%;
 margin: 0 auto;
 cursor: pointer;
+border-radius: 10px;
 `;
 
 
