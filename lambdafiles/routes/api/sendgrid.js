@@ -13,7 +13,7 @@ router.post("/send", (req, res) => {
   const { to, from, subject, text, html, url } = req.body;
   const msg = {
     to: to,
-    from: rom,
+    from: from,
     subject: subject,
     text: text,
     html: html,
