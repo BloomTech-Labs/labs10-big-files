@@ -22,13 +22,14 @@ const BasicMembershipDiv = styled.div`
 const ProMembershipDiv = styled.div`
   height: auto;
   width: auto;
-  width: 37rem;
-  margin-left: 2%;
+  margin: 70px auto;
   border-radius: 10px;
   background: rgba(255, 255, 255, 0.5);
-
+  @media(max-width: 768px) {
+    max-width: 90%;
+  }
   @media(max-width: 390px) {
-    width: 95%;
+    width: 90%;
     margin: 0 auto;
   }
 `;
