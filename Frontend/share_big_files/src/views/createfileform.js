@@ -231,7 +231,7 @@ const CreateFileForm = () => {
 		    .catch(error => console.log(error));
 	    };
 	};
-    };
+ 
     
     // axios
     //   .put("https://api.backendproxy.com/api/s3/files/", formData, {
