@@ -10,26 +10,19 @@ router.get("/", (req, res) => {
 });
 
 router.post("/send", (req, res) => {
-  const {
-    body_to,
-    body_from,
-    body_subject,
-    body_text,
-    body_html,
-    body_url
-  } = req.body;
+  const { to, from, subject, text, html, url } = req.body;
   const msg = {
-    to: body_to,
-    from: body_from,
-    subject: body_subject,
-    text: body_text,
-    html: body_html,
+    to: to,
+    from: rom,
+    subject: subject,
+    text: text,
+    html: html,
     template_id: "d-cfdd9e9c01914f909b38fef4016bba70",
     dynamic_template_data: {
-      toemail: body_to,
-      fromemail: body_from,
-      body: body_text,
-      URL: body_url
+      toemail: to,
+      fromemail: from,
+      body: text,
+      URL: url
     }
   };
   sgMail.send(msg);
