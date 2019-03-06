@@ -171,7 +171,7 @@ const CreateFileForm = () => {
     console.log("*****************");
     const formData = new FormData();
     formData.append("fileUpload", file[0]);
-    formData["fileUpload"] = file[0];
+    // formData["fileUpload"] = file[0];
 
     axios
       .put("https://api.backendproxy.com/api/s3/files/", formData, {
