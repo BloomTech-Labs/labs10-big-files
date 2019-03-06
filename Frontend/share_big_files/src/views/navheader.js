@@ -7,7 +7,8 @@ const NavHeaderDiv = styled.div`
   display: flex;
   // flex-direction: column;
   margin-bottom: 1%;
-  border: 1px solid yellow @media (max-width: 390px) {
+  border-bottom: 2px solid white;
+ @media (max-width: 390px) {
     border-bottom: none;
   }
 `;
@@ -56,7 +57,7 @@ const NavMenuLink = styled(Link)`
 const NavMenuLink1 = styled(Link)`
   width: 100%;
   height: 100%;
-  border-right: 1px solid black;
+  border-right: 1px solid lightgray;
   font-weight: 400;
 `;
 

@@ -106,6 +106,7 @@ font-size: 1.7rem;
 
 `;
 
+ 
 
 const CreateFileForm = () => {
     //const [link, setLink] = useState(null)
@@ -144,11 +145,11 @@ const CreateFileForm = () => {
 	console.log(url);
 	fetchData();
     }, []);
+ 
 
-  function handleFileUpload(event) {
-    setFile(event.target.files);
-    console.log(file);
-  }
+ async function handleFileUpload(event) {
+    setFile(event.target.files);  
+  } 
 
   function handleNameInput(event) {
     setFileName(event.target.value);
@@ -279,12 +280,18 @@ const CreateFileForm = () => {
       <AddFileDiv>
         <LabelDiv className="hideInput">
           <form onSubmit={submitFile}>
-            <FileInput type="file" onChange={handleFileUpload} />
+          {/* <FlexDiv> */}
+          {/* <FaPlusCircle size={40} color="#fffff" />
+          <TitleH2>Add Your File</TitleH2> */}
+          {/* </FlexDiv> */}
+            <FileInput type="file" onChange={handleFileUpload} 
+            // style={{display : "none"}}
+            />
+            
             <UploadButton type="submit">Upload to server</UploadButton>
           </form>
 
-          {/* <FaPlusCircle size={40} color="#fffff" />
-          <TitleH2>Add Your File</TitleH2> */}
+          
         </LabelDiv>
       </AddFileDiv>
       <InnerDiv>

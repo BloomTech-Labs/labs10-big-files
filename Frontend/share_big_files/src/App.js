@@ -1,7 +1,5 @@
 import React, { Component } from "react";
-
 import Download from "./views/download"
-
 import LandingView from "./views/landingview";
 import HomeView from "./views/homeview";
 import SettingsHolder from "./views/settingsholder";
@@ -27,7 +25,8 @@ var domain = "lambdabackendproject.auth0.com";
 var options = {
   // autoclose: false,
   // closable: false,
-  avatar: null
+  avatar: null,
+  // allowedConnections: ['twitter', 'facebook', 'linkedin'],
 };
 
 var lock = new Auth0Lock(clientId, domain, options);

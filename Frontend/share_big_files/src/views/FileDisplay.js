@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from "react";
-import styled from "styled-components"; 
+import styled from "styled-components";
 import axios from "axios";
- 
+import ReactModal from "react-modal";
+
 const SharedBoxHolder = styled.div`
   width: 45%;
   min-width: 150px;
-  height: 10%; 
+  height: 10%;
+  max-height: 260px;
+  min-height: 255px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -19,7 +22,7 @@ const SharedBoxHolder = styled.div`
     text-align: none;
   }
 `;
- 
+
 const Sharedh4 = styled.h4` 
 overflow: hidden;
 white-space: nowrap;
@@ -40,14 +43,15 @@ const InnerSharedDiv = styled.div`
   margin-left: 13%;
 `;
 
- 
 const DesperateDiv = styled.div`
+ 
 display: flex;
 flex-wrap: wrap;
 margin-right: 4%;
 justify-content: space-around;
 margin-left: 2%;
 min-height: 800px;
+ 
 `;
 
 // <<<<<<< HEAD
@@ -62,12 +66,49 @@ const FileDisplay = () => {
 //>>>>>>> 571002d58f0c678a6db0394f038a40e54201ef45
   const [email, setEmail] = useState(null);
   const [userData, setUserData] = useState(null);
+  const [selectedFile, setSelectedFile] = useState({
+    filename: null,
+    file_size: null,
+    url: "https://s3lambdafiles123.s3.amazonaws.com/Pipfile-1551309371443",
+    upload_date: "2019-02-27T23:16:11.204Z",
+    file_id: "106"
+  });
   const [loaded, setLoaded] = useState(false);
+  const [modalBoolean, setModalBoolean] = useState(false);
+  const [targetTile, setTargetTile] = useState(null);
   //const [userExists, setUserExists] = useState(null);
   const profile = JSON.parse(localStorage.getItem("profile"));
   useEffect(() => {
+    console.log(selectedFile);
     console.log(userData);
   });
+
+  const ModalSwitchOn = (event, index) => {
+    // setTargetTile(event.target)
+
+    var target = event.target.getAttribute("value");
+    // console.log(target);
+    // var filteredObject = userData.filter(obj => {
+    //   return (obj.file_id === target);
+    // });
+    // console.log('************************')
+    // console.log(filteredObject);
+    // setSelectedFile(filteredObject[0]);
+    axios
+   
+    .get(`https://api.backendproxy.com/api/downloads/106`)
+    .then(response=> {
+      console.log("in request to get history")
+      console.log(response)
+    })
+    .catch(err => console.log(err))
+
+    setModalBoolean(!modalBoolean);
+  };
+
+  const ModalSwitchOff = event => {
+    setModalBoolean(!modalBoolean);
+  };
 
   const fetchData = () => {
     console.log("in fetch data");
@@ -130,37 +171,34 @@ const FileDisplay = () => {
       })
       .catch(err => console.log(err));
   };
-  if(!loaded){
+  if (!loaded) {
+    return <></>;
+  }
   return (
-   <></>
- )} return(
     <DesperateDiv>
-      {userData[0]? userData.map((file, index) => {
-                return( 
-        <SharedBoxHolder key={index}>
-          <InnerSharedDiv>
-            <Sharedh4>File Title: {file.filename}</Sharedh4>
-{/* 
-            <Sharedh3>URL: {file.url}</Sharedh3>
-            <SharedInput type="text" />
-            <CenterShareDiv>
-              <Link to="/">
-                <br />
-                <br />
-                <ShareDiv>
-                {/* <FaShareSquare size={40} url={file.url} /> */}
-                {/* Share
-                </ShareDiv>
-              </Link>
-            </CenterShareDiv> */}
-
-            <Sharedh4>Date Uploaded: </Sharedh4>
-            <Sharedh4>Viewed: </Sharedh4>
-            <Sharedh4>Downloaded: </Sharedh4> 
-
-          </InnerSharedDiv>
-        </SharedBoxHolder>
-      )}): null}
+      <ReactModal
+        isOpen={modalBoolean}
+        contentLabel="onRequestClose Example"
+        onRequestClose={ModalSwitchOff}
+      >
+        <p>{selectedFile.file_id}</p>
+        <button onClick={ModalSwitchOff}>Close Modal</button>
+      </ReactModal>
+      {userData[0]
+        ? userData.map((file, index) => {
+            return (
+              <SharedBoxHolder key={index}>
+                <InnerSharedDiv>
+                  <Sharedh4>File Title: {file.filename}</Sharedh4>
+                  <Sharedh4>Date Uploaded: </Sharedh4>
+                  <Sharedh4 value={file.file_id} onClick={ModalSwitchOn}>
+                    File Sharing History{" "}
+                  </Sharedh4>
+                </InnerSharedDiv>
+              </SharedBoxHolder>
+            );
+          })
+        : null}
     </DesperateDiv>
   );
 };
