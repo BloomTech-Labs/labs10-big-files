@@ -201,8 +201,7 @@ const CreateFileForm = () => {
       from: senderEmail,
       subject: emailSubject,
       text: message,
-      html: message,
-      url: uniqueURL
+      html: uniqueURL
     };
 
     console.log(myDetails);
