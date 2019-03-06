@@ -10,7 +10,9 @@ router.get("/", (req, res) => {
 });
 
 router.post("/send", (req, res) => {
+  // Pull in data from frontend
   const { to, from, subject, text, html, url } = req.body;
+  // construct send message
   const msg = {
     to: to,
     from: from,
@@ -25,7 +27,28 @@ router.post("/send", (req, res) => {
       URL: url
     }
   };
+  // send message
   sgMail.send(msg);
+  //
+  // Construct Confirmation message
+  const confirmationmsg = {
+    to: from,
+    from: "noreply@movebytes.com",
+    subject: subject,
+    text: text,
+    html: html,
+    template_id: "d-c8e5c984923a482e97c0e69f2b4cfe5b",
+    dynamic_template_data: {
+      toemail: to,
+      fromemail: from,
+      body: text,
+      URL: url
+    }
+  };
+  //send Confirmation message
+  sgMail.send(confirmationmsg);
+
+  //send res to frontend
   console.log("email sent");
   res.send("Email Sent");
 });
