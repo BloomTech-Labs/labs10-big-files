@@ -2,7 +2,6 @@ import React from "react";
 import NavHeader from "./navheader";
 import LeftMenu from "./leftmenu";
 import AddFile from "./addfile";
-
 import styled from "styled-components";
 // import Dropdown from "./dropdown";
 

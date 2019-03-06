@@ -106,6 +106,7 @@ font-size: 1.7rem;
 
 `;
 
+ 
 
 const CreateFileForm = () => {
     //const [link, setLink] = useState(null)
@@ -144,11 +145,11 @@ const CreateFileForm = () => {
 	console.log(url);
 	fetchData();
     }, []);
+ 
 
-  function handleFileUpload(event) {
-    setFile(event.target.files);
-    console.log(file);
-  }
+ async function handleFileUpload(event) {
+    setFile(event.target.files);  
+  } 
 
   function handleNameInput(event) {
     setFileName(event.target.value);
@@ -196,42 +197,41 @@ const CreateFileForm = () => {
     formData.append("fileUpload", file[0]);
     // formData["fileUpload"] = file[0];
 
-	// const fetchData = async () => {
-	//     const profile = JSON.parse(localStorage.getItem("profile"));
+      // const fetchData = async () => {
+      //     const profile = JSON.parse(localStorage.getItem("profile"));
 
-	    if (isPro) {
-		axios
-		    .put("https://api.backendproxy.com/api/s3/paidfiles/", formData, {
-			headers: {
-			    "Content-Type": "multipart/form-data"
-			}
-		    })
-		    .then(response => {
-			setFileId(response.data.rows[0].file_id);			
-			let urlString = response.data.rows[0].url
-			urlString = urlString.split('/')
-			setUrl(urlString[3])
-		    })
-		    .catch(error => console.log(error));
-	    }
-	    
-	    else {
-		axios
-		    .put("https://api.backendproxy.com/api/s3/files/", formData, {
-			headers: {
-			    "Content-Type": "multipart/form-data"
-			}
-		    })
-		    .then(response => {
-			setFileId(response.data.rows[0].file_id);			
-			let urlString = response.data.rows[0].url
-			urlString = urlString.split('/')
-			setUrl(urlString[3])
-		    })
-		    .catch(error => console.log(error));
-	    };
-	};
- 
+      if (isPro) {
+	  axios
+	      .put("https://api.backendproxy.com/api/s3/paidfiles/", formData, {
+		  headers: {
+		      "Content-Type": "multipart/form-data"
+		  }
+	      })
+	      .then(response => {
+		  setFileId(response.data.rows[0].file_id);			
+		  let urlString = response.data.rows[0].url
+		  urlString = urlString.split('/')
+		  setUrl(urlString[3])
+	      })
+	      .catch(error => console.log(error));
+      }
+      
+      else {
+	  axios
+	      .put("https://api.backendproxy.com/api/s3/files/", formData, {
+		  headers: {
+		      "Content-Type": "multipart/form-data"
+		  }
+	      })
+	      .then(response => {
+		  setFileId(response.data.rows[0].file_id);			
+		  let urlString = response.data.rows[0].url
+		  urlString = urlString.split('/')
+		  setUrl(urlString[3])
+	      })
+	      .catch(error => console.log(error));
+      };
+  };
     
     // axios
     //   .put("https://api.backendproxy.com/api/s3/files/", formData, {
@@ -280,12 +280,18 @@ const CreateFileForm = () => {
       <AddFileDiv>
         <LabelDiv className="hideInput">
           <form onSubmit={submitFile}>
-            <FileInput type="file" onChange={handleFileUpload} />
+          {/* <FlexDiv> */}
+          {/* <FaPlusCircle size={40} color="#fffff" />
+          <TitleH2>Add Your File</TitleH2> */}
+          {/* </FlexDiv> */}
+            <FileInput type="file" onChange={handleFileUpload} 
+            // style={{display : "none"}}
+            />
+            
             <UploadButton type="submit">Upload to server</UploadButton>
           </form>
 
-          {/* <FaPlusCircle size={40} color="#fffff" />
-          <TitleH2>Add Your File</TitleH2> */}
+          
         </LabelDiv>
       </AddFileDiv>
       <InnerDiv>

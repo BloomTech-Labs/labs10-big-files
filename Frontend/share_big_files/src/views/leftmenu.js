@@ -1,21 +1,21 @@
 import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-// import SignOut from "../components/signOut";
+import SignOut from "../components/signOut";
 
 const SmallDiv = styled.div`
   display: none;
   @media (max-width: 390px) {
     display: block;
     height: auto;
-    width: 100%;
+    width: 100%; 
   }
 `;
 
 const Box = styled.div`
 width: 100%;
 background: linear-gradient(
-  #36454f, #ff7518 50%, #36454f 50%, #36454f
+  white, blue 50%, lightgray 50%,white
 );
 background-size: 100% 202%;
 transition: all 0.2s ease;
@@ -30,7 +30,7 @@ const LinkStyles = styled.h1`
   color:  #fffff0;
   font-size: 2rem;
   &:hover {
-    color: #ff7518;
+    color: blue;
   }
   @media (max-width: 390px) {
     font-size: 3rem;
@@ -53,16 +53,16 @@ const LeftMenu = () => {
       </Link>
     </Box>
     <Box>
-      <Link to="/billing">
+      <Link to="/account">
         <LinkStyles>Account</LinkStyles>
       </Link>
     </Box>
-    {/* <Box>
+    <Box>
       <Link to="/" 
-        onClick={this.signOutHandler}>
-        <LinkStyles>Log Out</LinkStyles>
+        onClick={SignOut}>
+        <LinkStyles>Sign Out</LinkStyles>
       </Link>
-    </Box> */}
+    </Box>
     </SmallDiv>
   );
 };

@@ -7,7 +7,8 @@ const NavHeaderDiv = styled.div`
   display: flex;
   // flex-direction: column;
   margin-bottom: 1%;
-  border: 1px solid yellow @media (max-width: 390px) {
+  border-bottom: 2px solid white;
+ @media (max-width: 390px) {
     border-bottom: none;
   }
 `;
@@ -31,6 +32,9 @@ const TitleDiv = styled.div`
   width: 83%;
   display: flex;
   align-items: center;
+  @media (max-width: 390px) {
+    margin-left: 23%;
+  }
 `;
 
 const TitleH3 = styled.h3`
@@ -53,7 +57,7 @@ const NavMenuLink = styled(Link)`
 const NavMenuLink1 = styled(Link)`
   width: 100%;
   height: 100%;
-  border-right: 1px solid black;
+  border-right: 1px solid lightgray;
   font-weight: 400;
 `;
 
@@ -79,6 +83,9 @@ const MenuWrapper = styled.div`
   margin: 10px 0;
   border-radius: 10px;
   background-color: white;
+  @media (max-width: 390px) {
+    display: none;
+  }
 `;
 
 const MenuDiv = styled.div`

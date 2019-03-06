@@ -2,6 +2,8 @@ import React from "react";
 import NavHeader from "./navheader";
 import Settings from "./settings";
 import SignOut from "../components/signOut";
+import LeftMenu from "./leftmenu";
+import Billing from "./billing";
 import styled from "styled-components";
 
 const AccountPage = styled.div`
@@ -37,9 +39,9 @@ const AccountHolder = () => {
       <NavHeader />
       
       <MenuAccountDiv>
-        {/* <LeftMenu /> */}
-        {/* <Billing /> */}
-        <Settings/>
+        <LeftMenu />
+        <Billing />
+        {/* <Settings/> */}
         <SignOut/>
       </MenuAccountDiv>
     </AccountPage>
