@@ -219,10 +219,38 @@ const paidFileUpload = multer({
 }).single("fileUpload");
 
 // ROUTE TO UPLOAD FILE PAID USER?
-router.post("/paidfiles/", (req, res) => {
+// router.post("/paidfiles/", (req, res) => {
+//     console.log("REQ", req);
+//     console.log("REQ_BODY", req.body);
+//     fileUpload(req, res, error => {
+// 	if (error) {
+// 	    console.log("errors:", error);
+// 	    res.json({ error: error });
+// 	} else {
+// 	    // If File not found
+// 	    if (req.file === undefined) {
+// 		console.log("Error: No File Selected!");
+// 		res.json("Error: No File Selected");
+// 	    } else {
+// 		// client.query(`UPDATE files SET url = '${req.file.location}' WHERE file_id = (select MAX(file_id) FROM files) `)
+// 		const url = req.file.location;
+// 		client.query(
+// 		    `INSERT INTO files (url) VALUES ($1)`, [url])
+// 		    .then(result => {
+// 			res.status(200).json(result);
+// 		    })
+// 		    .catch(e => {
+// 			console.error(e.detail), res.send(e);
+// 		    });
+// 	    }
+// 	}
+//     });
+// });
+
+router.put("/paidfiles/", (req, res) => {
     console.log("REQ", req);
     console.log("REQ_BODY", req.body);
-    fileUpload(req, res, error => {
+    paidFileUpload(req, res, error => {
 	if (error) {
 	    console.log("errors:", error);
 	    res.json({ error: error });
@@ -232,10 +260,7 @@ router.post("/paidfiles/", (req, res) => {
 		console.log("Error: No File Selected!");
 		res.json("Error: No File Selected");
 	    } else {
-		// client.query(`UPDATE files SET url = '${req.file.location}' WHERE file_id = (select MAX(file_id) FROM files) `)
-		const url = req.file.location;
-		client.query(
-		    `INSERT INTO files (url) VALUES ($1)`, [url])
+		client.query(`UPDATE files SET url = '${req.file.location}' WHERE file_id = (select MAX(file_id) FROM files) RETURNING url, file_id `)
 		    .then(result => {
 			res.status(200).json(result);
 		    })
@@ -245,20 +270,6 @@ router.post("/paidfiles/", (req, res) => {
 	    }
 	}
     });
-});
-
-router.put("/paidfiles/id", (request, res) => {
-    console.log("RB", request.body);
-    const { fk_user_id } = request.body;
-    client.query(`UPDATE files SET fk_user_id = ${fk_user_id} WHERE file_id = (select MAX(file_id) FROM files) `)
-	.then(result => {
-	    res.status(200).json(result.rows);
-	    // process.exit();
-	})
-	.catch(e => {
-	    console.error(e.detail), res.send(e);
-	});
-    // .then(() => client.end())
 });
 
 // DELETE ROUTE
