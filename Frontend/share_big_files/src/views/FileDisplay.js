@@ -44,26 +44,14 @@ const InnerSharedDiv = styled.div`
 `;
 
 const DesperateDiv = styled.div`
- 
-display: flex;
-flex-wrap: wrap;
-margin-right: 4%;
-justify-content: space-around;
-margin-left: 2%;
-min-height: 800px;
- 
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: 4%;
+  justify-content: space-around;
+  margin-left: 2%;
 `;
 
-// <<<<<<< HEAD
-// //<<<<<<< HEAD:Frontend/share_big_files/src/views/addfile.js
-
-// //const AddFile = () => {
-// //=======
-// const FileDisplay = () => {
-// //>>>>>>> 1f8454a45ab2dade413359118bb2dd797c1028be:Frontend/share_big_files/src/views/FileDisplay.js
-// =======
 const FileDisplay = () => {
-//>>>>>>> 571002d58f0c678a6db0394f038a40e54201ef45
   const [email, setEmail] = useState(null);
   const [userData, setUserData] = useState(null);
   const [selectedFile, setSelectedFile] = useState({
@@ -73,14 +61,14 @@ const FileDisplay = () => {
     upload_date: "2019-02-27T23:16:11.204Z",
     file_id: "106"
   });
+  const [viewedHistory, setViewedHistory] = useState(false);
   const [loaded, setLoaded] = useState(false);
   const [modalBoolean, setModalBoolean] = useState(false);
   const [targetTile, setTargetTile] = useState(null);
   //const [userExists, setUserExists] = useState(null);
   const profile = JSON.parse(localStorage.getItem("profile"));
   useEffect(() => {
-    console.log(selectedFile);
-    console.log(userData);
+    console.log(viewedHistory);
   });
 
   const ModalSwitchOn = (event, index) => {
@@ -95,20 +83,27 @@ const FileDisplay = () => {
     // console.log(filteredObject);
     // setSelectedFile(filteredObject[0]);
     axios
-   
-    .get(`https://api.backendproxy.com/api/downloads/106`)
-    .then(response=> {
-      console.log("in request to get history")
-      console.log(response)
-    })
-    .catch(err => console.log(err))
 
+      .get(`https://api.backendproxy.com/api/downloads/249`)
+      .then(response => {
+        console.log("in request to get history");
+        console.log(response);
+        setViewedHistory(Array.from(response.data));
+      })
+      .catch(err => console.log(err));
+
+    setTimeout(modalSwitch, 1500);
+  };
+
+  const modalSwitch = () => {
     setModalBoolean(!modalBoolean);
   };
 
   const ModalSwitchOff = event => {
     setModalBoolean(!modalBoolean);
   };
+
+  const HistoryView = () => {};
 
   const fetchData = () => {
     console.log("in fetch data");
@@ -181,9 +176,22 @@ const FileDisplay = () => {
         contentLabel="onRequestClose Example"
         onRequestClose={ModalSwitchOff}
       >
-        <p>{selectedFile.file_id}</p>
-        <button onClick={ModalSwitchOff}>Close Modal</button>
+      
+        {/* {viewedHistory.forEach((file, index) => {
+          return (
+            <div key={index}>
+              <h3>
+                {file.email}
+                file.email
+              </h3>
+              <h2>work</h2>
+            </div>
+          );
+        })} */}
+        
+        {/* <button onClick={ModalSwitchOff}>Close Modal</button> */}
       </ReactModal>
+
       {userData[0]
         ? userData.map((file, index) => {
             return (
