@@ -84,7 +84,6 @@ class App extends Component {
       return (
         <AppContainer>
           <Route
-            exact
             path="/download"
             render={props => <Download {...props} />}
           />
@@ -128,7 +127,6 @@ class App extends Component {
             />
 
           <Route
-            exact
             path="/download"
             render={props => <Download {...props} />}
           />
