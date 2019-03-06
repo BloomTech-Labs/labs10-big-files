@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 // import SignOut from "../components/signOut.js";
+import img from "../../src/assets/movebyteslogo.png";
 import { Link } from "react-router-dom";
 
 const NavHeaderDiv = styled.div`
@@ -105,7 +106,7 @@ const NavHeader = props => {
   return (
     <NavHeaderDiv>
       <TitleDiv>
-        <TitleH3>Share Big Files</TitleH3>
+        <TitleH3><img src={img} alt="mblogo" height="40px" width="200px"/></TitleH3>
       </TitleDiv>
       <MenuWrapper>
         <MenuDiv>
