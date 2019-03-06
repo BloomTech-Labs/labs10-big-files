@@ -32,7 +32,9 @@ const TitleDiv = styled.div`
   width: 83%;
   display: flex;
   align-items: center;
->>>>>>> ac3af526e4f592eea0bc6f7424d01313d208e4c9
+  @media (max-width: 390px) {
+    margin-left: 23%;
+  }
 `;
 
 const TitleH3 = styled.h3`
@@ -81,6 +83,9 @@ const MenuWrapper = styled.div`
   margin: 10px 0;
   border-radius: 10px;
   background-color: white;
+  @media (max-width: 390px) {
+    display: none;
+  }
 `;
 
 const MenuDiv = styled.div`
@@ -92,7 +97,7 @@ const MenuDiv = styled.div`
   background-color: white;
   border-radius: 10px;
   @media (max-width: 390px) {
-    display: none;
+    
   }
 `;
 

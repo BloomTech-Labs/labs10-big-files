@@ -21,7 +21,7 @@ const AddFilePage = styled.div`
 
 const MenuFileHolder = styled.div`
   display: flex;
-  height: auto; 
+  height: auto;
 
   @media (max-width: 390px) {
     display: block;

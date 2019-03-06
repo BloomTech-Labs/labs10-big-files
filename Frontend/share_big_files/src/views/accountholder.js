@@ -2,6 +2,8 @@ import React from "react";
 import NavHeader from "./navheader";
 import Settings from "./settings";
 import SignOut from "../components/signOut";
+import LeftMenu from "./leftmenu";
+import Billing from "./billing";
 import styled from "styled-components";
 
 const AccountPage = styled.div`
@@ -10,7 +12,7 @@ const AccountPage = styled.div`
   height: auto;
   min-height: 100vh;
   margin: 0 auto;
-  background-color: #f5f5f0;
+  background-color: lightgray;
   // background-image: url("https://images.unsplash.com/photo-1524122209929-5bc27bd9c250?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80");
  
   background-size: cover;
@@ -37,9 +39,9 @@ const AccountHolder = () => {
       <NavHeader />
       
       <MenuAccountDiv>
-        {/* <LeftMenu /> */}
-        {/* <Billing /> */}
-        <Settings/>
+        <LeftMenu />
+        <Billing />
+        {/* <Settings/> */}
         <SignOut/>
       </MenuAccountDiv>
     </AccountPage>
