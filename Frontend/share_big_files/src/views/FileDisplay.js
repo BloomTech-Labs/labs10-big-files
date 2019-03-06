@@ -47,6 +47,7 @@ flex-wrap: wrap;
 margin-right: 4%;
 justify-content: space-around;
 margin-left: 2%;
+min-height: 800px;
 `;
 
 const FileDisplay = () => {
