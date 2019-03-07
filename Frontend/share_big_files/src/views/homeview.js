@@ -18,7 +18,7 @@ const CreateEditDiv = styled.div`
 
 display: flex;
   margin-top: 5px;
-  @media (max-width: 390px) {
+  @media (max-width: 900px) {
     display: block;
   }
 `;
