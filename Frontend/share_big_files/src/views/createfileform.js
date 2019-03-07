@@ -31,6 +31,9 @@ const CreateEditDiv = styled.div`
     min-width: 300px;
     width: 365px;
   }
+  @media(max-width:390px){
+    width: 95%;
+  }
 `;
 
 const FileName = styled.input`

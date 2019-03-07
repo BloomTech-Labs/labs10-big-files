@@ -22,6 +22,9 @@ display: flex;
   margin-top: 5px;
   @media (max-width: 900px) {
     display: block;
+    @media(max-width: 390px){
+      width: 100%
+    }
   }
 `;
 
