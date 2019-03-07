@@ -29,7 +29,7 @@ console.log('props:', props.file[0])
             <div class="container-contact1">
 
                 <form onSubmit={() => submitFile(props)} class="contact1-form">
-                    <span className="contact1-form-title"> Send Files Fast </span>
+                    {/* <span className="contact1-form-title"> Send Files Fast </span> */}
     
                     <Label>Filename</Label>
                     <div class="wrap-input1" data-validate = "Name is required">
@@ -39,13 +39,13 @@ console.log('props:', props.file[0])
     
                     <Label>Recipient Email</Label>
                     <div class="wrap-input1" data-validate = "Valid email is required: ex@abc.xyz">
-                        <input class="input1" type="text" name="email" placeholder="ToMyFriend@email.c" />
+                        <input class="input1" type="text" name="email" placeholder="ToMyFriend@email.com" />
                         <span class="shadow-input1"></span>
                     </div>
     
                     <Label>Sender Email</Label>
                     <div class="wrap-input1" data-validate = "Subject is required">
-                        <input class="input1" type="text" name="email" placeholder="FromMe@email.c"/>
+                        <input class="input1" type="text" name="email" placeholder="FromMe@email.com"/>
                         <span class="shadow-input1"></span>
                     </div>
 

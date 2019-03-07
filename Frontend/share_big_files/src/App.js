@@ -97,8 +97,7 @@ toggleTheme() {
       return (
         <AppContainer>
 
-          {/* KEITH */}
-          <Splash toggleTheme={this.toggleTheme} />
+
 
             <Route
             path="/download"
@@ -140,8 +139,13 @@ toggleTheme() {
           <Route
             exact
             path="/"
-            render={props => <LandingView {...props} lockOpen={this.lockOpen} lock={lock} />}
+            render={props =>  <Splash toggleTheme={this.toggleTheme} {...props} lockOpen={this.lockOpen} lock={lock}/>}
             />
+          {/* <Route
+            exact
+            path="/"
+            render={props => <LandingView {...props} lockOpen={this.lockOpen} lock={lock} />}
+            /> */}
 
           <Route
             path="/download"

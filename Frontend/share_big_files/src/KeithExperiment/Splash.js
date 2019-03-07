@@ -60,6 +60,9 @@ const [file, setFile] = useState(null)
   return (
     <WrapperContainer style={ imageStyle }>
       <Header>
+        <Logo>LOGO HERE</Logo>
+        <Signin>Signin Here</Signin>
+      </Header>
         <JumboTron>
           <LeftColumn>
             <br/><br/>
@@ -104,7 +107,7 @@ const [file, setFile] = useState(null)
           </RightColumn>
 
         </JumboTron>
-      </Header>
+      
 
       <Body>
         <Features />
@@ -133,11 +136,19 @@ height: 100%;
 `;
 
 const Header = styled.div`
-    height: 100vh;
-`;
+    height: 72px;
+    display: flex;
+    `;
 
+const Logo = styled.a`
+
+`
+
+    
 const JumboTron = styled.div`
+  height: 100vh;
   display: flex;
+
   // padding: 7% 3%;
   // height: 55vh;
   letter-spacing: 1px;
@@ -175,6 +186,7 @@ const JumboTron = styled.div`
 
 const LeftColumn = styled.div`
   width: 35%;
+  top: 80px;
   position: fixed;
   height: 100%;
   z-index: 100;
@@ -193,6 +205,7 @@ const LeftColumn = styled.div`
 const RightColumn = styled.div`
   width: 63%;
   left: 40%
+  top: 73px;
   display: flex;
   flex-direction: column;
   align-items: center;
