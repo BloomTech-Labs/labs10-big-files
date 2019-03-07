@@ -2,16 +2,17 @@ import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import axios from "axios";
 import ReactModal from "react-modal";
+import NavHeader from './navheader';
+import { FaAutoprefixer } from "react-icons/fa";
 
 const SharedBoxHolder = styled.div`
   width: 45%;
   min-width: 150px;
-  height: 10%;
-  max-height: 260px;
-  min-height: 255px;
+  height: auto; 
+  min-height: 160px;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: center; 
   background-color: white;
   border-radius: 5px;
   margin: 0 1.5% 3% 1.5%;
@@ -27,28 +28,42 @@ const Sharedh4 = styled.h4`
 overflow: hidden;
 white-space: nowrap;
 text-overflow: ellipsis;
-padding: 0;
+padding: 0; 
   margin: 0;
-  width: 20rem;
+  margin-left: 5%;
+  width: auto;
   height: 20px;
 @media(max-width: 390px){ 
   
 `;
-const InnerSharedDiv = styled.div`
-  height: 100%;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  margin-left: 13%;
-`;
+ 
 
 const DesperateDiv = styled.div`
-  display: flex;
+height: 100%;
+  display: flex; 
   flex-wrap: wrap;
   margin-right: 4%;
   justify-content: space-around;
   margin-left: 2%;
+`;
+
+const HistoryDiv = styled.div`
+margin: 0% 4%;
+`;
+
+const InnerTileDiv = styled.div` 
+height: 100%;
+width: 100%;
+display: flex;
+flex-direction: column;
+justify-content: space-around;
+`;
+
+const HistoryButton = styled.button`
+width: 44%;
+border-radius: 4px;
+margin-left: 5%
+
 `;
 
 const FileDisplay = () => {
@@ -68,23 +83,23 @@ const FileDisplay = () => {
   //const [userExists, setUserExists] = useState(null);
   const profile = JSON.parse(localStorage.getItem("profile"));
   useEffect(() => {
-    console.log(viewedHistory);
+    console.log(selectedFile);
   });
 
   const ModalSwitchOn = (event, index) => {
     // setTargetTile(event.target)
 
     var target = event.target.getAttribute("value");
-    // console.log(target);
-    // var filteredObject = userData.filter(obj => {
-    //   return (obj.file_id === target);
-    // });
-    // console.log('************************')
-    // console.log(filteredObject);
-    // setSelectedFile(filteredObject[0]);
+    console.log(target);
+    var filteredObject = userData.filter(obj => {
+      return obj.file_id === target;
+    });
+    console.log("************************");
+    console.log(filteredObject);
+    setSelectedFile(filteredObject[0]);
     axios
 
-      .get(`https://api.backendproxy.com/api/downloads/249`)
+      .get(`https://api.backendproxy.com/api/downloads/${target}`)
       .then(response => {
         console.log("in request to get history");
         console.log(response);
@@ -92,7 +107,7 @@ const FileDisplay = () => {
       })
       .catch(err => console.log(err));
 
-    setTimeout(modalSwitch, 1500);
+    setTimeout(modalSwitch, 500);
   };
 
   const modalSwitch = () => {
@@ -169,46 +184,64 @@ const FileDisplay = () => {
   if (!loaded) {
     return <></>;
   }
-  return (
-    <DesperateDiv>
+  if (loaded && !modalBoolean) {
+    return (
+      <DesperateDiv>
+        {userData[0]
+          ? userData.map((file, index) => {
+              return (
+                <SharedBoxHolder key={index}>
+                <InnerTileDiv>
+                    <Sharedh4>File Title: {file.filename}</Sharedh4>
+                    <Sharedh4>Date Uploaded: </Sharedh4>
+                    <HistoryButton value={file.file_id} onClick={ModalSwitchOn}>
+                    Download History
+                    </HistoryButton>
+                    </InnerTileDiv>
+                </SharedBoxHolder>
+              );
+            })
+          : null}
+      </DesperateDiv>
+    );
+  } else {
+    return (
       <ReactModal
         isOpen={modalBoolean}
         contentLabel="onRequestClose Example"
         onRequestClose={ModalSwitchOff}
+        style={{
+          overlay: {
+            backgroundColor: "lightGray",
+            marginTop:  "7rem"
+          },
+          content: {
+            width: "35%",
+            borderRadius: "10px",
+            margin: "0 auto"
+
+          }
+        }}
       >
-      
-        {/* {viewedHistory.forEach((file, index) => {
-          return (
-            <div key={index}>
-              <h3>
-                {file.email}
-                file.email
-              </h3>
-              <h2>work</h2>
-            </div>
-          );
-        })} */}
-        
-        {/* <button onClick={ModalSwitchOff}>Close Modal</button> */}
-      </ReactModal>
-
-      {userData[0]
-        ? userData.map((file, index) => {
+  
+        <HistoryDiv>
+          <h2>File Name: {selectedFile.filename}</h2>
+          <h3>Total Downloads: {viewedHistory.length} </h3>
+          {viewedHistory.map((file, index) => {
             return (
-              <SharedBoxHolder key={index}>
-                <InnerSharedDiv>
-                  <Sharedh4>File Title: {file.filename}</Sharedh4>
-                  <Sharedh4>Date Uploaded: </Sharedh4>
-                  <Sharedh4 value={file.file_id} onClick={ModalSwitchOn}>
-                    File Sharing History{" "}
-                  </Sharedh4>
-                </InnerSharedDiv>
-              </SharedBoxHolder>
+              <div key={index}>
+                <h3>
+                  {file.download_date} Download Email: {file.email}
+                </h3>
+              </div>
             );
-          })
-        : null}
-    </DesperateDiv>
-  );
+          })}
+       
+        <button onClick={ModalSwitchOff}>Return Home</button>
+        
+        </HistoryDiv>
+      </ReactModal>
+    );
+  }
 };
-
 export default FileDisplay;

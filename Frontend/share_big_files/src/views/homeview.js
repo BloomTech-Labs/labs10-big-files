@@ -15,7 +15,8 @@ const CreatePage = styled.div`
   background-size: 100% 100%;
 `;
 const CreateEditDiv = styled.div`
-  display: flex;
+
+display: flex;
   margin-top: 5px;
   @media (max-width: 390px) {
     display: block;
