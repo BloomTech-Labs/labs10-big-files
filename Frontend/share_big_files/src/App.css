@@ -36,15 +36,17 @@ h4 {
 }
 
 button {
-  font-family: "Roboto", sans-serif;
-  font-size: 1.6rem;
-  font-weight: 400;
-  color: black;
-}
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.6rem;
+    font-weight: 400;
+    background-color: #206DB5;
+    color: white;
+ }
 
 li {
   font-family: "Roboto", sans-serif;
   font-size: 1.75rem;
+
 }
 
 p {

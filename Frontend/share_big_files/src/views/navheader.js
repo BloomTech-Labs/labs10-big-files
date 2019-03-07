@@ -71,7 +71,7 @@ const LinkStyles = styled.div`
   font-size: 2rem;  
   border-radius
   background-color: white;
-  color:  black;
+  color:  white;
   text-align: center;
   height: 100%;
   width: 100%;
@@ -88,7 +88,7 @@ const MenuWrapper = styled.div`
   display: flex;
   margin: 10px 0;
   border-radius: 10px;
-  background-color: white;
+  background-color: #206DB5;
   @media (max-width: 390px) {
     display: none;
   }
@@ -100,7 +100,7 @@ const MenuDiv = styled.div`
   width: 50%;
   height: 100%;
   min-height: 40px;
-  background-color: white;
+  background-color: #206DB5;
   border-radius: 10px;
   @media (max-width: 390px) {
     
