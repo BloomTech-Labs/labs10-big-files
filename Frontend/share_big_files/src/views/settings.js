@@ -5,7 +5,45 @@ import styled from 'styled-components';
 
 
 const SettingsDiv = styled.div`
-  margin-left: 2%;
+display: flex;
+flex-direction: column;
+flex-wrap: wrap;
+height: auto;
+width: 25%;
+min-width: 459px;
+padding: 10px;
+margin: 70px auto;
+line-height: 3;
+border-radius: 10px;
+background-color: white;
+@media (max-width: 768px) {
+    min-width: 300px;
+}
+// @media (max-width: 390px) {
+//     min-width: 300px;
+// }
+`;
+
+const Title = styled.h3`
+ margin: 0 auto;
+`;
+
+const InputDivs = styled.input`
+  width: 100%;
+  height: 3rem;
+  margin: 3% 0;
+  border: none;
+  box-shadow: 0 0 0;
+  border-bottom: 1px solid black;
+  &:placeholder:
+  color: black;
+`;
+
+const Button = styled.button`
+width: 25%;
+margin: 0 auto;
+cursor: pointer;
+border-radius: 10px;
 `;
 
 
@@ -81,11 +119,32 @@ const Settings = () =>{
         
     return(
         <SettingsDiv>
-            <p>Name</p> <input type="text" name="name" placeholder={name} onChange={handleChange}/>
-            <p>Old Password</p> <input type="text" name="oldPassword" placeholder={oldPassword} onChange={handleChange}/>
-            <p>New Password</p> <input type="password" name="newPassword" placeholder={newPassword} onChange={handleChange}/>
-            <p>New Password</p> <input type="password" name="newPassword2" placeholder={newPassword2} onChange={handleChange}/>
-            <button onClick={() => handleConfirmPassword()}>Save</button>
+            <Title>
+            Change Your Password
+            </Title>
+                <InputDivs
+                type="text"
+                placeholder="Name"
+                name="setFileName"
+                onChange={handleChange}
+                />
+                <InputDivs
+                type="text"
+                placeholder="Old Password"
+                onChange={handleChange}
+                />
+                <InputDivs
+                type="text"
+                placeholder="New Password"
+                onChange={handleChange}
+                />
+                <InputDivs
+                type="text"
+                placeholder="New Password Again"
+                onChange={handleChange}
+                />
+            
+            <Button onClick={() => handleConfirmPassword()}>Save</Button>
         </SettingsDiv>
     )
 

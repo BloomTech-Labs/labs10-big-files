@@ -1,27 +1,126 @@
- html {
-     font-size: 62.5%;
- }
- 
- h1 {
-     font-size: 3rem;
- }
+html {
+  font-size: 62.5%;
+  height: 100%;
+  width: 100%;
+  min-width: 100%;
+  margin: 0;
+  padding: 0;
+}
 
- h2 {
-     font-size: 2.2rem;
- }
+body {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
 
- li {
-    font-size: 2rem;
+h1 {
+  font-family: "Raleway", sans-serif;
+  font-size: 2.5rem;
+}
+
+h2 {
+  font-family: "Raleway", sans-serif;
+  font-size: 2.25rem;
+}
+
+h3 {
+  font-family: "Raleway", sans-serif;
+  font-size: 2rem;
+}
+
+h4 {
+  font-family: "Roboto", sans-serif;
+  font-size: 1.7rem;
+  font-weight: 400;
+}
+
+button {
+  font-family: "Roboto", sans-serif;
+  font-size: 1.6rem;
+  font-weight: 400;
+  color: black;
+}
+
+li {
+  font-family: "Roboto", sans-serif;
+  font-size: 1.75rem;
 }
 
 p {
-    font-size:1.6rem;
+  font-family: "Roboto", sans-serif;
+  font-size: 1.6rem;
+}
+
+/* input[type="file"] {
+    display: none;
+} */
+
+input[type="file"] {
+  border: none;
+}
+
+input:hover{
+    cursor: pointer;
+}
+
+button:hover{
+    cursor: pointer;
+}
+
+input::placeholder {
+  font-family: "Roboto", sans-serif;
+  font-size: 1.7rem;
+  font-weight: 400;
+  color: black;
+}
+
+input:hover{
+    cursor: pointer;
+}
+
+textarea::placeholder {
+  font-family: "Roboto", sans-serif;
+  font-size: 1.7rem;
+  font-weight: 400;
+  color: black;
+}
+
+textarea:hover{
+    cursor: pointer;
 }
 
 a {
-    text-decoration: none;
+  text-decoration: none;
 }
 
-.fontAwesome:hover{
-    cursor:pointer;
+.fontAwesome:hover {
+  cursor: pointer;
+}
+
+.ReactModal__Content {
+    width: 35%; 
+    height: auto;
+    background-color: white;
+    border-radius: "10px";
+    margin-top: 20px
+  }
+
+.ReactModal__Overlay{
+    background-color: lightgray;
+    margin-top: 7rem;
+}
+
+@media (max-width: 390px) {
+  .ReactModal__Content {
+    width: 95%;
+    border-radius: 7px; 
+    background-color: white;
+    margin: 0 auto;
+    margin-top: 20px;
+  }
+  .ReactModal__Overlay{
+      height: 100%;
+      margin-top: 17rem;
+  }
 }

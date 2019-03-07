@@ -1,39 +1,54 @@
 require("dotenv").config();
 const express = require("express");
 const router = express.Router();
-const sgMail = require('@sendgrid/mail');
-
+const sgMail = require("@sendgrid/mail");
 
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
-
-const msg = {
-  to: "jaskip2@gmail.com",
-  from: "jaskip2@gmail.com",
-  subject: "A friend wants to send you a file!",
-  text: "Insert url here",
-  html: "<strong>Insert url here</strong>"
-};
 
 router.get("/", (req, res) => {
   res.send("Hello, world");
 });
 
-router.get("/send", (req, res) => {
-  sgMail.send(msg);
-  console.log("email sent");
-  res.send("Email Sent");
-});
-
 router.post("/send", (req, res) => {
-  const {to, from, subject, text, html} = req.body;
+  // Pull in data from frontend
+  const { to, from, subject, text, html, url } = req.body;
+  // construct send message
   const msg = {
     to: to,
     from: from,
     subject: subject,
     text: text,
-    html: html
+    html: html,
+    template_id: "d-cfdd9e9c01914f909b38fef4016bba70",
+    dynamic_template_data: {
+      toemail: to,
+      fromemail: from,
+      body: text,
+      URL: url
+    }
   };
+  // send message
   sgMail.send(msg);
+  //
+  // Construct Confirmation message
+  const confirmationmsg = {
+    to: from,
+    from: "noreply@movebytes.com",
+    subject: subject,
+    text: text,
+    html: html,
+    template_id: "d-c8e5c984923a482e97c0e69f2b4cfe5b",
+    dynamic_template_data: {
+      toemail: to,
+      fromemail: from,
+      body: text,
+      URL: url
+    }
+  };
+  //send Confirmation message
+  sgMail.send(confirmationmsg);
+
+  //send res to frontend
   console.log("email sent");
   res.send("Email Sent");
 });
