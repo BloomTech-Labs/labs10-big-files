@@ -1,23 +1,29 @@
 import React from "react";
+import NavHeader from "./navheader.js";
 import styled from "styled-components"; 
+import awsimg from "../../src/assets/1_tFl-8wQUENETYLjX5mYWuA.png";
+import stpimg from "../../src/assets/payment-logo_1.png";
+import s3img from "../../src/assets/s3.webp";
 
 const LandingContainerDiv = styled.div`
   width: 100%;
-  height: auto;
-  min-height: 100vh;
+  height: 550px;
+  // min-height: 100vh;
   margin: 0 auto;
-  background-image: url("https://images.unsplash.com/photo-1524122209929-5bc27bd9c250?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80");
+  background-image: url("http://www.myfreetextures.com/wp-content/uploads/2011/06/brushsteel2.jpg");
   background-size: cover;
   
 `;
 
 const LandingCardsContainer = styled.div`
-  width: 80%;
-  height: 100vh;
+  width: 100%;
+  // height: 100vh;
+  // margin: 50px auto;
   display: flex;
   justify-content: flex-start;
   align-items: center;
   text-align: center;
+  
 
 
   @media (max-width: 390px) {
@@ -25,6 +31,9 @@ const LandingCardsContainer = styled.div`
     align-items: flex-start;
 
   }
+`;
+const BackgroundImg = styled.div`
+
 `;
 
 const LandingCards = styled.div`
@@ -42,8 +51,8 @@ const LandingCards = styled.div`
   flex-wrap: wrap;
   height: 459px;
   width: 34rem;
-  margin-left: 4%;
- 
+  margin: 0 auto;
+  box-shadow: 5px 10px #888888;
   background-color: white;
   border-radius: 10px;
 
@@ -101,14 +110,30 @@ const LandingH2 = styled.h2`
 const TitleH1 = styled.h1`
 margin-bottom: 0;
 `;
-
+const ImageDiv = styled.div`
+display: flex;
+justify-content: space-around;
+margin-top: 1.2%;
+`;
+const AwsImg = styled.img`
+width: 150px;
+height: 90px;
+`;
+const StripeImg = styled.img`
+width: 130px;
+height: 90px;
+`;
+const S3Img = styled.img`
+width: 130px;
+height: 90px;
+`;
 export const LandingView = props => {
   return (
     <LandingContainerDiv>
-      
-      
+      <NavHeader/>
       <LandingCardsContainer>
         <LandingCards>
+          {/* <BackgroundImg src="metalimg" alt="bgimg" width="500px"/> */}
           <TextContainer>
             <TitleH1>Send Big Files</TitleH1>
             <LandingH2>Send files quickly and easily</LandingH2>
@@ -128,9 +153,15 @@ export const LandingView = props => {
               Click to start
             </FileTransferButton>
           </>
+          
         </LandingCards>
  
       </LandingCardsContainer>
+      <ImageDiv>
+        <AwsImg src={awsimg} alt="awslogo"/>
+        <StripeImg src={stpimg} alt="stplogo"/>
+        <S3Img src={s3img} alt="s3logo"/>
+      </ImageDiv>
     </LandingContainerDiv>
   );
 };
