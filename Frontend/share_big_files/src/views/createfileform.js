@@ -11,7 +11,7 @@ const CreateEditDiv = styled.div`
   height: auto;
   width: 25%;
   min-width: 459px;
-  max-height: 490px;
+  max-height: 525px;
   margin-left: 4%;
   margin-right: 2%;
   line-height: 3;
@@ -30,6 +30,9 @@ const CreateEditDiv = styled.div`
   @media(max-width: 500px) {
     min-width: 300px;
     width: 365px;
+  }
+  @media(max-width:390px){
+    width: 95%;
   }
 `;
 
@@ -115,7 +118,8 @@ const FileInput = styled.input`
 const UploadButton = styled.button`
 font-size: 1.7rem;
     font-weight: 400;
-    border-radius 3px;
+    border-radius: 10px;
+    padding: 2% 2%;
 
 `;
 
@@ -178,8 +182,10 @@ const CreateFileForm = () => {
 
   function submitFile(event) {
     event.preventDefault();
-
-    setFile(event.target.files);
+    if (fileName === null) {
+      return alert("File must have filename")
+    } else {
+      setFile(event.target.files);
     const sendObject = {
       fk_email: senderEmail,
       filename: fileName
@@ -193,6 +199,10 @@ const CreateFileForm = () => {
       })
       .catch(err => console.log(err));
   }
+    }
+    
+
+    
 
   const sendFile = () => {
     console.log("*****************");
@@ -276,12 +286,12 @@ const CreateFileForm = () => {
               // style={{display : "none"}}
             />
 
-            <UploadButton type="submit">Upload to server</UploadButton>
+            <UploadButton type="submit">Upload To server</UploadButton>
           </form>
         </LabelDiv>
       </AddFileDiv>
       <InnerDiv>
-        <FileName
+      <FileName
           type="text"
           placeholder="File name"
           name="setFileName"

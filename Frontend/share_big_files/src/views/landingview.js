@@ -81,7 +81,7 @@ const FileTransferButton = styled.button`
   border-radius: 10px;
   height: 60px;
   font-size: 1.9rem;
-  background-color: lightgrey;
+  background-color: #206DB5;
   cursor: pointer;
   margin: 0 auto;
   margin-top: 6%;
