@@ -15,8 +15,10 @@ const BasicMembershipDiv = styled.div`
     max-width: 90%;
   }
   @media(max-width: 390px) {
-    width: 90%;
+    width: 95%;
+    max-width: 95%;
     margin: 0 auto;
+    margin-top: 30px
   }
 `;
 
@@ -30,8 +32,10 @@ const ProMembershipDiv = styled.div`
     max-width: 90%;
   }
   @media(max-width: 390px) {
-    width: 90%;
+    width: 95%;
+    max-width: 95%;
     margin: 0 auto;
+    margin-top: 30px
   }
 `;
 
@@ -63,7 +67,7 @@ margin-bottom: 1%;
 
  
 const StripeDiv = styled.div`
-  margin-left: 35%;
+  margin-left: 32%;
   @media(max-width: 390px) {
     margin: 0 0 2% 30%;
   }

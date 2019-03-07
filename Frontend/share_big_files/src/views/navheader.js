@@ -11,6 +11,7 @@ const NavHeaderDiv = styled.div`
   border-bottom: 2px solid white;
  @media (max-width: 390px) {
     border-bottom: none;
+    margin-bottom: 25px
   }
 `;
 
@@ -34,7 +35,10 @@ const TitleDiv = styled.div`
   display: flex;
   align-items: center;
   @media (max-width: 390px) {
-    margin-left: 23%;
+    width: 90%;
+    margin: 0 auto;
+    margin-top: 20px;
+    
   }
 `;
 
@@ -45,6 +49,7 @@ margin: 0;
     font-size: 3rem; 
     color: black;
     @media (max-width: 390px) {
+      margin: 0 auto;
       text-align: center;
       font-size: 3rem;
     }
@@ -66,7 +71,7 @@ const LinkStyles = styled.div`
   font-size: 2rem;  
   border-radius
   background-color: white;
-  color:  black;
+  color:  white;
   text-align: center;
   height: 100%;
   width: 100%;
@@ -83,7 +88,7 @@ const MenuWrapper = styled.div`
   display: flex;
   margin: 10px 0;
   border-radius: 10px;
-  background-color: white;
+  background-color: #206DB5;
   @media (max-width: 390px) {
     display: none;
   }
@@ -95,18 +100,27 @@ const MenuDiv = styled.div`
   width: 50%;
   height: 100%;
   min-height: 40px;
-  background-color: white;
+  background-color: #206DB5;
   border-radius: 10px;
   @media (max-width: 390px) {
     
   }
 `;
 
+const HeaderIMG = styled.img`
+max-height: 60px;
+max-width: 260px;
+margin: 0 auto;
+@media(max-width:390px){
+height: 100%;
+width: 100%;
+}
+`;
 const NavHeader = props => {
   return (
     <NavHeaderDiv>
       <TitleDiv>
-        <TitleH3><img src={img} alt="mblogo" height="40px" width="200px"/></TitleH3>
+        <TitleH3><HeaderIMG src={img} alt="mblogo" /></TitleH3>
       </TitleDiv>
       <MenuWrapper>
         <MenuDiv>

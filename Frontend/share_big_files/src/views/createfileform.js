@@ -17,9 +17,22 @@ const CreateEditDiv = styled.div`
   line-height: 3;
   border-radius: 10px;
   background-color: white;
-  @media (max-width: 390px) {
-    min-width: 95%;
+  @media (max-width: 900px) {
+    max-height: 552px;
     margin: 20px auto;
+    width: 610px;
+    height: 552px;
+  }
+  @media(max-width: 700px) {
+    width: 450px;
+    height: auto;
+  }
+  @media(max-width: 500px) {
+    min-width: 300px;
+    width: 365px;
+  }
+  @media(max-width:390px){
+    width: 95%;
   }
 `;
 
