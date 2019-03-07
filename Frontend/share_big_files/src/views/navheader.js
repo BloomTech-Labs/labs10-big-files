@@ -11,6 +11,7 @@ const NavHeaderDiv = styled.div`
   border-bottom: 2px solid white;
  @media (max-width: 390px) {
     border-bottom: none;
+    margin-bottom: 25px
   }
 `;
 
@@ -34,7 +35,10 @@ const TitleDiv = styled.div`
   display: flex;
   align-items: center;
   @media (max-width: 390px) {
-    margin-left: 23%;
+    width: 90%;
+    margin: 0 auto;
+    margin-top: 20px;
+    
   }
 `;
 
@@ -45,6 +49,7 @@ margin: 0;
     font-size: 3rem; 
     color: black;
     @media (max-width: 390px) {
+      margin: 0 auto;
       text-align: center;
       font-size: 3rem;
     }
@@ -102,11 +107,20 @@ const MenuDiv = styled.div`
   }
 `;
 
+const HeaderIMG = styled.img`
+max-height: 60px;
+max-width: 260px;
+margin: 0 auto;
+@media(max-width:390px){
+height: 100%;
+width: 100%;
+}
+`;
 const NavHeader = props => {
   return (
     <NavHeaderDiv>
       <TitleDiv>
-        <TitleH3><img src={img} alt="mblogo" height="40px" width="200px"/></TitleH3>
+        <TitleH3><HeaderIMG src={img} alt="mblogo" /></TitleH3>
       </TitleDiv>
       <MenuWrapper>
         <MenuDiv>
