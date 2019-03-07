@@ -273,7 +273,7 @@ const FileDisplay = () => {
         className="modal"
         style={{
           overlay: {
-            backgroundColor: "rgb(211,211,211, 1)",
+            backgroundColor: "rgb(234,231,220, 1)",
           },
           content:{
             margin: "0 auto",
