@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import styled from "styled-components"; 
 import Stripe from "../components/StripeFE";
+import SignOut from "../components/signOut";
 
 const BasicMembershipDiv = styled.div`
   height: auto;
@@ -9,7 +10,7 @@ const BasicMembershipDiv = styled.div`
   // width: 44rem;
   margin: 70px auto;
   border-radius: 10px;
-  background: rgba(255, 255, 255, 0.5);
+  background-color: white;
   @media(max-width: 768px) {
     max-width: 90%;
   }
@@ -24,7 +25,7 @@ const ProMembershipDiv = styled.div`
   width: 40rem;
   margin: 70px auto;
   border-radius: 10px;
-  background: rgba(255, 255, 255, 0.5);
+  background-color: white;
   @media(max-width: 768px) {
     max-width: 90%;
   }
@@ -43,21 +44,17 @@ const TextDiv = styled.div`
     margin: 0 auto;
   }
 `;
-const Header1 = styled.h1`
+const Header1 = styled.div`
 // width: 100%;
-margin-left: 20%;
+ 
 @media(max-width: 390px) {
  margin: 0;
 }
 `;
-const Header2 = styled.h2`
-margin-left: 44%;
-@media(max-width: 390px) { 
-  margin: 0;
-}
-`;
-const Header3 = styled.h2`
-margin-left: 33%;
+ 
+const Header3 = styled.div`
+margin-left: 0%;
+margin-bottom: 1%;
 @media(max-width: 390px) {
   
   margin-left: 0%;
@@ -73,26 +70,24 @@ const StripeDiv = styled.div`
 `;
 
 const ListItem = styled.li`
+font-size: 1.75rem;
+line-height: 2;
 
 `;
+const FeaturesH3 = styled.h3`
+margin-bottom: 0;
+`;
+
+const SignoutDiv = styled.div`
+// display: flex;
+// width: 100%;
+// justify-content: center
+`;
+
 
  
 
 const Billing = () => {
-  // useEffect(() => {
-  //   axios
-  //     .get(
-  //       `http://lambdafiles.us-east-2.elasticbeanstalk.com/api/users/${profile.nickname}`
-  //     )
-  //     .then(response => {
-  //       console.log(response.data[0].paid);
-  //       setBilling(response.data[0].paid);
-  //       console.log('***********')
-  //       setIsPro(billing);
-  //       console.log(isPro)
-  //     })
-  //     .catch(err => console.log(err));
-  // } );
   const [billing, setBilling] = useState(null);
   const [isPro, setIsPro] = useState(null);
   const [loaded, setLoaded] = useState(false);
@@ -128,21 +123,24 @@ const Billing = () => {
         <ProMembershipDiv>
           <TextDiv>
             <Header1>
-            <h1>Membership Level:</h1> 
+            <h1>Membership Level: Pro</h1> 
             </Header1>
-            <Header2>
-              Pro
-            </Header2>
+     
             <Header3>
-              <h3>Pro features</h3>
+              <FeaturesH3>Pro features</FeaturesH3>
               </Header3>
+          
             <div>
               <ListItem>Send files up to 2gb</ListItem>
               <ListItem>See who viewed your file</ListItem>
               <ListItem>See who downloaded your file</ListItem>
               <ListItem>70 days of file storage</ListItem>
+         
             </div>
+            <SignoutDiv><SignOut/></SignoutDiv>
+            
           </TextDiv>
+          
         </ProMembershipDiv>
       );
     }
@@ -150,11 +148,9 @@ const Billing = () => {
       <BasicMembershipDiv>
         <TextDiv>
           <Header1>
-            <h1>Membership Level:</h1>
+            <h1>Membership Level: Basic</h1>
             </Header1>
-            <Header2>
-            <h2>Basic</h2>
-            </Header2>
+      
           <Header3>
             <h2>Basic features</h2>
           </Header3>
@@ -165,13 +161,12 @@ const Billing = () => {
             <ListItem>7 days of file storage</ListItem>
           </div>
           <h2>Click below to get 70 day file storage</h2> <StripeDiv><Stripe /></StripeDiv>
+          <SignoutDiv><SignOut/></SignoutDiv>
         </TextDiv>
+       
       </BasicMembershipDiv>
     );
   }
-
   return <></>;
-
 };
-
 export default Billing;

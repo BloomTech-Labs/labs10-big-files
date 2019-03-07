@@ -1,7 +1,7 @@
 import React from "react";
 import NavHeader from "./navheader";
 import Settings from "./settings";
-import SignOut from "../components/signOut";
+
 import LeftMenu from "./leftmenu";
 import Billing from "./billing";
 import styled from "styled-components";
@@ -34,15 +34,12 @@ const MenuAccountDiv = styled.div`
 
 const AccountHolder = () => {
   return (
-    <AccountPage>
-      {/* <Dropdown/> */}
+    <AccountPage> 
       <NavHeader />
       
       <MenuAccountDiv>
         <LeftMenu />
-        <Billing />
-        {/* <Settings/> */}
-        <SignOut/>
+        <Billing /> 
       </MenuAccountDiv>
     </AccountPage>
   );
