@@ -16,13 +16,24 @@ const SharedBoxHolder = styled.div`
   background-color: white;
   border-radius: 5px;
   margin: 0 1.5% 3% 1.5%;
+ 
   @media (max-width: 390px) {
     width: 100%;
     height: 10rem;
     margin: 3% auto;
     text-align: none;
     min-height: 110px
+ 
+  @media (max-width: 500px) {
+    width: 80%;
+ 
   }
+  // @media (max-width: 390px) {
+  //   // width: 43%;
+  //   height: 15rem;
+  //   margin: 1% auto;
+  //   text-align: none;
+  // }
 `;
 
 const Sharedh4 = styled.h4` 
@@ -46,9 +57,23 @@ height: 100%;
   margin-right: 4%;
   justify-content: space-around;
   margin-left: 2%;
+ 
   @media(max-width: 390px){
     margin: 0 auto;
     width: 95%;
+ 
+  @media(max-width: 900px) {
+    width: 610px;
+    margin: 0 auto;
+  }
+  @media(max-width: 700px) {
+    width: 450px;
+    margin: 0 auto;
+  }
+  @media(max-width: 500px) {
+    width: auto;
+    margin: 0 auto;
+ 
   }
 `;
 
@@ -71,10 +96,14 @@ const HistoryButton = styled.button`
 width: 44%;
 border-radius: 4px;
 margin-left: 5%
-@media(max-width: 390px) {
+@media(max-width: 1000px) {
   width: 55%;
   margin: 0 auto;
 }
+// @media(max-width: 390px) {
+//   width: 55%;
+//   margin: 0 auto;
+// }
 `;
 
 const ReturnButton = styled.button`
