@@ -59,6 +59,7 @@ flex-direction: column;
 justify-content: space-around;
 `;
 
+
 const HistoryButton = styled.button`
 width: 44%;
 border-radius: 4px;
