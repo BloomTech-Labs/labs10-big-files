@@ -11,7 +11,7 @@ const CreateEditDiv = styled.div`
   height: auto;
   width: 25%;
   min-width: 459px;
-  max-height: 490px;
+  max-height: 525px;
   margin-left: 4%;
   margin-right: 2%;
   line-height: 3;
@@ -118,7 +118,8 @@ const FileInput = styled.input`
 const UploadButton = styled.button`
 font-size: 1.7rem;
     font-weight: 400;
-    border-radius 3px;
+    border-radius: 10px;
+    padding: 2% 2%;
 
 `;
 
@@ -279,12 +280,12 @@ const CreateFileForm = () => {
               // style={{display : "none"}}
             />
 
-            <UploadButton type="submit">Upload to server</UploadButton>
+            <UploadButton type="submit">Upload To server</UploadButton>
           </form>
         </LabelDiv>
       </AddFileDiv>
       <InnerDiv>
-        <FileName
+      <FileName
           type="text"
           placeholder="File name"
           name="setFileName"
