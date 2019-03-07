@@ -49,7 +49,20 @@ padding: 0;
 @media(max-width: 390px){ 
   
 `;
- 
+
+const Sharedh3 = styled.h3` 
+overflow: hidden;
+white-space: nowrap;
+text-overflow: ellipsis;
+padding: 0; 
+  margin: 0;
+  margin-left: 5%;
+  width: auto;
+  height: 20px;
+@media(max-width: 390px){ 
+  
+`;
+
 
 const DesperateDiv = styled.div`
 height: 100%;
@@ -238,7 +251,7 @@ const FileDisplay = () => {
               return (
                 <SharedBoxHolder key={index}>
                 <InnerTileDiv>
-                    <Sharedh4>File Title: {file.filename}</Sharedh4>
+                    <Sharedh3>{file.filename}</Sharedh3>
                     <Sharedh4>Date Uploaded: {file.upload_date.slice(0, 10)}</Sharedh4>
                     <Sharedh4>Time Uploaded: {file.upload_date.slice(11, -5)}</Sharedh4>
                     <HistoryButton value={file.file_id} onClick={ModalSwitchOn}>
