@@ -27,7 +27,8 @@
     font-family: 'Roboto', sans-serif;
     font-size: 1.6rem;
     font-weight: 400;
-    color: black;
+    background-color: #206DB5;
+    color: white;
  }
 
  li {

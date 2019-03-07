@@ -39,12 +39,13 @@ window.location.reload();
 // // &:hover {
 // //   color: #ff7518;
 // // }
-// `;
+//`;
 
 
 const SignOutButton = styled.button`
-margin: 2%;
-border-radius: 3px;
+margin: 3% 0 0 37%;
+border-radius: 5px;
+cursor: pointer;
 `;
 
 

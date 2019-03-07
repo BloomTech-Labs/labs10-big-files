@@ -63,7 +63,7 @@ margin-bottom: 1%;
 
  
 const StripeDiv = styled.div`
-  margin-left: 35%;
+  margin-left: 32%;
   @media(max-width: 390px) {
     margin: 0 0 2% 30%;
   }
