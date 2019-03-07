@@ -61,7 +61,6 @@ const [file, setFile] = useState(null)
     <WrapperContainer style={ imageStyle }>
       <Header>
         <JumboTron>
-          {file ? <FormModal file={file} setFile={setFile} /> : null}
           <LeftColumn>
             <br/><br/>
             <h1>MoveBytes</h1>
@@ -79,6 +78,7 @@ const [file, setFile] = useState(null)
           </LeftColumn>
 
           <RightColumn>
+            {file ? <FormModal file={file} setFile={setFile} /> : null}
             <h1>1 Select a file</h1>
             <button className="header__button" onClick={e => toggleTheme()}>
               Toggle theme
@@ -176,6 +176,7 @@ const JumboTron = styled.div`
 const LeftColumn = styled.div`
   width: 35%;
   position: fixed;
+  height: 100%;
   z-index: 100;
   display: flex;
   flex-direction: column;

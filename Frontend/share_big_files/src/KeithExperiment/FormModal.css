@@ -10,15 +10,10 @@
 	box-sizing: border-box;
 }
 
-
-
-
-
-
-
 ul, li {
 	margin: 0px;
-	list-style-type: none;
+  list-style-type: none;
+  
 }
 
 
@@ -70,7 +65,6 @@ iframe {
 
 .contact1 {
   width: 100%;
-  min-height: 100%;
   padding: 15px;
 
   /* background: #009bff;
@@ -90,7 +84,7 @@ iframe {
 }
 
 .container-contact1 {
-  width: 1163px;
+  width: 85%;
   background: #fff;
   border-radius: 10px;
   overflow: hidden;
@@ -104,30 +98,21 @@ iframe {
   justify-content: flex-end;
   align-items: center;
 
-  padding: 90px 130px 88px 148px;
-}
-
-/*------------------------------------------------------------------
-[  ]*/
-.contact1-pic {
-  width: 296px;
-}
-
-.contact1-pic img {
-  max-width: 100%;
+  padding: 4% 10% 4% 10%;
 }
 
 
 /*------------------------------------------------------------------
 [  ]*/
 .contact1-form {
-  width: 390px;
+  width: 500px;
 }
 
 .contact1-form-title {
   display: block;
   font-family: Montserrat-ExtraBold;
-  font-size: 24px;
+  font-size: 25px;
+  font-weight: 600;
   color: #333333;
   line-height: 1.2;
   text-align: center;
@@ -214,7 +199,7 @@ textarea.input1 + .shadow-input1 {
 }
 
 .contact1-form-btn {
-  min-width: 193px;
+  min-width: 200px;
   height: 50px;
   border-radius: 25px;
   background: var(--primaryColor);
@@ -265,46 +250,34 @@ textarea.input1 + .shadow-input1 {
 [ Responsive ]*/
 
 @media (max-width: 1200px) {
-  .contact1-pic {
-    width: 33.5%;
-  }
-
-  .contact1-form {
-    width: 44%;
-  }
+  /* .contact1-form {
+    width: 400px;
+  } */
 }
 
 @media (max-width: 992px) {
-  .container-contact1 {
-    padding: 90px 80px 88px 90px;
-  }
+  /* .container-contact1 {
+    padding: 3% 3% 2% 3%;
+  } */
 
-  .contact1-pic {
-    width: 35%;
-  }
-
-  .contact1-form {
-    width: 55%;
-  }
+  /* .contact1-form {
+    width: 500px;
+  } */
 }
 
 @media (max-width: 768px) {
   .container-contact1 {
-    padding: 90px 80px 88px 80px;
-  }
+    padding: 3% 3% 2% 3%;
+    }
 
-  .contact1-pic {
-    display: none;
-  }
-
-  .contact1-form {
+  /* .contact1-form {
     width: 100%;
-  }
+  } */
 }
 
 @media (max-width: 576px) {
   .container-contact1 {
-    padding: 90px 15px 88px 15px;
+    padding: 3% 3% 2% 3%;
   }
 }
 
