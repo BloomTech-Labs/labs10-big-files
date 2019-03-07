@@ -81,7 +81,7 @@ const FileTransferButton = styled.button`
   border-radius: 10px;
   height: 60px;
   font-size: 1.9rem;
-  background-color: lightgrey;
+  background-color: #206DB5;
   cursor: pointer;
   margin: 0 auto;
   margin-top: 6%;
@@ -129,18 +129,7 @@ export const LandingView = props => {
             </FileTransferButton>
           </>
         </LandingCards>
-        {/* <LandingCards>
-          <h2>Big File Transfer Pro</h2>
-          <UnorderedList>
-            <li>Send files up to 4gb</li>
-            <li>See who viewed your file</li>
-            <li>See who downloaded your file</li>
-            <li>90 days of file storage</li>
-          </UnorderedList>
-          <div  >
-            <FileTransferButton onClick={props.lockOpen}>Use File Transfer Pro</FileTransferButton>
-          </div>
-        </LandingCards> */}
+ 
       </LandingCardsContainer>
     </LandingContainerDiv>
   );

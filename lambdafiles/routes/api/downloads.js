@@ -6,6 +6,7 @@ const pg = require("pg");
 var client = new pg.Client(process.env.RDS_SECRET);
 client.connect();
 
+// SELECT email FROM downloads WHERE fk_file_id = 223
 
 //GET ALL DOWNLOADS
 router.get("/", async (req, res) => {
@@ -18,6 +19,21 @@ router.get("/", async (req, res) => {
 	    res.status(404).json(e.stack);
 	})
 });
+
+router.get("/:id", async (req, res) => {
+	const { id } = req.params;
+
+    client.query(`SELECT email, download_date FROM downloads WHERE fk_file_id = ${id}`)
+	.then(result => {
+	    res.status(200).json(result.rows);
+	})
+	.catch(e => {
+            console.error(e),
+	    res.status(404).json(e.stack);
+	})
+});
+
+
 
 
 //CREATE NEW DOWNLOAD
@@ -36,7 +52,7 @@ router.post("/", (request, res) => {
 });
 
 
-//
+//GET EMAIL of person who downloaded. GET by FILE_ID
 router.delete("/:id", (request, res) => {
     const downloadID = parseInt(request.params.id);
     client.query(`DELETE FROM downloads WHERE download_id = $1`,[downloadID])

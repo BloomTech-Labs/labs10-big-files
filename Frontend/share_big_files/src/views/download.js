@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import styled from "styled-components";
+import { Redirect } from 'react-router-dom'
+import img from "../assets/movebyteslogo.png";
 
 // THESE TWO URLS ARE IDENTICAL o.O
 // http://localhost:3000/download/?email=tjkisner%40gmail%2Ecom&url=bg%2D01%2D1551388077230%2Ejpg&fileid=30
@@ -46,26 +49,59 @@ const Downlaod = () => {
         };
 
         axios.post(`https://api.backendproxy.com/api/downloads/`, body)
-            .then(response => { console.log(response) })
-            .catch(err => console.log(err))
+            .then(response => { 
+                console.log(response);
+                // alert("Thank you for downloading");
+                redirectHome()
+
+            })
+            .catch(err => {
+                console.log(err)
+                alert("Download failed");
+            })
     }
     
-    
+    useEffect(() => {
+        getUrlVars()
+    })
+
+    const redirectHome = () => {    
+       return <Redirect to='https://sfiles.netlify.com' />
+    }
     return(
-        <div>
-            <h1>Hello Download Testing Page</h1>
+        <Container >
+            <Logo src={img} alt="mblogo"/>  
             <br/><br/>
-                <button onClick={() => getUrlVars()}> CLICK HERE TO DOWNLOAD </button>
-                <h1> EMAIL: {email}</h1>
-                <h1> Partial URL: {url}</h1>
-                <h1> ID: {fileid}</h1>
-                <h1> S3 STRING: {finalS3URL}</h1>
+            <Thank>Thank you for using MoveBytes</Thank>
+            <meta http-equiv="refresh" content={finalS3URL} />
 
-                <meta http-equiv="refresh" content={finalS3URL} />
-
-        </div>
+        </Container>
 
     )
 }
 
 export default Downlaod
+
+const Container = styled.div`
+    display: flex;
+    flex-direction: column;
+    height: 100%vh;
+    padding-top: 15%;
+`;
+
+const Logo = styled.img`
+    top: 100px;
+    max-height: 60px;
+    max-width: 260px;
+    margin: 0 auto;
+    @media(max-width:390px){
+    height: 100%;
+    width: 100%;
+}
+`;
+
+const Thank = styled.h1`
+    width: auto;
+    margin: 0 auto;
+    justify-content: center;
+`;
