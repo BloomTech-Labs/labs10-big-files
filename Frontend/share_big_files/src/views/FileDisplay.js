@@ -94,12 +94,15 @@ justify-content: space-around;
 
 
 const HistoryButton = styled.button`
-width: 44%;
-border-radius: 4px;
-margin-left: 5%
+width: 34%;
+margin-left: 5%;
+border-radius: 10px;
+padding: 2% 0;
+min-width: 140px;
 @media(max-width: 1000px) {
   width: 55%;
   margin: 0 auto;
+  min-width: 140px;
 }
 // @media(max-width: 390px) {
 //   width: 55%;
