@@ -18,8 +18,8 @@ const CreateEditDiv = styled.div`
   border-radius: 10px;
   background-color: white;
   @media (max-width: 390px) {
-    width: 90%;
-    margin: 0 auto;
+    min-width: 95%;
+    margin: 20px auto;
   }
 `;
 
@@ -93,10 +93,13 @@ const LabelDiv = styled.label`
 `;
 
 const FileInput = styled.input`
-font-size: 1.7rem;
-    font-weight: 400;
-    border-radius: 3px;
-    width: 65%;
+  font-size: 1.7rem;
+  font-weight: 400;
+  border-radius: 3px;
+  width: 65%;
+  @media(max-width: 390px) {
+    width: auto;
+  }
 `;
 
 const UploadButton = styled.button`
@@ -106,50 +109,42 @@ font-size: 1.7rem;
 
 `;
 
- 
-
 const CreateFileForm = () => {
-    //const [link, setLink] = useState(null)
-    const [file, setFile] = useState(null);
-    const [recipientEmail, setRecipientEmail] = useState(null);
-    const [emailSubject, setEmailSubject] = useState(null);
-    const [message, setMessage] = useState(null);
-    const [fileName, setFileName] = useState(null);
-    const [url, setUrl] = useState(null);
-    const [fileId, setFileId] = useState(null);
+  //const [link, setLink] = useState(null)
+  const [file, setFile] = useState(null);
+  const [recipientEmail, setRecipientEmail] = useState(null);
+  const [emailSubject, setEmailSubject] = useState(null);
+  const [message, setMessage] = useState(null);
+  const [fileName, setFileName] = useState(null);
+  const [url, setUrl] = useState(null);
+  const [fileId, setFileId] = useState(null);
+  const profile = JSON.parse(localStorage.getItem("profile"));
+  const senderEmail = profile.email;
+  const [billing, setBilling] = useState(null);
+  const [isPro, setIsPro] = useState(null);
+  const [loaded, setLoaded] = useState(false);
+
+  useEffect(() => {
+    console.log(fileId);
+    console.log(url);
+    fetchData();
+  }, []);
+
+  const fetchData = async () => {
     const profile = JSON.parse(localStorage.getItem("profile"));
-    const senderEmail = profile.email;
-    const [billing, setBilling] = useState(null);
-    const [isPro, setIsPro] = useState(null);
-    const [loaded, setLoaded] = useState(false);
-    
-    const fetchData = async () => {
-	const profile = JSON.parse(localStorage.getItem("profile"));
-	axios
-	    .get(`https://api.backendproxy.com/api/users/${profile.nickname}`)
-	    .then(response => {
-		console.log(response);
-		var promise = new Promise(function(resolve, reject) {
-		    resolve(setBilling(response.data[0].paid));
-		});
-		promise.then(
-		    setIsPro(billing), 
-		    setLoaded(true)
-		);
-	    })
-	    .catch(err => console.log(err));
-    };
+    axios
+      .get(`https://api.backendproxy.com/api/users/${profile.nickname}`)
+      .then(response => {
+        console.log(response);
+        setBilling(response.data[0].paid);
+  
+      })
+      .catch(err => console.log(err));
+  };
 
-    useEffect(() => {
-	console.log(fileId);
-	console.log(url);
-	fetchData();
-    }, []);
- 
-
- async function handleFileUpload(event) {
-    setFile(event.target.files);  
-  } 
+  function handleFileUpload(event) {
+    setFile(event.target.files);
+  }
 
   function handleNameInput(event) {
     setFileName(event.target.value);
@@ -189,73 +184,54 @@ const CreateFileForm = () => {
       .catch(err => console.log(err));
   }
 
-
-
   const sendFile = () => {
     console.log("*****************");
     const formData = new FormData();
     formData.append("fileUpload", file[0]);
     // formData["fileUpload"] = file[0];
 
-      // const fetchData = async () => {
-      //     const profile = JSON.parse(localStorage.getItem("profile"));
+    // const fetchData = async () => {
+    //     const profile = JSON.parse(localStorage.getItem("profile"));
 
-      if (isPro) {
-	  axios
-	      .put("https://api.backendproxy.com/api/s3/paidfiles/", formData, {
-		  headers: {
-		      "Content-Type": "multipart/form-data"
-		  }
-	      })
-	      .then(response => {
-		  setFileId(response.data.rows[0].file_id);			
-		  let urlString = response.data.rows[0].url
-		  urlString = urlString.split('/')
-		  setUrl(urlString[3])
-	      })
-	      .catch(error => console.log(error));
-      }
-      
-      else {
-	  axios
-	      .put("https://api.backendproxy.com/api/s3/files/", formData, {
-		  headers: {
-		      "Content-Type": "multipart/form-data"
-		  }
-	      })
-	      .then(response => {
-		  setFileId(response.data.rows[0].file_id);			
-		  let urlString = response.data.rows[0].url
-		  urlString = urlString.split('/')
-		  setUrl(urlString[3])
-	      })
-	      .catch(error => console.log(error));
-      };
+    if (billing) {
+      axios
+        .put("https://api.backendproxy.com/api/s3/paidfiles/", formData, {
+          headers: {
+            "Content-Type": "multipart/form-data"
+          }
+        })
+        .then(response => {
+          setFileId(response.data.rows[0].file_id);
+          let urlString = response.data.rows[0].url;
+          urlString = urlString.split("/");
+          setUrl(urlString[3]);
+        })
+        .catch(error => console.log(error));
+    } else {
+      axios
+        .put("https://api.backendproxy.com/api/s3/files/", formData, {
+          headers: {
+            "Content-Type": "multipart/form-data"
+          }
+        })
+        .then(response => {
+          setFileId(response.data.rows[0].file_id);
+          let urlString = response.data.rows[0].url;
+          urlString = urlString.split("/");
+          setUrl(urlString[3]);
+        })
+        .catch(error => console.log(error));
+    }
   };
-    
-    // axios
-    //   .put("https://api.backendproxy.com/api/s3/files/", formData, {
-    //     headers: {
-    //       "Content-Type": "multipart/form-data"
-    //     }
-    //   })
-    //   .then(response => {
-    //     setFileId(response.data.rows[0].file_id);
-        
-    //     let urlString = response.data.rows[0].url
-    //     urlString = urlString.split('/')
-    //     setUrl(urlString[3])
-    //   })
-    //   .catch(error => console.log(error));
-    // };
+
+ 
 
   function sendGrid(event) {
-    console.log("URL and FILEID and Email: ", url, fileId, recipientEmail)
+    console.log("URL and FILEID and Email: ", url, fileId, recipientEmail);
     // console.log("Magical URL!", `http://localhost:3000/download/?email=${recipientEmail}&url=${url}&fileid=${fileId}`)
-    
-    
-    const uniqueURL = `https://sfiles.netlify.com/download/?email=${recipientEmail}&url=${url}&fileid=${fileId}`
-    
+
+    const uniqueURL = `https://sfiles.netlify.com/download/?email=${recipientEmail}&url=${url}&fileid=${fileId}`;
+
     const myDetails = {
       to: recipientEmail,
       from: senderEmail,
@@ -280,18 +256,18 @@ const CreateFileForm = () => {
       <AddFileDiv>
         <LabelDiv className="hideInput">
           <form onSubmit={submitFile}>
-          {/* <FlexDiv> */}
-          {/* <FaPlusCircle size={40} color="#fffff" />
+            {/* <FlexDiv> */}
+            {/* <FaPlusCircle size={40} color="#fffff" />
           <TitleH2>Add Your File</TitleH2> */}
-          {/* </FlexDiv> */}
-            <FileInput type="file" onChange={handleFileUpload} 
-            // style={{display : "none"}}
+            {/* </FlexDiv> */}
+            <FileInput
+              type="file"
+              onChange={handleFileUpload}
+              // style={{display : "none"}}
             />
-            
+
             <UploadButton type="submit">Upload to server</UploadButton>
           </form>
-
-          
         </LabelDiv>
       </AddFileDiv>
       <InnerDiv>
