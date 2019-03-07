@@ -14,7 +14,7 @@ router.get("/", async (req, res) => {
 	    res.status(200).json(result.rows);
 	})
 	.catch(e => {
-        console.error(e),
+            console.error(e),
 	    res.status(404).json(e.stack);
 	})
 });
@@ -22,15 +22,29 @@ router.get("/", async (req, res) => {
 
 //CREATE NEW DOWNLOAD
 router.post("/", (request, res) => {
-	const {fk_file_id, user_id, fk_username} = request.body;
+	const {fk_file_id, email} = request.body;
 	
-    client.query(`INSERT INTO downloads (fk_file_id, user_id, fk_username)
-    VALUES ($1, $2, $3)`,[fk_file_id, user_id, fk_username])
+    client.query(`INSERT INTO downloads (fk_file_id, email)
+    VALUES ($1, $2)`,[fk_file_id, email])
 	.then(result => {
 	    res.status(200).json(result);
 	})
 	.catch(e => {
 	    console.error(e.detail),
+	    res.send(e)
+	})
+});
+
+
+//
+router.delete("/:id", (request, res) => {
+    const downloadID = parseInt(request.params.id);
+    client.query(`DELETE FROM downloads WHERE download_id = $1`,[downloadID])
+	.then(result => {
+	    res.status(200).json(result);
+	})
+	.catch(e => {
+	    console.error(e),
 	    res.send(e)
 	})
 });
@@ -51,18 +65,18 @@ router.delete("/:id", (request, res) => {
 
 //UPDATE DOWNLOAD BY DOWNLOAD_ID
 router.put("/:id", (request, res) => {
-	const downloadID = parseInt(request.params.id)
-	const { fk_file_id, user_id, fk_username } = request.body;
+    const downloadID = parseInt(request.params.id)
+    const { fk_file_id, user_id, fk_username } = request.body;
 
-	console.log("RB", request.body);
-	client.query(`UPDATE downloads SET fk_file_id = $1, user_id = $2, fk_username = $3 
+    console.log("RB", request.body);
+    client.query(`UPDATE downloads SET fk_file_id = $1, user_id = $2, fk_username = $3 
 	WHERE download_id = $4 RETURNING fk_file_id, user_id, fk_username`, [fk_file_id, user_id, fk_username, downloadID])
-	  .then(result => {
-		res.status(200).json(result);
-	  })
-	  .catch(e => {
-		console.error(e.detail), res.send(e);
-	  });
-  });
+	.then(result => {
+	    res.status(200).json(result);
+	})
+	.catch(e => {
+	    console.error(e.detail), res.send(e);
+	});
+});
 
 module.exports = router;

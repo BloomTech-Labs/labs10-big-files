@@ -6,32 +6,36 @@ import Stripe from "../components/StripeFE";
 const BasicMembershipDiv = styled.div`
   height: auto;
   width: auto;
-  width: 44rem;
-  margin-left: 2%;
+  // width: 44rem;
+  margin: 70px auto;
   border-radius: 10px;
   background: rgba(255, 255, 255, 0.5);
+  @media(max-width: 768px) {
+    max-width: 90%;
+  }
   @media(max-width: 390px) {
-    width: 95%;
+    width: 90%;
     margin: 0 auto;
   }
 `;
 
 const ProMembershipDiv = styled.div`
   height: auto;
-  width: auto;
-  width: 37rem;
-  margin-left: 2%;
+  width: 40rem;
+  margin: 70px auto;
   border-radius: 10px;
   background: rgba(255, 255, 255, 0.5);
-
+  @media(max-width: 768px) {
+    max-width: 90%;
+  }
   @media(max-width: 390px) {
-    width: 95%;
+    width: 90%;
     margin: 0 auto;
   }
 `;
 
 const TextDiv = styled.div`
-  width: fit-content;
+  width: 95%;
   padding: 0 5%;
   margin-bottom: 5%
   @media(max-width: 390px) {
@@ -42,19 +46,18 @@ const TextDiv = styled.div`
 const Header1 = styled.h1`
 // width: 100%;
 margin-left: 20%;
-// border-bottom: 2px solid black;
 @media(max-width: 390px) {
  margin: 0;
 }
 `;
 const Header2 = styled.h2`
-margin-left: 45%;
+margin-left: 44%;
 @media(max-width: 390px) { 
   margin: 0;
 }
 `;
 const Header3 = styled.h2`
-margin-left: 35%;
+margin-left: 33%;
 @media(max-width: 390px) {
   
   margin-left: 0%;
@@ -125,8 +128,11 @@ const Billing = () => {
         <ProMembershipDiv>
           <TextDiv>
             <Header1>
-            <h1>Member Level: Pro</h1> 
+            <h1>Membership Level:</h1> 
             </Header1>
+            <Header2>
+              Pro
+            </Header2>
             <Header3>
               <h3>Pro features</h3>
               </Header3>

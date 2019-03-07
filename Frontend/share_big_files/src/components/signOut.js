@@ -7,7 +7,7 @@ function signOutHandler(){
 console.log('Sign out handler fired')
 localStorage.clear('accessToken');
 localStorage.clear('expiresAt');
-history.push("/add");
+history.push("/");
 window.location.reload();
 
 }
@@ -15,7 +15,30 @@ window.location.reload();
 
 const SignOutButton = styled.div`
 font-size: 2rem;
-color: white;
+position: absolute;
+top: 10%;
+right: 7%;
+color: black;
+cursor: pointer;
+border-radius: 10px;
+width: 9rem;
+text-align: center;
+background-color: white;
+@media (max-width: 1000px) {
+  right: 4%;
+}
+@media (max-width: 768px) {
+  right: 5%;
+}
+@media (max-width: 580px) {
+  right: 7%;
+}
+@media (max-width: 390px) {
+  display: none;
+}
+// &:hover {
+//   color: #ff7518;
+// }
 `;
 
 
