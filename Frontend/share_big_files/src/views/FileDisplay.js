@@ -25,7 +25,8 @@ const SharedBoxHolder = styled.div`
     min-height: 110px
  
   @media (max-width: 500px) {
-    width: 80%;
+    width: 95%;
+    padding: 2% 0;
  
   }
   // @media (max-width: 390px) {
