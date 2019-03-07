@@ -10,7 +10,7 @@ const SmallDiv = styled.div`
     height: auto;
     width: 95%;
     margin: 0 auto;
-    
+    margin-bottom:30px;
   }
 `;
 
@@ -42,6 +42,9 @@ const LinkStyles = styled.h1`
     margin: 0;
     margin-bottom: 1%; 
     text-align: center;
+    background-color: #206db5;
+    color: white;
+    border-radius: 6px;
   
   }
 `;

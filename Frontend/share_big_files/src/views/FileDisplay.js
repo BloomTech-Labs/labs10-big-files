@@ -15,17 +15,32 @@ const SharedBoxHolder = styled.div`
   align-items: center; 
   background-color: white;
   border-radius: 5px;
-  margin: 0 1.5% 3% 1.5%;
- 
+  margin: 0 1.5% 3% 1.5%; 
+ min-width: 245px
+ @media(max-width: 1175px){
+   width: 100%;
+ }
+
+ @media(max-width: 900px){
+  width: 47%;
+  margin: 0;
+  margin-bottom: 8px; 
+}
+
+@media(max-width: 570px){
+  width: 100%;
+  margin: 0;
+  margin-bottom: 8px;
+}
   @media (max-width: 390px) {
     width: 100%;
     height: 10rem;
-    margin: 3% auto;
+    margin: 1.5% auto;
     text-align: none;
     min-height: 110px
  
   @media (max-width: 500px) {
-    width: 95%;
+    width: 100%;
     padding: 2% 0;
  
   }
@@ -66,29 +81,24 @@ padding: 0;
 
 const DesperateDiv = styled.div`
 height: 100%;
+width:65%
   display: flex; 
   flex-wrap: wrap;
   margin-right: 4%;
   justify-content: space-around;
   margin-left: 2%;
- 
-  @media(max-width: 390px){
-    margin: 0 auto;
-    width: 95%;
- 
   @media(max-width: 900px) {
-    width: 610px;
+    height: 100%;
+    width: 90%; 
     margin: 0 auto;
-  }
-  @media(max-width: 700px) {
-    width: 450px;
+    margin-top: 40px; 
+    justify-content: space-between;
+  } 
+  @media(max-width: 390px){
+  
     margin: 0 auto;
-  }
-  @media(max-width: 500px) {
-    width: auto;
-    margin: 0 auto;
- 
-  }
+    margin-top: 20px;
+    width: 95%;
 `;
 
 const HistoryDiv = styled.div`
@@ -103,6 +113,10 @@ width: 100%;
 display: flex;
 flex-direction: column;
 justify-content: space-around;
+ 
+@media(max-width: 390px){
+  margin-bottom: 5px;
+}
 `;
 
 
@@ -112,14 +126,10 @@ margin-left: 5%;
 border-radius: 10px;
 padding: 2% 0;
 min-width: 140px;
-@media(max-width: 1000px) {
-  width: 55%;
-  margin: 0 auto;
-  min-width: 140px;
+ 
 }
 // @media(max-width: 390px) {
 //   width: 55%;
-//   margin: 0 auto;
 // }
 `;
 
