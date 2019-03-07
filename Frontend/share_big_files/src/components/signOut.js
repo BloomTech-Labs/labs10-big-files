@@ -13,34 +13,39 @@ window.location.reload();
 }
 
 
-const SignOutButton = styled.div`
-font-size: 2rem;
-position: absolute;
-top: 10%;
-right: 7%;
-color: black;
-cursor: pointer;
-border-radius: 10px;
-width: 9rem;
-text-align: center;
-background-color: white;
-@media (max-width: 1000px) {
-  right: 4%;
-}
-@media (max-width: 768px) {
-  right: 5%;
-}
-@media (max-width: 580px) {
-  right: 7%;
-}
-@media (max-width: 390px) {
-  display: none;
-}
-// &:hover {
-//   color: #ff7518;
+// const SignOutButton = styled.div`
+// font-size: 2rem;
+// position: absolute;
+// top: 10%;
+// right: 7%;
+// color: black;
+// cursor: pointer;
+// border-radius: 10px;
+// width: 9rem;
+// text-align: center;
+// background-color: white;
+// @media (max-width: 1000px) {
+//   right: 4%;
 // }
-`;
+// @media (max-width: 768px) {
+//   right: 5%;
+// }
+// @media (max-width: 580px) {
+//   right: 7%;
+// }
+// @media (max-width: 390px) {
+//   display: none;
+// }
+// // &:hover {
+// //   color: #ff7518;
+// // }
+// `;
 
+
+const SignOutButton = styled.button`
+margin: 2%;
+border-radius: 3px;
+`;
 
 
 const SignOut = props => {
