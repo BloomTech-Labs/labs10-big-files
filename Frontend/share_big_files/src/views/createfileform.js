@@ -173,8 +173,10 @@ const CreateFileForm = () => {
 
   function submitFile(event) {
     event.preventDefault();
-
-    setFile(event.target.files);
+    if (fileName === null) {
+      return alert("File must have filename")
+    } else {
+      setFile(event.target.files);
     const sendObject = {
       fk_email: senderEmail,
       filename: fileName
@@ -188,6 +190,10 @@ const CreateFileForm = () => {
       })
       .catch(err => console.log(err));
   }
+    }
+    
+
+    
 
   const sendFile = () => {
     console.log("*****************");
