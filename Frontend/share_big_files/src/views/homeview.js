@@ -4,8 +4,10 @@ import FileDisplay from "./FileDisplay";
 import CreateFileForm from "./createfileform";
 import styled from "styled-components";
 import NavHeader from "./navheader";
+import LeftMenu from "./leftmenu"
 
 const CreatePage = styled.div`
+padding-top: 165px
   width: 100%;
   height: auto;
   min-height: 100vh;
@@ -22,16 +24,29 @@ display: flex;
     display: block;
   }
 `;
+
+const FixedDiv = styled.div`
+position:fixed;
+top:0;
+width: 100%;
+height:auto;
+background-color: lightgray;
+`;
 const HomeView = () => {
   return (
+    <>
+    <FixedDiv>
+    <NavHeader />
+    <LeftMenu/>
+    </FixedDiv>
     <CreatePage>
-      {/* <Dropdown/> */}
-      <NavHeader />
+    
       <CreateEditDiv>
         <CreateFileForm />
         <FileDisplay />
       </CreateEditDiv>
     </CreatePage>
+    </>
   );
 };
 

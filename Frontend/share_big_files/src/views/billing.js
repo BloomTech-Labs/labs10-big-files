@@ -15,8 +15,10 @@ const BasicMembershipDiv = styled.div`
     max-width: 90%;
   }
   @media(max-width: 390px) {
-    width: 90%;
+    width: 95%;
+    max-width: 95%;
     margin: 0 auto;
+    margin-top: 30px
   }
 `;
 
@@ -30,8 +32,10 @@ const ProMembershipDiv = styled.div`
     max-width: 90%;
   }
   @media(max-width: 390px) {
-    width: 90%;
+    width: 95%;
+    max-width: 95%;
     margin: 0 auto;
+    margin-top: 30px
   }
 `;
 

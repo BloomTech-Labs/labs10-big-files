@@ -17,10 +17,11 @@ const SharedBoxHolder = styled.div`
   border-radius: 5px;
   margin: 0 1.5% 3% 1.5%;
   @media (max-width: 390px) {
-    // width: 43%;
-    height: 15rem;
-    margin: 1% auto;
+    width: 100%;
+    height: 10rem;
+    margin: 3% auto;
     text-align: none;
+    min-height: 110px
   }
 `;
 
@@ -45,10 +46,16 @@ height: 100%;
   margin-right: 4%;
   justify-content: space-around;
   margin-left: 2%;
+  @media(max-width: 390px){
+    margin: 0 auto;
+    width: 95%;
+  }
 `;
 
 const HistoryDiv = styled.div`
 margin: 0% 4%;
+padding: 2% 0%
+
 `;
 
 const InnerTileDiv = styled.div` 
@@ -68,6 +75,11 @@ margin-left: 5%
   width: 55%;
   margin: 0 auto;
 }
+`;
+
+const ReturnButton = styled.button`
+
+border-radius 4px
 `;
 
 const FileDisplay = () => {
@@ -111,7 +123,7 @@ const FileDisplay = () => {
       })
       .catch(err => console.log(err));
 
-    setTimeout(modalSwitch, 500);
+    setTimeout(modalSwitch, 1000);
   };
 
   const modalSwitch = () => {
@@ -197,7 +209,8 @@ const FileDisplay = () => {
                 <SharedBoxHolder key={index}>
                 <InnerTileDiv>
                     <Sharedh4>File Title: {file.filename}</Sharedh4>
-                    <Sharedh4>Date Uploaded: </Sharedh4>
+                    <Sharedh4>Date Uploaded: {file.upload_date.slice(0, 10)}</Sharedh4>
+                    <Sharedh4>Time Uploaded: {file.upload_date.slice(11, -5)}</Sharedh4>
                     <HistoryButton value={file.file_id} onClick={ModalSwitchOn}>
                     Download History
                     </HistoryButton>
@@ -214,16 +227,14 @@ const FileDisplay = () => {
         isOpen={modalBoolean}
         contentLabel="onRequestClose Example"
         onRequestClose={ModalSwitchOff}
+        className="modal"
         style={{
           overlay: {
-            backgroundColor: "lightGray",
-            marginTop:  "7rem"
+            backgroundColor: "rgb(211,211,211, 1)",
           },
-          content: {
-            width: "35%",
-            borderRadius: "10px",
-            margin: "0 auto"
-
+          content:{
+            margin: "0 auto",
+            marginTop: "20px",
           }
         }}
       >
@@ -241,7 +252,7 @@ const FileDisplay = () => {
             );
           })}
        
-        <button onClick={ModalSwitchOff}>Return Home</button>
+        <ReturnButton onClick={ModalSwitchOff}>Return</ReturnButton>
         
         </HistoryDiv>
       </ReactModal>
