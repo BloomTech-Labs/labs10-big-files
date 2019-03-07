@@ -64,7 +64,10 @@ const HistoryButton = styled.button`
 width: 44%;
 border-radius: 4px;
 margin-left: 5%
-
+@media(max-width: 390px) {
+  width: 55%;
+  margin: 0 auto;
+}
 `;
 
 const FileDisplay = () => {

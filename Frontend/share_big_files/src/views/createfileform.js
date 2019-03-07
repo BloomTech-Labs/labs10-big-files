@@ -18,8 +18,8 @@ const CreateEditDiv = styled.div`
   border-radius: 10px;
   background-color: white;
   @media (max-width: 390px) {
-    width: 90%;
-    margin: 0 auto;
+    min-width: 95%;
+    margin: 20px auto;
   }
 `;
 
@@ -97,6 +97,9 @@ const FileInput = styled.input`
   font-weight: 400;
   border-radius: 3px;
   width: 65%;
+  @media(max-width: 390px) {
+    width: auto;
+  }
 `;
 
 const UploadButton = styled.button`
