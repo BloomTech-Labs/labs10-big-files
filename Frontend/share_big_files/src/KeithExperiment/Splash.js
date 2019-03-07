@@ -143,6 +143,9 @@ const Header = styled.div`
 const Logo = styled.a`
 
 `
+const Signin = styled.a`
+
+`
 
     
 const JumboTron = styled.div`
