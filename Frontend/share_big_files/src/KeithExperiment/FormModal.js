@@ -5,7 +5,7 @@ import "./FormModal.css"
 
 const FormModal = (props) => {
     const [file] = useState(props.file[0])
-    //Filename is defaulted or changed by user
+    //Filename is set by default or changed by user.
     const [filename, setFilename] = useState(props.file[0].name)
     const [recipientEmail, setRecipientEmail] = useState("")
     const [senderEmail, setSenderEmail] = useState("")
@@ -53,9 +53,9 @@ const FormModal = (props) => {
             const formData = new FormData();
             formData.append('fileUpload', file);
             axios.put("https://api.backendproxy.com/api/s3/files", formData, {
-            headers: {
-                'Content-Type': 'multipart/form-data'
-            }
+                headers: {
+                    'Content-Type': 'multipart/form-data'
+                }
             }).then(response => {
                 console.log(response.statusText)
                 console.log("Response from PUT to DB", response.data)
@@ -81,12 +81,9 @@ const FormModal = (props) => {
             }
         }, [croppedURL, fileID]);
 
-        //sendGrid creates a unique URL and passes
+        //sendGrid creates a unique URL and passes it to the BE for sendgrid to send out.
         function sendGrid() {
-            console.log("URL and FILEID and Email: ", croppedURL, fileID, recipientEmail);
-
-            const uniqueURL = `https://sfiles.netlify.com/download/?email=${recipientEmail}&url=${croppedURL}&fileid=${fileID}`;
-            
+            const uniqueURL = `https://sfiles.netlify.com/download/?email=${recipientEmail}&url=${croppedURL}&fileid=${fileID}`;    
             console.log('uniqueURL:', uniqueURL)
 
             const myDetails = {
@@ -98,7 +95,6 @@ const FormModal = (props) => {
                 url: uniqueURL
             };
             
-            console.log('myDetails:', myDetails)
             axios
                 .post("https://api.backendproxy.com/api/sendgrid/send", myDetails)
                 .then(response => {
@@ -109,85 +105,79 @@ const FormModal = (props) => {
                 });
         }
 
-
     return (
         <div class="contact1 modal-open">
 
-            <div class="container-contact1">
+            <Container>
 
-                <form onSubmit={e => submitForm(e)} class="contact1-form">
+                <Form onSubmit={e => submitForm(e)}>
     
                     <Label>Filename</Label>
-                        <div class="wrap-input1">
-                            <input 
-                                class="input1" 
+                        <InputDiv>
+                            <Input 
                                 type="text" 
                                 name="something" 
                                 value={filename}
                                 onChange={e => setFilename(e.target.value)} 
                             /> 
-                            <span class="shadow-input1"></span>
-                        </div>
+                            <Span></Span>
+                        </InputDiv>
     
                     <Label>Recipient Email</Label>
-                        <div class="wrap-input1">
-                            <input 
-                                class="input1" 
+                        <InputDiv>
+                            <Input 
                                 type="text" 
                                 name="email" 
                                 value={recipientEmail}
                                 placeholder="ToMyFriend@email.com" 
                                 onChange={e => setRecipientEmail(e.target.value)} 
                             /> 
-                            <span class="shadow-input1"></span>
-                        </div>
+                            <Span></Span>
+                        </InputDiv>
     
                     <Label>Sender Email</Label>
-                        <div class="wrap-input1">
-                            <input 
-                                class="input1" 
+                        <InputDiv>
+                            <Input 
                                 type="text" 
                                 name="email" 
                                 placeholder="FromMe@email.com"
                                 value={senderEmail}
                                 onChange={e => setSenderEmail(e.target.value)} 
                             />
-                            <span class="shadow-input1"></span>
-                        </div>
+                            <Span></Span>
+                        </InputDiv>
 
                     <Label>Email Subject</Label>
-                        <div class="wrap-input1">
-                            <input 
-                                class="input1" 
+                        <InputDiv>
+                            <Input 
                                 type="text" 
                                 name="subject" 
                                 placeholder="Subject (optional)"
                                 value={emailSubject}
                                 onChange={e => setEmailSubject(e.target.value)} 
                             />
-                            <span class="shadow-input1"></span>
-                        </div>
+                            <Span></Span>
+                        </InputDiv>
     
                     <Label>Email Message</Label>
-                        <div class="wrap-input1">
-                            <textarea 
-                                class="input1" 
+                        <InputDiv>
+                            <TextArea 
                                 name="message" 
                                 placeholder="Message (optional)"
                                 value={emailMessage}
                                 onChange={e => setEmailMessage(e.target.value)} 
                                 >
-                            </textarea>
-                            <span class="shadow-input1"></span>
-                        </div>
+                            </TextArea>
+                            <Span></Span>
+                        </InputDiv>
     
-                    <div class="container-contact1-form-btn">
-                        <button type="submit" class="contact1-form-btn">
+                    <ButtonContainer>
+                        <Button type="submit" class="contact1-form-btn">
                           Send File                               
-                        </button>
-                    </div>
-                </form>
-            </div>
+                        </Button>
+                    </ButtonContainer>
+                </Form>
+            </Container>
         </div>
     
     )}
@@ -199,7 +189,147 @@ const Label = styled.span`
     font-weight 600;
 `
 
+const Container = styled.div`
+    width: 85%;
+    background: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    align-items: center;
+
+    padding: 4% 10% 4% 10%;
+}
+`
+
+const ButtonContainer = styled.div`
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+`
+
+const Button = styled.button`
+    min-width: 200px;
+    height: 50px;
+    border-radius: 25px;
+    background: var(--primaryColor);
+    font-family: Montserrat-Bold;
+    font-size: 15px;
+    line-height: 1.5;
+    color: #fff;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 25px;
+  
+    -webkit-transition: all 0.4s;
+    -o-transition: all 0.4s;
+    -moz-transition: all 0.4s;
+    transition: all 0.4s;
+  
+    &:i {
+    margin-left: 7px;
+  
+    -webkit-transition: all 0.4s;
+    -o-transition: all 0.4s;
+    -moz-transition: all 0.4s;
+    transition: all 0.4s;
+  }
+  
+  &:hover {
+    background: #333333;
+  }
+  
+  &:hover i {
+    -webkit-transform: translateX(10px);
+    -moz-transform: translateX(10px);
+    -ms-transform: translateX(10px);
+    -o-transform: translateX(10px);
+    transform: translateX(10px);
+  }
+`
+
+const Form = styled.form`
+    width: 500px;  
+`
+
+const InputDiv = styled.div`
+    position: relative;
+    width: 100%;
+    z-index: 1;
+    margin-bottom: 20px;
+
+`
+
+const TextArea = styled.textarea`
+    display: block;
+    width: 100%;
+    background: #e6e6e6;
+    font-family: Montserrat-Bold;
+    font-size: 15px;
+    line-height: 1.5;
+    color: #666666;
+
+    min-height: 150px;
+    border-radius: 25px;
+    padding: 12px 30px;
+
+   &:focus{
+    -webkit-animation: anim-shadow 0.5s ease-in-out forwards;
+    animation: anim-shadow 0.5s ease-in-out forwards;
+  }
+  
+  
+  textarea.input1 + .shadow-input1 {
+    border-radius: 25px;
+  }
+`
+
+const Input = styled.input`
+    display: block;
+    width: 100%;
+    background: #e6e6e6;
+    font-family: Montserrat-Bold;
+    font-size: 15px;
+    line-height: 1.5;
+    color: rgb(63, 178, 255);
+
+    height: 50px;
+    border-radius: 25px;
+    padding: 0 30px;
+      
+
+//     &:focus {
+//     -webkit-animation: anim-shadow 0.5s ease-in-out forwards;
+//     animation: anim-shadow 0.5s ease-in-out forwards;
+// }
+`
 
 
+const Span = styled.span`
+    content: '';
+    display: block;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    box-shadow: 0px 0px 0px 0px;
+    color: rgb(63, 178, 255);
 
-
+`

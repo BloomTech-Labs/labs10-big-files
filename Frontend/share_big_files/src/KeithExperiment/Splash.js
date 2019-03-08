@@ -81,6 +81,7 @@ const [file, setFile] = useState(null)
           </LeftColumn>
 
           <RightColumn>
+            
             {file ? <FormModal file={file} setFile={setFile} /> : null}
             <h1>1 Select a file</h1>
             <button className="header__button" onClick={e => toggleTheme()}>
