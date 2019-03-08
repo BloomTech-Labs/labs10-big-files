@@ -4,6 +4,8 @@ import styled from "styled-components";
 import awsimg from "../../src/assets/1_tFl-8wQUENETYLjX5mYWuA.png";
 import stpimg from "../../src/assets/payment-logo_1.png";
 import s3img from "../../src/assets/s3.webp";
+import CTA from "./CTAButton.css"
+
 
 const LandingContainerDiv = styled.div`
   width: 100%;
