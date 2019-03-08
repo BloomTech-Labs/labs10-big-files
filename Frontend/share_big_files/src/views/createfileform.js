@@ -96,12 +96,12 @@ const FileInput = styled.input`
   font-size: 1.7rem;
   font-weight: 400;
   border-radius: 3px;
+ 
   display: none;
   height: 100%
   width: 100%;
-  @media (max-width: 390px) {
-    width: auto;
-  }
+ 
+ 
 `;
 
 const UploadButton = styled.button`
