@@ -1,7 +1,6 @@
 import React, { useState, useEffect} from 'react'
 import axios from 'axios'
 import styled from 'styled-components';
-import "./FormModal.css"
 
 const FormModal = (props) => {
     const [file] = useState(props.file[0])
@@ -222,7 +221,7 @@ const Button = styled.button`
     min-width: 200px;
     height: 50px;
     border-radius: 25px;
-    background: var(--primaryColor);
+    background: #206DB5;
     font-family: Montserrat-Bold;
     font-size: 15px;
     line-height: 1.5;

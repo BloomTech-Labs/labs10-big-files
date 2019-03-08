@@ -1,6 +1,3 @@
-body {
-    background: #444;
-  }
 
   .play-btn {
     width: 300px;
@@ -10,15 +7,16 @@ body {
     left: 0;
     right: 0;
     width: 100%;
-
+    min-height: 300px;
+    min-width: 300px;
     max-height: 300px;
     max-width: 300px;
-    background: radial-gradient( rgba(255, 255, 255, 1) 60%, var(--primaryColor) 62%);
+    background: radial-gradient( rgba(255, 255, 255, 1) 60%, #206DB5 62%);
     border-radius: 50%;
     position: relative;
     display: block;
     margin: 10px;
-    box-shadow: 0px 0px 25px 3px var(--primaryColor);
+    box-shadow: 0px 0px 25px 3px #206DB5;
     margin-left: 1%;
   }
   
@@ -26,7 +24,7 @@ body {
   .play-btn::after {
     content: "START";
     font-size: 5em;
-    color: var(--primaryColor);
+    color: #206DB5;
     position: absolute;
     left: 26%;
     top: 40%;
@@ -98,11 +96,11 @@ body {
 
   /*------------------------------------------------------------------
 [ Responsive ]*/
-
+/* 
 @media (max-width: 1200px) {
-  /* .container-contact1 {
+  .container-contact1 {
     padding: 3% 3% 2% 3%;
-  } */
+  }
 
 }
 
@@ -149,4 +147,4 @@ body {
     top: -27%;
     left: -26%;
   }
-}
+} */
