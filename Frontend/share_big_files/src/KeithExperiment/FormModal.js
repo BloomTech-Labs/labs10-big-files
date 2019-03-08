@@ -1,72 +1,189 @@
-import React from 'react'
+import React, { useState, useEffect} from 'react'
 import axios from 'axios'
 import styled from 'styled-components';
 import "./FormModal.css"
 
-function submitFile(event) {
+const FormModal = (props) => {
+    const [file] = useState(props.file[0])
+    //Filename is defaulted or changed by user
+    const [filename, setFilename] = useState(props.file[0].name)
+    const [recipientEmail, setRecipientEmail] = useState("")
+    const [senderEmail, setSenderEmail] = useState("")
+    const [emailSubject, setEmailSubject] = useState("")
+    const [emailMessage, setEmailMessage] = useState("")
+    const [croppedURL, setCroppedURL] = useState("")
+    const [fileID, setFileID] = useState("")
 
-    const formData = new FormData();
-    formData.append('fileUpload', event.file[0]);
-    axios.post("https://api.backendproxy.com/api/s3/files", formData, {
-      headers: {
-        'Content-Type': 'multipart/form-data'
-      }
-    }).then(response => {
-        console.log(response.statusText)
-        console.log("Let's check it out", response.data)
-    }).catch(error => {
-        console.log("See Error:", error)
-    });
-  }
+    console.log("file on state", file)
+    console.log('filename:', filename)
+    console.log('recipientEmail:', recipientEmail)
+    console.log('senderEmail:', senderEmail)
+    console.log('emailSubject:', emailSubject)
+    console.log('emailMessage:', emailMessage)
+    console.log('croppedURL:', croppedURL)
+    console.log('fileID:', fileID)
+    
+        //submitForm takes the file,senderEmail, and filename from state and creates and object. 
+        //Passes the object to createFileRDS.
+        function submitForm(e) {
+            e.preventDefault();
+        
+            const sendObject = {
+                fk_email: senderEmail,
+                filename: filename
+            };
+            createFileRDS(sendObject)
+        }
+        
+        //createFileRDS takes the object and does an axios call to the BE where a query will create a new file.
+        //The query returns the file_id of the newly created file.
+        function createFileRDS(sendObject) {
+            axios
+                .post(`https://api.backendproxy.com/api/s3/files/id`, sendObject)
+                .then(response => {
+                    console.log("Response from POST to DB", response);
+                    processFile();
+            })
+            .catch(err => console.log(err));
+        }
+        
+        // processFile takes the file from state and does a PUT request to create and place the S3 URL into the DB.
+        // Returns the entire S3 URL and the file_id
+        function processFile() {
+            const formData = new FormData();
+            formData.append('fileUpload', file);
+            axios.put("https://api.backendproxy.com/api/s3/files", formData, {
+            headers: {
+                'Content-Type': 'multipart/form-data'
+            }
+            }).then(response => {
+                console.log(response.statusText)
+                console.log("Response from PUT to DB", response.data)
+                parseURL(response.data)
+        
+            }).catch(error => {
+                console.log("See Error:", error)
+            });
+        }
 
+        //Takes the res.data from the PUT and parses the string/sets the parsed str and file_id to state
+        function parseURL(data) {
+            let s3String = data.rows[0].url;
+            s3String = s3String.split("/");
+            setCroppedURL(s3String[3]);
+            setFileID(data.rows[0].file_id);
+        }
 
-const FromModal = (props) => {
-console.log('props:', props.file[0])
+        //useEffect is needed because parseURL's setState isn't immediately available
+        useEffect(() => {
+            if (croppedURL && fileID) {
+                sendGrid();
+            }
+        }, [croppedURL, fileID]);
+
+        //sendGrid creates a unique URL and passes
+        function sendGrid() {
+            console.log("URL and FILEID and Email: ", croppedURL, fileID, recipientEmail);
+
+            const uniqueURL = `https://sfiles.netlify.com/download/?email=${recipientEmail}&url=${croppedURL}&fileid=${fileID}`;
+            
+            console.log('uniqueURL:', uniqueURL)
+
+            const myDetails = {
+                to: recipientEmail,
+                from: senderEmail,
+                subject: emailSubject,
+                text: emailMessage,
+                html: emailMessage,
+                url: uniqueURL
+            };
+            
+            console.log('myDetails:', myDetails)
+            axios
+                .post("https://api.backendproxy.com/api/sendgrid/send", myDetails)
+                .then(response => {
+                    console.log("SendGrid Res.data: ", response.data);
+                })
+                .catch(error => {
+                    console.log("See Error: ", error);
+                });
+        }
+
 
     return (
         <div class="contact1 modal-open">
 
             <div class="container-contact1">
 
-                <form onSubmit={() => submitFile(props)} class="contact1-form">
-                    {/* <span className="contact1-form-title"> Send Files Fast </span> */}
+                <form onSubmit={e => submitForm(e)} class="contact1-form">
     
                     <Label>Filename</Label>
-                    <div class="wrap-input1" data-validate = "Name is required">
-                        <input class="input1" type="text" name="name" placeholder={`${props.file[0].name}`} />
-                        <span class="shadow-input1"></span>
-                    </div>
+                        <div class="wrap-input1">
+                            <input 
+                                class="input1" 
+                                type="text" 
+                                name="something" 
+                                value={filename}
+                                onChange={e => setFilename(e.target.value)} 
+                            /> 
+                            <span class="shadow-input1"></span>
+                        </div>
     
                     <Label>Recipient Email</Label>
-                    <div class="wrap-input1" data-validate = "Valid email is required: ex@abc.xyz">
-                        <input class="input1" type="text" name="email" placeholder="ToMyFriend@email.com" />
-                        <span class="shadow-input1"></span>
-                    </div>
+                        <div class="wrap-input1">
+                            <input 
+                                class="input1" 
+                                type="text" 
+                                name="email" 
+                                value={recipientEmail}
+                                placeholder="ToMyFriend@email.com" 
+                                onChange={e => setRecipientEmail(e.target.value)} 
+                            /> 
+                            <span class="shadow-input1"></span>
+                        </div>
     
                     <Label>Sender Email</Label>
-                    <div class="wrap-input1" data-validate = "Subject is required">
-                        <input class="input1" type="text" name="email" placeholder="FromMe@email.com"/>
-                        <span class="shadow-input1"></span>
-                    </div>
+                        <div class="wrap-input1">
+                            <input 
+                                class="input1" 
+                                type="text" 
+                                name="email" 
+                                placeholder="FromMe@email.com"
+                                value={senderEmail}
+                                onChange={e => setSenderEmail(e.target.value)} 
+                            />
+                            <span class="shadow-input1"></span>
+                        </div>
 
                     <Label>Email Subject</Label>
-                    <div class="wrap-input1" data-validate = "Subject is required">
-                        <input class="input1" type="text" name="subject" placeholder="Subject (optional)"/>
-                        <span class="shadow-input1"></span>
-                    </div>
+                        <div class="wrap-input1">
+                            <input 
+                                class="input1" 
+                                type="text" 
+                                name="subject" 
+                                placeholder="Subject (optional)"
+                                value={emailSubject}
+                                onChange={e => setEmailSubject(e.target.value)} 
+                            />
+                            <span class="shadow-input1"></span>
+                        </div>
     
                     <Label>Email Message</Label>
-                    <div class="wrap-input1" data-validate = "Message is required">
-                        <textarea class="input1" name="message" placeholder="Message (optional)"></textarea>
-                        <span class="shadow-input1"></span>
-                    </div>
+                        <div class="wrap-input1">
+                            <textarea 
+                                class="input1" 
+                                name="message" 
+                                placeholder="Message (optional)"
+                                value={emailMessage}
+                                onChange={e => setEmailMessage(e.target.value)} 
+                                >
+                            </textarea>
+                            <span class="shadow-input1"></span>
+                        </div>
     
                     <div class="container-contact1-form-btn">
                         <button type="submit" class="contact1-form-btn">
-                            <span>
-                                Send File
-                                <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
-                            </span>
+                          Send File                               
                         </button>
                     </div>
                 </form>
@@ -74,11 +191,15 @@ console.log('props:', props.file[0])
         </div>
     
     )}
-export default FromModal
+export default FormModal
 
 const Label = styled.span`
     color: black;
     font-size: 14px;
     font-weight 600;
-    
 `
+
+
+
+
+

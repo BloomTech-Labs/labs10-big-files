@@ -143,6 +143,8 @@ textarea.input1 + .shadow-input1 {
   width: 100%;
   z-index: 1;
   margin-bottom: 20px;
+
+  
 }
 
 .input1 {

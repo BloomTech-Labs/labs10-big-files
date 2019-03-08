@@ -10,8 +10,7 @@ body {
     left: 0;
     right: 0;
     width: 100%;
-    /* min-height: 300px;
-    min-width: 300px; */
+
     max-height: 300px;
     max-width: 300px;
     background: radial-gradient( rgba(255, 255, 255, 1) 60%, var(--primaryColor) 62%);
