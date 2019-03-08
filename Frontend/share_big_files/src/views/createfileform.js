@@ -55,11 +55,11 @@ const InnerDiv = styled.div`
   margin: 0 auto;
 `;
 
-const TitleH2 = styled.h2`
+const TitleH2 = styled.h1`
   display: inline;
   margin: 0;
   height: 100% 
-  width: auto;
+  width: fit-content;
   padding-left: 5%;
 `;
 
@@ -101,17 +101,21 @@ const FileInput = styled.input`
   font-weight: 400;
   border-radius: 3px;
   width: 65%;
-  @media(max-width: 390px) {
+  @media (max-width: 390px) {
     width: auto;
   }
 `;
 
 const UploadButton = styled.button`
-font-size: 1.7rem;
-    font-weight: 400;
-    border-radius: 10px;
-    padding: 2% 2%;
-
+  font-size: 1.7rem;
+  font-weight: 400;
+  border-radius: 10px;
+  padding: 2% 2%;
+`;
+const FlexDiv = styled.div`
+  display: flex;
+  align-items: center;
+  width: fit-content;
 `;
 
 const CreateFileForm = () => {
@@ -130,26 +134,21 @@ const CreateFileForm = () => {
   const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
-    console.log(fileId);
-    console.log(url);
-    fetchData();
-  }, []);
+    if (file) {
+      submitFile();
+    }
+  }, [file]);
 
-  const fetchData = async () => {
+  const fetchData = () => {
     const profile = JSON.parse(localStorage.getItem("profile"));
     axios
       .get(`https://api.backendproxy.com/api/users/${profile.nickname}`)
       .then(response => {
         console.log(response);
         setBilling(response.data[0].paid);
-  
       })
       .catch(err => console.log(err));
   };
-
-  function handleFileUpload(event) {
-    setFile(event.target.files);
-  }
 
   function handleNameInput(event) {
     setFileName(event.target.value);
@@ -171,71 +170,70 @@ const CreateFileForm = () => {
     console.log("Message: " + message);
   }
 
-  function submitFile(event) {
-    event.preventDefault();
-    if (fileName === null) {
-      return alert("File must have filename")
-    } else {
-      setFile(event.target.files);
-    const sendObject = {
-      fk_email: senderEmail,
-      filename: fileName
-    };
-
-    axios
-      .post(`https://api.backendproxy.com/api/s3/files/id`, sendObject)
-      .then(response => {
-        console.log(response);
-        sendFile();
-      })
-      .catch(err => console.log(err));
+  function submitThenSend(response, callback) {
+    console.log(response);
+    callback();
   }
-    }
-    
 
-    
+  function handleFileUpload(event) {
+    setFile(event.target.files);
+  }
+
+  function submitFile() {
+    console.log(file);
+    if (fileName === null) {
+      return alert("File must have filename");
+    } else {
+      const sendObject = {
+        fk_email: senderEmail,
+        filename: fileName
+      };
+
+      axios
+        .post(`https://api.backendproxy.com/api/s3/files/id`, sendObject)
+        .then(response => {
+          submitThenSend(response, sendFile);
+        })
+        .catch(err => console.log(err));
+    }
+  }
 
   const sendFile = () => {
-    console.log("*****************");
     const formData = new FormData();
     formData.append("fileUpload", file[0]);
-    // formData["fileUpload"] = file[0];
 
-    // const fetchData = async () => {
-    //     const profile = JSON.parse(localStorage.getItem("profile"));
-
-    if (billing) {
-      axios
-        .put("https://api.backendproxy.com/api/s3/paidfiles/", formData, {
-          headers: {
-            "Content-Type": "multipart/form-data"
-          }
-        })
-        .then(response => {
-          setFileId(response.data.rows[0].file_id);
-          let urlString = response.data.rows[0].url;
-          urlString = urlString.split("/");
-          setUrl(urlString[3]);
-        })
-        .catch(error => console.log(error));
-    } else {
-      axios
-        .put("https://api.backendproxy.com/api/s3/files/", formData, {
-          headers: {
-            "Content-Type": "multipart/form-data"
-          }
-        })
-        .then(response => {
-          setFileId(response.data.rows[0].file_id);
-          let urlString = response.data.rows[0].url;
-          urlString = urlString.split("/");
-          setUrl(urlString[3]);
-        })
-        .catch(error => console.log(error));
-    }
+    // if (billing)
+    // {
+    axios
+      .put("https://api.backendproxy.com/api/s3/paidfiles/", formData, {
+        headers: {
+          "Content-Type": "multipart/form-data"
+        }
+      })
+      .then(response => {
+        console.log(response);
+        setFileId(response.data.rows[0].file_id);
+        let urlString = response.data.rows[0].url;
+        urlString = urlString.split("/");
+        setUrl(urlString[3]);
+      })
+      .catch(error => console.log(error));
+    // } else {
+    //   axios
+    //     .put("https://api.backendproxy.com/api/s3/files/", formData, {
+    //       headers: {
+    //         "Content-Type": "multipart/form-data"
+    //       }
+    //     })
+    //     .then(response => {
+    //       setFileId(response.data.rows[0].file_id);
+    //       let urlString = response.data.rows[0].url;
+    //       urlString = urlString.split("/");
+    //       setUrl(urlString[3]);
+    //     })
+    //     .catch(error => console.log(error));
+    // }
   };
-
- 
 
   function sendGrid(event) {
     console.log("URL and FILEID and Email: ", url, fileId, recipientEmail);
@@ -267,22 +265,18 @@ const CreateFileForm = () => {
       <AddFileDiv>
         <LabelDiv className="hideInput">
           <form onSubmit={submitFile}>
-            {/* <FlexDiv> */}
-            {/* <FaPlusCircle size={40} color="#fffff" />
-          <TitleH2>Add Your File</TitleH2> */}
-            {/* </FlexDiv> */}
-            <FileInput
-              type="file"
-              onChange={handleFileUpload}
-              // style={{display : "none"}}
-            />
+            <FlexDiv>
+              <FaPlusCircle size={60} color="#206DB5" />
+              <TitleH2>Add Your File</TitleH2>
+            </FlexDiv>
+            <FileInput type="file" onChange={handleFileUpload} />
 
-            <UploadButton type="submit">Upload To server</UploadButton>
+            {/* //<UploadButton type="submit">Upload To server</UploadButton> */}
           </form>
         </LabelDiv>
       </AddFileDiv>
       <InnerDiv>
-      <FileName
+        <FileName
           type="text"
           placeholder="File name"
           name="setFileName"

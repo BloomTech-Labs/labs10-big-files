@@ -154,8 +154,7 @@ const FileDisplay = () => {
   const [targetTile, setTargetTile] = useState(null);
   //const [userExists, setUserExists] = useState(null);
   const profile = JSON.parse(localStorage.getItem("profile"));
-  useEffect(() => {
-    console.log(selectedFile);
+  useEffect(() => { 
   });
 
   const ModalSwitchOn = (event, index) => {
@@ -302,7 +301,7 @@ const FileDisplay = () => {
             return (
               <div key={index}>
                 <h3>
-                Download Email: {file.email} {file.download_date.slice(0, 10)} Download Time: {file.download_date.slice(11, -5)}  
+                Download Email: {file.email} <br/>Download Date: {file.download_date.slice(0, 10)}<br/> Download Time: {file.download_date.slice(11, -5)}  
                 </h3>
               </div>
             );

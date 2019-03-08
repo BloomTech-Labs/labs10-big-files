@@ -1,16 +1,15 @@
 import React, { Component } from "react";
-import Download from "./views/download"
+import Download from "./views/download";
 import LandingView from "./views/landingview";
 import HomeView from "./views/homeview";
 import SettingsHolder from "./views/settingsholder";
 import AccountHolder from "./views/accountholder";
-import Stripe from "./components/StripeFE"; 
-import { Route  } from "react-router-dom";
+import Stripe from "./components/StripeFE";
+import { Route } from "react-router-dom";
 import "./App.css";
 import styled from "styled-components";
 import { Auth0Lock } from "auth0-lock";
 import history from "./history";
- 
 
 const AppContainer = styled.div`
   height: auto;
@@ -25,11 +24,27 @@ var domain = "lambdabackendproject.auth0.com";
 var options = {
   // autoclose: false,
   // closable: false,
-  avatar: null,
+  avatar: null
   // allowedConnections: ['twitter', 'facebook', 'linkedin'],
 };
 
 var lock = new Auth0Lock(clientId, domain, options);
+
+var redirect = () => {
+  console.log("in redirect");
+  history.push("/add");
+  window.location.reload();
+};
+
+var setAuthStorage = (authResult, profile, callback) => {
+  console.log("in set auth storage");
+  setTimeout(() => {
+    localStorage.setItem("accessToken", authResult.accessToken);
+    localStorage.setItem("profile", JSON.stringify(profile));
+    callback();
+  }, 1);
+};
+
 
 class App extends Component {
   constructor(props) {
@@ -43,6 +58,13 @@ class App extends Component {
     this.lockOn();
   }
 
+  
+  redirect = () => {
+    console.log("in redirect");
+    // history.push("/add");
+    // window.location.reload();
+  };
+
   lockOn = () => {
     lock.on("authenticated", function(authResult) {
       // Use the token in authResult to getUserInfo() and save it to localStorage
@@ -50,20 +72,9 @@ class App extends Component {
         if (error) {
           // Handle error
           return;
+        } else {
+         setAuthStorage(authResult.accessToken, profile, redirect);
         }
-        let variablePromise = new Promise((resolve, reject) => {
-          console.log("hi");
-          resolve(
-            // console.log(variablePromise),
-            // console.log(authResult),
-            localStorage.setItem("accessToken", authResult.accessToken),
-            localStorage.setItem("profile", JSON.stringify(profile))
-          );
-        });
-        variablePromise.then(() => {
-          history.push("/add");
-          window.location.reload();
-        });
       });
     });
   };
@@ -82,21 +93,10 @@ class App extends Component {
     if (this.isAuthenticated() || localStorage.getItem("accessToken")) {
       return (
         <AppContainer>
-          <Route
-            path="/download"
-            render={props => <Download {...props} />}
-          />
-          
-          <Route
-            exact
-            path="/"
-            render={props => <HomeView {...props} />}
-          />
-          <Route
-            exact
-            path="/add"
-            render={props => <HomeView {...props} />}
-          />
+          <Route path="/download" render={props => <Download {...props} />} />
+
+          <Route exact path="/" render={props => <HomeView {...props} />} />
+          <Route exact path="/add" render={props => <HomeView {...props} />} />
 
           <Route path="/stripe" render={props => <Stripe {...props} />} />
           <Route
@@ -122,13 +122,12 @@ class App extends Component {
           <Route
             exact
             path="/"
-            render={props => <LandingView {...props} lockOpen={this.lockOpen} lock={lock} />}
-            />
-
-          <Route
-            path="/download"
-            render={props => <Download {...props} />}
+            render={props => (
+              <LandingView {...props} lockOpen={this.lockOpen} lock={lock} />
+            )}
           />
+
+          <Route path="/download" render={props => <Download {...props} />} />
         </div>
       );
     }
