@@ -103,6 +103,7 @@ const MenuDiv = styled.div`
   min-height: 40px;
   background-color: #206DB5;
   border-radius: 10px;
+  margin-right: 2%;
   @media (max-width: 390px) {
     
   }
@@ -115,6 +116,10 @@ margin: 0 auto;
 @media(max-width:390px){
 height: 100%;
 width: 100%;
+@media(max-width: 500px){
+  height: 40px;
+  width: 170px;
+}
 }
 `;
 const NavHeader = props => {

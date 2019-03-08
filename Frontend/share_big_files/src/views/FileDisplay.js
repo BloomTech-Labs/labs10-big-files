@@ -302,7 +302,7 @@ const FileDisplay = () => {
             return (
               <div key={index}>
                 <h3>
-                  {file.download_date} Download Email: {file.email}
+                Download Email: {file.email} {file.download_date.slice(0, 10)} Download Time: {file.download_date.slice(11, -5)}  
                 </h3>
               </div>
             );
