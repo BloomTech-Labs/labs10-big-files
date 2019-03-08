@@ -8,29 +8,20 @@ const CreateEditDiv = styled.div`
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
-  height: auto;
-  width: 25%;
-  min-width: 459px;
-  max-height: 490px;
+  height: fit-content;
+  width: 35%; 
+  min-width: 500px
   margin-left: 4%;
   margin-right: 2%;
   line-height: 3;
   border-radius: 10px;
   background-color: white;
-  @media (max-width: 900px) {
-    max-height: 552px;
-    margin: 20px auto;
-    width: 610px;
-    height: 552px;
-  }
-  @media(max-width: 700px) {
-    width: 450px;
-    height: auto;
-  }
-  @media(max-width: 500px) {
-    min-width: 300px;
-    width: 365px;
-  }
+   @media(max-width: 900px){
+     width: 90%;
+     min-width: 275px;
+     margin: 0;
+     margin: 0 auto;
+   }
   @media(max-width:390px){
     width: 95%;
   }
@@ -118,7 +109,8 @@ const FileInput = styled.input`
 const UploadButton = styled.button`
 font-size: 1.7rem;
     font-weight: 400;
-    border-radius 3px;
+    border-radius: 10px;
+    padding: 2% 2%;
 
 `;
 
@@ -285,12 +277,12 @@ const CreateFileForm = () => {
               // style={{display : "none"}}
             />
 
-            <UploadButton type="submit">Upload to server</UploadButton>
+            <UploadButton type="submit">Upload To server</UploadButton>
           </form>
         </LabelDiv>
       </AddFileDiv>
       <InnerDiv>
-        <FileName
+      <FileName
           type="text"
           placeholder="File name"
           name="setFileName"

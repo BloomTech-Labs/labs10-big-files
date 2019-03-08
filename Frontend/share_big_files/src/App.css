@@ -60,6 +60,7 @@ p {
 
 input[type="file"] {
   border: none;
+ 
 }
 
 input:hover{
@@ -110,7 +111,7 @@ a {
 
 .ReactModal__Overlay{
     background-color: lightgray;
-    margin-top: 7rem;
+    margin-top: 6rem;
 }
 
 @media (max-width: 390px) {

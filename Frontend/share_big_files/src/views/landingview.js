@@ -8,6 +8,9 @@ import steel from "../../src/assets/brushsteel2.jpg";
 import { FaCcStripe } from "react-icons/fa";
 import { FaUnlockAlt } from "react-icons/fa";
 
+//NEW STUFF 
+import "./CTAButton.css"
+
 const LandingContainerDiv = styled.div`
   width: 100%;
   height: 550px;
@@ -151,12 +154,44 @@ const S3Img = styled.img`
 width: 130px;
 height: 90px;
 `;
+
+//NEW STUFF
+const CTA = styled.div`
+cursor: pointer;
+display: flex;
+-moz-border-radius: 50%;
+-webkit-border-radius: 50%;
+border-radius: 50%;
+`
+const hiddenStyle = {
+  opacity: "1",
+  position: "absolute",
+  top: "0",
+  left: "0",
+  bottom: "0",
+  right:"0",
+  width: "100%",
+  height: "100%",
+  borderRadius: "50%",
+  borderMargin: 0,
+  cursor: "pointer",
+  zIndex: 1
+}
+
 export const LandingView = props => {
+  
   return (
     <LandingContainerDiv>
       <NavHeader/>
       <LandingCardsContainer>
+      
+          <CTA className="play-btn" > 
+            <div onClick={props.lockOpen} style={hiddenStyle}/>
+          </CTA>
+
+
         <LandingCards>
+
           <TextContainer>
             <TitleH1>Send Big Files</TitleH1>
             <LandingH2>Send files quickly and easily</LandingH2>
