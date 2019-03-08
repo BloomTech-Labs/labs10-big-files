@@ -4,6 +4,8 @@ import styled from "styled-components";
 import awsimg from "../../src/assets/1_tFl-8wQUENETYLjX5mYWuA.png";
 import stpimg from "../../src/assets/payment-logo_1.png";
 import s3img from "../../src/assets/s3.webp";
+import { FaCcStripe } from "react-icons/fa";
+import { FaUnlockAlt } from "react-icons/fa";
 
 const LandingContainerDiv = styled.div`
   width: 100%;
@@ -114,6 +116,20 @@ const ImageDiv = styled.div`
 display: flex;
 justify-content: space-around;
 margin-top: 1.2%;
+// border: 2px solid red;
+height: 18.5%;
+`;
+const FreeTier = styled.div`
+font-size: 1.8rem;
+font-weight: bold;
+`;
+const ProTier = styled.div`
+font-size: 1.8rem;
+font-weight: bold;
+`;
+const Services = styled.div`
+font-size: 1.8rem;
+font-weight: bold;
 `;
 const AwsImg = styled.img`
 width: 150px;
@@ -158,9 +174,24 @@ export const LandingView = props => {
  
       </LandingCardsContainer>
       <ImageDiv>
+        <FreeTier>
+          Send files up to 2gb<br/>
+          File view history<br/>
+          File download history<br/>
+          7 days of file storage
+        </FreeTier>
         <AwsImg src={awsimg} alt="awslogo"/>
+        <ProTier>
+          <FaUnlockAlt size={20} color="black"/><br/>
+          Unlock Pro Tier Service!<br/>
+          Gain access to 70 day file storage!
+        </ProTier>
         <StripeImg src={stpimg} alt="stplogo"/>
-        <S3Img src={s3img} alt="s3logo"/>
+        <Services>
+        <FaCcStripe size={30.5} color="black"/><br/>
+          All transactions are handled safely<br/>
+           and securely through Stripe!
+        </Services>
       </ImageDiv>
     </LandingContainerDiv>
   );
