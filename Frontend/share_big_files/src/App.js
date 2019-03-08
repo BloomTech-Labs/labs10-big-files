@@ -31,8 +31,6 @@ var options = {
 var lock = new Auth0Lock(clientId, domain, options);
 
 var redirect = () => {
-  console.log("in redirect");
-  history.push("/add");
   window.location.reload();
 };
 

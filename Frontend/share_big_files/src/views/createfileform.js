@@ -61,6 +61,7 @@ const TitleH2 = styled.h1`
   height: 100% 
   width: fit-content;
   padding-left: 5%;
+  font-size: 3.25rem;
 `;
 
 const SendGridDiv = styled.div`
@@ -87,20 +88,17 @@ const AddFileDiv = styled.div`
   height: auto;
   border-bottom: 1px solid black;
   align-items: center;
-  padding: 5%;
+  padding: 2%;
 `;
-
-const LabelDiv = styled.label`
-  display: flex;
-  align-items: center;
-  margin: 2% 0 0 0;
-`;
+ 
 
 const FileInput = styled.input`
   font-size: 1.7rem;
   font-weight: 400;
   border-radius: 3px;
-  width: 65%;
+  display: none;
+  height: 100%
+  width: 100%;
   @media (max-width: 390px) {
     width: auto;
   }
@@ -110,12 +108,18 @@ const UploadButton = styled.button`
   font-size: 1.7rem;
   font-weight: 400;
   border-radius: 10px;
-  padding: 2% 2%;
+  display: flex;
+  align-items: center;
+
 `;
 const FlexDiv = styled.div`
   display: flex;
   align-items: center;
+ justify-content: center;
   width: fit-content;
+  height: 100%;
+ width: 100%;
+
 `;
 
 const CreateFileForm = () => {
@@ -198,6 +202,17 @@ const CreateFileForm = () => {
     }
   }
 
+  const hiddenStyle = {
+    border: "1px solid red",
+    height: "12%",
+    width: "27%",
+    display: "block",
+    minWidth: "450px",
+    /* top: 23%; */
+    position: "absolute",
+    opacity: "0",
+  }
+
   const sendFile = () => {
     const formData = new FormData();
     formData.append("fileUpload", file[0]);
@@ -263,17 +278,18 @@ const CreateFileForm = () => {
   return (
     <CreateEditDiv>
       <AddFileDiv>
-        <LabelDiv className="hideInput">
-          <form onSubmit={submitFile}>
+        
+          {/* <form onSubmit={submitFile}> */}
             <FlexDiv>
+            <FileInput type="file" onChange={handleFileUpload}  style={hiddenStyle}/>
               <FaPlusCircle size={60} color="#206DB5" />
               <TitleH2>Add Your File</TitleH2>
             </FlexDiv>
-            <FileInput type="file" onChange={handleFileUpload} />
+            
 
             {/* //<UploadButton type="submit">Upload To server</UploadButton> */}
-          </form>
-        </LabelDiv>
+          {/* </form> */}
+      
       </AddFileDiv>
       <InnerDiv>
         <FileName
