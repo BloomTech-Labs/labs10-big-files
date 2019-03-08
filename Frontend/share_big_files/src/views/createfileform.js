@@ -84,7 +84,7 @@ const SendGridButton = styled.button`
 
 const AddFileDiv = styled.div`
   display: flex;
-  width: 90%;
+  width: 96%;
   height: auto;
   border-bottom: 1px solid black;
   align-items: center;
