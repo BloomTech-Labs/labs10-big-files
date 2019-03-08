@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React from "react";
 import NavHeader from "./navheader.js";
 import styled from "styled-components"; 
 import awsimg from "../../src/assets/1_tFl-8wQUENETYLjX5mYWuA.png";
@@ -7,7 +7,6 @@ import s3img from "../../src/assets/s3.webp";
 
 //NEW STUFF 
 import "./CTAButton.css"
-import FormModal from "./FormModal"
 
 const LandingContainerDiv = styled.div`
   width: 100%;
@@ -133,7 +132,7 @@ height: 90px;
 `;
 
 //NEW STUFF
-const CTA = styled.form`
+const CTA = styled.div`
 cursor: pointer;
 display: flex;
 -moz-border-radius: 50%;
@@ -141,7 +140,7 @@ display: flex;
 border-radius: 50%;
 `
 const hiddenStyle = {
-  opacity: "0.0",
+  opacity: "1",
   position: "absolute",
   top: "0",
   left: "0",
@@ -156,20 +155,15 @@ const hiddenStyle = {
 }
 
 export const LandingView = props => {
-  const [file, setFile] = useState(null)
-  function handleFileUpload(event) {
-    setFile(event.target.files);
-  }
+  
   return (
     <LandingContainerDiv>
       <NavHeader/>
       <LandingCardsContainer>
       
-      
           <CTA className="play-btn" > 
-              <input type="file" onChange={handleFileUpload} style={hiddenStyle} /> 
+            <div onClick={props.lockOpen} style={hiddenStyle}/>
           </CTA>
-          {file ? <FormModal file={file} setFile={setFile} /> : null}
 
 
         <LandingCards>
