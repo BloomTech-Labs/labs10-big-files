@@ -1,6 +1,7 @@
 import React from "react";
 import NavHeader from "./navheader.js";
 import styled from "styled-components"; 
+import img from "../../src/assets/movebyteslogo.png";
 import awsimg from "../../src/assets/1_tFl-8wQUENETYLjX5mYWuA.png";
 import stpimg from "../../src/assets/payment-logo_1.png";
 import s3img from "../../src/assets/s3.webp";
@@ -20,15 +21,46 @@ const LandingContainerDiv = styled.div`
   background-size: cover;
   
 `;
+const HeaderIMG = styled.div`
+max-height: 60px;
+max-width: 260px;
+margin: 0 auto;
+`;
+const TitleDiv = styled.div`
+  height: auto;
+  width: 83%;
+  display: flex;
+  align-items: center;
+  @media (max-width: 390px) {
+    width: 90%;
+    margin: 0 auto;
+    margin-top: 20px;
+    
+  }
+`;
+
+const TitleH3 = styled.h3`
+margin: 0;
+    margin-left: 2%
+    text-align: start;
+    font-size: 3rem; 
+    color: black;
+    @media (max-width: 390px) {
+      margin: 0 auto;
+      text-align: center;
+      font-size: 3rem;
+    }
+`;
 
 const LandingCardsContainer = styled.div`
   width: 100%;
   // height: 100vh;
   // margin: 50px auto;
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
   text-align: center;
+  height: 83%;
   
 
 
@@ -166,10 +198,10 @@ border-radius: 50%;
 const hiddenStyle = {
   opacity: "1",
   position: "absolute",
-  top: "0",
-  left: "0",
-  bottom: "0",
-  right:"0",
+  // top: "0",
+  // left: "0",
+  // bottom: "0",
+  // right:"0",
   width: "100%",
   height: "100%",
   borderRadius: "50%",
@@ -182,6 +214,9 @@ export const LandingView = props => {
   
   return (
     <LandingContainerDiv>
+      {/* <TitleDiv>
+        <TitleH3><HeaderIMG src={img} alt="mblogo" /></TitleH3>
+      </TitleDiv> */}
       <NavHeader/>
       <LandingCardsContainer>
       
@@ -190,8 +225,9 @@ export const LandingView = props => {
           </CTA>
 
 
-        <LandingCards>
+        {/* <LandingCards>
 
+          
           <TextContainer>
             <TitleH1>Send Big Files</TitleH1>
             <LandingH2>Send files quickly and easily</LandingH2>
@@ -212,7 +248,7 @@ export const LandingView = props => {
             </FileTransferButton>
           </>
           
-        </LandingCards>
+        </LandingCards> */}
  
       </LandingCardsContainer>
       <ImageDiv>
