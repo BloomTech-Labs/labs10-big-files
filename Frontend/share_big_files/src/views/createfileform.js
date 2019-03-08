@@ -100,7 +100,7 @@ const FileInput = styled.input`
   font-size: 1.7rem;
   font-weight: 400;
   border-radius: 3px;
-  width: 65%;
+  width: 95%;
   @media (max-width: 390px) {
     width: auto;
   }
