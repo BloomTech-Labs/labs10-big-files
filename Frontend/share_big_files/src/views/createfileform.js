@@ -113,6 +113,9 @@ font-size: 1.7rem;
     padding: 2% 2%;
 
 `;
+const Form = styled.form`
+    // width: 500px;  
+`
 
 const CreateFileForm = () => {
   //const [link, setLink] = useState(null)
@@ -173,15 +176,16 @@ const CreateFileForm = () => {
 
   function submitFile(event) {
     event.preventDefault();
-    if (fileName === null) {
-      return alert("File must have filename")
-    } else {
-      setFile(event.target.files);
+    // if (fileName === null) {
+    //   return alert("File must have filename")
+    // } else {
+      // setFile(event.target.files); //I Don't believe this is needed because the file is already set to state
     const sendObject = {
       fk_email: senderEmail,
       filename: fileName
     };
-
+    console.log('sendObject:', sendObject)
+    
     axios
       .post(`https://api.backendproxy.com/api/s3/files/id`, sendObject)
       .then(response => {
@@ -190,7 +194,7 @@ const CreateFileForm = () => {
       })
       .catch(err => console.log(err));
   }
-    }
+    
     
 
     
@@ -216,6 +220,7 @@ const CreateFileForm = () => {
           let urlString = response.data.rows[0].url;
           urlString = urlString.split("/");
           setUrl(urlString[3]);
+          // sendGrid()
         })
         .catch(error => console.log(error));
     } else {
@@ -230,12 +235,17 @@ const CreateFileForm = () => {
           let urlString = response.data.rows[0].url;
           urlString = urlString.split("/");
           setUrl(urlString[3]);
+          // sendGrid()
+
         })
         .catch(error => console.log(error));
     }
   };
 
  
+  useEffect(() => {
+    if (url && fileId) { sendGrid() }
+  }, [url, fileId]);
 
   function sendGrid(event) {
     console.log("URL and FILEID and Email: ", url, fileId, recipientEmail);
@@ -264,51 +274,54 @@ const CreateFileForm = () => {
   }
   return (
     <CreateEditDiv>
-      <AddFileDiv>
-        <LabelDiv className="hideInput">
-          <form onSubmit={submitFile}>
-            {/* <FlexDiv> */}
-            {/* <FaPlusCircle size={40} color="#fffff" />
-          <TitleH2>Add Your File</TitleH2> */}
-            {/* </FlexDiv> */}
-            <FileInput
-              type="file"
-              onChange={handleFileUpload}
-              // style={{display : "none"}}
-            />
+      <Form onSubmit={submitFile}>
+        <AddFileDiv>
+          <LabelDiv className="hideInput">
+      
+              {/* <FlexDiv> */}
+              {/* <FaPlusCircle size={40} color="#fffff" />
+            <TitleH2>Add Your File</TitleH2> */}
+              {/* </FlexDiv> */}
+              <FileInput
+                type="file"
+                onChange={handleFileUpload}
+                // style={{display : "none"}}
+                />
 
-            <UploadButton type="submit">Upload To server</UploadButton>
-          </form>
-        </LabelDiv>
-      </AddFileDiv>
-      <InnerDiv>
-      <FileName
-          type="text"
-          placeholder="File name"
-          name="setFileName"
-          onChange={handleNameInput}
-        />
-        <FileName
-          type="text"
-          placeholder="Recipient email address"
-          onChange={handleEmailInput}
-        />
-        <FileName
-          type="text"
-          placeholder="Email subject text"
-          onChange={handleEmailSubjectInput}
-        />
-        <FileNameMessage
-          type="text"
-          placeholder="Email message"
-          onChange={handleMessage}
-        />
-      </InnerDiv>
-      <SendGridDiv>
-        <SendGridButton onClick={sendGrid}>Share Via Email</SendGridButton>
-      </SendGridDiv>
+          </LabelDiv>
+        </AddFileDiv>
+        <InnerDiv>
+          <FileName
+              type="text"
+              placeholder="File name"
+              name="setFileName"
+              onChange={handleNameInput}
+              />
+            <FileName
+              type="text"
+              placeholder="Recipient email address"
+              onChange={handleEmailInput}
+              />
+            <FileName
+              type="text"
+              placeholder="Email subject text"
+              onChange={handleEmailSubjectInput}
+              />
+            <FileNameMessage
+              type="text"
+              placeholder="Email message"
+              onChange={handleMessage}
+              />
+        </InnerDiv>
+        <SendGridDiv>
+          <SendGridButton type="submit ">Share Via Email</SendGridButton>
+        </SendGridDiv>
+      </Form>
     </CreateEditDiv>
   );
 };
 
 export default CreateFileForm;
+
+
+// onClick={sendGrid}
