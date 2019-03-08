@@ -4,6 +4,7 @@ import styled from "styled-components";
 import awsimg from "../../src/assets/1_tFl-8wQUENETYLjX5mYWuA.png";
 import stpimg from "../../src/assets/payment-logo_1.png";
 import s3img from "../../src/assets/s3.webp";
+import steel from "../../src/assets/brushsteel2.jpg";
 import { FaCcStripe } from "react-icons/fa";
 import { FaUnlockAlt } from "react-icons/fa";
 
@@ -12,7 +13,7 @@ const LandingContainerDiv = styled.div`
   height: 550px;
   // min-height: 100vh;
   margin: 0 auto;
-  background-image: url("http://www.myfreetextures.com/wp-content/uploads/2011/06/brushsteel2.jpg");
+  background: url(${steel});
   background-size: cover;
   
 `;
@@ -115,12 +116,18 @@ margin-bottom: 0;
 const ImageDiv = styled.div`
 display: flex;
 justify-content: space-around;
-margin-top: 1.2%;
+margin-top: 1.5%;
 // border: 2px solid red;
 height: 18.5%;
+@media(max-width: 1200px) {
+  display: none;
+}
+@media(max-height: 653px) {
+  display: none;
+}
 `;
 const FreeTier = styled.div`
-font-size: 1.8rem;
+font-size: 1.5rem;
 font-weight: bold;
 `;
 const ProTier = styled.div`
@@ -132,12 +139,13 @@ font-size: 1.8rem;
 font-weight: bold;
 `;
 const AwsImg = styled.img`
+background-color: none;
 width: 150px;
-height: 90px;
+height: 75px;
 `;
 const StripeImg = styled.img`
-width: 130px;
-height: 90px;
+width: 115px;
+height: 80px;
 `;
 const S3Img = styled.img`
 width: 130px;
@@ -149,7 +157,6 @@ export const LandingView = props => {
       <NavHeader/>
       <LandingCardsContainer>
         <LandingCards>
-          {/* <BackgroundImg src="metalimg" alt="bgimg" width="500px"/> */}
           <TextContainer>
             <TitleH1>Send Big Files</TitleH1>
             <LandingH2>Send files quickly and easily</LandingH2>
@@ -188,7 +195,7 @@ export const LandingView = props => {
         </ProTier>
         <StripeImg src={stpimg} alt="stplogo"/>
         <Services>
-        <FaCcStripe size={30.5} color="black"/><br/>
+        <FaCcStripe size={25} color="black"/><br/>
           All transactions are handled safely<br/>
            and securely through Stripe!
         </Services>
