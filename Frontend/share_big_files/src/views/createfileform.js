@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-import { FaPlusCircle } from "react-icons/fa";
+import { FaPlusCircle, FaRegEnvelope } from "react-icons/fa";
 import "filepond/dist/filepond.min.css";
 import axios from "axios";
 
-const CreateEditDiv = styled.div`
+const CreateEditDiv = styled.div` 
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
@@ -60,37 +60,48 @@ const TitleH2 = styled.h1`
   margin: 0;
   height: 100% 
   width: fit-content;
-  padding-left: 5%;
+  border-left: 1px solid white;
+  margin-left: 2.5%;
+  padding-left: 2.5%;
   font-size: 3.25rem;
+  color: white;
+  line-height: 2;
 `;
 
 const SendGridDiv = styled.div`
-  width: 100%;
-  height: auto;
-  border-top: 1px solid black;
+  width: 45%
+  min-width: 230px;
+  margin: 3% auto;
+  background-color: #206db5;
+  height: auto; 
+  border-radius: 10px
   display: flex;
   justify-content: center;
+  align-items: center;
 `;
 
-const SendGridButton = styled.button`
- text-align: center;
-  height: 5rem;
-  width: 60%
-  margin: 6% auto;
-  border-radius: 10px;
-      font-size: 1.75rem;
-    font-weight: 400;
-`;
+const SendGridH2 = styled.h2`
+  color: white;
+  font-size: 2rem;
+  font-style: Raleway
+  font-weight: bold;
+  margin: 0;
+  margin-left: 4.5%;
+  padding-left: 2.5%;
+  border-left: 1px solid white;
+  width: fit-content;
+
+  `;
 
 const AddFileDiv = styled.div`
   display: flex;
-  width: 90%;
+  width: 96%;
   height: auto;
   border-bottom: 1px solid black;
+  margin: 0 auto;
   align-items: center;
   padding: 2%;
 `;
- 
 
 const FileInput = styled.input`
   font-size: 1.7rem;
@@ -104,22 +115,22 @@ const FileInput = styled.input`
   }
 `;
 
-const UploadButton = styled.button`
-  font-size: 1.7rem;
-  font-weight: 400;
-  border-radius: 10px;
-  display: flex;
-  align-items: center;
-
+const BorderDiv = styled.div`
+height: 2px;
+border-bottom:1px solid black;
 `;
+ 
 const FlexDiv = styled.div`
+height: fit-content;
+width: fit-content;
+min-width: 270px
   display: flex;
   align-items: center;
- justify-content: center;
-  width: fit-content;
-  height: 100%;
- width: 100%;
-
+  justify-content: center;
+  padding: 0% 2%;
+  border-radius: 10px;
+  background-color: #206db5;
+  margin: 2.5% auto;
 `;
 
 const CreateFileForm = () => {
@@ -204,14 +215,15 @@ const CreateFileForm = () => {
 
   const hiddenStyle = {
     border: "1px solid red",
-    height: "12%",
-    width: "27%",
+    height: "7%",
+    minHeight: "65px",
+    width: "17%",
     display: "block",
-    minWidth: "450px",
+    minWidth: "290px",
     /* top: 23%; */
     position: "absolute",
-    opacity: "0",
-  }
+    opacity: "0"
+  };
 
   const sendFile = () => {
     const formData = new FormData();
@@ -278,18 +290,19 @@ const CreateFileForm = () => {
   return (
     <CreateEditDiv>
       <AddFileDiv>
-        
-          {/* <form onSubmit={submitFile}> */}
-            <FlexDiv>
-            <FileInput type="file" onChange={handleFileUpload}  style={hiddenStyle}/>
-              <FaPlusCircle size={60} color="#206DB5" />
-              <TitleH2>Add Your File</TitleH2>
-            </FlexDiv>
-            
+        {/* <form onSubmit={submitFile}> */}
+        <FlexDiv>
+          <FileInput
+            type="file"
+            onChange={handleFileUpload}
+            style={hiddenStyle}
+          />
+          <FaPlusCircle size={50} color="#ffffff" />
+          <TitleH2>Add Your File</TitleH2>
+        </FlexDiv>
 
-            {/* //<UploadButton type="submit">Upload To server</UploadButton> */}
-          {/* </form> */}
-      
+        {/* //<UploadButton type="submit">Upload To server</UploadButton> */}
+        {/* </form> */}
       </AddFileDiv>
       <InnerDiv>
         <FileName
@@ -314,8 +327,11 @@ const CreateFileForm = () => {
           onChange={handleMessage}
         />
       </InnerDiv>
-      <SendGridDiv>
-        <SendGridButton onClick={sendGrid}>Share Via Email</SendGridButton>
+      <BorderDiv></BorderDiv>
+      <SendGridDiv onClick={sendGrid}>
+
+      <FaRegEnvelope size={40} color="#ffffff" /> 
+        <SendGridH2 >Share Via Email</SendGridH2>
       </SendGridDiv>
     </CreateEditDiv>
   );

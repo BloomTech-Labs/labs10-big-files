@@ -2,8 +2,8 @@ import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import axios from "axios";
 import ReactModal from "react-modal";
-import NavHeader from './navheader';
-import { FaAutoprefixer } from "react-icons/fa";
+import NavHeader from "./navheader";
+import { FaDownload } from "react-icons/fa";
 
 const SharedBoxHolder = styled.div`
   width: 45%;
@@ -16,7 +16,7 @@ const SharedBoxHolder = styled.div`
   background-color: white;
   border-radius: 5px;
   margin: 0 1.5% 3% 1.5%; 
- min-width: 245px
+  min-width: 245px
  @media(max-width: 1175px){
    width: 100%;
  }
@@ -78,7 +78,6 @@ padding: 0;
   
 `;
 
-
 const DesperateDiv = styled.div`
 height: 100%;
 width:65%
@@ -102,31 +101,47 @@ width:65%
 `;
 
 const HistoryDiv = styled.div`
-margin: 0% 4%;
-padding: 2% 0%
-
+  margin: 0% 4%;
+  padding: 2% 0%;
 `;
 
-const InnerTileDiv = styled.div` 
-height: 100%;
-width: 100%;
-display: flex;
-flex-direction: column;
-justify-content: space-around;
+const InnerTileDiv = styled.div`
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+
+  @media (max-width: 390px) {
+    margin-bottom: 5px;
+  }
+`;
+
  
-@media(max-width: 390px){
-  margin-bottom: 5px;
-}
-`;
-
-
-const HistoryButton = styled.button`
-width: 34%;
+const ButtonDiv = styled.div`
+height: fit-content;
+width: fit-content; 
+align-items: center;
 margin-left: 5%;
-border-radius: 10px;
-padding: 2% 0;
-min-width: 140px;
+border-radius: 7px;
+display: flex;
+background-color: #206db5;
+padding: 0 3.5%
+`;
+
  
+const HistoryH3 = styled.button`
+// display: flex;
+// align-items: center;
+// justify-content: center;
+width: fit-content;
+margin-left: 5%;
+height: 100%;
+padding: 0% 2%;
+min-width: 170px;
+border: none;
+border-left: 1px solid white;
+font-size: 1.8rem;
 }
 // @media(max-width: 390px) {
 //   width: 55%;
@@ -154,8 +169,7 @@ const FileDisplay = () => {
   const [targetTile, setTargetTile] = useState(null);
   //const [userExists, setUserExists] = useState(null);
   const profile = JSON.parse(localStorage.getItem("profile"));
-  useEffect(() => { 
-  });
+  useEffect(() => {});
 
   const ModalSwitchOn = (event, index) => {
     // setTargetTile(event.target)
@@ -262,14 +276,24 @@ const FileDisplay = () => {
           ? userData.map((file, index) => {
               return (
                 <SharedBoxHolder key={index}>
-                <InnerTileDiv>
+                  <InnerTileDiv>
                     <Sharedh3>{file.filename}</Sharedh3>
-                    <Sharedh4>Date Uploaded: {file.upload_date.slice(0, 10)}</Sharedh4>
-                    <Sharedh4>Time Uploaded: {file.upload_date.slice(11, -5)}</Sharedh4>
-                    <HistoryButton value={file.file_id} onClick={ModalSwitchOn}>
-                    Download History
-                    </HistoryButton>
-                    </InnerTileDiv>
+                    <Sharedh4>
+                      Date Uploaded: {file.upload_date.slice(0, 10)}
+                    </Sharedh4>
+                    <Sharedh4>
+                      Time Uploaded: {file.upload_date.slice(11, -5)}
+                    </Sharedh4>
+                    <ButtonDiv>
+                      <FaDownload size={30} color="#ffffff" />
+                      <HistoryH3
+                        value={file.file_id}
+                        onClick={ModalSwitchOn}
+                      >
+                         Download History 
+                      </HistoryH3> 
+                    </ButtonDiv>
+                  </InnerTileDiv>
                 </SharedBoxHolder>
               );
             })
@@ -285,15 +309,14 @@ const FileDisplay = () => {
         className="modal"
         style={{
           overlay: {
-            backgroundColor: "rgb(234,231,220, 1)",
+            backgroundColor: "rgb(234,231,220, 1)"
           },
-          content:{
+          content: {
             margin: "0 auto",
-            marginTop: "20px",
+            marginTop: "20px"
           }
         }}
       >
-  
         <HistoryDiv>
           <h2>File Name: {selectedFile.filename}</h2>
           <h3>Total Downloads: {viewedHistory.length} </h3>
@@ -301,14 +324,15 @@ const FileDisplay = () => {
             return (
               <div key={index}>
                 <h3>
-                Download Email: {file.email} <br/>Download Date: {file.download_date.slice(0, 10)}<br/> Download Time: {file.download_date.slice(11, -5)}  
+                  Download Email: {file.email} <br />
+                  Download Date: {file.download_date.slice(0, 10)}
+                  <br /> Download Time: {file.download_date.slice(11, -5)}
                 </h3>
               </div>
             );
           })}
-       
-        <ReturnButton onClick={ModalSwitchOff}>Return</ReturnButton>
-        
+
+          <ReturnButton onClick={ModalSwitchOff}>Return</ReturnButton>
         </HistoryDiv>
       </ReactModal>
     );
