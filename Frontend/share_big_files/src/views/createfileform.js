@@ -6,6 +6,7 @@ import axios from "axios";
 
 const CreateEditDiv = styled.div` 
   display: flex;
+  position: relative;
   flex-direction: column;
   flex-wrap: wrap;
   height: fit-content;
@@ -294,6 +295,7 @@ const CreateFileForm = () => {
       .post("https://api.backendproxy.com/api/sendgrid/send", myDetails)
       .then(response => {
         console.log("Response DATA HERE!", response.data);
+        alert("Thank you. Your file has been sent")
       })
       .catch(error => {
         console.log("Error! RIGHT HERE", error);
