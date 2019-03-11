@@ -23,8 +23,7 @@ var domain = "lambdabackendproject.auth0.com";
 var options = {
   // autoclose: false,
   // closable: false,
-  avatar: null,
-  allowedConnections: ['google'],
+  avatar: null, 
 };
 
 var lock = new Auth0Lock(clientId, domain, options);
