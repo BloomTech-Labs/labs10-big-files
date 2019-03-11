@@ -271,6 +271,7 @@ const FileDisplay = () => {
       <DesperateDiv>
         {userData[0]
           ? userData.map((file, index) => {
+              console.log('file:', file)
               return (
                 <SharedBoxHolder key={index}>
                   <InnerTileDiv>

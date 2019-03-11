@@ -153,6 +153,12 @@ const CreateFileForm = () => {
 
   useEffect(() => {
     if (file) {
+      console.log("UPLOADED FILE on STATE", file);
+    }
+  }, [file]);
+
+  useEffect(() => {
+    if (file) {
       submitFile();
     }
   }, [file]);
@@ -199,14 +205,18 @@ const CreateFileForm = () => {
 
   function submitFile() {
     console.log(file);
-    if (fileName === null) {
-      return alert("File must have filename");
-    } else {
+    // if (fileName === null) {
+    //   return alert("File must have filename");
+     {
       const sendObject = {
         fk_email: senderEmail,
-        filename: fileName
+        filename: fileName,
+        file_size: file[0].size,
+        file_type: file[0].type
       };
 
+      console.log('sendObject:', sendObject)
+      
       axios
         .post(`https://api.backendproxy.com/api/s3/files/id`, sendObject)
         .then(response => {
@@ -241,7 +251,6 @@ const CreateFileForm = () => {
         }
       })
       .then(response => {
-        console.log(response);
         setFileId(response.data.rows[0].file_id);
         let urlString = response.data.rows[0].url;
         urlString = urlString.split("/");
