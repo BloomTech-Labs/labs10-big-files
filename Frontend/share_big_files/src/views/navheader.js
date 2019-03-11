@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 const NavHeaderDiv = styled.div`
   display: flex;
   // flex-direction: column;
-  margin-bottom: 1%;
+  // margin-bottom: 1%;
   background-color: white;
   border-bottom: 2px solid white;
  @media (max-width: 390px) {
@@ -15,21 +15,7 @@ const NavHeaderDiv = styled.div`
     margin-bottom: 25px
   }
 `;
-
-
-// const Box = styled.div`
-// width: 100%;
-// background: linear-gradient(
-//   #36454f, #ff7518 50%, #36454f 50%, #36454f
-// );
-// background-size: 100% 202%;
-// transition: all 0.2s ease;
-// animation: down-bump 0.4s ease;
-// &:hover {
-//   background-position: 100% 100%;
-//   animation: up-bump 0.5s ease;
-// }
-
+ 
 const TitleDiv = styled.div`
   height: auto;
   width: 83%;
@@ -139,11 +125,7 @@ const NavHeader = props => {
             <LinkStyles>Account</LinkStyles>
           </NavMenuLink>
         </MenuDiv>
-        {/* <MenuDiv>
-          <NavMenuLink to="/billing">
-            <LinkStyles>Got Plus?</LinkStyles>
-          </NavMenuLink>
-        </MenuDiv> */}
+ 
       </MenuWrapper>
 
     </NavHeaderDiv>
