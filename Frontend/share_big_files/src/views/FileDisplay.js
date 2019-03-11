@@ -283,7 +283,7 @@ const FileDisplay = () => {
                   <InnerTileDiv>
                     <Sharedh3>{file.filename}</Sharedh3>
                     <Sharedh4>
-                      Size: {file.file_size}
+                      Size: {`${(file.file_size) / 1000} KB`}
                     </Sharedh4>
                     <Sharedh4>
                       Type: {file.file_type}
@@ -330,7 +330,7 @@ const FileDisplay = () => {
         <HistoryDiv>
           <h2>File Name: {selectedFile.filename}</h2>
                     <Sharedh4>
-                      Size: {selectedFile.file_size}
+                      Size: {`${(selectedFile.file_size) / 1000} KB`}
                     </Sharedh4>
                     <Sharedh4>
                       Type: {selectedFile.file_type}
