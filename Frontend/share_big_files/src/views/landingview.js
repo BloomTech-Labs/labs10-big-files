@@ -38,12 +38,15 @@ const HeaderDiv = styled.div`
 `;
 const HeaderIMG = styled.img`
 height: 100%;
-width: 25%;
 max-height: 60px;
 max-width: 260px;
 // margin: 0 auto;
+@media(max-width: 768px) {
+  min-width: 35%;
+}
 @media(max-width: 390px) {
   width: 80%;
+  margin: 0 auto;
 }
 
 `;
@@ -71,7 +74,7 @@ const LandingCardsContainer = styled.div`
   text-align: center;
   background: url(${steel});
   background-size: cover;
-  height: 75%;
+  height: 78%;
   @media (max-width: 390px) {
     width: 100%;
     align-items: flex-start;
