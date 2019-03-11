@@ -188,30 +188,6 @@ const CreateFileForm = () => {
     console.log("Message: " + message);
   }
 
-<<<<<<< HEAD
-  function submitFile(event) {
-    event.preventDefault();
-    // if (fileName === null) {
-    //   return alert("File must have filename")
-    // } else {
-      // setFile(event.target.files); //I Don't believe this is needed because the file is already set to state
-    const sendObject = {
-      fk_email: senderEmail,
-      filename: fileName
-    };
-    console.log('sendObject:', sendObject)
-    
-    axios
-      .post(`https://api.backendproxy.com/api/s3/files/id`, sendObject)
-      .then(response => {
-        console.log(response);
-        sendFile();
-      })
-      .catch(err => console.log(err));
-  }
-    
-    
-=======
   function submitThenSend(response, callback) {
     console.log(response);
     callback();
@@ -239,7 +215,6 @@ const CreateFileForm = () => {
         .catch(err => console.log(err));
     }
   }
->>>>>>> 7a434f63d7df3d0fe2180a51852bde38b9635ea7
 
   const hiddenStyle = {
     border: "1px solid red",
