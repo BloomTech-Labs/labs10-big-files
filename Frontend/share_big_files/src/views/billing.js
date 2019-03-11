@@ -13,13 +13,14 @@ const BasicMembershipDiv = styled.div`
   background-color: white;
   @media(max-width: 900px) {
     width: 90%
-    max-width: 90%;
+    max-width: 90%
+    margin-top: 30px 
   }
   @media(max-width: 390px) {
     width: 95%;
     max-width: 95%;
     margin: 0 auto;
-    margin-top: 30px
+    
   }
 `;
 
@@ -33,12 +34,13 @@ const ProMembershipDiv = styled.div`
     width: 90%
     max-width: 90%;
     margin: 0 auto;
+    margin-top: 30px 
   }
   @media(max-width: 390px) {
     width: 95%;
     max-width: 95%;
     margin: 0 auto;
-    margin-top: 30px
+  
   }
 `;
 
@@ -50,13 +52,14 @@ const TextDiv = styled.div`
     margin: 0 auto;
   }
 `;
-const Header1 = styled.div`
+const Header1 = styled.div` 
 width: 100%;
  text-align: center
  margin-bottom: 0;
  line-height: 1; 
 @media(max-width: 900px) {
- padding-top; 20px;
+ padding-top: 20px;
+
 }
 `;
  
