@@ -14,7 +14,8 @@ const SharedBoxHolder = styled.div`
   align-items: center; 
   background-color: white;
   border-radius: 5px;
-  margin: 0 1.5% 3% 1.5%; 
+  margin: 0 1.5% 3% 1.5%;
+  padding: 15px;
   min-width: 245px
  @media(max-width: 1175px){
    width: 100%;
