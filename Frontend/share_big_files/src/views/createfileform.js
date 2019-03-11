@@ -206,11 +206,7 @@ const CreateFileForm = () => {
   }
 
   function submitFile() {
-    console.log(file);
-    if (fileName === null) {
-      return alert("File must have filename");
-    } else
-     {
+
       const sendObject = {
         fk_email: senderEmail,
         filename: fileName,
@@ -226,7 +222,7 @@ const CreateFileForm = () => {
           submitThenSend(response, sendFile);
         })
         .catch(err => console.log(err));
-    }
+    
   }
 
   const hiddenStyle = {
@@ -244,6 +240,7 @@ const CreateFileForm = () => {
   const sendFile = () => {
     const formData = new FormData();
     formData.append("fileUpload", file[0]);
+    console.log(file);
 
     // if (billing)
     // {
@@ -293,6 +290,10 @@ const CreateFileForm = () => {
     };
 
     console.log(myDetails);
+    // if (fileName === null) {
+    //   return alert("File must have filename");
+    // } else
+    //  {
     axios
       .post("https://api.backendproxy.com/api/sendgrid/send", myDetails)
       .then(response => {
@@ -302,6 +303,7 @@ const CreateFileForm = () => {
         console.log("Error! RIGHT HERE", error);
       });
   }
+// }
   return (
     <CreateEditDiv>
       <AddFileDiv>
@@ -315,7 +317,7 @@ const CreateFileForm = () => {
           <FaPlusCircle size={50} color="#ffffff" />
           <TitleH2>Add Your File</TitleH2>
         </FlexDiv>
-
+        <h2>Uploaded File: {file}</h2>
         {/* //<UploadButton type="submit">Upload To server</UploadButton> */}
         {/* </form> */}
       </AddFileDiv>
