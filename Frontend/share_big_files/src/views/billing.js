@@ -5,6 +5,7 @@ import Stripe from "../components/StripeFE";
 import SignOut from "../components/signOut";
 
 const BasicMembershipDiv = styled.div`
+  padding: 15px;
   height: fit-content;
   width: auto;
   // width: 44rem;
@@ -25,6 +26,7 @@ const BasicMembershipDiv = styled.div`
 `;
 
 const ProMembershipDiv = styled.div`
+  padding: 15px;
   height: fit-content;
   width: 40rem; 
   border-radius: 10px;
