@@ -175,8 +175,7 @@ letter-spacing: .15em;
 const TileTextDiv =styled.div`
 height: 100%;
 width: 100%
-margin-bottom: 7px;
-border: 1px solid red;
+margin-bottom: 7px; 
 `;
 
 
