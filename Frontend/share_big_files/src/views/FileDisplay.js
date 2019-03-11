@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import axios from "axios";
 import ReactModal from "react-modal";
-import NavHeader from "./navheader";
 import { FaDownload } from "react-icons/fa";
 
 const SharedBoxHolder = styled.div`
@@ -166,7 +165,7 @@ const FileDisplay = () => {
   const [viewedHistory, setViewedHistory] = useState(false);
   const [loaded, setLoaded] = useState(false);
   const [modalBoolean, setModalBoolean] = useState(false);
-  const [targetTile, setTargetTile] = useState(null);
+ 
   //const [userExists, setUserExists] = useState(null);
   const profile = JSON.parse(localStorage.getItem("profile"));
   useEffect(() => {});
@@ -202,8 +201,6 @@ const FileDisplay = () => {
   const ModalSwitchOff = event => {
     setModalBoolean(!modalBoolean);
   };
-
-  const HistoryView = () => {};
 
   const fetchData = () => {
     console.log("in fetch data");

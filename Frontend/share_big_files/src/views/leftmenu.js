@@ -1,7 +1,6 @@
 import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import SignOut from "../components/signOut";
 
 const SmallDiv = styled.div`
   display: none;

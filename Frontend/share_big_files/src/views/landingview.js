@@ -1,12 +1,7 @@
 import React from "react";
 import NavHeader from "./navheader.js";
 import styled from "styled-components";
-import img from "../../src/assets/movebyteslogo.png";
-import awsimg from "../../src/assets/1_tFl-8wQUENETYLjX5mYWuA.png";
-import stpimg from "../../src/assets/payment-logo_1.png";
-import s3img from "../../src/assets/s3.webp";
 import steel from "../../src/assets/brushsteel2.jpg";
-import { FaCcStripe } from "react-icons/fa";
 import { FaUserPlus } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
 import { FaUserLock } from "react-icons/fa";
@@ -31,85 +26,12 @@ const LandingCardsContainer = styled.div`
   align-items: center;
   text-align: center;
   height: 83%;
-
   @media (max-width: 390px) {
     width: 100%;
     align-items: flex-start;
   }
 `;
-
-const LandingCards = styled.div`
-  // width: 30%;
-  // min-width: 330px;
-  // height: auto;
-  // min-height: 365px;
-  // background: rgba(255, 255, 255, 0.5);
-  // margin: 0% 0% 0% 8%;
-  
-  font-size: 2rem;
-
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  height: 459px;
-  width: 34rem;
-  margin: 0 auto;
-  box-shadow: 5px 10px #888888;
-  background-color: white;
-  border-radius: 10px;
-
-  @media (max-width: 390px) {
-   
-    margin-top 10%; 
-
-  }
-`;
-
-const TextContainer = styled.div`
-  height: auto;
-  width: 100%;
-  margin: 0 auto;
-  padding: 0.5% 0;
-  text-align: center;
-  border-bottom: 1px solid black;
-`;
-
-const UnorderedList = styled.ul`
-  width: 90%;
-  border-bottom: 1px solid black;
-  text-align: left;
-  line-height: 2;
-  margin: 0;
-  padding-left: 10%;
-  padding-bottom: 4%;
-`;
-
-const ListItem = styled.li`
-  font-size: 1.75rem;
-`;
-
-const FileTransferButton = styled.button`
-  width: 45%;
-  border-radius: 10px;
-  height: 60px;
-  font-size: 1.9rem;
-  background-color: #206db5;
-  cursor: pointer;
-  margin: 0 auto;
-  margin-top: 6%;
-  text-align: center;
-`;
-
-const LandingH3 = styled.h3`
-  margin: 0;
-  margin-left: -8%;
-`;
-
-const LandingH2 = styled.h2`
-  margin: 0;
-  margin-bottom: 1%;
-`;
-
+ 
 const FlexDiv = styled.div`
   display: flex;
   width: 28%;
@@ -127,6 +49,7 @@ margin-top: 4%
 height: fit-content;
 @media(max-width: 653px) {
   flex-direction: column;
+  margin-top: 15%;
 }
 `;
 const FreeTierDiv = styled.div`
@@ -179,31 +102,7 @@ export const LandingView = props => {
         <CTA className="play-btn">
           <div onClick={props.lockOpen} style={hiddenStyle} />
         </CTA>
-
-        {/* <LandingCards>
-
-          
-          <TextContainer>
-            <TitleH1>Send Big Files</TitleH1>
-            <LandingH2>Send files quickly and easily</LandingH2>
-          </TextContainer>
-
-          <UnorderedList>
-            <LandingH3>Free tier:</LandingH3>
-            <ListItem>Send files up to 2gb</ListItem>
-            <ListItem>File view history</ListItem>
-            <ListItem>File download history</ListItem>
-            <ListItem>7 days of file storage</ListItem>
-            <LandingH3>Pro tier:</LandingH3>
-            <ListItem>70 days of file storage</ListItem>
-          </UnorderedList>
-          <>
-            <FileTransferButton onClick={props.lockOpen}>
-              Click to start
-            </FileTransferButton>
-          </>
-          
-        </LandingCards> */}
+ 
       </LandingCardsContainer>
       <ImageDiv>
         <FlexDiv>

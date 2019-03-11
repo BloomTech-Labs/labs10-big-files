@@ -145,8 +145,8 @@ const CreateFileForm = () => {
   const profile = JSON.parse(localStorage.getItem("profile"));
   const senderEmail = profile.email;
   const [billing, setBilling] = useState(null);
-  const [isPro, setIsPro] = useState(null);
-  const [loaded, setLoaded] = useState(false);
+  // const [isPro, setIsPro] = useState(null);
+  // const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
     if (file) {
