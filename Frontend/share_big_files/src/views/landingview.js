@@ -22,9 +22,20 @@ const LandingContainerDiv = styled.div`
 
   
 `;
+<<<<<<< HEAD
 const HeaderDiv = styled.div`
   height: 15%;
   width: 100%;
+=======
+const HeaderIMG = styled.div`
+max-height: 60px;
+max-width: 260px;
+margin: 0 auto;
+`;
+const TitleDiv = styled.div`
+  height: auto;
+  width: 83%;
+>>>>>>> 321b5891a8dee742add971701979d0c5a4783896
   display: flex;
   align-items: center;
   @media (max-width: 390px) {
@@ -34,6 +45,7 @@ const HeaderDiv = styled.div`
     
   }
 `;
+<<<<<<< HEAD
 const HeaderIMG = styled.img`
 height: 100%;
 width: 33%;
@@ -56,6 +68,21 @@ margin: 0 auto;
 //       font-size: 3rem;
 //     }
 // `;
+=======
+
+const TitleH3 = styled.h3`
+margin: 0;
+    margin-left: 2%
+    text-align: start;
+    font-size: 3rem; 
+    color: black;
+    @media (max-width: 390px) {
+      margin: 0 auto;
+      text-align: center;
+      font-size: 3rem;
+    }
+`;
+>>>>>>> 321b5891a8dee742add971701979d0c5a4783896
 
 const LandingCardsContainer = styled.div`
   width: 100%;
@@ -65,9 +92,16 @@ const LandingCardsContainer = styled.div`
   justify-content: center;
   align-items: center;
   text-align: center;
+<<<<<<< HEAD
   background: url(${steel});
   background-size: cover;
   height: 75%;
+=======
+  height: 83%;
+  
+
+
+>>>>>>> 321b5891a8dee742add971701979d0c5a4783896
   @media (max-width: 390px) {
     width: 100%;
     align-items: flex-start;
@@ -250,16 +284,41 @@ const emailStyle = {
 export const LandingView = props => {
   return (
     <LandingContainerDiv>
-
-      <HeaderDiv>
-        <HeaderIMG src={img} alt="mblogo" />
-      </HeaderDiv>
-      {/* <NavHeader/> */}
-
+      {/* <TitleDiv>
+        <TitleH3><HeaderIMG src={img} alt="mblogo" /></TitleH3>
+      </TitleDiv> */}
+      <NavHeader/>
       <LandingCardsContainer>
-        <CTA className="play-btn">
-          <div onClick={props.lockOpen} style={hiddenStyle} />
-        </CTA>
+      
+          <CTA className="play-btn" > 
+            <div onClick={props.lockOpen} style={hiddenStyle}/>
+          </CTA>
+
+
+        {/* <LandingCards>
+
+          
+          <TextContainer>
+            <TitleH1>Send Big Files</TitleH1>
+            <LandingH2>Send files quickly and easily</LandingH2>
+          </TextContainer>
+
+          <UnorderedList>
+            <LandingH3>Free tier:</LandingH3>
+            <ListItem>Send files up to 2gb</ListItem>
+            <ListItem>File view history</ListItem>
+            <ListItem>File download history</ListItem>
+            <ListItem>7 days of file storage</ListItem>
+            <LandingH3>Pro tier:</LandingH3>
+            <ListItem>70 days of file storage</ListItem>
+          </UnorderedList>
+          <>
+            <FileTransferButton onClick={props.lockOpen}>
+              Click to start
+            </FileTransferButton>
+          </>
+          
+        </LandingCards> */}
  
       </LandingCardsContainer>
 
