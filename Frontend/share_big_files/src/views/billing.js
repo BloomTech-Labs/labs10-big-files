@@ -8,7 +8,7 @@ const BasicMembershipDiv = styled.div`
   height: auto;
   width: auto;
   // width: 44rem;
-  margin: 70px auto;
+  margin-left: 4%;
   border-radius: 10px;
   background-color: white;
   @media(max-width: 768px) {
@@ -24,10 +24,10 @@ const BasicMembershipDiv = styled.div`
 
 const ProMembershipDiv = styled.div`
   height: auto;
-  width: 40rem;
-  margin: 70px auto;
+  width: 40rem; 
   border-radius: 10px;
   background-color: white;
+  margin-left: 4%;
   @media(max-width: 768px) {
     max-width: 90%;
   }

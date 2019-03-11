@@ -11,8 +11,7 @@ const CreateEditDiv = styled.div`
   height: fit-content;
   width: 35%; 
   min-width: 500px
-  margin-left: 4%;
-  margin-right: 2%;
+  margin-left: 4%; 
   line-height: 3;
   border-radius: 10px;
   background-color: white;
