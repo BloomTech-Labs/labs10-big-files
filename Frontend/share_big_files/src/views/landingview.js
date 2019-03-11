@@ -12,7 +12,9 @@ import { MdEmail } from "react-icons/md";
 import { FaUserLock } from "react-icons/fa";
 //NEW STUFF
 import "./CTAButton.css";
-
+//match return button size, match signout button size
+//add modal uploaded info
+//fix blue button to outline, with blue styling
 const LandingContainerDiv = styled.div`
   width: 100%;
   height: 73vh;
@@ -194,7 +196,8 @@ const FlexDiv = styled.div`
 // height: 90px;
 // `;
 const ImageDiv = styled.div`
-width: fit-content;
+width: 90%
+
 display: flex;
 justify-content: space-around;
 margin: 0 auto;

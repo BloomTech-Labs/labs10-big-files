@@ -79,7 +79,7 @@ padding: 0;
 
 const DesperateDiv = styled.div`
 height: 100%;
-width:65%
+width:55%
   display: flex; 
   flex-wrap: wrap;
   margin-right: 4%;
@@ -124,7 +124,8 @@ align-items: center;
 margin-left: 5%;
 border-radius: 7px;
 display: flex;
-background-color: #206db5;
+border:1px solid #206db5
+background-color: #ffffff;
 padding: 0 3.5%
 `;
 
@@ -139,7 +140,9 @@ height: 100%;
 padding: 0% 2%;
 min-width: 170px;
 border: none;
-border-left: 1px solid white;
+color: #206db5;
+background-color: #ffffff;
+border-left: 1px solid #206db5;
 font-size: 1.8rem;
 }
 // @media(max-width: 390px) {
@@ -284,7 +287,7 @@ const FileDisplay = () => {
                       Time Uploaded: {file.upload_date.slice(11, -5)}
                     </Sharedh4>
                     <ButtonDiv>
-                      <FaDownload size={30} color="#ffffff" />
+                      <FaDownload size={30} color="#206db5" />
                       <HistoryH3
                         value={file.file_id}
                         onClick={ModalSwitchOn}
