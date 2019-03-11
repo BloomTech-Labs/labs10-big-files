@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 const SmallDiv = styled.div`
   display: none;
-  @media (max-width: 390px) {
+  @media (max-width: 460px) {
     display: block;
     height: auto;
     width: 95%;
@@ -35,7 +35,7 @@ const LinkStyles = styled.h1`
   // &:hover {
   //   color: blue;
   }
-  @media (max-width: 390px) {
+  @media (max-width: 460px) {
     font-size: 2.75rem;
     font-weight: bold;
     margin: 0;

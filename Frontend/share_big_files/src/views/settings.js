@@ -5,14 +5,14 @@ import styled from 'styled-components';
 
 
 const SettingsDiv = styled.div`
+border:1px solid red;
 display: flex;
 flex-direction: column;
 flex-wrap: wrap;
 height: auto;
 width: 25%;
 min-width: 459px;
-padding: 10px;
-margin: 70px auto;
+padding: 10px; 
 line-height: 3;
 border-radius: 10px;
 background-color: white;

@@ -10,7 +10,7 @@ const NavHeaderDiv = styled.div`
   // margin-bottom: 1%;
   background-color: white;
   border-bottom: 2px solid white;
- @media (max-width: 390px) {
+ @media (max-width: 460px) {
     border-bottom: none;
     margin-bottom: 25px
   }
@@ -21,7 +21,7 @@ const TitleDiv = styled.div`
   width: 83%;
   display: flex;
   align-items: center;
-  @media (max-width: 390px) {
+  @media (max-width: 460px) {
     width: 90%;
     margin: 0 auto;
     margin-top: 20px;
@@ -35,7 +35,7 @@ margin: 0;
     text-align: start;
     font-size: 3rem; 
     color: black;
-    @media (max-width: 390px) {
+    @media (max-width: 460px) {
       margin: 0 auto;
       text-align: center;
       font-size: 3rem;
@@ -76,7 +76,7 @@ const MenuWrapper = styled.div`
   margin: 10px 0;
   border-radius: 10px;
   background-color: #206DB5;
-  @media (max-width: 390px) {
+  @media (max-width: 460px) {
     display: none;
   }
 `;
