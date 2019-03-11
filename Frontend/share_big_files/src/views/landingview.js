@@ -45,8 +45,13 @@ display: flex;
 justify-content: space-around;
 margin-top: 1.5%;
 margin: 0 auto;
-margin-top: 4%
+margin-top: 7%
 height: fit-content;
+@media(max-width: 1000px) {
+  flex-direction: column;
+  margin-top: 10%;
+}
+
 @media(max-width: 653px) {
   flex-direction: column;
   margin-top: 15%;
