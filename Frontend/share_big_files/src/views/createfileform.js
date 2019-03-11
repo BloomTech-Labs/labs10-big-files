@@ -204,8 +204,9 @@ const CreateFileForm = () => {
 
   function submitFile() {
     console.log(file);
-    // if (fileName === null) {
-    //   return alert("File must have filename");
+    if (fileName === null) {
+      return alert("File must have filename");
+    } else
      {
       const sendObject = {
         fk_email: senderEmail,

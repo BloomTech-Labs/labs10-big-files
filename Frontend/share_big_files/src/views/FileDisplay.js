@@ -282,6 +282,12 @@ const FileDisplay = () => {
                   <InnerTileDiv>
                     <Sharedh3>{file.filename}</Sharedh3>
                     <Sharedh4>
+                      Size: {file.file_size}
+                    </Sharedh4>
+                    <Sharedh4>
+                      Type: {file.file_type}
+                    </Sharedh4>
+                    <Sharedh4>
                       Date Uploaded: {file.upload_date.slice(0, 10)}
                     </Sharedh4>
                     <Sharedh4>
@@ -322,6 +328,18 @@ const FileDisplay = () => {
       >
         <HistoryDiv>
           <h2>File Name: {selectedFile.filename}</h2>
+                    <Sharedh4>
+                      Size: {selectedFile.file_size}
+                    </Sharedh4>
+                    <Sharedh4>
+                      Type: {selectedFile.file_type}
+                    </Sharedh4>
+                    <Sharedh4>
+                      Date Uploaded: {selectedFile.upload_date.slice(0, 10)}
+                    </Sharedh4>
+                    <Sharedh4>
+                      Time Uploaded: {selectedFile.upload_date.slice(11, -5)}
+                    </Sharedh4>
           <h3>Total Downloads: {viewedHistory.length} </h3>
           {viewedHistory.map((file, index) => {
             return (
