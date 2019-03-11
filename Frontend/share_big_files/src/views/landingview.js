@@ -22,11 +22,6 @@ const LandingContainerDiv = styled.div`
 
   
 `;
-<<<<<<< HEAD
-const HeaderDiv = styled.div`
-  height: 15%;
-  width: 100%;
-=======
 const HeaderIMG = styled.div`
 max-height: 60px;
 max-width: 260px;
@@ -35,7 +30,6 @@ margin: 0 auto;
 const TitleDiv = styled.div`
   height: auto;
   width: 83%;
->>>>>>> 321b5891a8dee742add971701979d0c5a4783896
   display: flex;
   align-items: center;
   @media (max-width: 390px) {
@@ -45,30 +39,6 @@ const TitleDiv = styled.div`
     
   }
 `;
-<<<<<<< HEAD
-const HeaderIMG = styled.img`
-height: 100%;
-width: 33%;
-margin: 0 auto;
-@media(max-width: 390px) {
-  width: 80%;
-}
-
-`;
-
-// const TitleH3 = styled.h3`
-// margin: 0;
-//     margin-left: 2%
-//     text-align: start;
-//     font-size: 3rem; 
-//     color: black;
-//     @media (max-width: 390px) {
-//       margin: 0 auto;
-//       text-align: center;
-//       font-size: 3rem;
-//     }
-// `;
-=======
 
 const TitleH3 = styled.h3`
 margin: 0;
@@ -82,7 +52,6 @@ margin: 0;
       font-size: 3rem;
     }
 `;
->>>>>>> 321b5891a8dee742add971701979d0c5a4783896
 
 const LandingCardsContainer = styled.div`
   width: 100%;
@@ -92,16 +61,10 @@ const LandingCardsContainer = styled.div`
   justify-content: center;
   align-items: center;
   text-align: center;
-<<<<<<< HEAD
-  background: url(${steel});
-  background-size: cover;
-  height: 75%;
-=======
   height: 83%;
   
 
 
->>>>>>> 321b5891a8dee742add971701979d0c5a4783896
   @media (max-width: 390px) {
     width: 100%;
     align-items: flex-start;
