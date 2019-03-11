@@ -77,6 +77,9 @@ const SendGridDiv = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
+  }
+
 `;
 
 const SendGridH2 = styled.h2`

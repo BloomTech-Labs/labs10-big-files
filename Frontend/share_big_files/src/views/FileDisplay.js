@@ -6,6 +6,7 @@ import { FaDownload } from "react-icons/fa";
 
 const SharedBoxHolder = styled.div`
   width: 45%;
+  padding: 1% 0;
   min-width: 150px;
   height: auto; 
   min-height: 160px;
@@ -15,7 +16,7 @@ const SharedBoxHolder = styled.div`
   background-color: white;
   border-radius: 5px;
   margin: 0 1.5% 3% 1.5%; 
-  min-width: 245px
+  min-width: 245px;
  @media(max-width: 1175px){
    width: 100%;
  }
@@ -127,6 +128,7 @@ display: flex;
 border:1px solid #206db5
 background-color: #ffffff;
 padding: 0 3.5%
+cursor: pointer;
 `;
 
  
