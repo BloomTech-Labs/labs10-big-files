@@ -15,8 +15,10 @@ const SharedBoxHolder = styled.div`
   align-items: center; 
   background-color: white;
   border-radius: 5px;
+ 
   margin: 0 1.5% 3% 1.5%; 
   min-width: 245px;
+ 
  @media(max-width: 1175px){
    width: 100%;
  }
@@ -305,7 +307,7 @@ const FileDisplay = () => {
                     <TileTextDiv>
                     <Sharedh3>{file.filename}</Sharedh3>
                     <Sharedh4>
-                      Size: {file.file_size}
+                      Size: {`${(file.file_size) / 1000} KB`}
                     </Sharedh4>
                     <Sharedh4>
                       Type: {file.file_type}
@@ -353,7 +355,7 @@ const FileDisplay = () => {
         <HistoryDiv>
           <h2>File Name: {selectedFile.filename}</h2>
                     <Sharedh4>
-                      Size: {selectedFile.file_size}
+                      Size: {`${(selectedFile.file_size) / 1000} KB`}
                     </Sharedh4>
                     <Sharedh4>
                       Type: {selectedFile.file_type}
