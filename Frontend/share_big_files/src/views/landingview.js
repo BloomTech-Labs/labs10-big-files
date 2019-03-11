@@ -6,8 +6,6 @@ import img from "../../src/assets/movebyteslogo.png";
 import awsimg from "../../src/assets/1_tFl-8wQUENETYLjX5mYWuA.png";
 import stpimg from "../../src/assets/payment-logo_1.png";
 
-import styled from "styled-components";
-
 import steel from "../../src/assets/brushsteel2.jpg";
 import { FaUserPlus } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
@@ -192,14 +190,14 @@ height: 80px;
 const S3Img = styled.img`
 width: 130px;
 height: 90px;
-
+`;
 const ImageDiv = styled.div`
-with: 90%
+width: 90%;
 display: flex;
 justify-content: space-around;
 margin-top: 1.5%;
 margin: 0 auto;
-margin-top: 7%
+margin-top: 7%;
 height: fit-content;
 @media(max-width: 1000px) {
   flex-direction: column;
@@ -214,9 +212,7 @@ height: fit-content;
 const FreeTierDiv = styled.div`
 width: 100% 
 `; 
-const Services = styled.div`
-width: 100% 
-`;
+
  
 const LineHeightH4 = styled.h4`
   line-height: 1.5;
