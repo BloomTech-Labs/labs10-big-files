@@ -4,7 +4,6 @@ import styled from "styled-components";
 import img from "../../src/assets/movebyteslogo.png";
 import awsimg from "../../src/assets/1_tFl-8wQUENETYLjX5mYWuA.png";
 import stpimg from "../../src/assets/payment-logo_1.png";
-import s3img from "../../src/assets/s3.webp";
 import steel from "../../src/assets/brushsteel2.jpg";
 import { FaCcStripe } from "react-icons/fa";
 import { FaUnlockAlt } from "react-icons/fa";
@@ -17,18 +16,13 @@ const LandingContainerDiv = styled.div`
   height: 550px;
   // min-height: 100vh;
   margin: 0 auto;
-  background: url(${steel});
-  background-size: cover;
+  // background: url(${steel});
+  // background-size: cover;
   
 `;
-const HeaderIMG = styled.div`
-max-height: 60px;
-max-width: 260px;
-margin: 0 auto;
-`;
-const TitleDiv = styled.div`
-  height: auto;
-  width: 83%;
+const HeaderDiv = styled.div`
+  height: 15%;
+  width: 100%;
   display: flex;
   align-items: center;
   @media (max-width: 390px) {
@@ -38,19 +32,27 @@ const TitleDiv = styled.div`
     
   }
 `;
-
-const TitleH3 = styled.h3`
-margin: 0;
-    margin-left: 2%
-    text-align: start;
-    font-size: 3rem; 
-    color: black;
-    @media (max-width: 390px) {
-      margin: 0 auto;
-      text-align: center;
-      font-size: 3rem;
-    }
+const HeaderIMG = styled.img`
+height: 100%;
+width: 33%;
+margin: 0 auto;
+@media(max-width: 390px) {
+  width: 80%;
+}
 `;
+
+// const TitleH3 = styled.h3`
+// margin: 0;
+//     margin-left: 2%
+//     text-align: start;
+//     font-size: 3rem; 
+//     color: black;
+//     @media (max-width: 390px) {
+//       margin: 0 auto;
+//       text-align: center;
+//       font-size: 3rem;
+//     }
+// `;
 
 const LandingCardsContainer = styled.div`
   width: 100%;
@@ -60,7 +62,9 @@ const LandingCardsContainer = styled.div`
   justify-content: center;
   align-items: center;
   text-align: center;
-  height: 83%;
+  background: url(${steel});
+  background-size: cover;
+  height: 75%;
   
 
 
@@ -148,38 +152,61 @@ const LandingH2 = styled.h2`
 const TitleH1 = styled.h1`
 margin-bottom: 0;
 `;
-const ImageDiv = styled.div`
+const InfoDiv = styled.div`
 display: flex;
 justify-content: space-around;
 margin-top: 1.5%;
-// border: 2px solid red;
-height: 18.5%;
-@media(max-width: 1200px) {
-  display: none;
-}
-@media(max-height: 653px) {
-  display: none;
-}
+height: 10%;
+// @media(max-width: 795px) {
+//   margin-top: 2.6%;
+// }
+
+
 `;
 const FreeTier = styled.div`
-font-size: 1.5rem;
+margin-top: inherit;
+font-size: 1.7rem;
 font-weight: bold;
+@media(max-width: 1000px) {
+  font-size: 1.4rem;
+  margin-top: auto;
+}
+@media(max-width: 860px) {
+  font-size: 1.3rem;
+}
+@media(max-width: 770px) {
+  font-size: 1.2rem;
+}
 `;
 const ProTier = styled.div`
+margin-top: inherit;
 font-size: 1.8rem;
 font-weight: bold;
+@media(max-width: 1000px) {
+  font-size: 1.4rem;
+  margin-top: auto;
+}
 `;
 const Services = styled.div`
+margin-top: inherit;
 font-size: 1.8rem;
 font-weight: bold;
+@media(max-width: 1000px) {
+  font-size: 1.4rem;
+  margin-top: auto;
+}
 `;
 const AwsImg = styled.img`
-background-color: none;
-width: 150px;
+margin-top: inherit;
+width: 15%;
 height: 75px;
+@media(max-width: 860px) {
+  width;
+}
 `;
 const StripeImg = styled.img`
-width: 115px;
+margin-top: inherit;
+width: 12%;
 height: 80px;
 `;
 const S3Img = styled.img`
@@ -214,10 +241,10 @@ export const LandingView = props => {
   
   return (
     <LandingContainerDiv>
-      {/* <TitleDiv>
-        <TitleH3><HeaderIMG src={img} alt="mblogo" /></TitleH3>
-      </TitleDiv> */}
-      <NavHeader/>
+      <HeaderDiv>
+        <HeaderIMG src={img} alt="mblogo" />
+      </HeaderDiv>
+      {/* <NavHeader/> */}
       <LandingCardsContainer>
       
           <CTA className="play-btn" > 
@@ -251,7 +278,7 @@ export const LandingView = props => {
         </LandingCards> */}
  
       </LandingCardsContainer>
-      <ImageDiv>
+      <InfoDiv>
         <FreeTier>
           Send files up to 2gb<br/>
           File view history<br/>
@@ -260,17 +287,17 @@ export const LandingView = props => {
         </FreeTier>
         <AwsImg src={awsimg} alt="awslogo"/>
         <ProTier>
-          <FaUnlockAlt size={20} color="black"/><br/>
+          <FaUnlockAlt size={15} color="black"/><br/>
           Unlock Pro Tier Service!<br/>
           Gain access to 70 day file storage!
         </ProTier>
         <StripeImg src={stpimg} alt="stplogo"/>
         <Services>
-        <FaCcStripe size={25} color="black"/><br/>
+        <FaCcStripe size={22} color="black"/><br/>
           All transactions are handled safely<br/>
            and securely through Stripe!
         </Services>
-      </ImageDiv>
+      </InfoDiv>
     </LandingContainerDiv>
   );
 };
