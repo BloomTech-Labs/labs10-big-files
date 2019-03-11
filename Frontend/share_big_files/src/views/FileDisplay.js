@@ -148,8 +148,10 @@ font-size: 1.8rem;
 `;
 
 const ReturnButton = styled.button`
-
-border-radius 4px
+height: 50px;
+width: 200px;
+border-radius 7px;
+border: white;
 `;
 
 const FileDisplay = () => {
