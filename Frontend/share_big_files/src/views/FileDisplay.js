@@ -2,10 +2,11 @@ import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import axios from "axios";
 import ReactModal from "react-modal";
-import { FaDownload } from "react-icons/fa";
+import { FaFileAlt } from "react-icons/fa";
 
 const SharedBoxHolder = styled.div`
   width: 45%;
+  padding: 1% 0;
   min-width: 150px;
   height: auto; 
   min-height: 160px;
@@ -14,9 +15,10 @@ const SharedBoxHolder = styled.div`
   align-items: center; 
   background-color: white;
   border-radius: 5px;
-  margin: 0 1.5% 3% 1.5%;
-  padding: 15px;
-  min-width: 245px
+ 
+  margin: 0 1.5% 3% 1.5%; 
+  min-width: 245px;
+ 
  @media(max-width: 1175px){
    width: 100%;
  }
@@ -33,6 +35,7 @@ const SharedBoxHolder = styled.div`
   margin-bottom: 8px;
 }
   @media (max-width: 390px) {
+    height: 100%;
     width: 100%;
     height: 10rem;
     margin: 1.5% auto;
@@ -40,7 +43,9 @@ const SharedBoxHolder = styled.div`
     min-height: 110px
  
   @media (max-width: 500px) {
+    height: 100%;
     width: 100%;
+    line-height: 1.5;
     padding: 2% 0;
  
   }
@@ -49,6 +54,7 @@ const SharedBoxHolder = styled.div`
   //   height: 15rem;
   //   margin: 1% auto;
   //   text-align: none;
+
   // }
 `;
 
@@ -56,26 +62,27 @@ const Sharedh4 = styled.h4`
 overflow: hidden;
 white-space: nowrap;
 text-overflow: ellipsis;
+line-height: 1.5;
 padding: 0; 
   margin: 0;
   margin-left: 5%;
   width: auto;
-  height: 20px;
+  height: fit-content;
 @media(max-width: 390px){ 
   
 `;
 
-const Sharedh3 = styled.h3` 
+const Sharedh3 = styled.h3`
+height: fit-content; 
 overflow: hidden;
 white-space: nowrap;
 text-overflow: ellipsis;
 padding: 0; 
   margin: 0;
   margin-left: 5%;
-  width: auto;
-  height: 20px;
+  width: auto; 
 @media(max-width: 390px){ 
-  
+  height: fit-content; 
 `;
 
 const DesperateDiv = styled.div`
@@ -112,8 +119,9 @@ const InnerTileDiv = styled.div`
   flex-direction: column;
   justify-content: space-around;
 
-  @media (max-width: 390px) {
+  @media (max-width: 500px) {
     margin-bottom: 5px;
+    padding: 3% 0;
   }
 `;
 
@@ -128,6 +136,7 @@ display: flex;
 border:1px solid #206db5
 background-color: #ffffff;
 padding: 0 3.5%
+cursor: pointer;
 `;
 
  
@@ -295,12 +304,12 @@ const FileDisplay = () => {
                       Time Uploaded: {file.upload_date.slice(11, -5)}
                     </Sharedh4>
                     <ButtonDiv>
-                      <FaDownload size={30} color="#206db5" />
+                      <FaFileAlt size={30} color="#206db5" />
                       <HistoryH3
                         value={file.file_id}
                         onClick={ModalSwitchOn}
                       >
-                         Download History 
+                         File History 
                       </HistoryH3> 
                     </ButtonDiv>
                   </InnerTileDiv>

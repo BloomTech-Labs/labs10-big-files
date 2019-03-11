@@ -77,6 +77,9 @@ const SendGridDiv = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
+  }
+
 `;
 
 const SendGridH2 = styled.h2`
@@ -147,20 +150,27 @@ const CreateFileForm = () => {
   const profile = JSON.parse(localStorage.getItem("profile"));
   const senderEmail = profile.email;
   const [billing, setBilling] = useState(null);
-  // const [isPro, setIsPro] = useState(null);
+  const [displayName, setDisplayName] = useState(null)
+  const [sendGridClicked, setSendGridClicked] = useState(false);
   // const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
-    if (file) {
-      console.log("UPLOADED FILE on STATE", file);
+    if (url && fileId) {
+      sendGrid()
     }
-  }, [file]);
+  }, [url, fileId]);
 
   useEffect(() => {
-    if (file) {
+    if (file && sendGridClicked) {
       submitFile();
     }
-  }, [file]);
+  }, [file, sendGridClicked]);
+
+  useEffect(()=>{
+    console.log(sendGridClicked, url, fileId, recipientEmail)
+  })
+
+  
 
   const fetchData = () => {
     const profile = JSON.parse(localStorage.getItem("profile"));
@@ -197,17 +207,17 @@ const CreateFileForm = () => {
     console.log(response);
     callback();
   }
+  function displayNameCallback(){
+    setDisplayName(file.fileName);
+  }
 
   function handleFileUpload(event) {
     setFile(event.target.files);
+ 
   }
 
   function submitFile() {
-    console.log(file);
-    if (fileName === null) {
-      return alert("File must have filename");
-    } else
-     {
+
       const sendObject = {
         fk_email: senderEmail,
         filename: fileName,
@@ -223,7 +233,7 @@ const CreateFileForm = () => {
           submitThenSend(response, sendFile);
         })
         .catch(err => console.log(err));
-    }
+    
   }
 
   const hiddenStyle = {
@@ -241,6 +251,7 @@ const CreateFileForm = () => {
   const sendFile = () => {
     const formData = new FormData();
     formData.append("fileUpload", file[0]);
+    console.log(file);
 
     // if (billing)
     // {
@@ -251,10 +262,13 @@ const CreateFileForm = () => {
         }
       })
       .then(response => {
+        
         setFileId(response.data.rows[0].file_id);
         let urlString = response.data.rows[0].url;
         urlString = urlString.split("/");
         setUrl(urlString[3]);
+        console.log(response);
+        
       })
       .catch(error => console.log(error));
     // } else {
@@ -274,12 +288,18 @@ const CreateFileForm = () => {
     // }
   };
 
+  function sendGridToggle(){
+    setSendGridClicked(true);
+  }
+
   function sendGrid(event) {
+    setSendGridClicked(true);
     console.log("URL and FILEID and Email: ", url, fileId, recipientEmail);
     // console.log("Magical URL!", `http://localhost:3000/download/?email=${recipientEmail}&url=${url}&fileid=${fileId}`)
 
     const uniqueURL = `https://sfiles.netlify.com/download/?email=${recipientEmail}&url=${url}&fileid=${fileId}`;
-
+    console.log("**********************************")
+    console.log(uniqueURL)
     const myDetails = {
       to: recipientEmail,
       from: senderEmail,
@@ -290,15 +310,21 @@ const CreateFileForm = () => {
     };
 
     console.log(myDetails);
+    // if (fileName === null) {
+    //   return alert("File must have filename");
+    // } else
+    //  {
     axios
       .post("https://api.backendproxy.com/api/sendgrid/send", myDetails)
       .then(response => {
         console.log("Response DATA HERE!", response.data);
+        setSendGridClicked(false);
       })
       .catch(error => {
         console.log("Error! RIGHT HERE", error);
       });
   }
+// }
   return (
     <CreateEditDiv>
       <AddFileDiv>
@@ -312,7 +338,7 @@ const CreateFileForm = () => {
           <FaPlusCircle size={50} color="#ffffff" />
           <TitleH2>Add Your File</TitleH2>
         </FlexDiv>
-
+        {/* <h2>Uploaded File: {displayName}</h2> */}
         {/* //<UploadButton type="submit">Upload To server</UploadButton> */}
         {/* </form> */}
       </AddFileDiv>
@@ -329,7 +355,7 @@ const CreateFileForm = () => {
           onChange={handleEmailInput}
         />
         <FileName
-          type="text"
+          type="email"
           placeholder="Email subject text"
           onChange={handleEmailSubjectInput}
         />
@@ -340,7 +366,7 @@ const CreateFileForm = () => {
         />
       </InnerDiv>
       <BorderDiv></BorderDiv>
-      <SendGridDiv onClick={sendGrid}>
+      <SendGridDiv onClick={sendGridToggle}>
 
       <FaRegEnvelope size={40} color="#ffffff" /> 
         <SendGridH2 >Share Via Email</SendGridH2>
