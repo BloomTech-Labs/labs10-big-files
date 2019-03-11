@@ -6,6 +6,7 @@ import axios from "axios";
 
 const CreateEditDiv = styled.div` 
   display: flex;
+  position: relative;
   flex-direction: column;
   flex-wrap: wrap;
   height: fit-content;
@@ -35,6 +36,16 @@ const FileName = styled.input`
   border-bottom: 1px solid black;
   &:placeholder:
   color: black;
+
+  display: block;
+  border: none;
+  background: #e6e6e6;
+  font-size: 15px;
+  line-height: 1.5;
+
+  height: 50px;
+  border-radius: 25px;
+  padding: 0 0 0 3%;
 `;
 
 const FileNameMessage = styled.textarea`
@@ -45,6 +56,15 @@ const FileNameMessage = styled.textarea`
   &:placeholder: {
     color: blue;
   }
+
+  display: block;
+  border: none;
+  background: #e6e6e6;
+  font-size: 15px;
+  line-height: 1.5;
+
+  border-radius: 25px;
+  padding: 2% 0 0 3%;
 `;
 
 const InnerDiv = styled.div`
@@ -134,9 +154,6 @@ min-width: 270px
   background-color: #206db5;
   margin: 2.5% auto;
 `;
-const Form = styled.form`
-    // width: 500px;  
-`
 
 const CreateFileForm = () => {
   //const [link, setLink] = useState(null)
@@ -318,6 +335,7 @@ const CreateFileForm = () => {
       .post("https://api.backendproxy.com/api/sendgrid/send", myDetails)
       .then(response => {
         console.log("Response DATA HERE!", response.data);
+        alert(`Thank you. Your file has been sent to ${recipientEmail}`)
         setSendGridClicked(false);
       })
       .catch(error => {
