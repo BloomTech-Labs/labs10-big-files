@@ -35,7 +35,7 @@ const LandingCardsContainer = styled.div`
 const FlexDiv = styled.div`
   display: flex;
   width: 28%;
-  @media(max-width:653px){
+  @media(max-width:1000px){
     width: 100%;
   }
 `;
