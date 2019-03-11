@@ -36,8 +36,10 @@ const HeaderDiv = styled.div`
 `;
 const HeaderIMG = styled.img`
 height: 100%;
-width: 33%;
-margin: 0 auto;
+width: 25%;
+max-height: 60px;
+max-width: 260px;
+// margin: 0 auto;
 @media(max-width: 390px) {
   width: 80%;
 }
@@ -83,136 +85,136 @@ const FlexDiv = styled.div`
 `;
 
 
-const TextContainer = styled.div`
-  height: auto;
-  width: 100%;
-  margin: 0 auto;
-  padding: .5% 0;
-  text-align: center;
-  border-bottom: 1px solid black;
-`;
+// const TextContainer = styled.div`
+//   height: auto;
+//   width: 100%;
+//   margin: 0 auto;
+//   padding: .5% 0;
+//   text-align: center;
+//   border-bottom: 1px solid black;
+// `;
 
-const UnorderedList = styled.ul`
-width: 90%;
-border-bottom: 1px solid black;
-  text-align: left;
-  line-height: 2;
-  margin: 0;
-  padding-left: 10%;
-  padding-bottom: 4%; 
-`;
+// const UnorderedList = styled.ul`
+// width: 90%;
+// border-bottom: 1px solid black;
+//   text-align: left;
+//   line-height: 2;
+//   margin: 0;
+//   padding-left: 10%;
+//   padding-bottom: 4%; 
+// `;
 
-const ListItem = styled.li`
-font-size: 1.75rem`;
+// const ListItem = styled.li`
+// font-size: 1.75rem`;
 
-const FileTransferButton = styled.button`
-  width: 45%;
-  border-radius: 10px;
-  height: 60px;
-  font-size: 1.9rem;
-  background-color: #206DB5;
-  cursor: pointer;
-  margin: 0 auto;
-  margin-top: 6%;
-  text-align: center;
-`;
+// const FileTransferButton = styled.button`
+//   width: 45%;
+//   border-radius: 10px;
+//   height: 60px;
+//   font-size: 1.9rem;
+//   background-color: #206DB5;
+//   cursor: pointer;
+//   margin: 0 auto;
+//   margin-top: 6%;
+//   text-align: center;
+// `;
 
-const LandingH3 = styled.h3`
-  margin: 0;
-  margin-left: -8%; 
-`;
+// const LandingH3 = styled.h3`
+//   margin: 0;
+//   margin-left: -8%; 
+// `;
 
-const LandingH2 = styled.h2`
-  margin: 0; 
-  margin-bottom: 1%;
-`;
+// const LandingH2 = styled.h2`
+//   margin: 0; 
+//   margin-bottom: 1%;
+// `;
 
-const TitleH1 = styled.h1`
-margin-bottom: 0;
-`;
-const InfoDiv = styled.div`
-display: flex;
-justify-content: space-around;
-margin-top: 1.5%;
-height: 10%;
-// @media(max-width: 795px) {
-//   margin-top: 2.6%;
+// const TitleH1 = styled.h1`
+// margin-bottom: 0;
+// `;
+// const InfoDiv = styled.div`
+// display: flex;
+// justify-content: space-around;
+// margin-top: 1.5%;
+// height: 10%;
+// // @media(max-width: 795px) {
+// //   margin-top: 2.6%;
+// // }
+
+
+// `;
+// const FreeTier = styled.div`
+// margin-top: inherit;
+// font-size: 1.7rem;
+// font-weight: bold;
+// @media(max-width: 1000px) {
+//   font-size: 1.4rem;
+//   margin-top: auto;
 // }
-
-
-`;
-const FreeTier = styled.div`
-margin-top: inherit;
-font-size: 1.7rem;
-font-weight: bold;
-@media(max-width: 1000px) {
-  font-size: 1.4rem;
-  margin-top: auto;
-}
-@media(max-width: 860px) {
-  font-size: 1.3rem;
-}
-@media(max-width: 770px) {
-  font-size: 1.2rem;
-}
-`;
-const ProTier = styled.div`
-margin-top: inherit;
-font-size: 1.8rem;
-font-weight: bold;
-@media(max-width: 1000px) {
-  font-size: 1.4rem;
-  margin-top: auto;
-}
-`;
-const Services = styled.div`
-margin-top: inherit;
-font-size: 1.8rem;
-font-weight: bold;
-@media(max-width: 1000px) {
-  font-size: 1.4rem;
-  margin-top: auto;
-}
-`;
-const AwsImg = styled.img`
-margin-top: inherit;
-width: 15%;
-height: 75px;
-@media(max-width: 860px) {
-  width;
-}
-`;
-const StripeImg = styled.img`
-margin-top: inherit;
-width: 12%;
-height: 80px;
-`;
-const S3Img = styled.img`
-width: 130px;
-height: 90px;
-`;
+// @media(max-width: 860px) {
+//   font-size: 1.3rem;
+// }
+// @media(max-width: 770px) {
+//   font-size: 1.2rem;
+// }
+// `;
+// const ProTier = styled.div`
+// margin-top: inherit;
+// font-size: 1.8rem;
+// font-weight: bold;
+// @media(max-width: 1000px) {
+//   font-size: 1.4rem;
+//   margin-top: auto;
+// }
+// `;
+// const Services = styled.div`
+// margin-top: inherit;
+// font-size: 1.8rem;
+// font-weight: bold;
+// @media(max-width: 1000px) {
+//   font-size: 1.4rem;
+//   margin-top: auto;
+// }
+// `;
+// const AwsImg = styled.img`
+// margin-top: inherit;
+// width: 15%;
+// height: 75px;
+// @media(max-width: 860px) {
+//   width;
+// }
+// `;
+// const StripeImg = styled.img`
+// margin-top: inherit;
+// width: 12%;
+// height: 80px;
+// `;
+// const S3Img = styled.img`
+// width: 130px;
+// height: 90px;
+// `;
 const ImageDiv = styled.div`
-width: 90%;
+width: fit-content;
 display: flex;
 justify-content: space-around;
-margin-top: 1.5%;
 margin: 0 auto;
-margin-top: 7%;
 height: fit-content;
 @media(max-width: 1000px) {
   flex-direction: column;
-  margin-top: 10%;
+  
 }
 
 @media(max-width: 653px) {
   flex-direction: column;
-  margin-top: 15%;
+  
 }
 `;
 const FreeTierDiv = styled.div`
 width: 100% 
 `; 
-
+const Services = styled.div`
+width: 100%;
+`;
  
 const LineHeightH4 = styled.h4`
   line-height: 1.5;
@@ -254,15 +256,11 @@ export const LandingView = props => {
       <HeaderDiv>
         <HeaderIMG src={img} alt="mblogo" />
       </HeaderDiv>
-      {/* <NavHeader/> */}
-
       <LandingCardsContainer>
         <CTA className="play-btn">
           <div onClick={props.lockOpen} style={hiddenStyle} />
         </CTA>
- 
       </LandingCardsContainer>
-
       <ImageDiv>
         <FlexDiv>
           <MdEmail size={40} color="#206DB5" style={emailStyle} />
