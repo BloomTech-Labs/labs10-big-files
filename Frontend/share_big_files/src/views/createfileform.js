@@ -131,6 +131,9 @@ min-width: 270px
   background-color: #206db5;
   margin: 2.5% auto;
 `;
+const Form = styled.form`
+    // width: 500px;  
+`
 
 const CreateFileForm = () => {
   //const [link, setLink] = useState(null)
@@ -146,6 +149,12 @@ const CreateFileForm = () => {
   const [billing, setBilling] = useState(null);
   // const [isPro, setIsPro] = useState(null);
   // const [loaded, setLoaded] = useState(false);
+
+  useEffect(() => {
+    if (file) {
+      console.log("UPLOADED FILE on STATE", file);
+    }
+  }, [file]);
 
   useEffect(() => {
     if (file) {
@@ -197,12 +206,17 @@ const CreateFileForm = () => {
     console.log(file);
     if (fileName === null) {
       return alert("File must have filename");
-    } else {
+    } else
+     {
       const sendObject = {
         fk_email: senderEmail,
-        filename: fileName
+        filename: fileName,
+        file_size: file[0].size,
+        file_type: file[0].type
       };
 
+      console.log('sendObject:', sendObject)
+      
       axios
         .post(`https://api.backendproxy.com/api/s3/files/id`, sendObject)
         .then(response => {
@@ -237,7 +251,6 @@ const CreateFileForm = () => {
         }
       })
       .then(response => {
-        console.log(response);
         setFileId(response.data.rows[0].file_id);
         let urlString = response.data.rows[0].url;
         urlString = urlString.split("/");
@@ -337,3 +350,6 @@ const CreateFileForm = () => {
 };
 
 export default CreateFileForm;
+
+
+// onClick={sendGrid}
