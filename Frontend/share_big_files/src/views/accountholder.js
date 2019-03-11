@@ -40,7 +40,7 @@ padding-top: 90px;
   background-color: lightgray;
   background-size: cover;
  
-  @media(max-width: 390px){
+  @media(max-width: 460px){
     padding-top: 180px;
   }
 `;
