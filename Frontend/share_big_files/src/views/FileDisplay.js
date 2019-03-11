@@ -136,6 +136,7 @@ display: flex;
 border:1px solid #206db5
 background-color: #ffffff;
 padding: 0 3.5%
+height: 100%;
 cursor: pointer;
 `;
 
@@ -145,15 +146,17 @@ const HistoryH3 = styled.button`
 // align-items: center;
 // justify-content: center;
 width: fit-content;
-margin-left: 5%;
+line-height: 0;
+margin: 0;
 height: 100%;
-padding: 0% 2%;
-min-width: 170px;
+padding: 10% 0%;
+min-width: 170px; 
 border: none;
 color: #206db5;
 background-color: #ffffff;
 border-left: 1px solid #206db5;
 font-size: 1.8rem;
+margin-left: 4%;
 }
 // @media(max-width: 390px) {
 //   width: 55%;
@@ -165,7 +168,18 @@ height: 50px;
 width: 200px;
 border-radius 7px;
 border: white;
+font-weight: bold;
+letter-spacing: .15em;
 `;
+
+const TileTextDiv =styled.div`
+height: 100%;
+width: 100%
+margin-bottom: 7px;
+border: 1px solid red;
+`;
+
+
 
 const FileDisplay = () => {
   const [email, setEmail] = useState(null);
@@ -290,6 +304,7 @@ const FileDisplay = () => {
               return (
                 <SharedBoxHolder key={index}>
                   <InnerTileDiv>
+                    <TileTextDiv>
                     <Sharedh3>{file.filename}</Sharedh3>
                     <Sharedh4>
                       Size: {`${(file.file_size) / 1000} KB`}
@@ -303,6 +318,7 @@ const FileDisplay = () => {
                     <Sharedh4>
                       Time Uploaded: {file.upload_date.slice(11, -5)}
                     </Sharedh4>
+                    </TileTextDiv>
                     <ButtonDiv>
                       <FaFileAlt size={30} color="#206db5" />
                       <HistoryH3

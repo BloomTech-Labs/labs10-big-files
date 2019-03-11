@@ -51,6 +51,8 @@ cursor: pointer;
 width: 200px;
 height: 50px;
 border: white;
+font-weight: bold;
+letter-spacing: .15em;
 `;
 
 
