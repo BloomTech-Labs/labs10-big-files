@@ -2,11 +2,11 @@ import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import axios from "axios";
 import ReactModal from "react-modal";
-import NavHeader from './navheader';
-import { FaAutoprefixer } from "react-icons/fa";
+import { FaFileAlt } from "react-icons/fa";
 
 const SharedBoxHolder = styled.div`
   width: 45%;
+  padding: 1% 0;
   min-width: 150px;
   height: auto; 
   min-height: 160px;
@@ -15,17 +15,37 @@ const SharedBoxHolder = styled.div`
   align-items: center; 
   background-color: white;
   border-radius: 5px;
-  margin: 0 1.5% 3% 1.5%;
  
+  margin: 0 1.5% 3% 1.5%; 
+  min-width: 245px;
+ 
+ @media(max-width: 1175px){
+   width: 100%;
+ }
+
+ @media(max-width: 900px){
+  width: 47%;
+  margin: 0;
+  margin-bottom: 8px; 
+}
+
+@media(max-width: 570px){
+  width: 100%;
+  margin: 0;
+  margin-bottom: 8px;
+}
   @media (max-width: 390px) {
+    height: 100%;
     width: 100%;
     height: 10rem;
-    margin: 3% auto;
+    margin: 1.5% auto;
     text-align: none;
     min-height: 110px
  
   @media (max-width: 500px) {
-    width: 95%;
+    height: 100%;
+    width: 100%;
+    line-height: 1.5;
     padding: 2% 0;
  
   }
@@ -34,6 +54,7 @@ const SharedBoxHolder = styled.div`
   //   height: 15rem;
   //   margin: 1% auto;
   //   text-align: none;
+
   // }
 `;
 
@@ -41,92 +62,124 @@ const Sharedh4 = styled.h4`
 overflow: hidden;
 white-space: nowrap;
 text-overflow: ellipsis;
+line-height: 1.5;
 padding: 0; 
   margin: 0;
   margin-left: 5%;
   width: auto;
-  height: 20px;
+  height: fit-content;
 @media(max-width: 390px){ 
   
 `;
 
-const Sharedh3 = styled.h3` 
+const Sharedh3 = styled.h3`
+height: fit-content; 
 overflow: hidden;
 white-space: nowrap;
 text-overflow: ellipsis;
 padding: 0; 
   margin: 0;
   margin-left: 5%;
-  width: auto;
-  height: 20px;
+  width: auto; 
 @media(max-width: 390px){ 
-  
+  height: fit-content; 
 `;
-
 
 const DesperateDiv = styled.div`
 height: 100%;
+width:55%
   display: flex; 
   flex-wrap: wrap;
   margin-right: 4%;
   justify-content: space-around;
   margin-left: 2%;
- 
-  @media(max-width: 390px){
-    margin: 0 auto;
-    width: 95%;
- 
   @media(max-width: 900px) {
-    width: 610px;
+    height: 100%;
+    width: 90%; 
     margin: 0 auto;
-  }
-  @media(max-width: 700px) {
-    width: 450px;
+    margin-top: 40px; 
+    justify-content: space-between;
+  } 
+  @media(max-width: 390px){
+  
     margin: 0 auto;
-  }
-  @media(max-width: 500px) {
-    width: auto;
-    margin: 0 auto;
- 
-  }
+    margin-top: 20px;
+    width: 95%;
 `;
 
 const HistoryDiv = styled.div`
-margin: 0% 4%;
-padding: 2% 0%
-
+  margin: 0% 4%;
+  padding: 2% 0%;
 `;
 
-const InnerTileDiv = styled.div` 
-height: 100%;
-width: 100%;
-display: flex;
-flex-direction: column;
-justify-content: space-around;
+const InnerTileDiv = styled.div`
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+
+  @media (max-width: 500px) {
+    margin-bottom: 5px;
+    padding: 3% 0;
+  }
 `;
 
-
-const HistoryButton = styled.button`
-width: 34%;
+ 
+const ButtonDiv = styled.div`
+height: fit-content;
+width: fit-content; 
+align-items: center;
 margin-left: 5%;
-border-radius: 10px;
-padding: 2% 0;
-min-width: 140px;
-@media(max-width: 1000px) {
-  width: 55%;
-  margin: 0 auto;
-  min-width: 140px;
+border-radius: 7px;
+display: flex;
+border:1px solid #206db5
+background-color: #ffffff;
+padding: 0 3.5%
+height: 100%;
+cursor: pointer;
+`;
+
+ 
+const HistoryH3 = styled.button`
+// display: flex;
+// align-items: center;
+// justify-content: center;
+width: fit-content;
+line-height: 0;
+margin: 0;
+height: 100%;
+padding: 10% 0%;
+min-width: 170px; 
+border: none;
+color: #206db5;
+background-color: #ffffff;
+border-left: 1px solid #206db5;
+font-size: 1.8rem;
+margin-left: 4%;
 }
 // @media(max-width: 390px) {
 //   width: 55%;
-//   margin: 0 auto;
 // }
 `;
 
 const ReturnButton = styled.button`
-
-border-radius 4px
+height: 50px;
+width: 200px;
+border-radius 7px;
+border: white;
+font-weight: bold;
+letter-spacing: .15em;
 `;
+
+const TileTextDiv =styled.div`
+height: 100%;
+width: 100%
+margin-bottom: 7px;
+border: 1px solid red;
+`;
+
+
 
 const FileDisplay = () => {
   const [email, setEmail] = useState(null);
@@ -141,12 +194,10 @@ const FileDisplay = () => {
   const [viewedHistory, setViewedHistory] = useState(false);
   const [loaded, setLoaded] = useState(false);
   const [modalBoolean, setModalBoolean] = useState(false);
-  const [targetTile, setTargetTile] = useState(null);
+ 
   //const [userExists, setUserExists] = useState(null);
   const profile = JSON.parse(localStorage.getItem("profile"));
-  useEffect(() => {
-    console.log(selectedFile);
-  });
+  useEffect(() => {});
 
   const ModalSwitchOn = (event, index) => {
     // setTargetTile(event.target)
@@ -179,8 +230,6 @@ const FileDisplay = () => {
   const ModalSwitchOff = event => {
     setModalBoolean(!modalBoolean);
   };
-
-  const HistoryView = () => {};
 
   const fetchData = () => {
     console.log("in fetch data");
@@ -251,16 +300,35 @@ const FileDisplay = () => {
       <DesperateDiv>
         {userData[0]
           ? userData.map((file, index) => {
+              console.log('file:', file)
               return (
                 <SharedBoxHolder key={index}>
-                <InnerTileDiv>
+                  <InnerTileDiv>
+                    <TileTextDiv>
                     <Sharedh3>{file.filename}</Sharedh3>
-                    <Sharedh4>Date Uploaded: {file.upload_date.slice(0, 10)}</Sharedh4>
-                    <Sharedh4>Time Uploaded: {file.upload_date.slice(11, -5)}</Sharedh4>
-                    <HistoryButton value={file.file_id} onClick={ModalSwitchOn}>
-                    Download History
-                    </HistoryButton>
-                    </InnerTileDiv>
+                    <Sharedh4>
+                      Size: {`${(file.file_size) / 1000} KB`}
+                    </Sharedh4>
+                    <Sharedh4>
+                      Type: {file.file_type}
+                    </Sharedh4>
+                    <Sharedh4>
+                      Date Uploaded: {file.upload_date.slice(0, 10)}
+                    </Sharedh4>
+                    <Sharedh4>
+                      Time Uploaded: {file.upload_date.slice(11, -5)}
+                    </Sharedh4>
+                    </TileTextDiv>
+                    <ButtonDiv>
+                      <FaFileAlt size={30} color="#206db5" />
+                      <HistoryH3
+                        value={file.file_id}
+                        onClick={ModalSwitchOn}
+                      >
+                         File History 
+                      </HistoryH3> 
+                    </ButtonDiv>
+                  </InnerTileDiv>
                 </SharedBoxHolder>
               );
             })
@@ -276,30 +344,42 @@ const FileDisplay = () => {
         className="modal"
         style={{
           overlay: {
-            backgroundColor: "rgb(234,231,220, 1)",
+            backgroundColor: "lightgray"
           },
-          content:{
+          content: {
             margin: "0 auto",
-            marginTop: "20px",
+            marginTop: "20px"
           }
         }}
       >
-  
         <HistoryDiv>
           <h2>File Name: {selectedFile.filename}</h2>
+                    <Sharedh4>
+                      Size: {`${(selectedFile.file_size) / 1000} KB`}
+                    </Sharedh4>
+                    <Sharedh4>
+                      Type: {selectedFile.file_type}
+                    </Sharedh4>
+                    <Sharedh4>
+                      Date Uploaded: {selectedFile.upload_date.slice(0, 10)}
+                    </Sharedh4>
+                    <Sharedh4>
+                      Time Uploaded: {selectedFile.upload_date.slice(11, -5)}
+                    </Sharedh4>
           <h3>Total Downloads: {viewedHistory.length} </h3>
           {viewedHistory.map((file, index) => {
             return (
               <div key={index}>
                 <h3>
-                  {file.download_date} Download Email: {file.email}
+                  Download Email: {file.email} <br />
+                  Download Date: {file.download_date.slice(0, 10)}
+                  <br /> Download Time: {file.download_date.slice(11, -5)}
                 </h3>
               </div>
             );
           })}
-       
-        <ReturnButton onClick={ModalSwitchOff}>Return</ReturnButton>
-        
+
+          <ReturnButton onClick={ModalSwitchOff}>Return</ReturnButton>
         </HistoryDiv>
       </ReactModal>
     );

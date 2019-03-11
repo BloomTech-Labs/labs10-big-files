@@ -91,12 +91,11 @@ const fileUpload = multer({
 
 router.post("/files/id", (request, res) => {
     console.log("RB", request.body);
-    const { fk_email, filename } = request.body;
+    const { fk_email, filename, file_size, file_type } = request.body;
     client.query(
-	`INSERT INTO files (fk_email, filename) VALUES ($1, $2) RETURNING file_id`, [fk_email, filename])
+	`INSERT INTO files (fk_email, filename, file_size, file_type) VALUES ($1, $2, $3, $4) RETURNING file_id`, [fk_email, filename, file_size, file_type])
 	.then(result => {
 	    res.status(200).json(result.rows);
-	    // process.exit();
 	})
 	.catch(e => {
 	    console.error(e.detail), res.send(e);

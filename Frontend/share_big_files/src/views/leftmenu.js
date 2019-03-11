@@ -1,16 +1,15 @@
 import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import SignOut from "../components/signOut";
 
 const SmallDiv = styled.div`
   display: none;
-  @media (max-width: 390px) {
+  @media (max-width: 460px) {
     display: block;
     height: auto;
     width: 95%;
     margin: 0 auto;
-    
+    margin-bottom:30px;
   }
 `;
 
@@ -36,12 +35,15 @@ const LinkStyles = styled.h1`
   // &:hover {
   //   color: blue;
   }
-  @media (max-width: 390px) {
+  @media (max-width: 460px) {
     font-size: 2.75rem;
     font-weight: bold;
     margin: 0;
     margin-bottom: 1%; 
     text-align: center;
+    background-color: #206db5;
+    color: white;
+    border-radius: 6px;
   
   }
 `;

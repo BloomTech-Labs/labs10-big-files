@@ -7,34 +7,21 @@ import { Link } from "react-router-dom";
 const NavHeaderDiv = styled.div`
   display: flex;
   // flex-direction: column;
-  margin-bottom: 1%;
+  // margin-bottom: 1%;
+  background-color: white;
   border-bottom: 2px solid white;
- @media (max-width: 390px) {
+ @media (max-width: 460px) {
     border-bottom: none;
     margin-bottom: 25px
   }
 `;
-
-
-// const Box = styled.div`
-// width: 100%;
-// background: linear-gradient(
-//   #36454f, #ff7518 50%, #36454f 50%, #36454f
-// );
-// background-size: 100% 202%;
-// transition: all 0.2s ease;
-// animation: down-bump 0.4s ease;
-// &:hover {
-//   background-position: 100% 100%;
-//   animation: up-bump 0.5s ease;
-// }
-
+ 
 const TitleDiv = styled.div`
   height: auto;
   width: 83%;
   display: flex;
   align-items: center;
-  @media (max-width: 390px) {
+  @media (max-width: 460px) {
     width: 90%;
     margin: 0 auto;
     margin-top: 20px;
@@ -48,7 +35,7 @@ margin: 0;
     text-align: start;
     font-size: 3rem; 
     color: black;
-    @media (max-width: 390px) {
+    @media (max-width: 460px) {
       margin: 0 auto;
       text-align: center;
       font-size: 3rem;
@@ -89,7 +76,7 @@ const MenuWrapper = styled.div`
   margin: 10px 0;
   border-radius: 10px;
   background-color: #206DB5;
-  @media (max-width: 390px) {
+  @media (max-width: 460px) {
     display: none;
   }
 `;
@@ -102,6 +89,7 @@ const MenuDiv = styled.div`
   min-height: 40px;
   background-color: #206DB5;
   border-radius: 10px;
+  margin-right: 2%;
   @media (max-width: 390px) {
     
   }
@@ -114,6 +102,10 @@ margin: 0 auto;
 @media(max-width:390px){
 height: 100%;
 width: 100%;
+@media(max-width: 500px){
+  height: 40px;
+  width: 170px;
+}
 }
 `;
 const NavHeader = props => {
@@ -133,11 +125,7 @@ const NavHeader = props => {
             <LinkStyles>Account</LinkStyles>
           </NavMenuLink>
         </MenuDiv>
-        {/* <MenuDiv>
-          <NavMenuLink to="/billing">
-            <LinkStyles>Got Plus?</LinkStyles>
-          </NavMenuLink>
-        </MenuDiv> */}
+ 
       </MenuWrapper>
 
     </NavHeaderDiv>

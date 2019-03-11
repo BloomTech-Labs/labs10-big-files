@@ -73,7 +73,7 @@ button:hover{
 
 input::placeholder {
   font-family: "Roboto", sans-serif;
-  font-size: 1.7rem;
+  font-size: 2rem;
   font-weight: 400;
   color: black;
 }
@@ -84,7 +84,7 @@ input:hover{
 
 textarea::placeholder {
   font-family: "Roboto", sans-serif;
-  font-size: 1.7rem;
+  font-size: 2rem;
   font-weight: 400;
   color: black;
 }
@@ -105,13 +105,13 @@ a {
     width: 35%; 
     height: auto;
     background-color: white;
-    border-radius: "10px";
+    border-radius: 10px;
     margin-top: 20px
   }
 
 .ReactModal__Overlay{
     background-color: lightgray;
-    margin-top: 7rem;
+    margin-top: 6rem;
 }
 
 @media (max-width: 390px) {

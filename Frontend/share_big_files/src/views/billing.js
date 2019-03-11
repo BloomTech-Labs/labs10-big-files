@@ -5,59 +5,66 @@ import Stripe from "../components/StripeFE";
 import SignOut from "../components/signOut";
 
 const BasicMembershipDiv = styled.div`
-  height: auto;
+  height: fit-content;
   width: auto;
   // width: 44rem;
-  margin: 70px auto;
+  margin-left: 4%;
   border-radius: 10px;
   background-color: white;
-  @media(max-width: 768px) {
-    max-width: 90%;
+  @media(max-width: 900px) {
+    width: 90%
+    max-width: 90%
+    margin-top: 30px 
   }
   @media(max-width: 390px) {
     width: 95%;
     max-width: 95%;
     margin: 0 auto;
-    margin-top: 30px
+    
   }
 `;
 
 const ProMembershipDiv = styled.div`
-  height: auto;
-  width: 40rem;
-  margin: 70px auto;
+  height: fit-content;
+  width: 40rem; 
   border-radius: 10px;
   background-color: white;
-  @media(max-width: 768px) {
+  margin-left: 4%;
+  @media(max-width: 900px) {
+    width: 90%
     max-width: 90%;
+    margin: 0 auto;
+    margin-top: 30px 
   }
   @media(max-width: 390px) {
     width: 95%;
     max-width: 95%;
     margin: 0 auto;
-    margin-top: 30px
+  
   }
 `;
 
 const TextDiv = styled.div`
-  width: 95%;
-  padding: 0 5%;
+  width: 100%;
   margin-bottom: 5%
   @media(max-width: 390px) {
     max-width: 95%;
     margin: 0 auto;
   }
 `;
-const Header1 = styled.div`
-// width: 100%;
- 
-@media(max-width: 390px) {
- margin: 0;
+const Header1 = styled.div` 
+width: 100%;
+ text-align: center
+ margin-bottom: 0;
+ line-height: 1; 
+@media(max-width: 900px) {
+ padding-top: 20px;
+
 }
 `;
  
 const Header3 = styled.div`
-margin-left: 0%;
+margin-left: 8%;
 margin-bottom: 1%;
 @media(max-width: 390px) {
   
@@ -76,7 +83,8 @@ const StripeDiv = styled.div`
 const ListItem = styled.li`
 font-size: 1.75rem;
 line-height: 2;
-
+list-style: none;
+margin-left: 13%;
 `;
 const FeaturesH3 = styled.h3`
 margin-bottom: 0;
@@ -131,7 +139,7 @@ const Billing = () => {
             </Header1>
      
             <Header3>
-              <FeaturesH3>Pro features</FeaturesH3>
+              <FeaturesH3>Pro features:</FeaturesH3>
               </Header3>
           
             <div>
@@ -156,7 +164,7 @@ const Billing = () => {
             </Header1>
       
           <Header3>
-            <h2>Basic features</h2>
+            <h2>Basic features:</h2>
           </Header3>
           <div>
             <ListItem>Send files up to 2gb</ListItem>
@@ -164,7 +172,7 @@ const Billing = () => {
             <ListItem>See who downloaded your file</ListItem>
             <ListItem>7 days of file storage</ListItem>
           </div>
-          <h2>Click below to get 70 day file storage</h2> <StripeDiv><Stripe /></StripeDiv>
+          <h2>Click below for 70 day file storage</h2> <StripeDiv><Stripe /></StripeDiv>
           <SignoutDiv><SignOut/></SignoutDiv>
         </TextDiv>
        
