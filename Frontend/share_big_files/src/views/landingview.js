@@ -10,7 +10,7 @@ import "./CTAButton.css";
 
 const LandingContainerDiv = styled.div`
   width: 100%;
-  height: 80vh;
+  height: 73vh;
   min-height: 500px; 
   margin: 0 auto;
   background: url(${steel});
