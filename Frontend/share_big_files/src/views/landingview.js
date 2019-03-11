@@ -38,6 +38,7 @@ const HeaderDiv = styled.div`
 `;
 const HeaderIMG = styled.img`
 height: 100%;
+margin-left: 5%;
 max-height: 60px;
 max-width: 260px;
 // margin: 0 auto;
