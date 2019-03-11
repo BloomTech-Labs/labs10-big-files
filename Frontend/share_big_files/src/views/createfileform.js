@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-import { FaPlusCircle } from "react-icons/fa";
+import { FaPlusCircle, FaRegEnvelope } from "react-icons/fa";
 import "filepond/dist/filepond.min.css";
 import axios from "axios";
 
-const CreateEditDiv = styled.div`
+const CreateEditDiv = styled.div` 
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
@@ -55,63 +55,82 @@ const InnerDiv = styled.div`
   margin: 0 auto;
 `;
 
-const TitleH2 = styled.h2`
+const TitleH2 = styled.h1`
   display: inline;
   margin: 0;
   height: 100% 
-  width: auto;
-  padding-left: 5%;
+  width: fit-content;
+  border-left: 1px solid white;
+  margin-left: 2.5%;
+  padding-left: 2.5%;
+  font-size: 3.25rem;
+  color: white;
+  line-height: 2;
 `;
 
 const SendGridDiv = styled.div`
-  width: 100%;
-  height: auto;
-  border-top: 1px solid black;
+  width: 45%
+  min-width: 230px;
+  margin: 3% auto;
+  background-color: #206db5;
+  height: auto; 
+  border-radius: 10px
   display: flex;
   justify-content: center;
+  align-items: center;
 `;
 
-const SendGridButton = styled.button`
- text-align: center;
-  height: 5rem;
-  width: 60%
-  margin: 6% auto;
-  border-radius: 10px;
-      font-size: 1.75rem;
-    font-weight: 400;
-`;
+const SendGridH2 = styled.h2`
+  color: white;
+  font-size: 2rem;
+  font-style: Raleway
+  font-weight: bold;
+  margin: 0;
+  margin-left: 4.5%;
+  padding-left: 2.5%;
+  border-left: 1px solid white;
+  width: fit-content;
+
+  `;
 
 const AddFileDiv = styled.div`
   display: flex;
-  width: 90%;
+  width: 96%;
   height: auto;
   border-bottom: 1px solid black;
+  margin: 0 auto;
   align-items: center;
-  padding: 5%;
-`;
-
-const LabelDiv = styled.label`
-  display: flex;
-  align-items: center;
-  margin: 2% 0 0 0;
+  padding: 2%;
 `;
 
 const FileInput = styled.input`
   font-size: 1.7rem;
   font-weight: 400;
   border-radius: 3px;
-  width: 65%;
-  @media(max-width: 390px) {
-    width: auto;
-  }
+ 
+  display: none;
+  height: 100%
+  width: 100%;
+ 
+ 
 `;
 
-const UploadButton = styled.button`
-font-size: 1.7rem;
-    font-weight: 400;
-    border-radius: 10px;
-    padding: 2% 2%;
-
+const BorderDiv = styled.div`
+height: 2px;
+border-bottom:1px solid black;
+`;
+ 
+const FlexDiv = styled.div`
+height: fit-content;
+width: fit-content;
+min-width: 270px
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0% 2%;
+  border-radius: 10px;
+  background-color: #206db5;
+  margin: 2.5% auto;
 `;
 const Form = styled.form`
     // width: 500px;  
@@ -129,30 +148,25 @@ const CreateFileForm = () => {
   const profile = JSON.parse(localStorage.getItem("profile"));
   const senderEmail = profile.email;
   const [billing, setBilling] = useState(null);
-  const [isPro, setIsPro] = useState(null);
-  const [loaded, setLoaded] = useState(false);
+  // const [isPro, setIsPro] = useState(null);
+  // const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
-    console.log(fileId);
-    console.log(url);
-    fetchData();
-  }, []);
+    if (file) {
+      submitFile();
+    }
+  }, [file]);
 
-  const fetchData = async () => {
+  const fetchData = () => {
     const profile = JSON.parse(localStorage.getItem("profile"));
     axios
       .get(`https://api.backendproxy.com/api/users/${profile.nickname}`)
       .then(response => {
         console.log(response);
         setBilling(response.data[0].paid);
-  
       })
       .catch(err => console.log(err));
   };
-
-  function handleFileUpload(event) {
-    setFile(event.target.files);
-  }
 
   function handleNameInput(event) {
     setFileName(event.target.value);
@@ -174,6 +188,7 @@ const CreateFileForm = () => {
     console.log("Message: " + message);
   }
 
+<<<<<<< HEAD
   function submitFile(event) {
     event.preventDefault();
     // if (fileName === null) {
@@ -196,18 +211,53 @@ const CreateFileForm = () => {
   }
     
     
+=======
+  function submitThenSend(response, callback) {
+    console.log(response);
+    callback();
+  }
 
-    
+  function handleFileUpload(event) {
+    setFile(event.target.files);
+  }
+
+  function submitFile() {
+    console.log(file);
+    if (fileName === null) {
+      return alert("File must have filename");
+    } else {
+      const sendObject = {
+        fk_email: senderEmail,
+        filename: fileName
+      };
+
+      axios
+        .post(`https://api.backendproxy.com/api/s3/files/id`, sendObject)
+        .then(response => {
+          submitThenSend(response, sendFile);
+        })
+        .catch(err => console.log(err));
+    }
+  }
+>>>>>>> 7a434f63d7df3d0fe2180a51852bde38b9635ea7
+
+  const hiddenStyle = {
+    border: "1px solid red",
+    height: "7%",
+    minHeight: "65px",
+    width: "17%",
+    display: "block",
+    minWidth: "290px",
+    /* top: 23%; */
+    position: "absolute",
+    opacity: "0"
+  };
 
   const sendFile = () => {
-    console.log("*****************");
     const formData = new FormData();
     formData.append("fileUpload", file[0]);
-    // formData["fileUpload"] = file[0];
 
-    // const fetchData = async () => {
-    //     const profile = JSON.parse(localStorage.getItem("profile"));
-
+<<<<<<< HEAD
     if (billing) {
       axios
         .put("https://api.backendproxy.com/api/s3/paidfiles/", formData, {
@@ -247,6 +297,41 @@ const CreateFileForm = () => {
     if (url && fileId) { sendGrid() }
   }, [url, fileId]);
 
+=======
+    // if (billing)
+    // {
+    axios
+      .put("https://api.backendproxy.com/api/s3/paidfiles/", formData, {
+        headers: {
+          "Content-Type": "multipart/form-data"
+        }
+      })
+      .then(response => {
+        console.log(response);
+        setFileId(response.data.rows[0].file_id);
+        let urlString = response.data.rows[0].url;
+        urlString = urlString.split("/");
+        setUrl(urlString[3]);
+      })
+      .catch(error => console.log(error));
+    // } else {
+    //   axios
+    //     .put("https://api.backendproxy.com/api/s3/files/", formData, {
+    //       headers: {
+    //         "Content-Type": "multipart/form-data"
+    //       }
+    //     })
+    //     .then(response => {
+    //       setFileId(response.data.rows[0].file_id);
+    //       let urlString = response.data.rows[0].url;
+    //       urlString = urlString.split("/");
+    //       setUrl(urlString[3]);
+    //     })
+    //     .catch(error => console.log(error));
+    // }
+  };
+
+>>>>>>> 7a434f63d7df3d0fe2180a51852bde38b9635ea7
   function sendGrid(event) {
     console.log("URL and FILEID and Email: ", url, fileId, recipientEmail);
     // console.log("Magical URL!", `http://localhost:3000/download/?email=${recipientEmail}&url=${url}&fileid=${fileId}`)
@@ -274,6 +359,7 @@ const CreateFileForm = () => {
   }
   return (
     <CreateEditDiv>
+<<<<<<< HEAD
       <Form onSubmit={submitFile}>
         <AddFileDiv>
           <LabelDiv className="hideInput">
@@ -317,6 +403,52 @@ const CreateFileForm = () => {
           <SendGridButton type="submit ">Share Via Email</SendGridButton>
         </SendGridDiv>
       </Form>
+=======
+      <AddFileDiv>
+        {/* <form onSubmit={submitFile}> */}
+        <FlexDiv>
+          <FileInput
+            type="file"
+            onChange={handleFileUpload}
+            style={hiddenStyle}
+          />
+          <FaPlusCircle size={50} color="#ffffff" />
+          <TitleH2>Add Your File</TitleH2>
+        </FlexDiv>
+
+        {/* //<UploadButton type="submit">Upload To server</UploadButton> */}
+        {/* </form> */}
+      </AddFileDiv>
+      <InnerDiv>
+        <FileName
+          type="text"
+          placeholder="File name"
+          name="setFileName"
+          onChange={handleNameInput}
+        />
+        <FileName
+          type="text"
+          placeholder="Recipient email address"
+          onChange={handleEmailInput}
+        />
+        <FileName
+          type="text"
+          placeholder="Email subject text"
+          onChange={handleEmailSubjectInput}
+        />
+        <FileNameMessage
+          type="text"
+          placeholder="Email message"
+          onChange={handleMessage}
+        />
+      </InnerDiv>
+      <BorderDiv></BorderDiv>
+      <SendGridDiv onClick={sendGrid}>
+
+      <FaRegEnvelope size={40} color="#ffffff" /> 
+        <SendGridH2 >Share Via Email</SendGridH2>
+      </SendGridDiv>
+>>>>>>> 7a434f63d7df3d0fe2180a51852bde38b9635ea7
     </CreateEditDiv>
   );
 };
