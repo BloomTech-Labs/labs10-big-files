@@ -1,6 +1,13 @@
 import React from "react";
 import NavHeader from "./navheader.js";
+
+import styled from "styled-components"; 
+import img from "../../src/assets/movebyteslogo.png";
+import awsimg from "../../src/assets/1_tFl-8wQUENETYLjX5mYWuA.png";
+import stpimg from "../../src/assets/payment-logo_1.png";
+
 import styled from "styled-components";
+
 import steel from "../../src/assets/brushsteel2.jpg";
 import { FaUserPlus } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
@@ -13,9 +20,44 @@ const LandingContainerDiv = styled.div`
   height: 73vh;
   min-height: 500px; 
   margin: 0 auto;
-  background: url(${steel});
-  background-size: cover;
+
+
+  
 `;
+const HeaderDiv = styled.div`
+  height: 15%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  @media (max-width: 390px) {
+    width: 90%;
+    margin: 0 auto;
+    margin-top: 20px;
+    
+  }
+`;
+const HeaderIMG = styled.img`
+height: 100%;
+width: 33%;
+margin: 0 auto;
+@media(max-width: 390px) {
+  width: 80%;
+}
+
+`;
+
+// const TitleH3 = styled.h3`
+// margin: 0;
+//     margin-left: 2%
+//     text-align: start;
+//     font-size: 3rem; 
+//     color: black;
+//     @media (max-width: 390px) {
+//       margin: 0 auto;
+//       text-align: center;
+//       font-size: 3rem;
+//     }
+// `;
 
 const LandingCardsContainer = styled.div`
   width: 100%;
@@ -25,7 +67,9 @@ const LandingCardsContainer = styled.div`
   justify-content: center;
   align-items: center;
   text-align: center;
-  height: 83%;
+  background: url(${steel});
+  background-size: cover;
+  height: 75%;
   @media (max-width: 390px) {
     width: 100%;
     align-items: flex-start;
@@ -39,6 +83,116 @@ const FlexDiv = styled.div`
     width: 100%;
   }
 `;
+
+
+const TextContainer = styled.div`
+  height: auto;
+  width: 100%;
+  margin: 0 auto;
+  padding: .5% 0;
+  text-align: center;
+  border-bottom: 1px solid black;
+`;
+
+const UnorderedList = styled.ul`
+width: 90%;
+border-bottom: 1px solid black;
+  text-align: left;
+  line-height: 2;
+  margin: 0;
+  padding-left: 10%;
+  padding-bottom: 4%; 
+`;
+
+const ListItem = styled.li`
+font-size: 1.75rem`;
+
+const FileTransferButton = styled.button`
+  width: 45%;
+  border-radius: 10px;
+  height: 60px;
+  font-size: 1.9rem;
+  background-color: #206DB5;
+  cursor: pointer;
+  margin: 0 auto;
+  margin-top: 6%;
+  text-align: center;
+`;
+
+const LandingH3 = styled.h3`
+  margin: 0;
+  margin-left: -8%; 
+`;
+
+const LandingH2 = styled.h2`
+  margin: 0; 
+  margin-bottom: 1%;
+`;
+
+const TitleH1 = styled.h1`
+margin-bottom: 0;
+`;
+const InfoDiv = styled.div`
+display: flex;
+justify-content: space-around;
+margin-top: 1.5%;
+height: 10%;
+// @media(max-width: 795px) {
+//   margin-top: 2.6%;
+// }
+
+
+`;
+const FreeTier = styled.div`
+margin-top: inherit;
+font-size: 1.7rem;
+font-weight: bold;
+@media(max-width: 1000px) {
+  font-size: 1.4rem;
+  margin-top: auto;
+}
+@media(max-width: 860px) {
+  font-size: 1.3rem;
+}
+@media(max-width: 770px) {
+  font-size: 1.2rem;
+}
+`;
+const ProTier = styled.div`
+margin-top: inherit;
+font-size: 1.8rem;
+font-weight: bold;
+@media(max-width: 1000px) {
+  font-size: 1.4rem;
+  margin-top: auto;
+}
+`;
+const Services = styled.div`
+margin-top: inherit;
+font-size: 1.8rem;
+font-weight: bold;
+@media(max-width: 1000px) {
+  font-size: 1.4rem;
+  margin-top: auto;
+}
+`;
+const AwsImg = styled.img`
+margin-top: inherit;
+width: 15%;
+height: 75px;
+@media(max-width: 860px) {
+  width;
+}
+`;
+const StripeImg = styled.img`
+margin-top: inherit;
+width: 12%;
+height: 80px;
+`;
+const S3Img = styled.img`
+width: 130px;
+height: 90px;
+
 const ImageDiv = styled.div`
 with: 90%
 display: flex;
@@ -66,6 +220,7 @@ width: 100%
  
 const LineHeightH4 = styled.h4`
   line-height: 1.5;
+
 `;
 
 //NEW STUFF
@@ -99,16 +254,19 @@ const emailStyle = {
 export const LandingView = props => {
   return (
     <LandingContainerDiv>
-      {/* <TitleDiv>
-        <TitleH3><HeaderIMG src={img} alt="mblogo" /></TitleH3>
-      </TitleDiv> */}
-      <NavHeader />
+
+      <HeaderDiv>
+        <HeaderIMG src={img} alt="mblogo" />
+      </HeaderDiv>
+      {/* <NavHeader/> */}
+
       <LandingCardsContainer>
         <CTA className="play-btn">
           <div onClick={props.lockOpen} style={hiddenStyle} />
         </CTA>
  
       </LandingCardsContainer>
+
       <ImageDiv>
         <FlexDiv>
           <MdEmail size={40} color="#206DB5" style={emailStyle} />
