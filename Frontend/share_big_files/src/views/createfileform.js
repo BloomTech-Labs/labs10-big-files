@@ -4,6 +4,8 @@ import { FaPlusCircle, FaRegEnvelope } from "react-icons/fa";
 import "filepond/dist/filepond.min.css";
 import axios from "axios";
 import "./FloatingLabel.css"
+
+
 const CreateEditDiv = styled.div` 
   display: flex;
   position: relative;
@@ -125,6 +127,8 @@ const SendGridH2 = styled.h2`
 
 const AddFileDiv = styled.div`
   display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
   width: 96%;
   height: auto;
   border-bottom: 1px solid black;
@@ -133,6 +137,11 @@ const AddFileDiv = styled.div`
   padding: 2%;
 `;
 
+const CustomH3 = styled.h4`
+  margin: 0 auto;
+  line-height: 1;
+
+` 
 const FileInput = styled.input`
   font-size: 1.7rem;
   font-weight: 400;
@@ -370,6 +379,7 @@ function sendGridToggle(){
         {/* <h2>Uploaded File: {displayName}</h2> */}
         {/* //<UploadButton type="submit">Upload To server</UploadButton> */}
         {/* </form> */}
+        <CustomH3>{fileName}</CustomH3>
       </AddFileDiv>
       <InnerDiv>
         <div className="field">
