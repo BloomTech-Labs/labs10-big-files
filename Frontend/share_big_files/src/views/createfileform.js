@@ -139,10 +139,10 @@ const FileInput = styled.input`
 `;
 
 const BorderDiv = styled.div`
-height: 2px;
-border-bottom:1px solid black;
+  height: 2px;
+  border-bottom: 1px solid black;
 `;
- 
+
 const FlexDiv = styled.div`
 height: fit-content;
 width: fit-content;
@@ -168,13 +168,13 @@ const CreateFileForm = () => {
   const profile = JSON.parse(localStorage.getItem("profile"));
   const senderEmail = profile.email;
   const [billing, setBilling] = useState(null);
-  const [displayName, setDisplayName] = useState(null)
+  const [displayName, setDisplayName] = useState(null);
   const [sendGridClicked, setSendGridClicked] = useState(false);
   // const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
     if (url && fileId) {
-      sendGrid(sendGridCallBack)
+      sendGrid(sendGridCallBack);
     }
   }, [url, fileId]);
 
@@ -184,11 +184,9 @@ const CreateFileForm = () => {
     }
   }, [file, sendGridClicked]);
 
-  useEffect(()=>{
-    console.log(sendGridClicked, url, fileId, recipientEmail)
-  })
-
-  
+  useEffect(() => {
+    console.log(sendGridClicked, url, fileId, recipientEmail);
+  });
 
   const fetchData = () => {
     const profile = JSON.parse(localStorage.getItem("profile"));
@@ -225,33 +223,30 @@ const CreateFileForm = () => {
     console.log(response);
     callback();
   }
-  function displayNameCallback(){
+  function displayNameCallback() {
     setDisplayName(file.fileName);
   }
 
   function handleFileUpload(event) {
     setFile(event.target.files);
- 
   }
 
   function submitFile() {
+    const sendObject = {
+      fk_email: senderEmail,
+      filename: fileName,
+      file_size: file[0].size,
+      file_type: file[0].type
+    };
 
-      const sendObject = {
-        fk_email: senderEmail,
-        filename: fileName,
-        file_size: file[0].size,
-        file_type: file[0].type
-      };
+    console.log("sendObject:", sendObject);
 
-      console.log('sendObject:', sendObject)
-      
-      axios
-        .post(`https://api.backendproxy.com/api/s3/files/id`, sendObject)
-        .then(response => {
-          submitThenSend(response, sendFile);
-        })
-        .catch(err => console.log(err));
-    
+    axios
+      .post(`https://api.backendproxy.com/api/s3/files/id`, sendObject)
+      .then(response => {
+        submitThenSend(response, sendFile);
+      })
+      .catch(err => console.log(err));
   }
 
   const hiddenStyle = {
@@ -280,13 +275,11 @@ const CreateFileForm = () => {
         }
       })
       .then(response => {
-        
         setFileId(response.data.rows[0].file_id);
         let urlString = response.data.rows[0].url;
         urlString = urlString.split("/");
         setUrl(urlString[3]);
         console.log(response);
-        
       })
       .catch(error => console.log(error));
     // } else {
@@ -306,14 +299,19 @@ const CreateFileForm = () => {
     // }
   };
 
-  
-  function sendGridCallBack(){
-    window.location.reload()
+  function sendGridCallBack() {
+    window.location.reload();
   }
 
-function sendGridToggle(){
-  setSendGridClicked(true);
-}
+  function sendGridToggle() {
+    if (file === null) {
+      return alert(
+        "A file, filename, and recipient email are required to send file"
+      );
+    } else {
+      setSendGridClicked(true);
+    }
+  }
 
   function sendGrid(callback) {
     setSendGridClicked(true);
@@ -321,8 +319,8 @@ function sendGridToggle(){
     // console.log("Magical URL!", `http://localhost:3000/download/?email=${recipientEmail}&url=${url}&fileid=${fileId}`)
 
     const uniqueURL = `https://sfiles.netlify.com/download/?email=${recipientEmail}&url=${url}&fileid=${fileId}`;
-    console.log("**********************************")
-    console.log(uniqueURL)
+    console.log("**********************************");
+    console.log(uniqueURL);
     const myDetails = {
       to: recipientEmail,
       from: senderEmail,
@@ -335,20 +333,19 @@ function sendGridToggle(){
     console.log(myDetails);
     if (fileName === null || recipientEmail === null) {
       return alert("Filename and recipient email are required to send file");
-    } else
-     {
-    axios
-      .post("https://api.backendproxy.com/api/sendgrid/send", myDetails)
-      .then(response => {
-        console.log("Response DATA HERE!", response.data);
-        alert(`Thank you. Your file has been sent to ${recipientEmail}`)
-        callback()
-      })
-      .catch(error => {
-        console.log("Error! RIGHT HERE", error);
-      });
+    } else {
+      axios
+        .post("https://api.backendproxy.com/api/sendgrid/send", myDetails)
+        .then(response => {
+          console.log("Response DATA HERE!", response.data);
+          alert(`Thank you. Your file has been sent to ${recipientEmail}`);
+          callback();
+        })
+        .catch(error => {
+          console.log("Error! RIGHT HERE", error);
+        });
+    }
   }
-}
   return (
     <CreateEditDiv>
       <AddFileDiv>
@@ -389,17 +386,15 @@ function sendGridToggle(){
           onChange={handleMessage}
         />
       </InnerDiv>
-      <BorderDiv></BorderDiv>
+      <BorderDiv />
       <SendGridDiv onClick={sendGridToggle}>
-
-      <FaRegEnvelope size={40} color="#ffffff" /> 
-        <SendGridH2 >Share Via Email</SendGridH2>
+        <FaRegEnvelope size={40} color="#ffffff" />
+        <SendGridH2>Share Via Email</SendGridH2>
       </SendGridDiv>
     </CreateEditDiv>
   );
 };
 
 export default CreateFileForm;
-
 
 // onClick={sendGrid}
