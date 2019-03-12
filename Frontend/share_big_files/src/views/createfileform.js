@@ -16,7 +16,7 @@ const CreateEditDiv = styled.div`
   min-width: 500px
   margin-left: 4%; 
   line-height: 3;
-  border-radius: 10px;
+  border-radius: 5px;
   background-color: white;
   z-index: 0;
    @media(max-width: 900px){
@@ -52,7 +52,7 @@ const FileName = styled.input`
   line-height: 1.5;
 
   height: 50px;
-  border-radius: 25px;
+  border-radius: 5px;
   padding: 0 0 0 3%;
   max-width : calc(100% - 3%);
   
@@ -73,7 +73,7 @@ const FileNameMessage = styled.textarea`
   font-size: 15px;
   line-height: 1.5;
 
-  border-radius: 25px;
+  border-radius: 5px;
   padding: 2% 0 0 3%;
   max-width : calc(100% - 3%);
 `;
@@ -104,7 +104,7 @@ const SendGridDiv = styled.div`
   margin: 3% auto;
   background-color: #206db5;
   height: auto; 
-  border-radius: 10px
+  border-radius: 5px
   display: flex;
   justify-content: center;
   align-items: center;
@@ -146,7 +146,7 @@ const CustomH3 = styled.h4`
 const FileInput = styled.input`
   font-size: 1.7rem;
   font-weight: 400;
-  border-radius: 3px;
+  border-radius: 5px;
  
   display: none;
   height: 100%
@@ -168,7 +168,7 @@ min-width: 270px
   align-items: center;
   justify-content: center;
   padding: 0% 2%;
-  border-radius: 10px;
+  border-radius: 5px;
   background-color: #206db5;
   margin: 2.5% auto;
 `;
