@@ -58,10 +58,7 @@ p {
     display: none;
 } */
 
-input[type="file"] {
-  border: none;
  
-}
 
 input:hover{
     cursor: pointer;

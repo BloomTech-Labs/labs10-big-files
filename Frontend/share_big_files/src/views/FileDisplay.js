@@ -133,7 +133,7 @@ height: fit-content;
 width: fit-content; 
 align-items: center;
 margin-left: 5%;
-border-radius: 7px;
+border-radius: 5px;
 display: flex;
 border:1px solid #206db5
 background-color: #ffffff;
@@ -167,7 +167,7 @@ const HistoryH3 = styled.button`
 const ReturnButton = styled.button`
 height: 50px;
 width: 200px;
-border-radius 7px;
+border-radius 5px;
 border: white;
 font-weight: bold;
 letter-spacing: .15em;
@@ -306,12 +306,13 @@ const FileDisplay = () => {
                   <InnerTileDiv>
                     <TileTextDiv>
                       <Sharedh3>{file.filename}</Sharedh3>
-                      <Sharedh4>
-                        Size: {`${(file.file_size / byteDivider).toFixed(2)}`}
-                        {byteType}
-                      </Sharedh4>
+                      <Sharedh4>Size: {`${file.file_size / 1000} KB`}</Sharedh4>
                       <Sharedh4>Type: {file.file_type}</Sharedh4>
-                      <Sharedh4>Date: {file.upload_date.slice(0, 10)}</Sharedh4>
+                      <Sharedh4>
+                        Date: {file.upload_date.slice(5, 7)}/
+                        {file.upload_date.slice(8, 10)}/
+                        {file.upload_date.slice(0, 4)}
+                      </Sharedh4>
                       <Sharedh4>
                         Time: {file.upload_date.slice(11, -5)}
                       </Sharedh4>
