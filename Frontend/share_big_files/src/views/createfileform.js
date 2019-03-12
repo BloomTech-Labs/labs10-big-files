@@ -101,12 +101,12 @@ const TitleH2 = styled.h1`
 `;
 
 const SendGridDiv = styled.div`
-width: 44%;
-min-width: 180px;
+  width: 220px;
+  height: 49px;
   border-radius: 5px;
   margin: 3% auto;
   background-color: #206db5;
-  height: auto; 
+ 
  
  
   display: flex;
@@ -123,12 +123,10 @@ line-height: 2;
   font-size: 2rem;
   font-style: Raleway
   font-weight: bold;
-  margin: 0;
-  margin-left: 4.5%;
-  padding-left: 2.5%;
-  border-left: 1px solid white;
+  margin: 0; 
+  padding-left: 2.5%; 
   width: fit-content;
-
+  height: fit-content; 
   `;
 
 const AddFileDiv = styled.div`
@@ -180,6 +178,12 @@ min-width: 270px
   }
 `;
 
+const WhiteBorder = styled.div`
+height:100%;
+width: 1px;
+border-right: 1px solid white;
+padding-left: 3.5%;
+`;
 
 
 const CreateFileForm = () => {
@@ -448,6 +452,7 @@ const CreateFileForm = () => {
       <BorderDiv />
       <SendGridDiv onClick={sendGridToggle}>
         <FaRegEnvelope size={40} color="#ffffff" />
+        <WhiteBorder></WhiteBorder>
         <SendGridH2>Share Via Email</SendGridH2>
       </SendGridDiv>
     </CreateEditDiv>
