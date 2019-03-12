@@ -93,18 +93,21 @@ const TitleH2 = styled.h1`
   border-left: 1px solid white;
   margin-left: 2.5%;
   padding-left: 2.5%;
-  font-size: 3.25rem;
+  font-size: 3rem;
   color: white;
   line-height: 2;
+  &:hover{
+    cursor: pointer;
 `;
 
 const SendGridDiv = styled.div`
-  width: 45%
-  min-width: 230px;
+width: 44%;
+min-width: 180px;
+  border-radius: 5px;
   margin: 3% auto;
   background-color: #206db5;
   height: auto; 
-  border-radius: 10px
+ 
   display: flex;
   justify-content: center;
   align-items: center;
@@ -114,6 +117,7 @@ const SendGridDiv = styled.div`
 `;
 
 const SendGridH2 = styled.h2`
+line-height: 2;
   color: white;
   font-size: 2rem;
   font-style: Raleway
@@ -130,12 +134,11 @@ const AddFileDiv = styled.div`
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
-  width: 96%;
+  width: 100%;
   height: auto;
   border-bottom: 1px solid black;
   margin: 0 auto;
-  align-items: center;
-  padding: 2%;
+  align-items: center; 
 `;
 
 const CustomH3 = styled.h4`
@@ -166,11 +169,13 @@ width: fit-content;
 min-width: 270px
   display: flex;
   align-items: center;
-  justify-content: center;
-  padding: 0% 2%;
+  justify-content: center; 
   border-radius: 10px;
   background-color: #206db5;
   margin: 2.5% auto;
+  &:hover{
+    cursor: pointer; 
+  }
 `;
 
 
@@ -283,8 +288,14 @@ const CreateFileForm = () => {
     minWidth: "290px",
     /* top: 23%; */
     position: "absolute",
-    opacity: "0"
+    opacity: "0",
+    cursor: "pointer",
+    zIndex: 9999,
   };
+
+  const faHover = {
+    cursor: "pointer",
+  }
 
   const sendFile = () => {
     const formData = new FormData();
@@ -380,7 +391,7 @@ const CreateFileForm = () => {
             onChange={handleFileUpload}
             style={hiddenStyle}
           />
-          <FaPlusCircle size={50} color="#ffffff" />
+          <FaPlusCircle size={50} color="#ffffff" style={faHover}/>
           <TitleH2>Add Your File</TitleH2>
         </FlexDiv>
         {/* <h2>Uploaded File: {displayName}</h2> */}
