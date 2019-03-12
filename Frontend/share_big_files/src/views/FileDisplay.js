@@ -122,9 +122,9 @@ align-items: center;
 margin-left: 5%;
 border-radius: 7px;
 display: flex;
+padding: 0 3.5%;
 border:1px solid #206db5
 background-color: #ffffff;
-padding: 0 3.5%
 height: 100%;
 cursor: pointer;
 `;
@@ -135,17 +135,18 @@ width: fit-content;
 line-height: 0;
 margin: 0;
 height: 100%;
-padding: 10% 0%;
+padding: 10% 0;
 min-width: 170px; 
+border-radius: inherit;
 border: none;
 color: #206db5;
 background-color: #ffffff;
 border-left: 1px solid #206db5;
 font-size: 1.8rem;
 margin-left: 4%;
-&:hover {
-  background-color: #e6e6e6;
-}
+// &:hover {
+//   background-color: #e6e6e6;
+// }
 // @media(max-width: 390px) {
 //   width: 55%;
 // }
@@ -307,7 +308,7 @@ const FileDisplay = () => {
                     </Sharedh4>
                     </TileTextDiv>
                     <ButtonDiv>
-                      <FaFileAlt size={30} color="#206db5" />
+                      <FaFileAlt size={30} color="#206db5"/>
                       <HistoryH3
                         value={file.file_id}
                         onClick={ModalSwitchOn}
