@@ -44,7 +44,7 @@ window.location.reload();
 
 const SignOutButton = styled.button`
 //margin: 3% 0 0 37%;
- margin-top: 30px;
+margin: 10% 0 0 22%;
 //justify-content: center;
 border-radius: 5px;
 cursor: pointer;

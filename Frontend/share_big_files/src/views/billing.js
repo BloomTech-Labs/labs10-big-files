@@ -3,45 +3,24 @@ import axios from "axios";
 import styled from "styled-components"; 
 import Stripe from "../components/StripeFE";
 import SignOut from "../components/signOut";
-import Upgrade from "../components/upgrade"
-
-// const BasicMembershipDiv = styled.div`
-//   height: fit-content;
-//   width: auto;
-//   // width: 44rem;
-//   margin-left: 4%;
-//   border-radius: 10px;
-//   background-color: white;
-//   @media(max-width: 900px) {
-//     width: 90%
-//     max-width: 90%
-//     margin-top: 30px 
-//   }
-//   @media(max-width: 390px) {
-//     width: 95%;
-//     max-width: 95%;
-//     margin: 0 auto;
-    
-//   }
-// `;
 
 const BasicMembershipDiv = styled.div`
   height: fit-content;
-  width: 40rem; 
+  width: auto;
+  // width: 44rem;
+  margin-left: 4%;
   border-radius: 10px;
   background-color: white;
-  margin-left: 4%;
   @media(max-width: 900px) {
     width: 90%
-    max-width: 90%;
-    margin: 0 auto;
+    max-width: 90%
     margin-top: 30px 
   }
   @media(max-width: 390px) {
     width: 95%;
     max-width: 95%;
     margin: 0 auto;
-  
+    
   }
 `;
 
@@ -85,7 +64,8 @@ width: 100%;
 `;
  
 const Header3 = styled.div`
-text-align: center;
+margin-left: 8%;
+margin-bottom: 1%;
 @media(max-width: 390px) {
   
   margin-left: 0%;
@@ -94,13 +74,9 @@ text-align: center;
 
  
 const StripeDiv = styled.div`
-width: 100%; 
-display: flex;
-flex-direction: column;
-align-items: center;
-justify-content: center;
+  margin-left: 32%;
   @media(max-width: 390px) {
-    0 auto;
+    margin: 0 0 2% 30%;
   }
 `;
 
@@ -108,7 +84,7 @@ const ListItem = styled.li`
 font-size: 1.75rem;
 line-height: 2;
 list-style: none;
-margin-left: 8%;
+margin-left: 13%;
 `;
 const FeaturesH3 = styled.h3`
 margin-bottom: 0;
@@ -160,7 +136,12 @@ const Billing = () => {
           <TextDiv>
             <Header1>
             <h1>Membership Level: Pro</h1> 
-            </Header1>     
+            </Header1>
+     
+            <Header3>
+              <FeaturesH3>Pro features:</FeaturesH3>
+              </Header3>
+          
             <div>
               <ListItem>Send files up to 2gb</ListItem>
               <ListItem>See who viewed your file</ListItem>
@@ -182,19 +163,17 @@ const Billing = () => {
             <h1>Membership Level: Basic</h1>
             </Header1>
       
-       
+          <Header3>
+            <h2>Basic features:</h2>
+          </Header3>
           <div>
             <ListItem>Send files up to 2gb</ListItem>
             <ListItem>See who viewed your file</ListItem>
             <ListItem>See who downloaded your file</ListItem>
             <ListItem>7 days of file storage</ListItem>
           </div>
-          <Header3> <h2>Upgrade to 70 day storage</h2> </Header3>
-         <StripeDiv>
-           <Stripe />
-           <SignOut/>
-           </StripeDiv>
-          
+          <h2>Click below for 70 day storage</h2> <StripeDiv><Stripe /></StripeDiv>
+          <SignoutDiv><SignOut/></SignoutDiv>
         </TextDiv>
        
       </BasicMembershipDiv>

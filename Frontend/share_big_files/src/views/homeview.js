@@ -37,7 +37,7 @@ position:fixed;
 top:0;
 width: 100%;
 height:auto;
- z-index: 9999;
+ 
 background-color: lightgray;
 margin-bottom: 15px;
  
