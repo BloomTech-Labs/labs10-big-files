@@ -9,6 +9,7 @@ const NavHeaderDiv = styled.div`
   // flex-direction: column;
   // margin-bottom: 1%;
   background-color: white;
+  z-index: 1000;
   border-bottom: 2px solid white;
  @media (max-width: 460px) {
     border-bottom: none;

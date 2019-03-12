@@ -173,7 +173,7 @@ const CreateFileForm = () => {
 
   useEffect(() => {
     if (url && fileId) {
-      sendGrid()
+      sendGrid(sendGridCallBack)
     }
   }, [url, fileId]);
 
@@ -305,11 +305,16 @@ const CreateFileForm = () => {
     // }
   };
 
-  function sendGridToggle(){
-    setSendGridClicked(true);
+  
+  function sendGridCallBack(){
+    window.location.reload()
   }
 
-  function sendGrid(event) {
+function sendGridToggle(){
+  setSendGridClicked(true);
+}
+
+  function sendGrid(callback) {
     setSendGridClicked(true);
     console.log("URL and FILEID and Email: ", url, fileId, recipientEmail);
     // console.log("Magical URL!", `http://localhost:3000/download/?email=${recipientEmail}&url=${url}&fileid=${fileId}`)
@@ -336,7 +341,7 @@ const CreateFileForm = () => {
       .then(response => {
         console.log("Response DATA HERE!", response.data);
         alert(`Thank you. Your file has been sent to ${recipientEmail}`)
-        setSendGridClicked(false);
+        callback()
       })
       .catch(error => {
         console.log("Error! RIGHT HERE", error);
