@@ -136,6 +136,9 @@ background-color: #ffffff;
 padding: 0 3.5%
 height: 100%;
 cursor: pointer;
+&:hover {
+  background-color: #e6e6e6;
+}
 `;
 
  
@@ -148,13 +151,11 @@ padding: 10% 0%;
 min-width: 170px; 
 border: none;
 color: #206db5;
-background-color: #ffffff;
+background-color: inherit;
 border-left: 1px solid #206db5;
 font-size: 1.8rem;
 margin-left: 4%;
-&:hover {
-  background-color: #e6e6e6;
-}
+
 // @media(max-width: 390px) {
 //   width: 55%;
 // }
@@ -310,14 +311,16 @@ const FileDisplay = () => {
                       Type: {file.file_type}
                     </Sharedh4>
                     <Sharedh4>
-                      Date Uploaded: {file.upload_date.slice(0, 10)}
+                      Date: {file.upload_date.slice(0, 10)}
                     </Sharedh4>
                     <Sharedh4>
-                      Time Uploaded: {file.upload_date.slice(11, -5)}
+                      Time: {file.upload_date.slice(11, -5)}
                     </Sharedh4>
                     </TileTextDiv>
-                    <ButtonDiv>
-                      <FaFileAlt size={30} color="#206db5" />
+                    <ButtonDiv value={file.file_id}
+                        onClick={ModalSwitchOn}>
+                      <FaFileAlt size={30} color="#206db5" value={file.file_id}
+                        onClick={ModalSwitchOn}/>
                       <HistoryH3
                         value={file.file_id}
                         onClick={ModalSwitchOn}
@@ -358,19 +361,19 @@ const FileDisplay = () => {
                       Type: {selectedFile.file_type}
                     </Sharedh4>
                     <Sharedh4>
-                      Date Uploaded: {selectedFile.upload_date.slice(0, 10)}
+                      Date: {selectedFile.upload_date.slice(0, 10)}
                     </Sharedh4>
                     <Sharedh4>
-                      Time Uploaded: {selectedFile.upload_date.slice(11, -5)}
+                      Time: {selectedFile.upload_date.slice(11, -5)}
                     </Sharedh4>
           <h3>Total Downloads: {viewedHistory.length} </h3>
           {viewedHistory.map((file, index) => {
             return (
               <div key={index}>
                 <h3>
-                  Download Email: {file.email} <br />
-                  Download Date: {file.download_date.slice(0, 10)}
-                  <br /> Download Time: {file.download_date.slice(11, -5)}
+                  Email: {file.email} <br />
+                  Date: {file.download_date.slice(0, 10)}
+                  <br/>Time: {file.download_date.slice(11, -5)}
                 </h3>
               </div>
             );
