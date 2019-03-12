@@ -1,6 +1,6 @@
 import React from "react";
 import NavHeader from "./navheader.js";
-
+import { Link } from "react-router-dom";
 import styled from "styled-components"; 
 import img from "../../src/assets/movebyteslogo.png";
 import awsimg from "../../src/assets/1_tFl-8wQUENETYLjX5mYWuA.png";
@@ -28,6 +28,7 @@ const HeaderDiv = styled.div`
   height: 15%;
   width: 100%;
   display: flex;
+  justify-content: space-between;
   align-items: center;
   @media (max-width: 390px) {
     width: 90%;
@@ -228,6 +229,52 @@ const LineHeightH4 = styled.h4`
 
 `;
 
+const LoginContainer = styled.div`
+  width: 10%;
+  min-width: 175px;
+  display: flex;
+  margin: 10px 5% 10px 0;
+  border-radius: 10px;
+  background-color: #206DB5;
+  @media (max-width: 460px) {
+    display: none;
+  }
+`;
+
+const LoginDiv = styled.div`
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+  min-height: 40px;
+  background-color: #206DB5;
+  border-radius: 10px;
+  @media(max-width: 390px) {
+  }
+`;
+
+const MenuDiv = styled.div`
+  width: 100%;
+  height: 100%;
+  font-weight: 400;
+`;
+
+const LinkStyles = styled.div`
+  font-size: 2rem;  
+  border-radius
+  background-color: white;
+  color:  white;
+  text-align: center;
+  height: 100%;
+  width: 100%;
+  border-radius: 10px;
+  display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+`;
+
 //NEW STUFF
 const CTA = styled.div`
   cursor: pointer;
@@ -262,6 +309,13 @@ export const LandingView = props => {
 
       <HeaderDiv>
         <HeaderIMG src={img} alt="mblogo" />
+        <LoginContainer>
+        <LoginDiv>
+          <MenuDiv onClick={props.lockOpen}>
+            <LinkStyles>Log In</LinkStyles>
+          </MenuDiv>
+        </LoginDiv>
+        </LoginContainer>
       </HeaderDiv>
       <LandingCardsContainer>
         <CTA className="play-btn">
