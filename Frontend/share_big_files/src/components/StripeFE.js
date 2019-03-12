@@ -23,6 +23,7 @@ function changeDBStatustoPaid() {
     console.log("Error! RIGHT HERE", error)
   })
 }
+ 
 
 const Stripe = () => {
   // const [paid, setPaid] = useState(false)
@@ -63,7 +64,7 @@ const Stripe = () => {
       locale="auto"
       zipCode={false}
       billingAddress={false}
-      stripeKey={publishableKey}
+      stripeKey={publishableKey} 
      // image="https://yourdomain.tld/images/logo.svg"
     />
   );

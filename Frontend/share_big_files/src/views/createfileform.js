@@ -249,8 +249,7 @@ const CreateFileForm = () => {
       .catch(err => console.log(err));
   }
 
-  const hiddenStyle = {
-    border: "1px solid red",
+  const hiddenStyle = { 
     height: "7%",
     minHeight: "65px",
     width: "17%",
