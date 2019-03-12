@@ -172,7 +172,7 @@ const Billing = () => {
             <ListItem>See who downloaded your file</ListItem>
             <ListItem>7 days of file storage</ListItem>
           </div>
-          <h2>Click below for 70 day file storage</h2> <StripeDiv><Stripe /></StripeDiv>
+          <h2>Click below for 70 day storage</h2> <StripeDiv><Stripe /></StripeDiv>
           <SignoutDiv><SignOut/></SignoutDiv>
         </TextDiv>
        

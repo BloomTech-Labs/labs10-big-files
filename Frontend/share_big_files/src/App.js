@@ -9,6 +9,7 @@ import { Route } from "react-router-dom";
 import "./App.css";
 import styled from "styled-components";
 import { Auth0Lock } from "auth0-lock";
+import img from "../src/assets/thisone.png";
 
 const AppContainer = styled.div`
   height: auto;
@@ -23,7 +24,18 @@ var domain = "lambdabackendproject.auth0.com";
 var options = {
   // autoclose: false,
   // closable: false,
-  avatar: null, 
+  // avatar: null,
+  languageDictionary: {
+    title: '',
+    signUpTitle: '',
+     
+  },
+ 
+  theme: {
+    logo: `${img}`,
+    primaryColor: '#206DB5',
+    foregroundColor: 'lightgray'
+  }
 };
 
 var lock = new Auth0Lock(clientId, domain, options);
