@@ -17,9 +17,7 @@ const SharedBoxHolder = styled.div`
   border-radius: 5px;
   margin: 0 1.5% 3% 1.5%; 
   min-width: 245px;
- @media(max-width: 1175px){
-   width: 100%;
- }
+ 
  @media(max-width: 900px){
   width: 47%;
   margin: 0;
@@ -56,6 +54,7 @@ padding: 0;
   margin: 0;
   margin-left: 5%;
   width: auto;
+  max-width: 90%;
   height: fit-content;
 @media(max-width: 390px){ 
   
@@ -70,6 +69,13 @@ padding: 0;
   margin: 0;
   margin-left: 5%;
   width: auto; 
+ 
+max-width: 88%;
+&:hover{ 
+  overflow: visible;
+  overflow-wrap: break-word;
+  white-space: normal;
+  height: auto;
 @media(max-width: 390px){ 
   height: fit-content; 
 `;
@@ -82,6 +88,9 @@ width:55%
   margin-right: 4%;
   justify-content: space-around;
   margin-left: 2%;
+  @media(max-width: 1297px){
+    width: 53%;
+  }
   @media(max-width: 900px) {
     height: 100%;
     width: 90%; 
@@ -150,6 +159,7 @@ margin-left: 4%;
 //   width: 55%;
 // }
 `;
+
 
 const ReturnButton = styled.button`
 height: 50px;

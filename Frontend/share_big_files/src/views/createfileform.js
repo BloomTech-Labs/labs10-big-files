@@ -16,6 +16,7 @@ const CreateEditDiv = styled.div`
   line-height: 3;
   border-radius: 10px;
   background-color: white;
+  z-index: 0;
    @media(max-width: 900px){
      width: 90%;
      min-width: 275px;
@@ -332,10 +333,10 @@ function sendGridToggle(){
     };
 
     console.log(myDetails);
-    // if (fileName === null) {
-    //   return alert("File must have filename");
-    // } else
-    //  {
+    if (fileName === null || recipientEmail === null) {
+      return alert("Filename and recipient email are required to send file");
+    } else
+     {
     axios
       .post("https://api.backendproxy.com/api/sendgrid/send", myDetails)
       .then(response => {
@@ -347,7 +348,7 @@ function sendGridToggle(){
         console.log("Error! RIGHT HERE", error);
       });
   }
-// }
+}
   return (
     <CreateEditDiv>
       <AddFileDiv>
