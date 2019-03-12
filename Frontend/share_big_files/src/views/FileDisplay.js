@@ -306,7 +306,10 @@ const FileDisplay = () => {
                   <InnerTileDiv>
                     <TileTextDiv>
                       <Sharedh3>{file.filename}</Sharedh3>
-                      <Sharedh4>Size: {`${file.file_size / 1000} KB`}</Sharedh4>
+                      <Sharedh4>
+                        Size: {`${(file.file_size / byteDivider).toFixed(2)}`}
+                        {byteType}
+                      </Sharedh4>
                       <Sharedh4>Type: {file.file_type}</Sharedh4>
                       <Sharedh4>
                         Date: {file.upload_date.slice(5, 7)}/
