@@ -15,22 +15,19 @@ const SharedBoxHolder = styled.div`
   align-items: center; 
   background-color: white;
   border-radius: 5px;
+ 
   padding-top: 15px;
   padding-bottom: 15px;
+ 
  
   margin: 0 1.5% 3% 1.5%; 
   min-width: 245px;
  
- @media(max-width: 1175px){
-   width: 100%;
- }
-
  @media(max-width: 900px){
   width: 47%;
   margin: 0;
   margin-bottom: 8px; 
 }
-
 @media(max-width: 570px){
   width: 100%;
   margin: 0;
@@ -51,13 +48,6 @@ const SharedBoxHolder = styled.div`
     padding: 2% 0;
  
   }
-  // @media (max-width: 390px) {
-  //   // width: 43%;
-  //   height: 15rem;
-  //   margin: 1% auto;
-  //   text-align: none;
-
-  // }
 `;
 
 const Sharedh4 = styled.h4` 
@@ -69,6 +59,7 @@ padding: 0;
   margin: 0;
   margin-left: 5%;
   width: auto;
+  max-width: 90%;
   height: fit-content;
 @media(max-width: 390px){ 
   
@@ -83,6 +74,13 @@ padding: 0;
   margin: 0;
   margin-left: 5%;
   width: auto; 
+ 
+max-width: 88%;
+&:hover{ 
+  overflow: visible;
+  overflow-wrap: break-word;
+  white-space: normal;
+  height: auto;
 @media(max-width: 390px){ 
   height: fit-content; 
 `;
@@ -95,6 +93,9 @@ width:55%
   margin-right: 4%;
   justify-content: space-around;
   margin-left: 2%;
+  @media(max-width: 1297px){
+    width: 53%;
+  }
   @media(max-width: 900px) {
     height: 100%;
     width: 90%; 
@@ -144,9 +145,6 @@ cursor: pointer;
 
  
 const HistoryH3 = styled.button`
-// display: flex;
-// align-items: center;
-// justify-content: center;
 width: fit-content;
 line-height: 0;
 margin: 0;
@@ -159,11 +157,14 @@ background-color: #ffffff;
 border-left: 1px solid #206db5;
 font-size: 1.8rem;
 margin-left: 4%;
+&:hover {
+  background-color: #e6e6e6;
 }
 // @media(max-width: 390px) {
 //   width: 55%;
 // }
 `;
+
 
 const ReturnButton = styled.button`
 height: 50px;
