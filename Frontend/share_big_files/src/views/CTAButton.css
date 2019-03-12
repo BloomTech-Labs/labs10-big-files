@@ -12,7 +12,7 @@
     max-height: 300px;
     max-width: 300px;
     background: radial-gradient( rgba(255, 255, 255, 1) 60%, #206DB5 62%);
-    border-radius: 50%;
+    border-radius: 5px;
     position: relative;
     display: block;
     margin: 10px;
@@ -55,7 +55,7 @@
     -webkit-animation-timing-function: steps;
     animation-timing-function: steps;
     opacity: 1;
-    border-radius: 50%;
+    border-radius: 5px;
     border: 5px solid rgba(255, 255, 255, .75);
     top: -27%;
     left: -26%;

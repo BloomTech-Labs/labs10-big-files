@@ -134,7 +134,7 @@ height: fit-content;
 width: fit-content; 
 align-items: center;
 margin-left: 5%;
-border-radius: 7px;
+border-radius: 5px;
 display: flex;
 border:1px solid #206db5
 background-color: #ffffff;
@@ -170,7 +170,7 @@ margin-left: 4%;
 const ReturnButton = styled.button`
 height: 50px;
 width: 200px;
-border-radius 7px;
+border-radius 5px;
 border: white;
 font-weight: bold;
 letter-spacing: .15em;
