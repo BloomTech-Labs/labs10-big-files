@@ -5,7 +5,6 @@ import Stripe from "../components/StripeFE";
 import SignOut from "../components/signOut";
 
 const BasicMembershipDiv = styled.div`
-  padding: 15px;
   height: fit-content;
   width: auto;
   // width: 44rem;
@@ -26,7 +25,6 @@ const BasicMembershipDiv = styled.div`
 `;
 
 const ProMembershipDiv = styled.div`
-  padding: 15px;
   height: fit-content;
   width: 40rem; 
   border-radius: 10px;
@@ -174,7 +172,7 @@ const Billing = () => {
             <ListItem>See who downloaded your file</ListItem>
             <ListItem>7 days of file storage</ListItem>
           </div>
-          <h2>Click below to get 70 day file storage</h2> <StripeDiv><Stripe /></StripeDiv>
+          <h2>Click below for 70 day file storage</h2> <StripeDiv><Stripe /></StripeDiv>
           <SignoutDiv><SignOut/></SignoutDiv>
         </TextDiv>
        
