@@ -316,7 +316,7 @@ const FileDisplay = () => {
                       Type: {file.file_type}
                     </Sharedh4>
                     <Sharedh4>
-                      Date: {file.upload_date.slice(0, 10)}
+                      Date: {file.upload_date.slice(5, 7)}/{file.upload_date.slice(8, 10)}/{file.upload_date.slice(0, 4)}
                     </Sharedh4>
                     <Sharedh4>
                       Time: {file.upload_date.slice(11, -5)}
