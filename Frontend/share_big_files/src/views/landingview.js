@@ -365,35 +365,35 @@ export const LandingView = props => {
       </ImageDiv>
 
       <ImageDiv>
-        <div class="price-table-wrapper">
-          <div class="pricing-table">
-            <h2 class="pricing-table__header">- BASIC -</h2>
-            <h3 class="pricing-table__price">Free</h3>
+        <div className="price-table-wrapper">
+          <div className="pricing-table">
+            <h2 className="pricing-table__header">- BASIC -</h2>
+            <h3 className="pricing-table__price">Free</h3>
             <a
               target="_blank"
-              class="pricing-table__button"
+              className="pricing-table__button"
               href="http://www.google.com"
             >
               Join Now!
             </a>
-            <ul class="pricing-table__list">
+            <ul className="pricing-table__list">
               <li>Files up to 2 gigabytes</li>
               <li>50gb storage space</li>
               <li>Host files for up to 7 days</li>
               <li>24 hour support</li>
             </ul>
           </div>
-          <div class="pricing-table featured-table">
-            <h2 class="pricing-table__header">- PREMIUM -</h2>
-            <h3 class="pricing-table__price">$9.99</h3>
+          <div className="pricing-table featured-table">
+            <h2 className="pricing-table__header">- PREMIUM -</h2>
+            <h3 className="pricing-table__price">$9.99</h3>
             <a
               target="_blank"
-              class="pricing-table__button"
+              className="pricing-table__button"
               href="http://www.google.com"
             >
               Join Now!
             </a>
-            <ul class="pricing-table__list">
+            <ul className="pricing-table__list">
               <li>Files up to 4 gigabytes</li>
               <li>100gb storage space</li>
               <li>Host files for up to 1 month</li>
@@ -404,72 +404,72 @@ export const LandingView = props => {
       </ImageDiv>
       <div id="cubeContainer">
         <div id="cubeWrapper">
-          <div class="head">
+          <div className="head">
             <h1>MEET THE TEAM</h1>
           </div>
           <div id="cubes">
             <a href="https://github.com/agreb17">
               {" "}
-              <div class="cube p2">
-                <div class="name">
+              <div className="cube p2">
+                <div className="name">
                   <h1>Anthony</h1>
                   <p>Kentucky</p>
                 </div>
-                <div class="innerBorder" />
-                <div class="darken" />
-                <div class="content" />
+                <div className="innerBorder" />
+                <div className="darken" />
+                <div className="content" />
               </div>
             </a>
             <a href="https://github.com/ThomasKisner">
-              <div class="cube p1">
-                <div class="name">
+              <div className="cube p1">
+                <div className="name">
                   <h1>Tom</h1>
                   <p>South Carolina</p>
                 </div>
-                <div class="innerBorder" />
-                <div class="darken" />
-                <div class="content" />
+                <div className="innerBorder" />
+                <div className="darken" />
+                <div className="content" />
               </div>
             </a>
             <a href="https://github.com/cassidyjamesw">
-              <div class="cube p3">
-                <div class="name">
+              <div className="cube p3">
+                <div className="name">
                   <h1>James Cassidy</h1>
                   <p>New York</p>
                 </div>
-                <div class="innerBorder" />
-                <div class="darken" />
-                <div class="content" />
+                <div className="innerBorder" />
+                <div className="darken" />
+                <div className="content" />
               </div>
             </a>
             <a href="https://github.com/kkhaag">
-              <div class="cube p4">
-                <div class="name">
+              <div className="cube p4">
+                <div className="name">
                   <h1>Keith H</h1>
                   <p>California</p>
                 </div>
-                <div class="innerBorder" />
-                <div class="darken" />
-                <div class="content" />
+                <div className="innerBorder" />
+                <div className="darken" />
+                <div className="content" />
               </div>
             </a>
             <a href="https://github.com/akshay-gadkari">
-              <div class="cube p5">
-                <div class="name">
+              <div className="cube p5">
+                <div className="name">
                   <h1>Akshay</h1>
                   <p>California</p>
                 </div>
-                <div class="innerBorder" />
-                <div class="darken" />
-                <div class="content" />
+                <div className="innerBorder" />
+                <div className="darken" />
+                <div className="content" />
               </div>
             </a>
           </div>
 
-          <div class="moreTeam">
+          <div className="moreTeam">
             <a href="https://lambdaschool.com/">
               <span>Trained by Lambda</span>
-              <span class="fas fa-angle-right" />
+              <span className="fas fa-angle-right" />
             </a>
           </div>
         </div>
