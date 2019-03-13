@@ -196,6 +196,10 @@ width: 100%
 margin-bottom: 7px; 
 `;
 
+const ViewedDiv = styled.div`
+margin-bottom: 20px;
+`;
+
 const FileDisplay = () => {
   const [email, setEmail] = useState(null);
   const [userData, setUserData] = useState(null);
@@ -359,13 +363,13 @@ const FileDisplay = () => {
           <h3>Total Downloads: {viewedHistory.length} </h3>
           {viewedHistory.map((file, index) => {
             return (
-              <div key={index}>
+              <ViewedDiv key={index}>
 
                 <h2>Date: {file.download_date.slice(0, 10)} </h2>
                 <Sharedh4>Email: {file.email} </Sharedh4>
                 <Sharedh4>Time: {file.download_date.slice(11, -5)}</Sharedh4>
 
-              </div>
+              </ViewedDiv>
             );
           })}
           <ReturnButtonDiv>
