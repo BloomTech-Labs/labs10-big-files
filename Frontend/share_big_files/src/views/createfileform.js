@@ -108,7 +108,7 @@ const SendGridDiv = styled.div`
   background-color: #206db5;
  
  
- 
+  padding: 1.3%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -124,7 +124,7 @@ line-height: 2;
   font-style: Raleway
   font-weight: bold;
   margin: 0; 
-  padding-left: 2.5%; 
+  padding-left: 2.5%;
   width: fit-content;
   height: fit-content; 
   `;
@@ -165,11 +165,12 @@ const BorderDiv = styled.div`
 const FlexDiv = styled.div`
 height: fit-content;
 width: fit-content;
-min-width: 270px
+min-width: 270px;
+  padding: 1.3%;
   display: flex;
   align-items: center; 
   justify-content: center; 
-  border-radius: 10px;
+  border-radius: 5px;
  
   background-color: #206db5;
   margin: 2.5% auto;

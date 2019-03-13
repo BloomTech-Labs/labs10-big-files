@@ -115,9 +115,9 @@ margin-bottom: 0;
 `;
 
 const SignoutDiv = styled.div`
-// display: flex;
-// width: 100%;
-// justify-content: center
+ display: flex;
+ width: 100%;
+ justify-content: center
 `;
 
 
