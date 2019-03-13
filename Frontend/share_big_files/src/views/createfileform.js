@@ -1,10 +1,15 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-import { FaPlusCircle, FaRegEnvelope } from "react-icons/fa";
-import "filepond/dist/filepond.min.css";
 import axios from "axios";
+import { FaPlusCircle, FaRegEnvelope, FaBluetooth } from "react-icons/fa";
+import "filepond/dist/filepond.min.css";
+import Alert from 'react-s-alert';
 import "./FloatingLabel.css"
 import "./ValidationStyle.css"
+require('react-s-alert/dist/s-alert-default.css');
+require('react-s-alert/dist/s-alert-css-effects/genie.css');
+require('react-s-alert/dist/s-alert-css-effects/bouncyflip.css');
+
 
 const CreateFileForm = () => {
   const [file, setFile] = useState("");
@@ -89,7 +94,6 @@ function handleFileUpload(event) {
   } else {
     setFile(event.target.files);
     setUploadedFile(event.target.files[0].name)
-    console.log('event SIZE?  :', event.target.files)
     // if (file === "") {
       //   setFileName(event.target.files[0].name);
       // }
@@ -107,7 +111,7 @@ function handleFileUpload(event) {
       .get(`https://api.backendproxy.com/api/users/${profile.nickname}`)
       .then(response => {
         console.log(response);
-        setBilling(response.data[0].paid);
+        // setBilling(response.data[0].paid);
       })
       .catch(err => console.log(err));
   };
@@ -159,7 +163,6 @@ function handleFileUpload(event) {
         let urlString = response.data.rows[0].url;
         urlString = urlString.split("/");
         setUrl(urlString[3]);
-        console.log(response);
       })
       .catch(error => console.log(error));
     } else {
@@ -201,8 +204,14 @@ function handleFileUpload(event) {
         .post("https://api.backendproxy.com/api/sendgrid/send", myDetails)
         .then(response => {
           console.log('SENDGRID response: ', response)
-          callback();
-          alert(`Your file ${fileName} has been sent to ${recipientEmail}`);
+          // callback();
+          Alert.info(`<h1>${fileName} has successfully been sent to ${recipientEmail}!</h1>`, {
+            position: 'top',
+            effect: 'genie',
+            timeout: 5000,
+            offset: 250,
+            html: true,
+          })
         })
         .catch(error => {
           console.log("Error! RIGHT HERE", error);
@@ -274,6 +283,7 @@ function handleFileUpload(event) {
                 <WhiteBorder></WhiteBorder>
             <SendGridH2>Share Via Email</SendGridH2>
         </SendGridDiv>
+        <Alert stack={{limit: 3}} html={true} />
     </CreateEditDiv>
   );
 };
