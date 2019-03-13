@@ -83,7 +83,7 @@ const CreateFileForm = () => {
 /* ------------- File Upload --------------- */
 // Takes the uploaded file and sets it to state. Also sets setUploadFile to file name
 function handleFileUpload(event) {
-  if (event.target.files[0].size > 100000) {
+  if (event.target.files[0].size > 4000000) {
     console.log("Too Large")
     setUploadedFileSize("File's may not exceed 4MB")
   } else {
