@@ -10,20 +10,21 @@ const CreateFileForm = () => {
   const [file, setFile] = useState("");
   const [recipientEmail, setRecipientEmail] = useState("");
   const [uploadedFile, setUploadedFile] = useState("");
-  const [emailSubject, setEmailSubject] = useState(null);
-  const [message, setMessage] = useState(null);
+  const [uploadedFileSize, setUploadedFileSize] = useState("");
+  const [emailSubject, setEmailSubject] = useState(" ");
+  const [message, setMessage] = useState(" ");
   const [fileName, setFileName] = useState("");
-  const [url, setUrl] = useState(null);
-  const [fileId, setFileId] = useState(null);
-  const profile = JSON.parse(localStorage.getItem("profile"));
-  const senderEmail = profile.email;
-  const [billing, setBilling] = useState(null);
-  const [displayName, setDisplayName] = useState(null);
+  const [url, setUrl] = useState("");
+  const [fileId, setFileId] = useState("");
+  const [billing, setBilling] = useState("");
+  const [displayName, setDisplayName] = useState("");
   const [sendGridClicked, setSendGridClicked] = useState(false);
   const [touched, setTouched] = useState({
-      fileName: false,
-      recipientEmail: false
+    fileName: false,
+    recipientEmail: false
   })
+  const profile = JSON.parse(localStorage.getItem("profile"));
+  const senderEmail = profile.email;
   
   
   /* *********************** Functions *********************** */ 
@@ -76,18 +77,23 @@ const CreateFileForm = () => {
       return;
     }
     setSendGridClicked(true);
-    alert(`Your file ${fileName} has been sent to ${recipientEmail}`);
   };
 
 
 /* ------------- File Upload --------------- */
 // Takes the uploaded file and sets it to state. Also sets setUploadFile to file name
 function handleFileUpload(event) {
-  setFile(event.target.files);
-  setUploadedFile(event.target.files[0].name)
-  // if (file === "") {
-  //   setFileName(event.target.files[0].name);
-  // }
+  if (event.target.files[0].size > 100000) {
+    console.log("Too Large")
+    setUploadedFileSize("File's may not exceed 4MB")
+  } else {
+    setFile(event.target.files);
+    setUploadedFile(event.target.files[0].name)
+    console.log('event SIZE?  :', event.target.files)
+    // if (file === "") {
+      //   setFileName(event.target.files[0].name);
+      // }
+    }
 }
 
 
@@ -140,8 +146,8 @@ function handleFileUpload(event) {
     const formData = new FormData();
     formData.append("fileUpload", file[0]);
 
-    // if (billing)
-    // {
+    if (billing)
+    {
     axios
       .put("https://api.backendproxy.com/api/s3/paidfiles/", formData, {
         headers: {
@@ -156,21 +162,21 @@ function handleFileUpload(event) {
         console.log(response);
       })
       .catch(error => console.log(error));
-    // } else {
-    //   axios
-    //     .put("https://api.backendproxy.com/api/s3/files/", formData, {
-    //       headers: {
-    //         "Content-Type": "multipart/form-data"
-    //       }
-    //     })
-    //     .then(response => {
-    //       setFileId(response.data.rows[0].file_id);
-    //       let urlString = response.data.rows[0].url;
-    //       urlString = urlString.split("/");
-    //       setUrl(urlString[3]);
-    //     })
-    //     .catch(error => console.log(error));
-    // }
+    } else {
+      axios
+        .put("https://api.backendproxy.com/api/s3/files/", formData, {
+          headers: {
+            "Content-Type": "multipart/form-data"
+          }
+        })
+        .then(response => {
+          setFileId(response.data.rows[0].file_id);
+          let urlString = response.data.rows[0].url;
+          urlString = urlString.split("/");
+          setUrl(urlString[3]);
+        })
+        .catch(error => console.log(error));
+    }
   };
 
   function sendGridCallBack() {
@@ -179,9 +185,9 @@ function handleFileUpload(event) {
 
   function sendGrid(callback) {
     setSendGridClicked(true);
-    console.log("URL and FILEID and Email: ", url, fileId, recipientEmail);
 
     const uniqueURL = `https://sfiles.netlify.com/download/?email=${recipientEmail}&url=${url}&fileid=${fileId}`;
+    console.log('uniqueURL:', uniqueURL)
  
     const myDetails = {
       to: recipientEmail,
@@ -191,19 +197,16 @@ function handleFileUpload(event) {
       html: message,
       url: uniqueURL
     };
- 
-    if (fileName === null || recipientEmail === null) {
-      return alert("Filename and recipient email are required to send file");
-    } else {
       axios
         .post("https://api.backendproxy.com/api/sendgrid/send", myDetails)
         .then(response => {
+          console.log('SENDGRID response: ', response)
           callback();
+          alert(`Your file ${fileName} has been sent to ${recipientEmail}`);
         })
         .catch(error => {
           console.log("Error! RIGHT HERE", error);
         });
-    }
   }
 
   return (
@@ -218,7 +221,7 @@ function handleFileUpload(event) {
                 <FaPlusCircle size={50} color="#ffffff" style={faHover}/>
                 <TitleH2>Add Your File</TitleH2>
             </FlexDiv>
-            <CustomH3>{uploadedFile}</CustomH3>
+            {uploadedFile ? <CustomH3>{uploadedFile}</CustomH3> : <CustomError>{uploadedFileSize}</CustomError>}
         </AddFileDiv>
         <InnerDiv>
             <div className="field">
@@ -232,10 +235,10 @@ function handleFileUpload(event) {
                   onBlur={() => handleBlur("fileName")}
                   className={shouldMarkError("fileName") ? "error" : ""}
                   />
-                  <label for="Filename">Filename</label> 
+                  <label htmlFor="Filename">Filename</label> 
             </div>
 
-            <div class="field">
+            <div className="field">
                 <input
                   type="text"
                   id="Recipient"
@@ -244,7 +247,7 @@ function handleFileUpload(event) {
                   onBlur={() => handleBlur("recipientEmail")}
                   className={shouldMarkError("recipientEmail") ? "error" : ""}
                   />
-                  <label for="Recipient">Recipient Email</label> 
+                  <label htmlFor="Recipient">Recipient Email</label> 
             </div>
             <div className="field">
                 <input
@@ -253,7 +256,7 @@ function handleFileUpload(event) {
                   placeholder="Family Picture"
                   onChange={e => setEmailSubject(e.target.value)}
                   />
-                  <label for="subject">Email Subject (optional)</label> 
+                  <label htmlFor="subject">Email Subject (optional)</label> 
             </div>
             <div className="field">
                 <textarea
@@ -262,7 +265,7 @@ function handleFileUpload(event) {
                   placeholder="Here's our most recent family picture."
                   onChange={e => setMessage(e.target.value)}
                   />
-                  <label for="message">Email Message (optional)</label> 
+                  <label htmlFor="message">Email Message (optional)</label> 
             </div>
         </InnerDiv>
         <BorderDiv />
@@ -342,7 +345,7 @@ const TitleH2 = styled.h1`
     cursor: pointer;
 `;
 
-const SendGridDiv = styled.div`
+const SendGridDiv = styled.button`
   width: 220px;
   height: 49px;
   border-radius: 5px;
@@ -381,6 +384,14 @@ const AddFileDiv = styled.div`
 const CustomH3 = styled.h4`
   margin: 0 auto;
   line-height: 1;
+  padding-bottom: 2%
+  
+  ` 
+  const CustomError = styled.h4`
+  margin: 0 auto;
+  line-height: 1;
+  color: red;
+  padding-bottom: 2%
 
 ` 
 const FileInput = styled.input`
