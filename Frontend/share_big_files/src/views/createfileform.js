@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import ReactDOM from "react-dom";
 import styled from "styled-components";
 import { FaPlusCircle, FaRegEnvelope } from "react-icons/fa";
 import "filepond/dist/filepond.min.css";
@@ -8,10 +7,8 @@ import "./FloatingLabel.css"
 import "./ValidationStyle.css"
 
 
-
-
 const CreateFileForm = () => {
-  const [file, setFile] = useState(null);
+  const [file, setFile] = useState("");
   const [recipientEmail, setRecipientEmail] = useState("");
   const [uploadedFile, setUploadedFile] = useState("");
   const [emailSubject, setEmailSubject] = useState(null);
@@ -29,6 +26,7 @@ const CreateFileForm = () => {
       recipientEmail: false
   })
   
+  
   /* *********************** Functions *********************** */ 
  
   /* -------------Use Effect--------------- */
@@ -45,14 +43,15 @@ const CreateFileForm = () => {
   }, [file, sendGridClicked]);
   
   
-  /* -------------Error Handling--------------- */
-  const errors = validate(fileName, recipientEmail);
+  /* ------------- Error Handling --------------- */
+  const errors = validate(fileName, recipientEmail, uploadedFile);
   const isDisabled = Object.keys(errors).some(x => errors[x]);
   
-  function validate(fileName, recipientEmail) {
+  function validate(fileName, recipientEmail, uploadedFile) {
     return {
       fileName: fileName.length === 0,
-      recipientEmail: recipientEmail.length === 0
+      recipientEmail: recipientEmail.length === 0,
+      uploadedFile: uploadedFile.length === 0,
     };
   }
 
@@ -61,7 +60,7 @@ const CreateFileForm = () => {
   };
 
   function canBeSubmitted() {
-    const errors = validate(fileName, recipientEmail);
+    const errors = validate(fileName, recipientEmail, uploadedFile);
     const isDisabled = Object.keys(errors).some(x => errors[x]);
     return !isDisabled;
   }
@@ -82,17 +81,18 @@ const CreateFileForm = () => {
   };
 
 
-/* -------------File Upload--------------- */
+/* ------------- File Upload --------------- */
+// Takes the uploaded file and sets it to state. Also sets setUploadFile to file name
 function handleFileUpload(event) {
   setFile(event.target.files);
   setUploadedFile(event.target.files[0].name)
-  if (file === "") {
-    setFileName(event.target.files[0].name);
-  }
+  // if (file === "") {
+  //   setFileName(event.target.files[0].name);
+  // }
 }
 
 
-/* -------------File Upload--------------- */
+/* ------------- ??? --------------- */
 
 
 
@@ -107,38 +107,18 @@ function handleFileUpload(event) {
       .catch(err => console.log(err));
   };
 
-  function handleNameInput(event) {
-    setFileName(event.target.value);
-    console.log("File Name: " + fileName);
-  }
-
-  function handleEmailInput(event) {
-    setRecipientEmail(event.target.value);
-    console.log("Recipient Email: " + recipientEmail);
-  }
-
-  function handleEmailSubjectInput(event) {
-    setEmailSubject(event.target.value);
-    console.log("Email Subject: " + emailSubject);
-  }
-
-  function handleMessage(event) {
-    setMessage(event.target.value);
-    console.log("Message: " + message);
-  }
 
   function submitThenSend(response, callback) {
     console.log(response);
     callback();
   }
+
+
   function displayNameCallback() {
     setDisplayName(file.fileName);
   }
 
  
-
-
-
   function submitFile() {
 
       const sendObject = {
@@ -155,7 +135,6 @@ function handleFileUpload(event) {
         })
         .catch(err => console.log(err));
   }
-
 
 
   const sendFile = () => {
@@ -199,10 +178,6 @@ function handleFileUpload(event) {
     window.location.reload();
   }
 
-
-    
-
-
   function sendGrid(callback) {
     setSendGridClicked(true);
     console.log("URL and FILEID and Email: ", url, fileId, recipientEmail);
@@ -224,7 +199,6 @@ function handleFileUpload(event) {
       axios
         .post("https://api.backendproxy.com/api/sendgrid/send", myDetails)
         .then(response => {
-          alert(`Thank you. Your file has been sent to ${recipientEmail}`);
           callback();
         })
         .catch(error => {
@@ -233,79 +207,75 @@ function handleFileUpload(event) {
     }
   }
 
-
   return (
     <CreateEditDiv>
-      <AddFileDiv>
-        <FlexDiv>
-          <FileInput
-            type="file"
-            onChange={handleFileUpload}
-            style={hiddenStyle}
-          />
-          <FaPlusCircle size={50} color="#ffffff" style={faHover}/>
-          <TitleH2>Add Your File</TitleH2>
-        </FlexDiv>
-        <CustomH3>{uploadedFile}</CustomH3>
+        <AddFileDiv>
+            <FlexDiv>
+                <FileInput
+                  type="file"
+                  onChange={handleFileUpload}
+                  style={hiddenStyle}
+                />
+                <FaPlusCircle size={50} color="#ffffff" style={faHover}/>
+                <TitleH2>Add Your File</TitleH2>
+            </FlexDiv>
+            <CustomH3>{uploadedFile}</CustomH3>
+        </AddFileDiv>
+        <InnerDiv>
+            <div className="field">
+                <input
+                  value={fileName}
+                  type="text"
+                  id="Filename"
+                  name="setFileName"
+                  placeholder="MyFamilyPicture.jpg"
+                  onChange={e => setFileName(e.target.value)} 
+                  onBlur={() => handleBlur("fileName")}
+                  className={shouldMarkError("fileName") ? "error" : ""}
+                  />
+                  <label for="Filename">Filename</label> 
+            </div>
 
-      </AddFileDiv>
-      <InnerDiv>
-        <div className="field">
-          <input
-            className={shouldMarkError("fileName") ? "error" : ""}
-            onBlur={() => handleBlur("fileName")}
-            type="text"
-            placeholder="MyFamilyPicture.jpg"
-            id="Filename"
-            name="setFileName"
-            value={fileName}
-            onChange={handleNameInput}
-            />
-            <label for="Filename">Filename</label> 
-        </div>
-
-        <div class="field">
-          <input
-            className={shouldMarkError("recipientEmail") ? "error" : ""}
-            onBlur={() => handleBlur("recipientEmail")}
-            type="text"
-            id="Recipient"
-            placeholder="JaneDoe@example.com"
-            onChange={handleEmailInput}
-            />
-            <label for="Recipient">Recipient Email</label> 
-        </div>
-
-        <div className="field">
-          <input
-            type="email"
-            id="subject"
-            placeholder="Family Picture"
-            onChange={handleEmailSubjectInput}
-            />
-            <label for="subject">Email Subject (optional)</label> 
-        </div>
-
-        <div className="field">
-          <textarea
-            type="text"
-            id="message"
-            placeholder="Here's our most recent family picture."
-            onChange={handleMessage}
-            />
-            <label for="message">Email Message (optional)</label> 
-        </div>
-
-      </InnerDiv>
-      <BorderDiv />
-      <SendGridDiv onClick={sendGridToggle} disabled={isDisabled}>
-        <FaRegEnvelope size={40} color="#ffffff" />
-        <WhiteBorder></WhiteBorder>
-        <SendGridH2>Share Via Email</SendGridH2>
-      </SendGridDiv>
+            <div class="field">
+                <input
+                  type="text"
+                  id="Recipient"
+                  placeholder="JaneDoe@example.com"
+                  onChange={e => setRecipientEmail(e.target.value)} 
+                  onBlur={() => handleBlur("recipientEmail")}
+                  className={shouldMarkError("recipientEmail") ? "error" : ""}
+                  />
+                  <label for="Recipient">Recipient Email</label> 
+            </div>
+            <div className="field">
+                <input
+                  type="email"
+                  id="subject"
+                  placeholder="Family Picture"
+                  onChange={e => setEmailSubject(e.target.value)}
+                  />
+                  <label for="subject">Email Subject (optional)</label> 
+            </div>
+            <div className="field">
+                <textarea
+                  type="text"
+                  id="message"
+                  placeholder="Here's our most recent family picture."
+                  onChange={e => setMessage(e.target.value)}
+                  />
+                  <label for="message">Email Message (optional)</label> 
+            </div>
+        </InnerDiv>
+        <BorderDiv />
+        <SendGridDiv onClick={sendGridToggle} disabled={isDisabled}>
+            <FaRegEnvelope size={40} color="#ffffff" />
+                <WhiteBorder></WhiteBorder>
+            <SendGridH2>Share Via Email</SendGridH2>
+        </SendGridDiv>
     </CreateEditDiv>
   );
 };
+
 
 export default CreateFileForm;
 
@@ -316,7 +286,6 @@ const hiddenStyle = {
   width: "17%",
   display: "block",
   minWidth: "290px",
-  /* top: 23%; */
   position: "absolute",
   opacity: "0",
   cursor: "pointer",
@@ -326,7 +295,6 @@ const hiddenStyle = {
 const faHover = {
   cursor: "pointer",
 }
-
 
 const CreateEditDiv = styled.div` 
   display: flex;
@@ -381,14 +349,12 @@ const SendGridDiv = styled.button`
   margin: 3% auto;
   background-color: #206db5;
  
- 
   padding: 1.3%;
   display: flex;
   justify-content: center;
   align-items: center;
   cursor: pointer;
   }
-
 `;
 
 const SendGridH2 = styled.h2`
@@ -409,7 +375,7 @@ const AddFileDiv = styled.div`
   flex-wrap: wrap;
   width: 100%;
   height: auto;
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid #206db5;
   margin: 0 auto;
   align-items: center; 
 `;
@@ -427,13 +393,11 @@ const FileInput = styled.input`
   display: none;
   height: 100%
   width: 100%;
- 
- 
 `;
 
 const BorderDiv = styled.div`
   height: 2px;
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid #206db5;
 `;
 
 const FlexDiv = styled.div`
