@@ -183,13 +183,17 @@ const FileDisplay = () => {
   const [email, setEmail] = useState(null);
   const [userData, setUserData] = useState(null);
   const [selectedFile, setSelectedFile] = useState({
-    filename: null,
-    file_size: null,
-    url: "https://s3lambdafiles123.s3.amazonaws.com/Pipfile-1551309371443",
-    upload_date: "2019-02-27T23:16:11.204Z",
-    file_id: "106"
+    file_id: "999999",
+    file_size: "0",
+    file_type: "Null",
+    filename: "Null",
+    fk_email: "Null",
+    fk_user_id: "null",
+    upload_date: "2019-03-12T19:50:42.104Z",
+    url:
+      "https://s3lambdafiles123.s3.us-east-2.amazonaws.com/thisone-1552420242334.png"
   });
-  const [viewedHistory, setViewedHistory] = useState(false);
+  const [viewedHistory, setViewedHistory] = useState([{email: "fake@gmail.com", download_date: "2019-03-13T16:41:04.493Z"}]);
   const [loaded, setLoaded] = useState(false);
   const [modalBoolean, setModalBoolean] = useState(false);
 
@@ -197,7 +201,11 @@ const FileDisplay = () => {
   const profile = JSON.parse(localStorage.getItem("profile"));
   useEffect(() => {});
 
-  const ModalSwitchOn = (event, index) => {
+  useEffect(()=>{
+    console.log(viewedHistory)
+  })
+
+  const ModalSwitchOn = (event, index, callback) => {
     // setTargetTile(event.target)
 
     var target = event.target.getAttribute("value");
@@ -215,10 +223,11 @@ const FileDisplay = () => {
         console.log("in request to get history");
         console.log(response);
         setViewedHistory(Array.from(response.data));
+        callback()
       })
       .catch(err => console.log(err));
 
-    setTimeout(modalSwitch, 1000);
+    setTimeout(modalSwitch, 0);
   };
 
   const modalSwitch = () => {
@@ -293,9 +302,52 @@ const FileDisplay = () => {
   if (!loaded) {
     return <></>;
   }
-  if (loaded && !modalBoolean) {
+  if (loaded ) {
     return (
       <DesperateDiv>
+        <ReactModal
+        isOpen={modalBoolean}
+        contentLabel="onRequestClose Example"
+        onRequestClose={ModalSwitchOff}
+        className="modal"
+        style={{
+          overlay: {
+            backgroundColor: "rgb(125, 125,125, 0.8);"
+          },
+          content: {
+            margin: "0 auto",
+            marginTop: "20px",
+            border: "none",
+          }
+        }}
+      >
+        <HistoryDiv>
+          <h2>File Name: {selectedFile.filename}</h2>
+          <Sharedh4>
+            Size:{" "}
+            {`${(selectedFile.file_size / selectedByteDivider).toFixed(2)}`}
+            {selectedByteType}
+          </Sharedh4>
+          <Sharedh4>Type: {selectedFile.file_type}</Sharedh4>
+          <Sharedh4>Date: {selectedFile.upload_date.slice(0, 10)}</Sharedh4>
+          <Sharedh4>Time: {selectedFile.upload_date.slice(11, -5)}</Sharedh4>
+          <h3>Total Downloads: {viewedHistory.length} </h3>
+          {viewedHistory.map((file, index) => {
+            return (
+              <div key={index}>
+                <h3>
+                  Email: {file.email} <br />
+                  Date: {file.download_date.slice(0, 10)}
+                  <br />
+                  Time: {file.download_date.slice(11, -5)}
+                </h3>
+              </div>
+            );
+          })}
+
+          <ReturnButton onClick={ModalSwitchOff}>Return</ReturnButton>
+        </HistoryDiv>
+        </ReactModal>
         {userData[0]
           ? userData.map((file, index) => {
               console.log("file:", file);
@@ -310,14 +362,10 @@ const FileDisplay = () => {
                         Size: {`${(file.file_size / byteDivider).toFixed(2)}`}
                         {byteType}
                       </Sharedh4>
-                      <Sharedh4>Type: {file.file_type}</Sharedh4>
                       <Sharedh4>
                         Date: {file.upload_date.slice(5, 7)}/
                         {file.upload_date.slice(8, 10)}/
                         {file.upload_date.slice(0, 4)}
-                      </Sharedh4>
-                      <Sharedh4>
-                        Time: {file.upload_date.slice(11, -5)}
                       </Sharedh4>
                     </TileTextDiv>
                     <ButtonDiv value={file.file_id} onClick={ModalSwitchOn}>
@@ -349,7 +397,7 @@ const FileDisplay = () => {
         className="modal"
         style={{
           overlay: {
-            backgroundColor: "lightgray"
+            backgroundColor: "rgb(125, 125,125, 0.8);"
           },
           content: {
             margin: "0 auto",
@@ -375,7 +423,6 @@ const FileDisplay = () => {
                   Email: {file.email} <br />
                   Date: {file.download_date.slice(0, 10)}
                   <br />
-                  Time: {file.download_date.slice(11, -5)}
                 </h3>
               </div>
             );
