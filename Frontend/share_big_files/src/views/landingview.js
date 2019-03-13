@@ -407,52 +407,64 @@ export const LandingView = props => {
             <h1>MEET THE TEAM</h1>
           </div>
           <div id="cubes">
-            <div class="cube p2">
-              <div class="name">
-                <h1>Anthony</h1>
-                <p>Kentucky</p>
+            <a href="https://github.com/agreb17">
+              {" "}
+              <div class="cube p2">
+                <div class="name">
+                  <h1>Anthony</h1>
+                  <p>Kentucky</p>
+                </div>
+                <div class="innerBorder" />
+                <div class="darken" />
+                <div class="content" />
               </div>
-              <div class="innerBorder" />
-              <div class="darken" />
-              <div class="content" />
-            </div>
-            <div class="cube p1">
-              <div class="name">
-                <h1>Tom</h1>
-                <p>South Carolina</p>
+            </a>
+            <a href="https://github.com/ThomasKisner">
+              <div class="cube p1">
+                <div class="name">
+                  <h1>Tom</h1>
+                  <p>South Carolina</p>
+                </div>
+                <div class="innerBorder" />
+                <div class="darken" />
+                <div class="content" />
               </div>
-              <div class="innerBorder" />
-              <div class="darken" />
-              <div class="content" />
-            </div>
-            <div class="cube p3">
-              <div class="name">
-                <h1>James Cassidy</h1>
-                <p>New York</p>
+            </a>
+            <a href="https://github.com/cassidyjamesw">
+              <div class="cube p3">
+                <div class="name">
+                  <h1>James Cassidy</h1>
+                  <p>New York</p>
+                </div>
+                <div class="innerBorder" />
+                <div class="darken" />
+                <div class="content" />
               </div>
-              <div class="innerBorder" />
-              <div class="darken" />
-              <div class="content" />
-            </div>
-            <div class="cube p4">
-              <div class="name">
-                <h1>Keith H</h1>
-                <p>California</p>
+            </a>
+            <a href="https://github.com/kkhaag">
+              <div class="cube p4">
+                <div class="name">
+                  <h1>Keith H</h1>
+                  <p>California</p>
+                </div>
+                <div class="innerBorder" />
+                <div class="darken" />
+                <div class="content" />
               </div>
-              <div class="innerBorder" />
-              <div class="darken" />
-              <div class="content" />
-            </div>
-            <div class="cube p5">
-              <div class="name">
-                <h1>Akshay</h1>
-                <p>California</p>
+            </a>
+            <a href="https://github.com/akshay-gadkari">
+              <div class="cube p5">
+                <div class="name">
+                  <h1>Akshay</h1>
+                  <p>California</p>
+                </div>
+                <div class="innerBorder" />
+                <div class="darken" />
+                <div class="content" />
               </div>
-              <div class="innerBorder" />
-              <div class="darken" />
-              <div class="content" />
-            </div>
+            </a>
           </div>
+
           <div class="moreTeam">
             <a href="https://lambdaschool.com/">
               <span>Trained by Lambda</span>
