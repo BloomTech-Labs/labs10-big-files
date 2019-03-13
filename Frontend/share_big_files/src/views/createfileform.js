@@ -93,6 +93,7 @@ const TitleH2 = styled.h1`
   border-left: 1px solid white;
   margin-left: 2.5%;
   padding-left: 2.5%;
+  padding-top: 0;
   font-size: 3rem;
   color: white;
   line-height: 2;
