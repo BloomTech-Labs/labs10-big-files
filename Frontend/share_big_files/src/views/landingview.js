@@ -330,7 +330,7 @@ export const LandingView = props => {
           <FreeTierDiv>
             <h2>Email Large Files</h2>
             <LineHeightH4>
-              Send files up to 2gb to recipients. Ensure they received them with
+              Send files up to 2MB to recipients. Ensure they received them with
               email confirmation, and check if they've downloaded with view and
               download tracking.{" "}
             </LineHeightH4>
@@ -345,7 +345,7 @@ export const LandingView = props => {
             <h2>Unlock Pro Tier!</h2>
             <LineHeightH4>
               For longer download and view history upgrade to Pro Tier Service.
-              Gain access to 70 day file storage and history reporting!
+              Gain access to 70 day file storage and support for 4MB files!
             </LineHeightH4>
           </Services>
         </FlexDiv>
@@ -377,8 +377,8 @@ export const LandingView = props => {
               Join Now!
             </a>
             <ul className="pricing-table__list">
-              <li>Files up to 2 gigabytes</li>
-              <li>50gb storage space</li>
+              <li>Files up to 2 megabytes</li>
+              <li>50GB storage space</li>
               <li>Host files for up to 7 days</li>
               <li>24 hour support</li>
             </ul>
@@ -395,7 +395,7 @@ export const LandingView = props => {
             </a>
             <ul className="pricing-table__list">
               <li>Files up to 4 gigabytes</li>
-              <li>100gb storage space</li>
+              <li>100GB storage space</li>
               <li>Host files for up to 1 month</li>
               <li>24 hour support</li>
             </ul>
