@@ -206,7 +206,7 @@ const FileDisplay = () => {
     console.log(viewedHistory)
   })
 
-  const modalSwitchFunction = (event, modalSwitch) => {
+  const modalSwitchFunction = (event) => {
     ModalSwitchOn(event, modalSwitch)
 
   }
