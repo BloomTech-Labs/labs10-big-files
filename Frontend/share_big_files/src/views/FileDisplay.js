@@ -65,6 +65,13 @@ padding: 0;
   
 `;
 
+const Modalh2 = styled.h2`
+overflow: visible;
+overflow-wrap: break-word;
+white-space: normal;
+height: auto;
+`;
+
 const Sharedh3 = styled.h3`
 height: fit-content; 
 overflow: hidden;
@@ -340,7 +347,7 @@ const FileDisplay = () => {
         }}
       >
         <HistoryDiv>
-          <h2>File Name: {selectedFile.filename}</h2>
+          <Modalh2>File Name: {selectedFile.filename}</Modalh2>
           <Sharedh4>
             Size:{" "}
             {`${(selectedFile.file_size / selectedByteDivider).toFixed(2)}`}
