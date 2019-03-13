@@ -201,10 +201,11 @@ function handleFileUpload(event) {
         .post("https://api.backendproxy.com/api/sendgrid/send", myDetails)
         .then(response => {
           console.log('SENDGRID response: ', response)
-          callback();
+          // callback();
           Alert.success(`Your file ${fileName} has been sent to ${recipientEmail}`, {
-            position: "top",
-            effect: "scale"
+            position: 'bottom-left',
+            effect: 'bouncyflip',
+            timeout: 'none',
           })
         })
         .catch(error => {
@@ -277,7 +278,7 @@ function handleFileUpload(event) {
                 <WhiteBorder></WhiteBorder>
             <SendGridH2>Share Via Email</SendGridH2>
         </SendGridDiv>
-        <Alert stack={{limit: 3}} html={true} />
+        {/* <Alert stack={{limit: 3}} html={true} /> */}
     </CreateEditDiv>
   );
 };
