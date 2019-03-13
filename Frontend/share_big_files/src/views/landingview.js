@@ -1,7 +1,7 @@
 import React from "react";
 import NavHeader from "./navheader.js";
 import { Link } from "react-router-dom";
-import styled from "styled-components"; 
+import styled from "styled-components";
 import img from "../../src/assets/movebyteslogo.png";
 import awsimg from "../../src/assets/1_tFl-8wQUENETYLjX5mYWuA.png";
 import stpimg from "../../src/assets/payment-logo_1.png";
@@ -10,6 +10,9 @@ import steel from "../../src/assets/brushsteel2.jpg";
 import { FaUserPlus } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
 import { FaUserLock } from "react-icons/fa";
+
+import "./pricingtable.css";
+
 //NEW STUFF
 import "./CTAButton.css";
 //match return button size, match signout button size
@@ -18,11 +21,8 @@ import "./CTAButton.css";
 const LandingContainerDiv = styled.div`
   width: 100%;
   height: 73vh;
-  min-height: 500px; 
+  min-height: 500px;
   margin: 0 auto;
-
-
-  
 `;
 const HeaderDiv = styled.div`
   height: 15%;
@@ -34,30 +34,28 @@ const HeaderDiv = styled.div`
     width: 90%;
     margin: 0 auto;
     margin-top: 20px;
-    
   }
 `;
 const HeaderIMG = styled.img`
-height: 100%;
-margin-left: 5%;
-max-height: 60px;
-max-width: 260px;
-// margin: 0 auto;
-@media(max-width: 768px) {
-  min-width: 35%;
-}
-@media(max-width: 390px) {
-  width: 80%;
-  margin: 0 auto;
-}
-
+  height: 100%;
+  margin-left: 5%;
+  max-height: 60px;
+  max-width: 260px;
+  // margin: 0 auto;
+  @media (max-width: 768px) {
+    min-width: 35%;
+  }
+  @media (max-width: 390px) {
+    width: 80%;
+    margin: 0 auto;
+  }
 `;
 
 // const TitleH3 = styled.h3`
 // margin: 0;
 //     margin-left: 2%
 //     text-align: start;
-//     font-size: 3rem; 
+//     font-size: 3rem;
 //     color: black;
 //     @media (max-width: 390px) {
 //       margin: 0 auto;
@@ -82,15 +80,14 @@ const LandingCardsContainer = styled.div`
     align-items: flex-start;
   }
 `;
- 
+
 const FlexDiv = styled.div`
   display: flex;
   width: 28%;
-  @media(max-width:1000px){
+  @media (max-width: 1000px) {
     width: 100%;
   }
 `;
-
 
 // const TextContainer = styled.div`
 //   height: auto;
@@ -108,7 +105,7 @@ const FlexDiv = styled.div`
 //   line-height: 2;
 //   margin: 0;
 //   padding-left: 10%;
-//   padding-bottom: 4%; 
+//   padding-bottom: 4%;
 // `;
 
 // const ListItem = styled.li`
@@ -128,11 +125,11 @@ const FlexDiv = styled.div`
 
 // const LandingH3 = styled.h3`
 //   margin: 0;
-//   margin-left: -8%; 
+//   margin-left: -8%;
 // `;
 
 // const LandingH2 = styled.h2`
-//   margin: 0; 
+//   margin: 0;
 //   margin-bottom: 1%;
 // `;
 
@@ -147,7 +144,6 @@ const FlexDiv = styled.div`
 // // @media(max-width: 795px) {
 // //   margin-top: 2.6%;
 // // }
-
 
 // `;
 // const FreeTier = styled.div`
@@ -202,6 +198,7 @@ const FlexDiv = styled.div`
 // `;
 const ImageDiv = styled.div`
 width: 90%
+padding-top: 5%;
 
 display: flex;
 justify-content: space-around;
@@ -218,15 +215,14 @@ height: fit-content;
 }
 `;
 const FreeTierDiv = styled.div`
-width: 100% 
-`; 
-const Services = styled.div`
-width: 100%;
+  width: 100%;
 `;
- 
+const Services = styled.div`
+  width: 100%;
+`;
+
 const LineHeightH4 = styled.h4`
   line-height: 1.5;
-
 `;
 
 const LoginContainer = styled.div`
@@ -235,7 +231,7 @@ const LoginContainer = styled.div`
   display: flex;
   margin: 10px 5% 10px 0;
   border-radius: 10px;
-  background-color: #206DB5;
+  background-color: #206db5;
   @media (max-width: 460px) {
     display: none;
   }
@@ -248,9 +244,9 @@ const LoginDiv = styled.div`
   height: 100%;
   cursor: pointer;
   min-height: 40px;
-  background-color: #206DB5;
+  background-color: #206db5;
   border-radius: 10px;
-  @media(max-width: 390px) {
+  @media (max-width: 390px) {
   }
 `;
 
@@ -303,18 +299,24 @@ const emailStyle = {
   marginRight: "5px"
 };
 
+// Free/paid Section
+const priceTableWrapper = styled.div`
+  font-family: "Lato", sans-serif;
+  text-align: center;
+  margin-top: 30px;
+`;
+
 export const LandingView = props => {
   return (
     <LandingContainerDiv>
-
       <HeaderDiv>
         <HeaderIMG src={img} alt="mblogo" />
         <LoginContainer>
-        <LoginDiv>
-          <MenuDiv onClick={props.lockOpen}>
-            <LinkStyles>Log In</LinkStyles>
-          </MenuDiv>
-        </LoginDiv>
+          <LoginDiv>
+            <MenuDiv onClick={props.lockOpen}>
+              <LinkStyles>Log In</LinkStyles>
+            </MenuDiv>
+          </LoginDiv>
         </LoginContainer>
       </HeaderDiv>
       <LandingCardsContainer>
@@ -336,19 +338,18 @@ export const LandingView = props => {
         </FlexDiv>
         {/* <AwsImg src={awsimg} alt="awslogo"/> */}
 
- 
         <FlexDiv>
           <FaUserPlus size={40} color="#206DB5" style={emailStyle} />
           <br />
           <Services>
             <h2>Unlock Pro Tier!</h2>
             <LineHeightH4>
-            For longer download and view history upgrade to Pro Tier Service.
+              For longer download and view history upgrade to Pro Tier Service.
               Gain access to 70 day file storage and history reporting!
             </LineHeightH4>
           </Services>
         </FlexDiv>
-        
+
         <FlexDiv>
           <FaUserLock size={40} color="#206DB5" style={emailStyle} />
           <br />
@@ -362,6 +363,117 @@ export const LandingView = props => {
           </Services>
         </FlexDiv>
       </ImageDiv>
+
+      <ImageDiv>
+        <div class="price-table-wrapper">
+          <div class="pricing-table">
+            <h2 class="pricing-table__header">- BASIC -</h2>
+            <h3 class="pricing-table__price">Free</h3>
+            <a
+              target="_blank"
+              class="pricing-table__button"
+              href="http://www.google.com"
+            >
+              Join Now!
+            </a>
+            <ul class="pricing-table__list">
+              <li>Files up to 2 gigabytes</li>
+              <li>50gb storage space</li>
+              <li>Host files for up to 7 days</li>
+              <li>24 hour support</li>
+            </ul>
+          </div>
+          <div class="pricing-table featured-table">
+            <h2 class="pricing-table__header">- PREMIUM -</h2>
+            <h3 class="pricing-table__price">$9.99</h3>
+            <a
+              target="_blank"
+              class="pricing-table__button"
+              href="http://www.google.com"
+            >
+              Join Now!
+            </a>
+            <ul class="pricing-table__list">
+              <li>Files up to 4 gigabytes</li>
+              <li>100gb storage space</li>
+              <li>Host files for up to 1 month</li>
+              <li>24 hour support</li>
+            </ul>
+          </div>
+        </div>
+      </ImageDiv>
+      <div id="cubeContainer">
+        <div id="cubeWrapper">
+          <div class="head">
+            <h1>MEET THE TEAM</h1>
+          </div>
+          <div id="cubes">
+            <a href="https://github.com/agreb17">
+              {" "}
+              <div class="cube p2">
+                <div class="name">
+                  <h1>Anthony</h1>
+                  <p>Kentucky</p>
+                </div>
+                <div class="innerBorder" />
+                <div class="darken" />
+                <div class="content" />
+              </div>
+            </a>
+            <a href="https://github.com/ThomasKisner">
+              <div class="cube p1">
+                <div class="name">
+                  <h1>Tom</h1>
+                  <p>South Carolina</p>
+                </div>
+                <div class="innerBorder" />
+                <div class="darken" />
+                <div class="content" />
+              </div>
+            </a>
+            <a href="https://github.com/cassidyjamesw">
+              <div class="cube p3">
+                <div class="name">
+                  <h1>James Cassidy</h1>
+                  <p>New York</p>
+                </div>
+                <div class="innerBorder" />
+                <div class="darken" />
+                <div class="content" />
+              </div>
+            </a>
+            <a href="https://github.com/kkhaag">
+              <div class="cube p4">
+                <div class="name">
+                  <h1>Keith H</h1>
+                  <p>California</p>
+                </div>
+                <div class="innerBorder" />
+                <div class="darken" />
+                <div class="content" />
+              </div>
+            </a>
+            <a href="https://github.com/akshay-gadkari">
+              <div class="cube p5">
+                <div class="name">
+                  <h1>Akshay</h1>
+                  <p>California</p>
+                </div>
+                <div class="innerBorder" />
+                <div class="darken" />
+                <div class="content" />
+              </div>
+            </a>
+          </div>
+
+          <div class="moreTeam">
+            <a href="https://lambdaschool.com/">
+              <span>Trained by Lambda</span>
+              <span class="fas fa-angle-right" />
+            </a>
+          </div>
+        </div>
+      </div>
     </LandingContainerDiv>
   );
 };
