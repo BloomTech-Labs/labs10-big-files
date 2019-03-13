@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
+import axios from "axios";
 import { FaPlusCircle, FaRegEnvelope } from "react-icons/fa";
 import "filepond/dist/filepond.min.css";
-import axios from "axios";
+import Alert from 'react-s-alert';
 import "./FloatingLabel.css"
 import "./ValidationStyle.css"
+require('react-s-alert/dist/s-alert-css-effects/genie.css');
 
 const CreateFileForm = () => {
   const [file, setFile] = useState("");
@@ -89,7 +91,6 @@ function handleFileUpload(event) {
   } else {
     setFile(event.target.files);
     setUploadedFile(event.target.files[0].name)
-    console.log('event SIZE?  :', event.target.files)
     // if (file === "") {
       //   setFileName(event.target.files[0].name);
       // }
@@ -159,7 +160,6 @@ function handleFileUpload(event) {
         let urlString = response.data.rows[0].url;
         urlString = urlString.split("/");
         setUrl(urlString[3]);
-        console.log(response);
       })
       .catch(error => console.log(error));
     } else {
@@ -202,7 +202,10 @@ function handleFileUpload(event) {
         .then(response => {
           console.log('SENDGRID response: ', response)
           callback();
-          alert(`Your file ${fileName} has been sent to ${recipientEmail}`);
+          Alert.success(`Your file ${fileName} has been sent to ${recipientEmail}`, {
+            position: "top",
+            effect: "scale"
+          })
         })
         .catch(error => {
           console.log("Error! RIGHT HERE", error);
@@ -274,6 +277,7 @@ function handleFileUpload(event) {
                 <WhiteBorder></WhiteBorder>
             <SendGridH2>Share Via Email</SendGridH2>
         </SendGridDiv>
+        <Alert stack={{limit: 3}} html={true} />
     </CreateEditDiv>
   );
 };
