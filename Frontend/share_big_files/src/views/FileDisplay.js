@@ -8,8 +8,8 @@ const SharedBoxHolder = styled.div`
   width: 45%;
   padding: 1% 0;
   min-width: 150px;
-  height: auto; 
-  min-height: 160px;
+  height: fit-content;  
+  min-height: 110px;
   display: flex;
   flex-direction: column;
   align-items: center; 
@@ -73,6 +73,7 @@ text-overflow: ellipsis;
 padding: 0; 
   margin: 0;
   margin-left: 5%;
+  margin-bottom: 5px;
   width: auto; 
  
 max-width: 88%;
@@ -214,7 +215,12 @@ const FileDisplay = () => {
     console.log(viewedHistory)
   })
 
-  const ModalSwitchOn = (event, index, callback) => {
+  const modalSwitchFunction = (event) => {
+    ModalSwitchOn(event, modalSwitch)
+
+  }
+
+  const ModalSwitchOn = (event, callback) => {
     // setTargetTile(event.target)
 
     var target = event.target.getAttribute("value");
@@ -377,14 +383,14 @@ const FileDisplay = () => {
                         {file.upload_date.slice(0, 4)}
                       </Sharedh4>
                     </TileTextDiv>
-                    <ButtonDiv value={file.file_id} onClick={ModalSwitchOn}>
+                    <ButtonDiv value={file.file_id} onClick={modalSwitchFunction}>
                       <FaFileAlt
                         size={30}
                         color="#206db5"
                         value={file.file_id}
-                        onClick={ModalSwitchOn}
+                        onClick={modalSwitchFunction}
                       />
-                      <HistoryH3 value={file.file_id} onClick={ModalSwitchOn}>
+                      <HistoryH3 value={file.file_id} onClick={modalSwitchFunction}>
                         File History
                       </HistoryH3>
                     </ButtonDiv>
