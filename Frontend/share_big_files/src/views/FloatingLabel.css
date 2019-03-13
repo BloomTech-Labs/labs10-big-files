@@ -50,8 +50,7 @@
     outline: 0;
     font-family: "Roboto";
     text-transform: lowercase;
-    font-weight: 100;
-
+    font-weight: 100; 
   }
   
   label {
@@ -68,7 +67,7 @@
   * field—to make sure it scales properly and doesn't wrap.
   */
   input:placeholder-shown + label {
-  
+    
     cursor: text;
     white-space: nowrap;
     overflow: hidden;
@@ -167,7 +166,7 @@
   }
 
   ::-webkit-textarea-placeholder {
-    opacity: 0;
+    opacity: 0; 
     transition: inherit;
   }
 

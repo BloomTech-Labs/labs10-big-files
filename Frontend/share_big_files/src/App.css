@@ -59,7 +59,7 @@ p {
 } */
 
  
-
+ 
 input:hover{
     cursor: pointer;
 }
@@ -72,7 +72,7 @@ input::placeholder {
   font-family: "Roboto", sans-serif;
   font-size: 2rem;
   font-weight: 400;
-  color: black;
+  color: gray;
 }
 
 input:hover{
@@ -83,7 +83,7 @@ textarea::placeholder {
   font-family: "Roboto", sans-serif;
   font-size: 2rem;
   font-weight: 400;
-  color: black;
+  color: gray;
 }
 
 textarea:hover{
