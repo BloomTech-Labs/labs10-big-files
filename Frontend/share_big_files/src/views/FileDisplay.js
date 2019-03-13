@@ -371,7 +371,6 @@ const FileDisplay = () => {
                   Email: {file.email} <br />
                   Date: {file.download_date.slice(0, 10)}
                   <br />
-                  Time: {file.download_date.slice(11, -5)}
                 </h3>
               </div>
             );
