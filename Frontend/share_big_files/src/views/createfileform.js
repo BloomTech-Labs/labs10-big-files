@@ -185,11 +185,12 @@ padding-left: 3.5%;
 
 const CreateFileForm = () => {
   //const [link, setLink] = useState(null)
-  const [file, setFile] = useState("");
+  const [file, setFile] = useState(null);
+  const [uploadedFile, setUploadedFile] = useState("");
   const [recipientEmail, setRecipientEmail] = useState(null);
   const [emailSubject, setEmailSubject] = useState(null);
   const [message, setMessage] = useState(null);
-  const [fileName, setFileName] = useState("");
+  const [fileName, setFileName] = useState(null);
   const [url, setUrl] = useState(null);
   const [fileId, setFileId] = useState(null);
   const profile = JSON.parse(localStorage.getItem("profile"));
@@ -256,9 +257,10 @@ const CreateFileForm = () => {
 
   function handleFileUpload(event) {
     setFile(event.target.files);
-
-    setFileName(event.target.files[0].name);
-    console.log('event.target.files:', event.target.files)
+    setUploadedFile(event.target.files[0].name)
+    if (file === "") {
+      setFileName(event.target.files[0].name);
+    }
    
  
 
@@ -400,13 +402,14 @@ const CreateFileForm = () => {
         {/* <h2>Uploaded File: {displayName}</h2> */}
         {/* //<UploadButton type="submit">Upload To server</UploadButton> */}
         {/* </form> */}
-        <CustomH3>{fileName}</CustomH3>
+        <CustomH3>{uploadedFile}</CustomH3>
+
       </AddFileDiv>
       <InnerDiv>
         <div className="field">
           <input
             type="text"
-            placeholder="Filename"
+            placeholder="MyFamilyPicture.jpg"
             id="Filename"
             name="setFileName"
             value={fileName}
@@ -429,7 +432,7 @@ const CreateFileForm = () => {
           <input
             type="email"
             id="subject"
-            placeholder="Email Subject"
+            placeholder="Family Picture"
             onChange={handleEmailSubjectInput}
             />
             <label for="subject">Email Subject</label> 
@@ -439,7 +442,7 @@ const CreateFileForm = () => {
           <textarea
             type="text"
             id="message"
-            placeholder="Email message"
+            placeholder="Here's our most recent family picture."
             onChange={handleMessage}
             />
             <label for="message">Email Message</label> 
