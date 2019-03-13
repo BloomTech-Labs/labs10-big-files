@@ -55,6 +55,7 @@ const Stripe = () => {
 
   return (
     <StripeCheckout
+      
       label="Upgrade Now"
       name="MoveBytes"
       description="Send files without limitations"

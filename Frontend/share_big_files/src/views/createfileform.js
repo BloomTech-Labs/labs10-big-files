@@ -6,7 +6,6 @@ import axios from "axios";
 import "./FloatingLabel.css"
 import "./ValidationStyle.css"
 
-
 const CreateFileForm = () => {
   const [file, setFile] = useState("");
   const [recipientEmail, setRecipientEmail] = useState("");
@@ -335,6 +334,7 @@ const TitleH2 = styled.h1`
   border-left: 1px solid white;
   margin-left: 2.5%;
   padding-left: 2.5%;
+  padding-top: 0;
   font-size: 3rem;
   color: white;
   line-height: 2;
@@ -342,19 +342,17 @@ const TitleH2 = styled.h1`
     cursor: pointer;
 `;
 
-const SendGridDiv = styled.button`
+const SendGridDiv = styled.div`
   width: 220px;
   height: 49px;
   border-radius: 5px;
   margin: 3% auto;
-  background-color: #206db5;
- 
-  padding: 1.3%;
+  background-color: #206db5; 
   display: flex;
   justify-content: center;
   align-items: center;
   cursor: pointer;
-  }
+
 `;
 
 const SendGridH2 = styled.h2`
@@ -375,7 +373,7 @@ const AddFileDiv = styled.div`
   flex-wrap: wrap;
   width: 100%;
   height: auto;
-  border-bottom: 1px solid #206db5;
+  border-bottom: 1px solid black;
   margin: 0 auto;
   align-items: center; 
 `;
@@ -388,8 +386,7 @@ const CustomH3 = styled.h4`
 const FileInput = styled.input`
   font-size: 1.7rem;
   font-weight: 400;
-  border-radius: 5px;
- 
+  border-radius: 5px; 
   display: none;
   height: 100%
   width: 100%;
@@ -397,19 +394,17 @@ const FileInput = styled.input`
 
 const BorderDiv = styled.div`
   height: 2px;
-  border-bottom: 1px solid #206db5;
+  border-bottom: 1px solid black;
 `;
 
 const FlexDiv = styled.div`
-height: fit-content;
-width: fit-content;
-min-width: 270px;
-  padding: 1.3%;
+  height: fit-content;
+  width: fit-content;
+  min-width: 270px; 
   display: flex;
   align-items: center; 
   justify-content: center; 
-  border-radius: 5px;
- 
+  border-radius: 5px; 
   background-color: #206db5;
   margin: 2.5% auto;
   &:hover{
@@ -418,11 +413,10 @@ min-width: 270px;
 `;
 
 const WhiteBorder = styled.div`
-height:100%;
-width: 1px;
-border-right: 1px solid white;
-padding-left: 3.5%;
+  height:100%;
+  width: 1px;
+  border-right: 1px solid white;
+  padding-left: 3.5%;
 `;
-
 
 
