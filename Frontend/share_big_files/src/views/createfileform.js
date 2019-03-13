@@ -21,6 +21,8 @@ const CreateFileForm = () => {
   const [fileId, setFileId] = useState(null);
   const profile = JSON.parse(localStorage.getItem("profile"));
   const senderEmail = profile.email;
+  const [billing, setBilling] = useState(null);
+  const [displayName, setDisplayName] = useState(null);
   const [sendGridClicked, setSendGridClicked] = useState(false);
   const [touched, setTouched] = useState({
       fileName: false,
