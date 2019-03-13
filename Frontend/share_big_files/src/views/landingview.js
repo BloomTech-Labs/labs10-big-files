@@ -198,6 +198,7 @@ const FlexDiv = styled.div`
 // `;
 const ImageDiv = styled.div`
 width: 90%
+padding-top: 5%;
 
 display: flex;
 justify-content: space-around;
