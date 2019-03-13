@@ -6,7 +6,7 @@ const WhiteBorder = styled.div`
 height:100%;
 width: 1px;
 border-right: 1px solid white;
-padding-left: 3.5%;
+padding-left: 5.6%;
 `;
 
 const UpgradeDiv = styled.div`

@@ -67,9 +67,11 @@ margin-bottom: 15px;
  z-index: 9999;
 `;
 
+ 
+
 const AccountHolder = () => {
   return (
- <>
+ < >
  <FixedDiv>
  <NavHeader />
  <LeftMenu/>
@@ -81,7 +83,7 @@ const AccountHolder = () => {
      <Billing />
    </CreateEditDiv>
  </CreatePage>
- </>
+ </ >
 
   );
 };
