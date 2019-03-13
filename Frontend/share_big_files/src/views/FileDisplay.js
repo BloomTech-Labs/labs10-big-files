@@ -220,6 +220,10 @@ const FileDisplay = () => {
 
   }
 
+  const viewhistoryFunction = (response) =>{
+    setViewedHistory(Array.from(response.data));
+  }
+
   const ModalSwitchOn = (event, callback) => {
     // setTargetTile(event.target)
 
@@ -235,14 +239,11 @@ const FileDisplay = () => {
 
       .get(`https://api.backendproxy.com/api/downloads/${target}`)
       .then(response => {
-        console.log("in request to get history");
-        console.log(response);
-        setViewedHistory(Array.from(response.data));
+        viewhistoryFunction(response)
         callback()
       })
       .catch(err => console.log(err));
-
-    setTimeout(modalSwitch, 0);
+ 
   };
 
   const modalSwitch = () => {
