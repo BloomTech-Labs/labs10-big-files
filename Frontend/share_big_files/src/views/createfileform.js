@@ -105,10 +105,7 @@ const SendGridDiv = styled.div`
   height: 49px;
   border-radius: 5px;
   margin: 3% auto;
-  background-color: #206db5;
- 
- 
-  padding: 1.3%;
+  background-color: #206db5; 
   display: flex;
   justify-content: center;
   align-items: center;
@@ -165,8 +162,7 @@ const BorderDiv = styled.div`
 const FlexDiv = styled.div`
 height: fit-content;
 width: fit-content;
-min-width: 270px;
-  padding: 1.3%;
+min-width: 270px; 
   display: flex;
   align-items: center; 
   justify-content: center; 
