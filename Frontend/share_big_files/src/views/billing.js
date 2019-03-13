@@ -3,7 +3,8 @@ import axios from "axios";
 import styled from "styled-components"; 
 import Stripe from "../components/StripeFE";
 import SignOut from "../components/signOut";
-import Upgrade from "../components/upgrade"
+import Upgrade from "../components/upgradeButton"
+import {FaSignOutAlt} from "react-icons/fa"
 
 // const BasicMembershipDiv = styled.div`
 //   height: fit-content;
@@ -121,6 +122,14 @@ const SignoutDiv = styled.div`
 `;
 
 
+const UpgradeDiv = styled.div`
+height: fit-content;
+width: fit-content;
+margin: 0 auto; 
+`;
+
+
+
  
 
 const Billing = () => {
@@ -191,11 +200,17 @@ const Billing = () => {
           </div>
           <Header3> <h2>Upgrade to 70 day storage</h2> </Header3>
          <StripeDiv>
+           <UpgradeDiv>
            <Stripe />
+           <Upgrade/>
+
+           </UpgradeDiv>
+           
            <SignOut/>
            </StripeDiv>
           
         </TextDiv>
+        
        
       </BasicMembershipDiv>
     );

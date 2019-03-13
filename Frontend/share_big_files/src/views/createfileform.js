@@ -145,8 +145,7 @@ const CustomH3 = styled.h4`
 const FileInput = styled.input`
   font-size: 1.7rem;
   font-weight: 400;
-  border-radius: 5px;
- 
+  border-radius: 5px; 
   display: none;
   height: 100%
   width: 100%;
@@ -160,14 +159,13 @@ const BorderDiv = styled.div`
 `;
 
 const FlexDiv = styled.div`
-height: fit-content;
-width: fit-content;
-min-width: 270px; 
+  height: fit-content;
+  width: fit-content;
+  min-width: 270px; 
   display: flex;
   align-items: center; 
   justify-content: center; 
-  border-radius: 5px;
- 
+  border-radius: 5px; 
   background-color: #206db5;
   margin: 2.5% auto;
   &:hover{
@@ -176,10 +174,10 @@ min-width: 270px;
 `;
 
 const WhiteBorder = styled.div`
-height:100%;
-width: 1px;
-border-right: 1px solid white;
-padding-left: 3.5%;
+  height:100%;
+  width: 1px;
+  border-right: 1px solid white;
+  padding-left: 3.5%;
 `;
 
 

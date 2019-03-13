@@ -64,7 +64,7 @@ height:auto;
  
 background-color: lightgray;
 margin-bottom: 15px;
- 
+ z-index: 9999;
 `;
 
 const AccountHolder = () => {
