@@ -401,26 +401,66 @@ export const LandingView = props => {
           </div>
         </div>
       </ImageDiv>
-      <ImageDiv>
-        <h2>The Team</h2>
-      </ImageDiv>
-      <ImageDiv>
-        <FlexDiv>
-          <h2>Anthony</h2>
-        </FlexDiv>
-        <FlexDiv>
-          <h2>Tom</h2>
-        </FlexDiv>
-        <FlexDiv>
-          <h2>James</h2>
-        </FlexDiv>
-        <FlexDiv>
-          <h2>Akshay</h2>
-        </FlexDiv>
-        <FlexDiv>
-          <h2>Keith</h2>
-        </FlexDiv>
-      </ImageDiv>
+      <div id="cubeContainer">
+        <div id="cubeWrapper">
+          <div class="head">
+            <h1>MEET THE TEAM</h1>
+          </div>
+          <div id="cubes">
+            <div class="cube p2">
+              <div class="name">
+                <h1>Anthony</h1>
+                <p>Kentucky</p>
+              </div>
+              <div class="innerBorder" />
+              <div class="darken" />
+              <div class="content" />
+            </div>
+            <div class="cube p1">
+              <div class="name">
+                <h1>Tom</h1>
+                <p>South Carolina</p>
+              </div>
+              <div class="innerBorder" />
+              <div class="darken" />
+              <div class="content" />
+            </div>
+            <div class="cube p3">
+              <div class="name">
+                <h1>James Cassidy</h1>
+                <p>New York</p>
+              </div>
+              <div class="innerBorder" />
+              <div class="darken" />
+              <div class="content" />
+            </div>
+            <div class="cube p4">
+              <div class="name">
+                <h1>Keith H</h1>
+                <p>California</p>
+              </div>
+              <div class="innerBorder" />
+              <div class="darken" />
+              <div class="content" />
+            </div>
+            <div class="cube p5">
+              <div class="name">
+                <h1>Akshay</h1>
+                <p>California</p>
+              </div>
+              <div class="innerBorder" />
+              <div class="darken" />
+              <div class="content" />
+            </div>
+          </div>
+          <div class="moreTeam">
+            <a href="https://lambdaschool.com/">
+              <span>Trained by Lambda</span>
+              <span class="fas fa-angle-right" />
+            </a>
+          </div>
+        </div>
+      </div>
     </LandingContainerDiv>
   );
 };
