@@ -168,6 +168,11 @@ margin-left: 4%;
 }
 `;
 
+const ReturnButtonDiv = styled.div`
+display: flex;
+justify-content: center;
+`;
+
 const ReturnButton = styled.button`
 height: 50px;
 width: 200px;
@@ -375,17 +380,15 @@ const FileDisplay = () => {
           {viewedHistory.map((file, index) => {
             return (
               <div key={index}>
-                <h3>
-                  Email: {file.email} <br />
-                  Date: {file.download_date.slice(0, 10)}
-                  <br />
-                  Time: {file.download_date.slice(11, -5)}
-                </h3>
+                <h2>Date: {file.download_date.slice(0, 10)} </h2>
+                <Sharedh4>Email: {file.email} </Sharedh4>
+                <Sharedh4>Time: {file.download_date.slice(11, -5)}</Sharedh4>
               </div>
             );
           })}
-
+          <ReturnButtonDiv>
           <ReturnButton onClick={ModalSwitchOff}>Return</ReturnButton>
+          </ReturnButtonDiv>
         </HistoryDiv>
       </ReactModal>
     );
