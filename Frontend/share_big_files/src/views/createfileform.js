@@ -420,7 +420,7 @@ const CreateFileForm = () => {
 
         <div class="field">
           <input
-            type="text"
+            type="email"
             id="Recipient"
             placeholder="JaneDoe@example.com"
             onChange={handleEmailInput}
@@ -430,7 +430,7 @@ const CreateFileForm = () => {
 
         <div className="field">
           <input
-            type="email"
+            type="text"
             id="subject"
             placeholder="Family Picture"
             onChange={handleEmailSubjectInput}
