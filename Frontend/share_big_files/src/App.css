@@ -70,9 +70,9 @@ button:hover{
 
 input::placeholder {
   font-family: "Roboto", sans-serif;
-  font-size: 2rem;
-  font-weight: 400;
+  font-size: 1em;  
   color: gray;
+  text-transform:uppercase;
 }
 
 input:hover{
@@ -81,9 +81,9 @@ input:hover{
 
 textarea::placeholder {
   font-family: "Roboto", sans-serif;
-  font-size: 2rem;
-  font-weight: 400;
+  font-size: 1em;  
   color: gray;
+  text-transform:uppercase;
 }
 
 textarea:hover{
