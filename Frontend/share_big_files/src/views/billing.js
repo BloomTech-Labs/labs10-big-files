@@ -28,7 +28,7 @@ import Upgrade from "../components/upgrade"
 const BasicMembershipDiv = styled.div`
   height: fit-content;
   width: 40rem; 
-  border-radius: 10px;
+  border-radius: 5px;
   background-color: white;
   margin-left: 4%;
   @media(max-width: 900px) {
@@ -48,7 +48,7 @@ const BasicMembershipDiv = styled.div`
 const ProMembershipDiv = styled.div`
   height: fit-content;
   width: 40rem; 
-  border-radius: 10px;
+  border-radius: 5px;
   background-color: white;
   margin-left: 4%;
   @media(max-width: 900px) {
@@ -115,9 +115,9 @@ margin-bottom: 0;
 `;
 
 const SignoutDiv = styled.div`
-// display: flex;
-// width: 100%;
-// justify-content: center
+ display: flex;
+ width: 100%;
+ justify-content: center
 `;
 
 

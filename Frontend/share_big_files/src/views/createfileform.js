@@ -16,7 +16,7 @@ const CreateEditDiv = styled.div`
   min-width: 500px
   margin-left: 4%; 
   line-height: 3;
-  border-radius: 10px;
+  border-radius: 5px;
   background-color: white;
   z-index: 0;
    @media(max-width: 900px){
@@ -52,7 +52,7 @@ const FileName = styled.input`
   line-height: 1.5;
 
   height: 50px;
-  border-radius: 25px;
+  border-radius: 5px;
   padding: 0 0 0 3%;
   max-width : calc(100% - 3%);
   
@@ -73,7 +73,7 @@ const FileNameMessage = styled.textarea`
   font-size: 15px;
   line-height: 1.5;
 
-  border-radius: 25px;
+  border-radius: 5px;
   padding: 2% 0 0 3%;
   max-width : calc(100% - 3%);
 `;
@@ -93,49 +93,50 @@ const TitleH2 = styled.h1`
   border-left: 1px solid white;
   margin-left: 2.5%;
   padding-left: 2.5%;
-  font-size: 3.25rem;
+  font-size: 3rem;
   color: white;
   line-height: 2;
+  &:hover{
+    cursor: pointer;
 `;
 
 const SendGridDiv = styled.div`
-  width: 45%
-  min-width: 230px;
+  width: 220px;
+  height: 49px;
+  border-radius: 5px;
   margin: 3% auto;
   background-color: #206db5;
-  height: auto; 
-  border-radius: 10px
+ 
+ 
+  padding: 1.3%;
   display: flex;
   justify-content: center;
   align-items: center;
   cursor: pointer;
-  }
 
 `;
 
 const SendGridH2 = styled.h2`
+line-height: 2;
   color: white;
   font-size: 2rem;
   font-style: Raleway
   font-weight: bold;
-  margin: 0;
-  margin-left: 4.5%;
+  margin: 0; 
   padding-left: 2.5%;
-  border-left: 1px solid white;
   width: fit-content;
-
+  height: fit-content; 
   `;
 
 const AddFileDiv = styled.div`
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
-  width: 96%;
+  width: 100%;
   height: auto;
   border-bottom: 1px solid black;
   margin: 0 auto;
-  align-items: center;
-  padding: 2%;
+  align-items: center; 
 `;
 
 const CustomH3 = styled.h4`
@@ -146,7 +147,7 @@ const CustomH3 = styled.h4`
 const FileInput = styled.input`
   font-size: 1.7rem;
   font-weight: 400;
-  border-radius: 3px;
+  border-radius: 5px;
  
   display: none;
   height: 100%
@@ -163,16 +164,26 @@ const BorderDiv = styled.div`
 const FlexDiv = styled.div`
 height: fit-content;
 width: fit-content;
-min-width: 270px
+min-width: 270px;
+  padding: 1.3%;
   display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0% 2%;
-  border-radius: 10px;
+  align-items: center; 
+  justify-content: center; 
+  border-radius: 5px;
+ 
   background-color: #206db5;
   margin: 2.5% auto;
+  &:hover{
+    cursor: pointer; 
+  }
 `;
 
+const WhiteBorder = styled.div`
+height:100%;
+width: 1px;
+border-right: 1px solid white;
+padding-left: 3.5%;
+`;
 
 
 const CreateFileForm = () => {
@@ -283,8 +294,14 @@ const CreateFileForm = () => {
     minWidth: "290px",
     /* top: 23%; */
     position: "absolute",
-    opacity: "0"
+    opacity: "0",
+    cursor: "pointer",
+    zIndex: 9999,
   };
+
+  const faHover = {
+    cursor: "pointer",
+  }
 
   const sendFile = () => {
     const formData = new FormData();
@@ -380,7 +397,7 @@ const CreateFileForm = () => {
             onChange={handleFileUpload}
             style={hiddenStyle}
           />
-          <FaPlusCircle size={50} color="#ffffff" />
+          <FaPlusCircle size={50} color="#ffffff" style={faHover}/>
           <TitleH2>Add Your File</TitleH2>
         </FlexDiv>
         {/* <h2>Uploaded File: {displayName}</h2> */}
@@ -435,6 +452,7 @@ const CreateFileForm = () => {
       <BorderDiv />
       <SendGridDiv onClick={sendGridToggle}>
         <FaRegEnvelope size={40} color="#ffffff" />
+        <WhiteBorder></WhiteBorder>
         <SendGridH2>Share Via Email</SendGridH2>
       </SendGridDiv>
     </CreateEditDiv>
