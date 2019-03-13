@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import history from "../history";
+import { FaSignOutAlt } from "react-icons/fa";
 
 
 function signOutHandler(){
@@ -42,22 +43,41 @@ window.location.reload();
 //`;
 
 
-const SignOutButton = styled.button`
-//margin: 3% 0 0 37%;
- margin-top: 30px;
-//justify-content: center;
-border-radius: 5px;
-cursor: pointer;
-width: 200px;
-height: 50px;
-border: white;
-font-weight: bold;
-letter-spacing: .15em;
+const SignOutDiv = styled.div`
+  width: 45%
+  min-width: 180px;
+  margin: 3% auto;
+  background-color: #206db5;
+  height: auto; 
+  border-radius: 10px
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+`;
+const SignOutH2 = styled.h2`
+  color: white;
+  font-size: 2rem;
+  font-style: Raleway
+  font-weight: bold;
+  margin: 0;
+  height: 38px;
+  margin-left: 5.5%;
+  padding-left: 2.5%;
+  padding-top: 6%;
+  border-left: 1px solid white;
+  width: fit-content;
+  @media(max-width: 768px) {
+    padding-top: 4%;
+  }
 `;
 
 
 const SignOut = props => {
-  return <SignOutButton onClick={signOutHandler}>Sign Out</SignOutButton>;
+  return <SignOutDiv onClick={signOutHandler}>
+            <FaSignOutAlt size={30} color="#ffffff" />
+            <SignOutH2>Sign Out</SignOutH2>
+         </SignOutDiv>;
 };
 
 export default SignOut;

@@ -135,33 +135,42 @@ align-items: center;
 margin-left: 5%;
 border-radius: 5px;
 display: flex;
+padding: 0 3.5%;
 border:1px solid #206db5
 background-color: #ffffff;
-padding: 0 3.5%
 height: 100%;
 cursor: pointer;
+`;
+
+ 
+const HistoryH3 = styled.button`
+width: fit-content;
+line-height: 0;
+margin: 0;
+height: 100%;
+padding: 10% 0;
+min-width: 170px; 
+border-radius: inherit;
+border: none;
+color: #206db5;
+background-color: #ffffff;
+border-left: 1px solid #206db5;
+font-size: 1.8rem;
+margin-left: 4%;
+// &:hover {
+//   background-color: #e6e6e6;
+// }
+// @media(max-width: 390px) {
+//   width: 55%;
+// }
 &:hover {
   background-color: #e6e6e6;
 }
 `;
 
-const HistoryH3 = styled.button`
-  width: fit-content;
-  line-height: 0;
-  margin: 0;
-  height: 100%;
-  padding: 10% 0%;
-  min-width: 170px;
-  border: none;
-  color: #206db5;
-  background-color: inherit;
-  border-left: 1px solid #206db5;
-  font-size: 1.8rem;
-  margin-left: 4%;
-
-  // @media(max-width: 390px) {
-  //   width: 55%;
-  // }
+const ReturnButtonDiv = styled.div`
+display: flex;
+justify-content: center;
 `;
 
 const ReturnButton = styled.button`
@@ -419,16 +428,17 @@ const FileDisplay = () => {
           {viewedHistory.map((file, index) => {
             return (
               <div key={index}>
-                <h3>
-                  Email: {file.email} <br />
-                  Date: {file.download_date.slice(0, 10)}
-                  <br />
-                </h3>
+
+                <h2>Date: {file.download_date.slice(0, 10)} </h2>
+                <Sharedh4>Email: {file.email} </Sharedh4>
+                <Sharedh4>Time: {file.download_date.slice(11, -5)}</Sharedh4>
+
               </div>
             );
           })}
-
+          <ReturnButtonDiv>
           <ReturnButton onClick={ModalSwitchOff}>Return</ReturnButton>
+          </ReturnButtonDiv>
         </HistoryDiv>
       </ReactModal>
     );
