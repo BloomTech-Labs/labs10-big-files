@@ -15,11 +15,14 @@ const SharedBoxHolder = styled.div`
   align-items: center; 
   background-color: white;
   border-radius: 5px;
+ 
+  padding-top: 15px;
+  padding-bottom: 15px;
+ 
+ 
   margin: 0 1.5% 3% 1.5%; 
   min-width: 245px;
- @media(max-width: 1175px){
-   width: 100%;
- }
+ 
  @media(max-width: 900px){
   width: 47%;
   margin: 0;
@@ -56,6 +59,7 @@ padding: 0;
   margin: 0;
   margin-left: 5%;
   width: auto;
+  max-width: 90%;
   height: fit-content;
 @media(max-width: 390px){ 
   
@@ -70,6 +74,13 @@ padding: 0;
   margin: 0;
   margin-left: 5%;
   width: auto; 
+ 
+max-width: 88%;
+&:hover{ 
+  overflow: visible;
+  overflow-wrap: break-word;
+  white-space: normal;
+  height: auto;
 @media(max-width: 390px){ 
   height: fit-content; 
 `;
@@ -82,6 +93,9 @@ width:55%
   margin-right: 4%;
   justify-content: space-around;
   margin-left: 2%;
+  @media(max-width: 1297px){
+    width: 53%;
+  }
   @media(max-width: 900px) {
     height: 100%;
     width: 90%; 
@@ -114,13 +128,12 @@ const InnerTileDiv = styled.div`
   }
 `;
 
- 
 const ButtonDiv = styled.div`
 height: fit-content;
 width: fit-content; 
 align-items: center;
 margin-left: 5%;
-border-radius: 7px;
+border-radius: 5px;
 display: flex;
 padding: 0 3.5%;
 border:1px solid #206db5
@@ -150,24 +163,25 @@ margin-left: 4%;
 // @media(max-width: 390px) {
 //   width: 55%;
 // }
+&:hover {
+  background-color: #e6e6e6;
+}
 `;
 
 const ReturnButton = styled.button`
 height: 50px;
 width: 200px;
-border-radius 7px;
+border-radius 5px;
 border: white;
 font-weight: bold;
 letter-spacing: .15em;
 `;
 
-const TileTextDiv =styled.div`
+const TileTextDiv = styled.div`
 height: 100%;
 width: 100%
 margin-bottom: 7px; 
 `;
-
-
 
 const FileDisplay = () => {
   const [email, setEmail] = useState(null);
@@ -182,7 +196,7 @@ const FileDisplay = () => {
   const [viewedHistory, setViewedHistory] = useState(false);
   const [loaded, setLoaded] = useState(false);
   const [modalBoolean, setModalBoolean] = useState(false);
- 
+
   //const [userExists, setUserExists] = useState(null);
   const profile = JSON.parse(localStorage.getItem("profile"));
   useEffect(() => {});
@@ -288,33 +302,38 @@ const FileDisplay = () => {
       <DesperateDiv>
         {userData[0]
           ? userData.map((file, index) => {
-              console.log('file:', file)
+              console.log("file:", file);
+              var byteDivider = file.file_size >= 10000 ? 10000 : 1000;
+              var byteType = file.file_size >= 10000 ? "MB" : "KB";
               return (
                 <SharedBoxHolder key={index}>
                   <InnerTileDiv>
                     <TileTextDiv>
-                    <Sharedh3>{file.filename}</Sharedh3>
-                    <Sharedh4>
-                      Size: {`${(file.file_size) / 1000} KB`}
-                    </Sharedh4>
-                    <Sharedh4>
-                      Type: {file.file_type}
-                    </Sharedh4>
-                    <Sharedh4>
-                      Date Uploaded: {file.upload_date.slice(0, 10)}
-                    </Sharedh4>
-                    <Sharedh4>
-                      Time Uploaded: {file.upload_date.slice(11, -5)}
-                    </Sharedh4>
+                      <Sharedh3>{file.filename}</Sharedh3>
+                      <Sharedh4>
+                        Size: {`${(file.file_size / byteDivider).toFixed(2)}`}
+                        {byteType}
+                      </Sharedh4>
+                      <Sharedh4>Type: {file.file_type}</Sharedh4>
+                      <Sharedh4>
+                        Date: {file.upload_date.slice(5, 7)}/
+                        {file.upload_date.slice(8, 10)}/
+                        {file.upload_date.slice(0, 4)}
+                      </Sharedh4>
+                      <Sharedh4>
+                        Time: {file.upload_date.slice(11, -5)}
+                      </Sharedh4>
                     </TileTextDiv>
-                    <ButtonDiv>
-                      <FaFileAlt size={30} color="#206db5"/>
-                      <HistoryH3
+                    <ButtonDiv value={file.file_id} onClick={ModalSwitchOn}>
+                      <FaFileAlt
+                        size={30}
+                        color="#206db5"
                         value={file.file_id}
                         onClick={ModalSwitchOn}
-                      >
-                         File History 
-                      </HistoryH3> 
+                      />
+                      <HistoryH3 value={file.file_id} onClick={ModalSwitchOn}>
+                        File History
+                      </HistoryH3>
                     </ButtonDiv>
                   </InnerTileDiv>
                 </SharedBoxHolder>
@@ -324,6 +343,8 @@ const FileDisplay = () => {
       </DesperateDiv>
     );
   } else {
+    var selectedByteDivider = selectedFile.file_size >= 10000 ? 10000 : 1000;
+    var selectedByteType = selectedFile.file_size >= 10000 ? "MB" : "KB";
     return (
       <ReactModal
         isOpen={modalBoolean}
@@ -342,26 +363,23 @@ const FileDisplay = () => {
       >
         <HistoryDiv>
           <h2>File Name: {selectedFile.filename}</h2>
-                    <Sharedh4>
-                      Size: {`${(selectedFile.file_size) / 1000} KB`}
-                    </Sharedh4>
-                    <Sharedh4>
-                      Type: {selectedFile.file_type}
-                    </Sharedh4>
-                    <Sharedh4>
-                      Date Uploaded: {selectedFile.upload_date.slice(0, 10)}
-                    </Sharedh4>
-                    <Sharedh4>
-                      Time Uploaded: {selectedFile.upload_date.slice(11, -5)}
-                    </Sharedh4>
+          <Sharedh4>
+            Size:{" "}
+            {`${(selectedFile.file_size / selectedByteDivider).toFixed(2)}`}
+            {selectedByteType}
+          </Sharedh4>
+          <Sharedh4>Type: {selectedFile.file_type}</Sharedh4>
+          <Sharedh4>Date: {selectedFile.upload_date.slice(0, 10)}</Sharedh4>
+          <Sharedh4>Time: {selectedFile.upload_date.slice(11, -5)}</Sharedh4>
           <h3>Total Downloads: {viewedHistory.length} </h3>
           {viewedHistory.map((file, index) => {
             return (
               <div key={index}>
                 <h3>
-                  Download Email: {file.email} <br />
-                  Download Date: {file.download_date.slice(0, 10)}
-                  <br /> Download Time: {file.download_date.slice(11, -5)}
+                  Email: {file.email} <br />
+                  Date: {file.download_date.slice(0, 10)}
+                  <br />
+                  Time: {file.download_date.slice(11, -5)}
                 </h3>
               </div>
             );

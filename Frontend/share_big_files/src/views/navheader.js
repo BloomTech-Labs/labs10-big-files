@@ -9,6 +9,7 @@ const NavHeaderDiv = styled.div`
   // flex-direction: column;
   // margin-bottom: 1%;
   background-color: white;
+  z-index: 9999;
   border-bottom: 2px solid white;
  @media (max-width: 460px) {
     border-bottom: none;
@@ -62,7 +63,7 @@ const LinkStyles = styled.div`
   text-align: center;
   height: 100%;
   width: 100%;
-  border-radius: 10px;
+  border-radius: 5px;
   display: flex;
     align-items: center;
     justify-content: center;
@@ -74,7 +75,7 @@ const MenuWrapper = styled.div`
   min-width: 175px;
   display: flex;
   margin: 10px 0;
-  border-radius: 10px;
+  border-radius: 5px;
   background-color: #206DB5;
   @media (max-width: 460px) {
     display: none;

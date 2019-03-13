@@ -58,10 +58,7 @@ p {
     display: none;
 } */
 
-input[type="file"] {
-  border: none;
  
-}
 
 input:hover{
     cursor: pointer;
@@ -113,6 +110,25 @@ a {
     background-color: lightgray;
     margin-top: 6rem;
 }
+.StripeCheckout{ 
+  border-radius: 5px;
+  cursor: pointer;
+  width: 200px;
+  height: 50px;
+  border: white;
+  background-color: #206DB5;
+  font-weight: bold;
+  letter-spacing: .15em;
+}
+
+.StripeCheckout:hover{
+  cursor: pointer;
+}
+
+.StripeCheckout span{
+  color: black;
+}
+
 
 @media (max-width: 390px) {
   .ReactModal__Content {
@@ -127,3 +143,4 @@ a {
       margin-top: 17rem;
   }
 }
+
