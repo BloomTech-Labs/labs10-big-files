@@ -83,129 +83,19 @@ const FlexDiv = styled.div`
   }
 `;
 
-// const TextContainer = styled.div`
-//   height: auto;
-//   width: 100%;
-//   margin: 0 auto;
-//   padding: .5% 0;
-//   text-align: center;
-//   border-bottom: 1px solid black;
-// `;
-
-// const UnorderedList = styled.ul`
-// width: 90%;
-// border-bottom: 1px solid black;
-//   text-align: left;
-//   line-height: 2;
-//   margin: 0;
-//   padding-left: 10%;
-//   padding-bottom: 4%;
-// `;
-
-// const ListItem = styled.li`
-// font-size: 1.75rem`;
-
-// const FileTransferButton = styled.button`
-//   width: 45%;
-//   border-radius: 10px;
-//   height: 60px;
-//   font-size: 1.9rem;
-//   background-color: #206DB5;
-//   cursor: pointer;
-//   margin: 0 auto;
-//   margin-top: 6%;
-//   text-align: center;
-// `;
-
-// const LandingH3 = styled.h3`
-//   margin: 0;
-//   margin-left: -8%;
-// `;
-
-// const LandingH2 = styled.h2`
-//   margin: 0;
-//   margin-bottom: 1%;
-// `;
-
-// const TitleH1 = styled.h1`
-// margin-bottom: 0;
-// `;
-// const InfoDiv = styled.div`
-// display: flex;
-// justify-content: space-around;
-// margin-top: 1.5%;
-// height: 10%;
-// // @media(max-width: 795px) {
-// //   margin-top: 2.6%;
-// // }
-
-// `;
-// const FreeTier = styled.div`
-// margin-top: inherit;
-// font-size: 1.7rem;
-// font-weight: bold;
-// @media(max-width: 1000px) {
-//   font-size: 1.4rem;
-//   margin-top: auto;
-// }
-// @media(max-width: 860px) {
-//   font-size: 1.3rem;
-// }
-// @media(max-width: 770px) {
-//   font-size: 1.2rem;
-// }
-// `;
-// const ProTier = styled.div`
-// margin-top: inherit;
-// font-size: 1.8rem;
-// font-weight: bold;
-// @media(max-width: 1000px) {
-//   font-size: 1.4rem;
-//   margin-top: auto;
-// }
-// `;
-// const Services = styled.div`
-// margin-top: inherit;
-// font-size: 1.8rem;
-// font-weight: bold;
-// @media(max-width: 1000px) {
-//   font-size: 1.4rem;
-//   margin-top: auto;
-// }
-// `;
-// const AwsImg = styled.img`
-// margin-top: inherit;
-// width: 15%;
-// height: 75px;
-// @media(max-width: 860px) {
-//   width;
-// }
-// `;
-// const StripeImg = styled.img`
-// margin-top: inherit;
-// width: 12%;
-// height: 80px;
-// `;
-// const S3Img = styled.img`
-// width: 130px;
-// height: 90px;
-// `;
 const ImageDiv = styled.div`
 width: 90%
 padding-top: 5%;
 
 display: flex;
 justify-content: space-around;
-margin: 0 auto;
+margin: 40px auto;
 height: fit-content;
 @media(max-width: 1000px) {
   flex-direction: column;
-  
 }
-
 @media(max-width: 653px) {
   flex-direction: column;
-  
 }
 `;
 const FreeTierDiv = styled.div`
@@ -214,7 +104,6 @@ const FreeTierDiv = styled.div`
 const Services = styled.div`
   width: 100%;
 `;
-
 const LineHeightH4 = styled.h4`
   line-height: 1.5;
 `;
@@ -359,10 +248,10 @@ export const LandingView = props => {
             <h2 className="pricing-table__header">- BASIC -</h2>
             <h3 className="pricing-table__price">Free</h3>
             <a
-              target="_blank"
+              onClick={props.lockOpen}
               className="pricing-table__button"
               href="http://www.google.com"
-              rel="noopener noreferrer"
+               
             >
               Join Now!
             </a>
@@ -410,6 +299,7 @@ export const LandingView = props => {
                 <div className="darken" />
                 <div className="content" />
               </div>
+
             </a>
             <a href="https://github.com/ThomasKisner">
               <div className="cube p1">
@@ -420,6 +310,7 @@ export const LandingView = props => {
                 <div className="innerBorder" />
                 <div className="darken" />
                 <div className="content" />
+
               </div>
             </a>
             <a href="https://github.com/cassidyjamesw">
