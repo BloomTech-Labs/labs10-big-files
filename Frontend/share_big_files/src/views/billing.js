@@ -153,7 +153,7 @@ const Billing = () => {
             <div>
               <ListItem2>{profile.nickname}</ListItem2>
 	      <ListItem2>{profile.email}</ListItem2>
-              <ListItem>Send files up to 4MB with 7 days of storage</ListItem>              
+              <ListItem>Send files up to 4MB with 70 days of storage</ListItem>              
             </div>
             <SignoutDiv><SignOut/></SignoutDiv>
             
