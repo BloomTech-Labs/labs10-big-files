@@ -95,15 +95,11 @@ max-width: 88%;
 
 const DesperateDiv = styled.div`
 height: 100%;
-width:55%
+width:48%
   display: flex; 
-  flex-wrap: wrap;
-  margin-right: 4%;
-  justify-content: space-around;
-  margin-left: 2%;
-  @media(max-width: 1297px){
-    width: 53%;
-  }
+  flex-wrap: wrap; 
+  justify-content: space-around; 
+  
   @media(max-width: 900px) {
     height: 100%;
     width: 90%; 

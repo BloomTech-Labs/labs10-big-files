@@ -12,9 +12,9 @@ const CreateEditDiv = styled.div`
   flex-direction: column;
   flex-wrap: wrap;
   height: fit-content;
-  width: 35%; 
+  width: 48%; 
   min-width: 500px
-  margin-left: 4%; 
+ 
   line-height: 3;
   border-radius: 5px;
   background-color: white;
@@ -102,7 +102,7 @@ const TitleH2 = styled.h1`
 `;
 
 const SendGridDiv = styled.div`
-  width: 220px;
+  width: 230px;
   height: 49px;
   border-radius: 5px;
   margin: 3% auto;
@@ -149,7 +149,7 @@ const FileInput = styled.input`
   display: none;
   height: 100%
   width: 100%;
- 
+
  
 `;
 
