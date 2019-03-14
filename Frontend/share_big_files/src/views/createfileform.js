@@ -24,6 +24,7 @@ const CreateFileForm = () => {
   const [billing, setBilling] = useState("");
   const [displayName, setDisplayName] = useState("");
   const [sendGridClicked, setSendGridClicked] = useState(false);
+  const [userData, setUserData] = useState(null);
   const [touched, setTouched] = useState({
     fileName: false,
     recipientEmail: false
@@ -183,7 +184,11 @@ function handleFileUpload(event) {
   };
 
   function sendGridCallBack() {
-    window.location.reload();
+    setTimeout(() => {
+      window.location.reload()
+    }, 5000);
+ 
+    // console.log('hi')
   }
 
   function sendGrid(callback) {
@@ -203,19 +208,20 @@ function handleFileUpload(event) {
       axios
         .post("https://api.backendproxy.com/api/sendgrid/send", myDetails)
         .then(response => {
-          console.log('SENDGRID response: ', response)
-          callback();
-          Alert.info(`<h1>${fileName} has successfully been sent to ${recipientEmail}!</h1>`, {
+            Alert.info(`<h1>${fileName} has successfully been sent to ${recipientEmail}!</h1>`, {
             position: 'top',
             effect: 'genie',
-            timeout: 5000,
+            timeout: 4000,
             offset: 250,
             html: true,
+            
           })
+     
         })
         .catch(error => {
           console.log("Error! RIGHT HERE", error);
         });
+        callback();
   }
 
   return (
