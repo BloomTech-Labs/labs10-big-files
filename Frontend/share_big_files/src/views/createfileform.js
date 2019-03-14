@@ -204,7 +204,7 @@ function handleFileUpload(event) {
         .post("https://api.backendproxy.com/api/sendgrid/send", myDetails)
         .then(response => {
           console.log('SENDGRID response: ', response)
-          // callback();
+          callback();
           Alert.info(`<h1>${fileName} has successfully been sent to ${recipientEmail}!</h1>`, {
             position: 'top',
             effect: 'genie',
