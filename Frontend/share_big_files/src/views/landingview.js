@@ -359,10 +359,10 @@ export const LandingView = props => {
             <h2 className="pricing-table__header">- BASIC -</h2>
             <h3 className="pricing-table__price">Free</h3>
             <a
-              target="_blank"
+              onClick={props.lockOpen}
               className="pricing-table__button"
               href="http://www.google.com"
-              rel="noopener noreferrer"
+               
             >
               Join Now!
             </a>

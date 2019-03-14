@@ -91,7 +91,7 @@ const CreateFileForm = () => {
 /* ------------- File Upload --------------- */
 // Takes the uploaded file and sets it to state. Also sets setUploadFile to file name
 function handleFileUpload(event) {
-  if (event.target.files[0].size > 4000000) {
+  if(billing){ if (event.target.files[0].size > 4000000) {
     console.log("Too Large")
     setUploadedFileSize("File's may not exceed 4MB")
   } else {
@@ -101,7 +101,17 @@ function handleFileUpload(event) {
       //   setFileName(event.target.files[0].name);
       // }
     }
-}
+  } else if(event.target.files[0].size > 2000000) {
+    console.log("Too Large")
+    setUploadedFileSize("File's may not exceed 2MB for basic users")
+  } else {
+    setFile(event.target.files);
+    setUploadedFile(event.target.files[0].name)
+    // if (file === "") {
+      //   setFileName(event.target.files[0].name);
+      // }
+    }}
+
 
 
   //Checks if user is pro or not
