@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import axios from "axios";
-import { FaPlusCircle, FaRegEnvelope, FaBluetooth } from "react-icons/fa";
+import { FaPlusCircle, FaRegEnvelope} from "react-icons/fa";
 import "filepond/dist/filepond.min.css";
 import Alert from 'react-s-alert';
 import "./FloatingLabel.css"
@@ -21,10 +21,8 @@ const CreateFileForm = () => {
   const [fileName, setFileName] = useState("");
   const [url, setUrl] = useState("");
   const [fileId, setFileId] = useState("");
-  const [billing, setBilling] = useState("");
-  const [displayName, setDisplayName] = useState("");
-  const [sendGridClicked, setSendGridClicked] = useState(false);
-  const [userData, setUserData] = useState(null);
+  const [billing, setBilling] = useState(""); 
+  const [sendGridClicked, setSendGridClicked] = useState(false); 
   const [touched, setTouched] = useState({
     fileName: false,
     recipientEmail: false
@@ -47,6 +45,10 @@ const CreateFileForm = () => {
       submitFile();
     }
   }, [file, sendGridClicked]);
+
+  useEffect(()=> {
+    fetchData()
+  }, [])
   
   
   /* ------------- Error Handling --------------- */
@@ -102,17 +104,14 @@ function handleFileUpload(event) {
 }
 
 
-/* ------------- ??? --------------- */
-
-
-
+  //Checks if user is pro or not
   const fetchData = () => {
     const profile = JSON.parse(localStorage.getItem("profile"));
     axios
       .get(`https://api.backendproxy.com/api/users/${profile.nickname}`)
       .then(response => {
         console.log(response);
-        // setBilling(response.data[0].paid);
+        setBilling(response.data[0].paid);
       })
       .catch(err => console.log(err));
   };
@@ -123,11 +122,7 @@ function handleFileUpload(event) {
     callback();
   }
 
-
-  function displayNameCallback() {
-    setDisplayName(file.fileName);
-  }
-
+ 
  
   function submitFile() {
 

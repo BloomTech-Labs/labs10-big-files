@@ -3,28 +3,7 @@ import axios from "axios";
 import styled from "styled-components"; 
 import Stripe from "../components/StripeFE";
 import SignOut from "../components/signOut";
-import Upgrade from "../components/upgradeButton"
-import {FaSignOutAlt} from "react-icons/fa"
-
-// const BasicMembershipDiv = styled.div`
-//   height: fit-content;
-//   width: auto;
-//   // width: 44rem;
-//   margin-left: 4%;
-//   border-radius: 10px;
-//   background-color: white;
-//   @media(max-width: 900px) {
-//     width: 90%
-//     max-width: 90%
-//     margin-top: 30px 
-//   }
-//   @media(max-width: 390px) {
-//     width: 95%;
-//     max-width: 95%;
-//     margin: 0 auto;
-    
-//   }
-// `;
+import Upgrade from "../components/upgradeButton" 
 
 const BasicMembershipDiv = styled.div`
   height: fit-content;
@@ -86,9 +65,8 @@ width: 100%;
 `;
  
 const Header3 = styled.div`
-text-align: center;
+  text-align: center;
 @media(max-width: 390px) {
-  
   margin-left: 0%;
 }
 `;
@@ -121,24 +99,17 @@ margin-left: 8%;
 font-weight: bold;
 `;
 
-const FeaturesH3 = styled.h3`
-margin-bottom: 0;
-`;
-
 const SignoutDiv = styled.div`
  display: flex;
  width: 100%;
  justify-content: center
 `;
 
-
 const UpgradeDiv = styled.div`
 height: fit-content;
 width: fit-content;
 margin: 0 auto; 
 `;
-
-//const profile = JSON.parse(localStorage.getItem("profile"));
 
 const Billing = () => {
   const [billing, setBilling] = useState(null);

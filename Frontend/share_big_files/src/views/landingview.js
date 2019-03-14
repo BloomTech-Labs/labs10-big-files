@@ -1,16 +1,10 @@
 import React from "react";
-import NavHeader from "./navheader.js";
-import { Link } from "react-router-dom";
 import styled from "styled-components";
-import img from "../../src/assets/movebyteslogo.png";
-import awsimg from "../../src/assets/1_tFl-8wQUENETYLjX5mYWuA.png";
-import stpimg from "../../src/assets/payment-logo_1.png";
-
+import img from "../../src/assets/movebyteslogo.png"; 
 import steel from "../../src/assets/brushsteel2.jpg";
 import { FaUserPlus } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
 import { FaUserLock } from "react-icons/fa";
-
 import "./pricingtable.css";
 
 //NEW STUFF
@@ -299,12 +293,7 @@ const emailStyle = {
   marginRight: "5px"
 };
 
-// Free/paid Section
-const priceTableWrapper = styled.div`
-  font-family: "Lato", sans-serif;
-  text-align: center;
-  margin-top: 30px;
-`;
+ 
 
 export const LandingView = props => {
   return (
@@ -373,6 +362,7 @@ export const LandingView = props => {
               target="_blank"
               className="pricing-table__button"
               href="http://www.google.com"
+              rel="noopener noreferrer"
             >
               Join Now!
             </a>
@@ -390,6 +380,7 @@ export const LandingView = props => {
               target="_blank"
               className="pricing-table__button"
               href="http://www.google.com"
+              rel="noopener noreferrer"
             >
               Join Now!
             </a>
