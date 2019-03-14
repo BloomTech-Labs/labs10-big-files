@@ -223,7 +223,7 @@ export const LandingView = props => {
             <h2>Unlock Pro Tier!</h2>
             <LineHeightH4>
               For longer download and view history upgrade to Pro Tier Service.
-              Gain access to 70 day file storage and support for 4GB files!
+              Gain access to 30 day file storage and support for 4GB files!
             </LineHeightH4>
           </Services>
         </FlexDiv>
