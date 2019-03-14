@@ -367,7 +367,7 @@ export const LandingView = props => {
               Join Now!
             </a>
             <ul className="pricing-table__list">
-              <li>Files up to 2 megabytes</li>
+              <li>Files up to 2 gigabytes</li>
               <li>50GB storage space</li>
               <li>Host files for up to 7 days</li>
               <li>24 hour support</li>

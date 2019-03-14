@@ -10,7 +10,6 @@ require('react-s-alert/dist/s-alert-default.css');
 require('react-s-alert/dist/s-alert-css-effects/genie.css');
 require('react-s-alert/dist/s-alert-css-effects/bouncyflip.css');
 
-
 const CreateFileForm = () => {
   const [file, setFile] = useState("");
   const [recipientEmail, setRecipientEmail] = useState("");
