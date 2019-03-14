@@ -28,7 +28,7 @@ const SharedBoxHolder = styled.div`
   margin: 0;
   margin-bottom: 8px; 
 }
-@media(max-width: 570px){
+@media(max-width: 590px){
   width: 100%;
   margin: 0;
   margin-bottom: 8px;
