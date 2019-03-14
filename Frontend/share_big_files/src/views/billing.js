@@ -153,7 +153,7 @@ const Billing = () => {
             <div>
               <ListItem2>{profile.nickname}</ListItem2>
 	      <ListItem2>{profile.email}</ListItem2>
-              <ListItem>Send files up to 4MB with 70 days of storage</ListItem>              
+              <ListItem>Send files up to 4GB with 70 days of storage</ListItem>              
             </div>
             <SignoutDiv><SignOut/></SignoutDiv>
             
@@ -173,7 +173,7 @@ const Billing = () => {
           <div>
             <ListItem2>{profile.nickname}</ListItem2>
 	    <ListItem2>{profile.email}</ListItem2>
-            <ListItem>Send files up to 2MB with 7 days of storage</ListItem>
+            <ListItem>Send files up to 2GB with 7 days of storage</ListItem>
           </div>
           <Header3> <h2>Upgrade to 70 day storage</h2> </Header3>
 	  <ListItem>Send files up to 4MB with 90 days of storage</ListItem>
