@@ -18,6 +18,7 @@ const NavHeaderDiv = styled.div`
 `;
  
 const TitleDiv = styled.div`
+  padding-top: 0.5%;
   height: auto;
   width: 83%;
   display: flex;

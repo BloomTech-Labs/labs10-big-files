@@ -28,7 +28,7 @@ const SharedBoxHolder = styled.div`
   margin: 0;
   margin-bottom: 8px; 
 }
-@media(max-width: 570px){
+@media(max-width: 590px){
   width: 100%;
   margin: 0;
   margin-bottom: 8px;
@@ -95,15 +95,11 @@ max-width: 88%;
 
 const DesperateDiv = styled.div`
 height: 100%;
-width:55%
+width:48%
   display: flex; 
-  flex-wrap: wrap;
-  margin-right: 4%;
-  justify-content: space-around;
-  margin-left: 2%;
-  @media(max-width: 1297px){
-    width: 53%;
-  }
+  flex-wrap: wrap; 
+  justify-content: space-around; 
+  
   @media(max-width: 900px) {
     height: 100%;
     width: 90%; 
@@ -194,6 +190,10 @@ const TileTextDiv = styled.div`
 height: 100%;
 width: 100%
 margin-bottom: 7px; 
+`;
+
+const ViewedDiv = styled.div`
+margin-bottom: 20px;
 `;
 
 const FileDisplay = () => {
@@ -359,13 +359,13 @@ const FileDisplay = () => {
           <h3>Total Downloads: {viewedHistory.length} </h3>
           {viewedHistory.map((file, index) => {
             return (
-              <div key={index}>
+              <ViewedDiv key={index}>
 
                 <h2>Date: {file.download_date.slice(0, 10)} </h2>
                 <Sharedh4>Email: {file.email} </Sharedh4>
                 <Sharedh4>Time: {file.download_date.slice(11, -5)}</Sharedh4>
 
-              </div>
+              </ViewedDiv>
             );
           })}
           <ReturnButtonDiv>
@@ -375,7 +375,6 @@ const FileDisplay = () => {
         </ReactModal>
         {userData[0]
           ? userData.map((file, index) => {
-              console.log("file:", file);
               var byteDivider = file.file_size >= 10000 ? 10000 : 1000;
               var byteType = file.file_size >= 10000 ? "MB" : "KB";
               return (

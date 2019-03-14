@@ -1,16 +1,10 @@
 import React from "react";
-import NavHeader from "./navheader.js";
-import { Link } from "react-router-dom";
 import styled from "styled-components";
-import img from "../../src/assets/movebyteslogo.png";
-import awsimg from "../../src/assets/1_tFl-8wQUENETYLjX5mYWuA.png";
-import stpimg from "../../src/assets/payment-logo_1.png";
-
+import img from "../../src/assets/movebyteslogo.png"; 
 import steel from "../../src/assets/brushsteel2.jpg";
 import { FaUserPlus } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
 import { FaUserLock } from "react-icons/fa";
-
 import "./pricingtable.css";
 
 //NEW STUFF
@@ -77,7 +71,7 @@ const LandingCardsContainer = styled.div`
   height: 78%;
   @media (max-width: 390px) {
     width: 100%;
-    align-items: flex-start;
+    align-items: center;
   }
 `;
 
@@ -89,129 +83,19 @@ const FlexDiv = styled.div`
   }
 `;
 
-// const TextContainer = styled.div`
-//   height: auto;
-//   width: 100%;
-//   margin: 0 auto;
-//   padding: .5% 0;
-//   text-align: center;
-//   border-bottom: 1px solid black;
-// `;
-
-// const UnorderedList = styled.ul`
-// width: 90%;
-// border-bottom: 1px solid black;
-//   text-align: left;
-//   line-height: 2;
-//   margin: 0;
-//   padding-left: 10%;
-//   padding-bottom: 4%;
-// `;
-
-// const ListItem = styled.li`
-// font-size: 1.75rem`;
-
-// const FileTransferButton = styled.button`
-//   width: 45%;
-//   border-radius: 10px;
-//   height: 60px;
-//   font-size: 1.9rem;
-//   background-color: #206DB5;
-//   cursor: pointer;
-//   margin: 0 auto;
-//   margin-top: 6%;
-//   text-align: center;
-// `;
-
-// const LandingH3 = styled.h3`
-//   margin: 0;
-//   margin-left: -8%;
-// `;
-
-// const LandingH2 = styled.h2`
-//   margin: 0;
-//   margin-bottom: 1%;
-// `;
-
-// const TitleH1 = styled.h1`
-// margin-bottom: 0;
-// `;
-// const InfoDiv = styled.div`
-// display: flex;
-// justify-content: space-around;
-// margin-top: 1.5%;
-// height: 10%;
-// // @media(max-width: 795px) {
-// //   margin-top: 2.6%;
-// // }
-
-// `;
-// const FreeTier = styled.div`
-// margin-top: inherit;
-// font-size: 1.7rem;
-// font-weight: bold;
-// @media(max-width: 1000px) {
-//   font-size: 1.4rem;
-//   margin-top: auto;
-// }
-// @media(max-width: 860px) {
-//   font-size: 1.3rem;
-// }
-// @media(max-width: 770px) {
-//   font-size: 1.2rem;
-// }
-// `;
-// const ProTier = styled.div`
-// margin-top: inherit;
-// font-size: 1.8rem;
-// font-weight: bold;
-// @media(max-width: 1000px) {
-//   font-size: 1.4rem;
-//   margin-top: auto;
-// }
-// `;
-// const Services = styled.div`
-// margin-top: inherit;
-// font-size: 1.8rem;
-// font-weight: bold;
-// @media(max-width: 1000px) {
-//   font-size: 1.4rem;
-//   margin-top: auto;
-// }
-// `;
-// const AwsImg = styled.img`
-// margin-top: inherit;
-// width: 15%;
-// height: 75px;
-// @media(max-width: 860px) {
-//   width;
-// }
-// `;
-// const StripeImg = styled.img`
-// margin-top: inherit;
-// width: 12%;
-// height: 80px;
-// `;
-// const S3Img = styled.img`
-// width: 130px;
-// height: 90px;
-// `;
 const ImageDiv = styled.div`
 width: 90%
 padding-top: 5%;
 
 display: flex;
 justify-content: space-around;
-margin: 0 auto;
+margin: 40px auto;
 height: fit-content;
 @media(max-width: 1000px) {
   flex-direction: column;
-  
 }
-
 @media(max-width: 653px) {
   flex-direction: column;
-  
 }
 `;
 const FreeTierDiv = styled.div`
@@ -220,7 +104,6 @@ const FreeTierDiv = styled.div`
 const Services = styled.div`
   width: 100%;
 `;
-
 const LineHeightH4 = styled.h4`
   line-height: 1.5;
 `;
@@ -299,12 +182,7 @@ const emailStyle = {
   marginRight: "5px"
 };
 
-// Free/paid Section
-const priceTableWrapper = styled.div`
-  font-family: "Lato", sans-serif;
-  text-align: center;
-  margin-top: 30px;
-`;
+ 
 
 export const LandingView = props => {
   return (
@@ -330,7 +208,7 @@ export const LandingView = props => {
           <FreeTierDiv>
             <h2>Email Large Files</h2>
             <LineHeightH4>
-              Send files up to 2gb to recipients. Ensure they received them with
+              Send files up to 2MB to recipients. Ensure they received them with
               email confirmation, and check if they've downloaded with view and
               download tracking.{" "}
             </LineHeightH4>
@@ -345,7 +223,7 @@ export const LandingView = props => {
             <h2>Unlock Pro Tier!</h2>
             <LineHeightH4>
               For longer download and view history upgrade to Pro Tier Service.
-              Gain access to 70 day file storage and history reporting!
+              Gain access to 70 day file storage and support for 4MB files!
             </LineHeightH4>
           </Services>
         </FlexDiv>
@@ -365,37 +243,39 @@ export const LandingView = props => {
       </ImageDiv>
 
       <ImageDiv>
-        <div class="price-table-wrapper">
-          <div class="pricing-table">
-            <h2 class="pricing-table__header">- BASIC -</h2>
-            <h3 class="pricing-table__price">Free</h3>
+        <div className="price-table-wrapper">
+          <div className="pricing-table">
+            <h2 className="pricing-table__header">- BASIC -</h2>
+            <h3 className="pricing-table__price">Free</h3>
             <a
-              target="_blank"
-              class="pricing-table__button"
+              onClick={props.lockOpen}
+              className="pricing-table__button"
               href="http://www.google.com"
+               
             >
               Join Now!
             </a>
-            <ul class="pricing-table__list">
-              <li>Files up to 2 gigabytes</li>
-              <li>50gb storage space</li>
+            <ul className="pricing-table__list">
+              <li>Files up to 2 megabytes</li>
+              <li>50GB storage space</li>
               <li>Host files for up to 7 days</li>
               <li>24 hour support</li>
             </ul>
           </div>
-          <div class="pricing-table featured-table">
-            <h2 class="pricing-table__header">- PREMIUM -</h2>
-            <h3 class="pricing-table__price">$9.99</h3>
+          <div className="pricing-table featured-table">
+            <h2 className="pricing-table__header">- PREMIUM -</h2>
+            <h3 className="pricing-table__price">$9.99</h3>
             <a
               target="_blank"
-              class="pricing-table__button"
+              className="pricing-table__button"
               href="http://www.google.com"
+              rel="noopener noreferrer"
             >
               Join Now!
             </a>
-            <ul class="pricing-table__list">
+            <ul className="pricing-table__list">
               <li>Files up to 4 gigabytes</li>
-              <li>100gb storage space</li>
+              <li>100GB storage space</li>
               <li>Host files for up to 1 month</li>
               <li>24 hour support</li>
             </ul>
@@ -404,72 +284,74 @@ export const LandingView = props => {
       </ImageDiv>
       <div id="cubeContainer">
         <div id="cubeWrapper">
-          <div class="head">
+          <div className="head">
             <h1>MEET THE TEAM</h1>
           </div>
           <div id="cubes">
             <a href="https://github.com/agreb17">
               {" "}
-              <div class="cube p2">
-                <div class="name">
+              <div className="cube p2">
+                <div className="name">
                   <h1>Anthony</h1>
                   <p>Kentucky</p>
                 </div>
-                <div class="innerBorder" />
-                <div class="darken" />
-                <div class="content" />
+                <div className="innerBorder" />
+                <div className="darken" />
+                <div className="content" />
               </div>
+
             </a>
             <a href="https://github.com/ThomasKisner">
-              <div class="cube p1">
-                <div class="name">
+              <div className="cube p1">
+                <div className="name">
                   <h1>Tom</h1>
                   <p>South Carolina</p>
                 </div>
-                <div class="innerBorder" />
-                <div class="darken" />
-                <div class="content" />
+                <div className="innerBorder" />
+                <div className="darken" />
+                <div className="content" />
+
               </div>
             </a>
             <a href="https://github.com/cassidyjamesw">
-              <div class="cube p3">
-                <div class="name">
+              <div className="cube p3">
+                <div className="name">
                   <h1>James Cassidy</h1>
                   <p>New York</p>
                 </div>
-                <div class="innerBorder" />
-                <div class="darken" />
-                <div class="content" />
+                <div className="innerBorder" />
+                <div className="darken" />
+                <div className="content" />
               </div>
             </a>
             <a href="https://github.com/kkhaag">
-              <div class="cube p4">
-                <div class="name">
+              <div className="cube p4">
+                <div className="name">
                   <h1>Keith H</h1>
                   <p>California</p>
                 </div>
-                <div class="innerBorder" />
-                <div class="darken" />
-                <div class="content" />
+                <div className="innerBorder" />
+                <div className="darken" />
+                <div className="content" />
               </div>
             </a>
             <a href="https://github.com/akshay-gadkari">
-              <div class="cube p5">
-                <div class="name">
+              <div className="cube p5">
+                <div className="name">
                   <h1>Akshay</h1>
                   <p>California</p>
                 </div>
-                <div class="innerBorder" />
-                <div class="darken" />
-                <div class="content" />
+                <div className="innerBorder" />
+                <div className="darken" />
+                <div className="content" />
               </div>
             </a>
           </div>
 
-          <div class="moreTeam">
+          <div className="moreTeam">
             <a href="https://lambdaschool.com/">
               <span>Trained by Lambda</span>
-              <span class="fas fa-angle-right" />
+              <span className="fas fa-angle-right" />
             </a>
           </div>
         </div>
