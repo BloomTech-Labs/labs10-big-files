@@ -70,10 +70,12 @@ button:hover{
 
 input::placeholder {
   font-family: "Roboto", sans-serif;
-  font-size: 2rem;
-  font-weight: 400;
+  font-size: 1em;  
   color: gray;
+  text-transform:uppercase;
+  display: none;
 }
+
 
 input:hover{
     cursor: pointer;
@@ -81,10 +83,11 @@ input:hover{
 
 textarea::placeholder {
   font-family: "Roboto", sans-serif;
-  font-size: 2rem;
-  font-weight: 400;
+  font-size: 1em;  
   color: gray;
+  text-transform:uppercase;
 }
+
 
 textarea:hover{
     cursor: pointer;
@@ -103,30 +106,41 @@ a {
     height: auto;
     background-color: white;
     border-radius: 10px;
-    margin-top: 20px
+    margin-top: 20px;
+    outline: none;
   }
 
 .ReactModal__Overlay{
-    background-color: lightgray;
+  background-color: rgb(125, 125,125, 0.8);
     margin-top: 6rem;
+    outline: none;
 }
 .StripeCheckout{ 
+  
+   
+  width: 151px;
+  height: 49px;
   border-radius: 5px;
+  margin: 3% auto;
+  /* background: none !important;
+  background-color: #206db5 !important;  */
   cursor: pointer;
-  width: 200px;
-  height: 50px;
-  border: white;
-  background-color: #206DB5;
-  font-weight: bold;
-  letter-spacing: .15em;
+  border:1px solid red;
+  opacity: 0;
 }
 
 .StripeCheckout:hover{
   cursor: pointer;
+ 
 }
+ 
+ 
 
-.StripeCheckout span{
-  color: black;
+.StripeCheckout span {
+  /* background-image: none !important;
+background-color: #206db5 !important;
+box-shadow: none !important; */
+opacity: 0;
 }
 
 
@@ -136,11 +150,13 @@ a {
     border-radius: 7px; 
     background-color: white;
     margin: 0 auto;
-    margin-top: 20px;
+    margin-top: 20px; 
   }
   .ReactModal__Overlay{
       height: 100%;
-      margin-top: 17rem;
+      margin-top: 17rem; 
+      background-color: rgb(125, 125,125, 0.8);
+ 
   }
 }
 

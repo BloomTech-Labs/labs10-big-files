@@ -1,16 +1,10 @@
 import React from "react";
-import NavHeader from "./navheader.js";
-import { Link } from "react-router-dom";
 import styled from "styled-components";
-import img from "../../src/assets/movebyteslogo.png";
-import awsimg from "../../src/assets/1_tFl-8wQUENETYLjX5mYWuA.png";
-import stpimg from "../../src/assets/payment-logo_1.png";
-
+import img from "../../src/assets/movebyteslogo.png"; 
 import steel from "../../src/assets/brushsteel2.jpg";
 import { FaUserPlus } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
 import { FaUserLock } from "react-icons/fa";
-
 import "./pricingtable.css";
 
 //NEW STUFF
@@ -77,7 +71,7 @@ const LandingCardsContainer = styled.div`
   height: 78%;
   @media (max-width: 390px) {
     width: 100%;
-    align-items: flex-start;
+    align-items: center;
   }
 `;
 
@@ -91,6 +85,7 @@ const FlexDiv = styled.div`
 
 const ImageDiv = styled.div`
 width: 90%
+padding-top: 5%;
 
 display: flex;
 justify-content: space-around;
@@ -187,12 +182,7 @@ const emailStyle = {
   marginRight: "5px"
 };
 
-// Free/paid Section
-const priceTableWrapper = styled.div`
-  font-family: "Lato", sans-serif;
-  text-align: center;
-  margin-top: 30px;
-`;
+ 
 
 export const LandingView = props => {
   return (
@@ -218,7 +208,7 @@ export const LandingView = props => {
           <FreeTierDiv>
             <h2>Email Large Files</h2>
             <LineHeightH4>
-              Send files up to 2gb to recipients. Ensure they received them with
+              Send files up to 2MB to recipients. Ensure they received them with
               email confirmation, and check if they've downloaded with view and
               download tracking.{" "}
             </LineHeightH4>
@@ -233,7 +223,7 @@ export const LandingView = props => {
             <h2>Unlock Pro Tier!</h2>
             <LineHeightH4>
               For longer download and view history upgrade to Pro Tier Service.
-              Gain access to 70 day file storage and history reporting!
+              Gain access to 70 day file storage and support for 4MB files!
             </LineHeightH4>
           </Services>
         </FlexDiv>
@@ -253,37 +243,39 @@ export const LandingView = props => {
       </ImageDiv>
 
       <ImageDiv>
-        <div class="price-table-wrapper">
-          <div class="pricing-table">
-            <h2 class="pricing-table__header">- BASIC -</h2>
-            <h3 class="pricing-table__price">Free</h3>
+        <div className="price-table-wrapper">
+          <div className="pricing-table">
+            <h2 className="pricing-table__header">- BASIC -</h2>
+            <h3 className="pricing-table__price">Free</h3>
             <a
-              target="_blank"
-              class="pricing-table__button"
+              onClick={props.lockOpen}
+              className="pricing-table__button"
               href="http://www.google.com"
+               
             >
               Join Now!
             </a>
-            <ul class="pricing-table__list">
-              <li>Files up to 2 gigabytes</li>
-              <li>50gb storage space</li>
+            <ul className="pricing-table__list">
+              <li>Files up to 2 megabytes</li>
+              <li>50GB storage space</li>
               <li>Host files for up to 7 days</li>
               <li>24 hour support</li>
             </ul>
           </div>
-          <div class="pricing-table featured-table">
-            <h2 class="pricing-table__header">- PREMIUM -</h2>
-            <h3 class="pricing-table__price">$9.99</h3>
+          <div className="pricing-table featured-table">
+            <h2 className="pricing-table__header">- PREMIUM -</h2>
+            <h3 className="pricing-table__price">$9.99</h3>
             <a
               target="_blank"
-              class="pricing-table__button"
+              className="pricing-table__button"
               href="http://www.google.com"
+              rel="noopener noreferrer"
             >
               Join Now!
             </a>
-            <ul class="pricing-table__list">
+            <ul className="pricing-table__list">
               <li>Files up to 4 gigabytes</li>
-              <li>100gb storage space</li>
+              <li>100GB storage space</li>
               <li>Host files for up to 1 month</li>
               <li>24 hour support</li>
             </ul>
@@ -292,60 +284,74 @@ export const LandingView = props => {
       </ImageDiv>
       <div id="cubeContainer">
         <div id="cubeWrapper">
-          <div class="head">
+          <div className="head">
             <h1>MEET THE TEAM</h1>
           </div>
           <div id="cubes">
-            <div class="cube p2">
-              <div class="name">
-                <h1>Anthony</h1>
-                <p>Kentucky</p>
+            <a href="https://github.com/agreb17">
+              {" "}
+              <div className="cube p2">
+                <div className="name">
+                  <h1>Anthony</h1>
+                  <p>Kentucky</p>
+                </div>
+                <div className="innerBorder" />
+                <div className="darken" />
+                <div className="content" />
               </div>
-              <div class="innerBorder" />
-              <div class="darken" />
-              <div class="content" />
-            </div>
-            <div class="cube p1">
-              <div class="name">
-                <h1>Tom</h1>
-                <p>Georgia</p>
+
+            </a>
+            <a href="https://github.com/ThomasKisner">
+              <div className="cube p1">
+                <div className="name">
+                  <h1>Tom</h1>
+                  <p>South Carolina</p>
+                </div>
+                <div className="innerBorder" />
+                <div className="darken" />
+                <div className="content" />
+
               </div>
-              <div class="innerBorder" />
-              <div class="darken" />
-              <div class="content" />
-            </div>
-            <div class="cube p3">
-              <div class="name">
-                <h1>James Cassidy</h1>
-                <p>New York</p>
+            </a>
+            <a href="https://github.com/cassidyjamesw">
+              <div className="cube p3">
+                <div className="name">
+                  <h1>James Cassidy</h1>
+                  <p>New York</p>
+                </div>
+                <div className="innerBorder" />
+                <div className="darken" />
+                <div className="content" />
               </div>
-              <div class="innerBorder" />
-              <div class="darken" />
-              <div class="content" />
-            </div>
-            <div class="cube p4">
-              <div class="name">
-                <h1>Keith H</h1>
-                <p>California</p>
+            </a>
+            <a href="https://github.com/kkhaag">
+              <div className="cube p4">
+                <div className="name">
+                  <h1>Keith H</h1>
+                  <p>California</p>
+                </div>
+                <div className="innerBorder" />
+                <div className="darken" />
+                <div className="content" />
               </div>
-              <div class="innerBorder" />
-              <div class="darken" />
-              <div class="content" />
-            </div>
-            <div class="cube p5">
-              <div class="name">
-                <h1>Akshay</h1>
-                <p>California</p>
+            </a>
+            <a href="https://github.com/akshay-gadkari">
+              <div className="cube p5">
+                <div className="name">
+                  <h1>Akshay</h1>
+                  <p>California</p>
+                </div>
+                <div className="innerBorder" />
+                <div className="darken" />
+                <div className="content" />
               </div>
-              <div class="innerBorder" />
-              <div class="darken" />
-              <div class="content" />
-            </div>
+            </a>
           </div>
-          <div class="moreTeam">
+
+          <div className="moreTeam">
             <a href="https://lambdaschool.com/">
               <span>Trained by Lambda</span>
-              <span class="fas fa-angle-right" />
+              <span className="fas fa-angle-right" />
             </a>
           </div>
         </div>

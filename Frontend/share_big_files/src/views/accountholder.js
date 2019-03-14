@@ -3,31 +3,7 @@ import NavHeader from "./navheader";
 import LeftMenu from "./leftmenu";
 import Billing from "./billing";
 import styled from "styled-components";
-import CreateFileForm from "./createfileform";
-
-
-const AccountPage = styled.div`
-// (props => <div {...props} />)
-  width: 100%;
-  height: auto;
-  min-height: 100vh;
-  margin: 0 auto;
-  background-color: #eae7dc;
-  // background-image: url("https://images.unsplash.com/photo-1524122209929-5bc27bd9c250?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80");
-  background-size: cover;
-  @media(max-width: 390px) {
-    width: 100%;
-  }
-`;
-
-
-const MenuAccountDiv = styled.div`
-  display: flex;
-  @media(max-width: 390px) {
-    width: 100%;
-    flex-direction: column;
-  }
-`;
+import CreateFileForm from "./createfileform"; 
 
 const CreatePage = styled.div`
 padding-top: 90px;
@@ -45,7 +21,8 @@ padding-top: 90px;
   }
 `;
 const CreateEditDiv = styled.div`
-width: 100%;
+width: 96%;
+margin: 0 auto;
 display: flex;
   margin-top: 5px;
   @media (max-width: 900px) {
@@ -64,12 +41,14 @@ height:auto;
  
 background-color: lightgray;
 margin-bottom: 15px;
- 
+ z-index: 9999;
 `;
+
+ 
 
 const AccountHolder = () => {
   return (
- <>
+ < >
  <FixedDiv>
  <NavHeader />
  <LeftMenu/>
@@ -81,7 +60,7 @@ const AccountHolder = () => {
      <Billing />
    </CreateEditDiv>
  </CreatePage>
- </>
+ </ >
 
   );
 };

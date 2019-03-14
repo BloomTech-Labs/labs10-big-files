@@ -21,8 +21,10 @@ padding-top: 90px;
   }
 `;
 const CreateEditDiv = styled.div`
-width: 100%;
+width: 96%;
+margin: 0 auto;
 display: flex;
+justify-content: space-between;
   margin-top: 5px;
   @media (max-width: 900px) {
     display: block;

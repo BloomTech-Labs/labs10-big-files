@@ -13,71 +13,48 @@ window.location.reload();
 
 }
 
-
-// const SignOutButton = styled.div`
-// font-size: 2rem;
-// position: absolute;
-// top: 10%;
-// right: 7%;
-// color: black;
-// cursor: pointer;
-// border-radius: 10px;
-// width: 9rem;
-// text-align: center;
-// background-color: white;
-// @media (max-width: 1000px) {
-//   right: 4%;
-// }
-// @media (max-width: 768px) {
-//   right: 5%;
-// }
-// @media (max-width: 580px) {
-//   right: 7%;
-// }
-// @media (max-width: 390px) {
-//   display: none;
-// }
-// // &:hover {
-// //   color: #ff7518;
-// // }
-//`;
-
-
 const SignOutDiv = styled.div`
-  width: 45%
-  min-width: 180px;
+  width: 151px;
+  height: 49px;
+  border-radius: 5px;
   margin: 3% auto;
-  background-color: #206db5;
-  height: auto; 
-  border-radius: 10px
+  background-color: #206db5; 
   display: flex;
   justify-content: center;
   align-items: center;
   cursor: pointer;
+
 `;
+const WhiteBorder = styled.div`
+height:100%;
+width: 1px;
+border-right: 1px solid white;
+padding-left: 3.5%;
+`;
+
 const SignOutH2 = styled.h2`
+line-height: 2;
   color: white;
   font-size: 2rem;
   font-style: Raleway
   font-weight: bold;
-  margin: 0;
-  height: 38px;
-  margin-left: 5.5%;
-  padding-left: 2.5%;
-  padding-top: 6%;
-  border-left: 1px solid white;
+  margin: 0; 
+  padding-left: 4.5%;
   width: fit-content;
-  @media(max-width: 768px) {
-    padding-top: 4%;
-  }
-`;
+  height: fit-content; 
+  `;
 
+
+ 
 
 const SignOut = props => {
-  return <SignOutDiv onClick={signOutHandler}>
-            <FaSignOutAlt size={30} color="#ffffff" />
-            <SignOutH2>Sign Out</SignOutH2>
-         </SignOutDiv>;
+  return  (
+         <SignOutDiv onClick={signOutHandler}>
+         <FaSignOutAlt size={30} color="#ffffff" />
+         <WhiteBorder></WhiteBorder>
+         <SignOutH2>Sign Out</SignOutH2>
+       </SignOutDiv>
+  )
 };
 
 export default SignOut;
