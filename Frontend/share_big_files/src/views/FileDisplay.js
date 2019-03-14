@@ -355,7 +355,6 @@ const FileDisplay = () => {
           </Sharedh4>
           <Sharedh4>Type: {selectedFile.file_type}</Sharedh4>
           <Sharedh4>Date: {selectedFile.upload_date.slice(0, 10)}</Sharedh4>
-          <Sharedh4>Time: {selectedFile.upload_date.slice(11, -5)}</Sharedh4>
           <h3>Total Downloads: {viewedHistory.length} </h3>
           {viewedHistory.map((file, index) => {
             return (
