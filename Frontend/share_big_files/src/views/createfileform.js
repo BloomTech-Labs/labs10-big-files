@@ -314,9 +314,9 @@ const CreateEditDiv = styled.div`
   flex-direction: column;
   flex-wrap: wrap;
   height: fit-content;
-  width: 35%; 
+  width: 48%; 
   min-width: 500px
-  margin-left: 4%; 
+ 
   line-height: 3;
   border-radius: 5px;
   background-color: white;
@@ -354,8 +354,8 @@ const TitleH2 = styled.h1`
   &:hover{
     cursor: pointer;
 `;
-
-const SendGridDiv = styled.button`
+ 
+const SendGridDiv = styled.div`
   width: 220px;
   height: 49px;
   border-radius: 5px;
@@ -409,7 +409,7 @@ const FileInput = styled.input`
   font-weight: 400;
   border-radius: 5px; 
   display: none;
-  height: 100%
+  height: 100%;
   width: 100%;
 `;
 

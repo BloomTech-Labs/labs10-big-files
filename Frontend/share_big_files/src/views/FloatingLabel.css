@@ -85,14 +85,14 @@
   * inherit the transition.
   */
   ::-webkit-input-placeholder {
-    opacity: 0;
+    opacity: 0 !important;
     transition: inherit;
   }
   /**
   * Show the placeholder when the input is focused.
   */
   input:focus::-webkit-input-placeholder {
-    opacity: 1;
+    opacity: 1 !important;
   }
   /**
   * When the element is focused, remove the label transform.
@@ -172,12 +172,12 @@
   }
 
   ::-webkit-textarea-placeholder {
-    opacity: 0; 
+    opacity: 0 !important; 
     transition: inherit;
   }
 
   textarea:focus::-webkit-input-placeholder {
-    opacity: 1;
+    opacity: 1 !important;
   }
   textarea:not(:placeholder-shown) + label,
   textarea:focus + label {

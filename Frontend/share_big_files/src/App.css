@@ -73,7 +73,9 @@ input::placeholder {
   font-size: 1em;  
   color: gray;
   text-transform:uppercase;
+  display: none;
 }
+
 
 input:hover{
     cursor: pointer;
@@ -85,6 +87,7 @@ textarea::placeholder {
   color: gray;
   text-transform:uppercase;
 }
+
 
 textarea:hover{
     cursor: pointer;
