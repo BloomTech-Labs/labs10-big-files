@@ -77,7 +77,7 @@ const LandingCardsContainer = styled.div`
   height: 78%;
   @media (max-width: 390px) {
     width: 100%;
-    align-items: flex-start;
+    align-items: center;
   }
 `;
 
