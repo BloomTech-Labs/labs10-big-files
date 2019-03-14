@@ -375,7 +375,6 @@ const FileDisplay = () => {
         </ReactModal>
         {userData[0]
           ? userData.map((file, index) => {
-              console.log("file:", file);
               var byteDivider = file.file_size >= 10000 ? 10000 : 1000;
               var byteType = file.file_size >= 10000 ? "MB" : "KB";
               return (
