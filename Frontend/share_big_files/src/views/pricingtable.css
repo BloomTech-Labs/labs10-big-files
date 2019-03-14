@@ -168,7 +168,8 @@ MEET THE TEAM SECTION
   background: #ddd;
 }
 .p1 {
-  background: url("https://static.pexels.com/photos/324658/pexels-photo-324658.jpeg")
+  /* background: url("https://static.pexels.com/photos/324658/pexels-photo-324658.jpeg") */
+  background: url("../assets/tomsbighead.jpg")
     center;
 }
 .p2 {
