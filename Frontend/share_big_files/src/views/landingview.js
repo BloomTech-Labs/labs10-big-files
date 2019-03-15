@@ -292,7 +292,7 @@ export const LandingView = props => {
               {" "}
               <div className="cube p2">
                 <div className="name">
-                  <h1>Anthony</h1>
+                  <h1>Anthony Greb</h1>
                   <p>Kentucky</p>
                 </div>
                 <div className="innerBorder" />
