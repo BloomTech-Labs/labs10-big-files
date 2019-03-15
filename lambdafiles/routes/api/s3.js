@@ -51,7 +51,7 @@ const fileUpload = multer({
       );
     }
   }),
-  limits: { fileSize: 2000000 } // In bytes: 2000000 bytes = 2 MB
+  limits: { fileSize: 2147483648 } // In bytes: 2000000 bytes = 2 MB
 }).single("fileUpload");
 
 // router.get('/files', (req, res) => {
@@ -214,7 +214,7 @@ const paidFileUpload = multer({
     }
   }),
 
-  limits: { fileSize: 4000000 } // In bytes: 4000000 bytes = 4 MB
+  limits: { fileSize: 4294967296 } // In bytes: 4000000 bytes = 4 MB
 }).single("fileUpload");
 
 // ROUTE TO UPLOAD FILE PAID USER?
