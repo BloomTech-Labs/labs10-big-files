@@ -1,14 +1,14 @@
-import React from "react";
-import styled from "styled-components";
-import img from "../../src/assets/movebyteslogo.png"; 
-import steel from "../../src/assets/brushsteel2.jpg";
-import { FaUserPlus } from "react-icons/fa";
-import { MdEmail } from "react-icons/md";
-import { FaUserLock } from "react-icons/fa";
-import "./pricingtable.css";
+import React from 'react';
+import styled from 'styled-components';
+import img from '../../src/assets/movebyteslogo.png';
+import steel from '../../src/assets/brushsteel2.jpg';
+import { FaUserPlus } from 'react-icons/fa';
+import { MdEmail } from 'react-icons/md';
+import { FaUserLock } from 'react-icons/fa';
+import './pricingtable.css';
 
 //NEW STUFF
-import "./CTAButton.css";
+import './CTAButton.css';
 //match return button size, match signout button size
 //add modal uploaded info
 //fix blue button to outline, with blue styling
@@ -163,32 +163,30 @@ const CTA = styled.div`
   border-radius: 50%;
 `;
 const hiddenStyle = {
-  opacity: "1",
-  position: "absolute",
+  opacity: '1',
+  position: 'absolute',
   // top: "0",
   // left: "0",
   // bottom: "0",
   // right:"0",
-  width: "100%",
-  height: "100%",
-  borderRadius: "50%",
+  width: '100%',
+  height: '100%',
+  borderRadius: '50%',
   borderMargin: 0,
-  cursor: "pointer",
+  cursor: 'pointer',
   zIndex: 1
 };
 
 const emailStyle = {
-  marginTop: ".83em",
-  marginRight: "5px"
+  marginTop: '.83em',
+  marginRight: '5px'
 };
-
- 
 
 export const LandingView = props => {
   return (
     <LandingContainerDiv>
       <HeaderDiv>
-        <HeaderIMG src={img} alt="mblogo" />
+        <HeaderIMG src={img} alt='mblogo' />
         <LoginContainer>
           <LoginDiv>
             <MenuDiv onClick={props.lockOpen}>
@@ -198,26 +196,26 @@ export const LandingView = props => {
         </LoginContainer>
       </HeaderDiv>
       <LandingCardsContainer>
-        <CTA className="play-btn">
+        <CTA className='play-btn'>
           <div onClick={props.lockOpen} style={hiddenStyle} />
         </CTA>
       </LandingCardsContainer>
       <ImageDiv>
         <FlexDiv>
-          <MdEmail size={40} color="#206DB5" style={emailStyle} />
+          <MdEmail size={40} color='#206DB5' style={emailStyle} />
           <FreeTierDiv>
             <h2>Email Large Files</h2>
             <LineHeightH4>
               Send files up to 2MB to recipients. Ensure they received them with
               email confirmation, and check if they've downloaded with view and
-              download tracking.{" "}
+              download tracking.{' '}
             </LineHeightH4>
           </FreeTierDiv>
         </FlexDiv>
         {/* <AwsImg src={awsimg} alt="awslogo"/> */}
 
         <FlexDiv>
-          <FaUserPlus size={40} color="#206DB5" style={emailStyle} />
+          <FaUserPlus size={40} color='#206DB5' style={emailStyle} />
           <br />
           <Services>
             <h2>Unlock Pro Tier!</h2>
@@ -229,7 +227,7 @@ export const LandingView = props => {
         </FlexDiv>
 
         <FlexDiv>
-          <FaUserLock size={40} color="#206DB5" style={emailStyle} />
+          <FaUserLock size={40} color='#206DB5' style={emailStyle} />
           <br />
           <Services>
             <h2>Send With Confidence</h2>
@@ -243,37 +241,36 @@ export const LandingView = props => {
       </ImageDiv>
 
       <ImageDiv>
-        <div className="price-table-wrapper">
-          <div className="pricing-table">
-            <h2 className="pricing-table__header">- BASIC -</h2>
-            <h3 className="pricing-table__price">Free</h3>
+        <div className='price-table-wrapper'>
+          <div className='pricing-table'>
+            <h2 className='pricing-table__header'>- BASIC -</h2>
+            <h3 className='pricing-table__price'>Free</h3>
             <a
               onClick={props.lockOpen}
-              className="pricing-table__button"
-              href="http://www.google.com"
-               
+              className='pricing-table__button'
+              href='http://www.google.com'
             >
               Join Now!
             </a>
-            <ul className="pricing-table__list">
+            <ul className='pricing-table__list'>
               <li>Files up to 2 megabytes</li>
               <li>50GB storage space</li>
               <li>Host files for up to 7 days</li>
               <li>24 hour support</li>
             </ul>
           </div>
-          <div className="pricing-table featured-table">
-            <h2 className="pricing-table__header">- PREMIUM -</h2>
-            <h3 className="pricing-table__price">$9.99</h3>
+          <div className='pricing-table featured-table'>
+            <h2 className='pricing-table__header'>- PREMIUM -</h2>
+            <h3 className='pricing-table__price'>$9.99</h3>
             <a
-              target="_blank"
-              className="pricing-table__button"
-              href="http://www.google.com"
-              rel="noopener noreferrer"
+              target='_blank'
+              className='pricing-table__button'
+              href='http://www.google.com'
+              rel='noopener noreferrer'
             >
               Join Now!
             </a>
-            <ul className="pricing-table__list">
+            <ul className='pricing-table__list'>
               <li>Files up to 4 gigabytes</li>
               <li>100GB storage space</li>
               <li>Host files for up to 1 month</li>
@@ -282,76 +279,84 @@ export const LandingView = props => {
           </div>
         </div>
       </ImageDiv>
-      <div id="cubeContainer">
-        <div id="cubeWrapper">
-          <div className="head">
+      <div id='cubeContainer'>
+        <div id='cubeWrapper'>
+          <div className='head'>
             <h1>MEET THE TEAM</h1>
           </div>
-          <div id="cubes">
-            <a href="https://github.com/agreb17">
-              {" "}
-              <div className="cube p2">
-                <div className="name">
+          <div id='cubes'>
+            <a href='https://github.com/agreb17'>
+              {' '}
+              <div className='cube p2'>
+                <div className='name'>
                   <h1>Anthony</h1>
                   <p>Kentucky</p>
                 </div>
-                <div className="innerBorder" />
-                <div className="darken" />
-                <div className="content" />
+                <div className='innerBorder' />
+                <div className='darken' />
+                <div className='content' />
               </div>
-
             </a>
-            <a href="https://github.com/ThomasKisner">
-              <div className="cube p1">
-                <div className="name">
+            <a href='https://github.com/ThomasKisner'>
+              <div className='cube p1'>
+                <div className='name'>
                   <h1>Tom</h1>
                   <p>South Carolina</p>
                 </div>
-                <div className="innerBorder" />
-                <div className="darken" />
-                <div className="content" />
-
+                <div className='innerBorder' />
+                <div className='darken' />
+                <div className='content' />
               </div>
             </a>
-            <a href="https://github.com/cassidyjamesw">
-              <div className="cube p3">
-                <div className="name">
+            <a href='https://github.com/cassidyjamesw'>
+              <div className='cube p3'>
+                <div className='name'>
                   <h1>James Cassidy</h1>
                   <p>New York</p>
                 </div>
-                <div className="innerBorder" />
-                <div className="darken" />
-                <div className="content" />
+                <div className='innerBorder' />
+                <div className='darken' />
+                <div className='content' />
               </div>
             </a>
-            <a href="https://github.com/kkhaag">
-              <div className="cube p4">
-                <div className="name">
+            <a href='https://github.com/kkhaag'>
+              <div className='cube p4'>
+                <div className='name'>
                   <h1>Keith H</h1>
                   <p>California</p>
                 </div>
-                <div className="innerBorder" />
-                <div className="darken" />
-                <div className="content" />
+                <div className='innerBorder' />
+                <div className='darken' />
+                <div className='content' />
               </div>
             </a>
-            <a href="https://github.com/akshay-gadkari">
-              <div className="cube p5">
-                <div className="name">
+            <a href='https://github.com/akshay-gadkari'>
+              <div className='cube p5'>
+                <div className='name'>
                   <h1>Akshay</h1>
                   <p>California</p>
                 </div>
-                <div className="innerBorder" />
-                <div className="darken" />
-                <div className="content" />
+                <div className='innerBorder' />
+                <div className='darken' />
+                <div className='content' />
               </div>
             </a>
           </div>
-
-          <div className="moreTeam">
-            <a href="https://lambdaschool.com/">
+          <a href='https://github.com/bummings'>
+            <div className='cube p6'>
+              <div className='name'>
+                <h1>Edd</h1>
+                <p>Philadelphia</p>
+              </div>
+              <div className='innerBorder' />
+              <div className='darken' />
+              <div className='content' />
+            </div>
+          </a>
+          <div className='moreTeam'>
+            <a href='https://lambdaschool.com/'>
               <span>Trained by Lambda</span>
-              <span className="fas fa-angle-right" />
+              <span className='fas fa-angle-right' />
             </a>
           </div>
         </div>
